@@ -1,0 +1,18 @@
+.App {
+  text-align: center;
+}
+
+.Coverflow {
+  margin-top: 110px;
+}
+
+.button {
+  background-color: white;
+  outline: thick ridge black;
+  padding: 22px 110px;
+  font-size: 20px;
+}
+
+html {
+  background-color: lightgray;
+}
