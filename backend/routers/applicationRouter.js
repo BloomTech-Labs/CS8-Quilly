@@ -5,7 +5,7 @@ const router = express.Router();
 //end point for /user/applications/
 //should return all applications for logged in user
 router.get('/', (req, res) => {
-
+    console.log('getting apps');
 });
 
 // end point for adding an application to user
