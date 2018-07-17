@@ -3,14 +3,14 @@ const helmet = require('helmet');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const User = require('./users/userModel.js');
-
-const dbCred = {
-    dbUser: process.env.DB_USER || require('./config').username
-    dbPassword: process.env.DB_PASSWORD || require('./config').password
-};
+const dbConfig = require('./config/database.config');
 
 const applicationRouter = require('./routers/applicationRouter.js');
 const contributionsRouter = require('./routers/contributionsRouter');
+
+mongoose.connect(dbConfig.url)
+    .then(() => console.log('Connected to DB'))
+    .catch(() => console.error('Failed to connect to DB'));
 
 const server = express();
 
@@ -49,6 +49,6 @@ server.use('/user/applications', applicationRouter);
 server.use('/user/contributions', contributionRouter);
 server.use('/user/meetups', meetupRouter);
 
-const port = 5000;
+const port = process.env.PORT || 5000;
 server.listen(port, () => console.log(`API running on port ${port}`));
 
