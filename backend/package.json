@@ -1,0 +1,28 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "backend for job application tracker",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lambda-School-Labs/CS8-jobapp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Lambda-School-Labs/CS8-jobapp/issues"
+  },
+  "homepage": "https://github.com/Lambda-School-Labs/CS8-jobapp#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "cors": "^2.8.4",
+    "express": "^4.16.3",
+    "helmet": "^3.12.1",
+    "mongoose": "^5.2.4",
+    "nodemon": "^1.18.2"
+  }
+}

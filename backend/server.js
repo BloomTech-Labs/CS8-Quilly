@@ -1,6 +1,13 @@
 const express = require('express');
-
 const helmet = require('helmet');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const User = require('./users/userModel.js');
+
+const dbCred = {
+    dbUser: process.env.DB_USER || require('./config').username
+    dbPassword: process.env.DB_PASSWORD || require('./config').password
+};
 
 const applicationRouter = require('./routers/applicationRouter.js');
 const contributionsRouter = require('./routers/contributionsRouter');

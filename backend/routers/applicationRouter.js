@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 
-//end point for /applications/
+//end point for /user/applications/
 //should return all applications for logged in user
 router.get('/', (req, res) => {
 
@@ -22,9 +22,5 @@ router.delete('/delete', (req, res) => {
 router.put('/update/:id', (req, res) => {
 
 });
-
-
-
-
 
 module.exports = router;
