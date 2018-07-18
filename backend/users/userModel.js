@@ -17,19 +17,19 @@ const applicationSchema = new mongoose.Schema({
   onsiteInterview: {
     type: Boolean,
     default: false
-  }
+  },
   receivedResponse: {
     type: Boolean,
     default: false
-  }
+  },
   whiteboard: {
     type: Boolean,
     default: false
-  }
+  },
   phoneInterview: {
     type: Boolean,
     default: false
-  }
+  },
   codeTest: {
     type: Boolean,
     default: false
@@ -37,7 +37,7 @@ const applicationSchema = new mongoose.Schema({
   rejection: {
     type: Boolean,
     default: false
-  }
+  },
   offer: {
     type: Boolean,
     default: false
@@ -54,7 +54,7 @@ const applicationSchema = new mongoose.Schema({
   jobSource: String,
   linkToJobPost: String,
   pointOfContact: String,
-  timestamps: true,
+  timestamps: { createdAt: Date },
   testData: {
     type: Boolean,
     default: false
@@ -116,10 +116,10 @@ const userSchema = new mongoose.Schema({
   phone: {
     type: Number,
   },
-  timestamps: true,
-  applications: [Application],
-  meetups: [Meetup],
-  contributions: [Contribution],
+  timestamps: { createdAt: Date },
+  applications: [applicationSchema],
+  meetups: [meetupSchema],
+  contributions: [contributionSchema],
 });
 
 // Password hashing
