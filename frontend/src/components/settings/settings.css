@@ -1,0 +1,19 @@
+.Settings {
+  margin-top: 65px;
+  margin-left: 210px;
+  width: 500px;
+  display: flex;
+}
+
+.Settings label {
+  width: 150px;
+  clear: left;
+  float: left;
+  padding-right: 10px;
+}
+
+.Settings input,
+label {
+  margin: 7px;
+  float: left;
+}

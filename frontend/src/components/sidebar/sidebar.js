@@ -4,7 +4,8 @@ import './sidebar.css';
 class Sidebar extends Component {
   render() {
     return (
-      <div className="Sidebar">
+      //side navigation  bar
+      <div className="Sidebar"> 
         <a href="#">Jobs</a>
         <a href="#">Meetups</a>
         <a href="#">Contributions</a>
