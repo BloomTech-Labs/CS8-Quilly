@@ -1,0 +1,9 @@
+.openModal {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  background-color: white;
+  outline: thick ridge black;
+  padding: 20px 60px;
+  font-size: 20px;
+}
