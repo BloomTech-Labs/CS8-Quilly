@@ -2,23 +2,6 @@ import React, { Component } from 'react';
 import Modal from 'react-modal';
 import './jobcreatemodal.css';
 
-const customStyles = {
-  overlay: {
-    position: 'fixed',
-    backgroundColor: 'rgba(0, 0, 0, 0.75)'
-  },
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-    height: '600px',
-    width: '700px'
-  }
-};
-
 Modal.setAppElement(document.getElementById('root'));
 
 class Jobcreatemodal extends Component {
@@ -28,19 +11,12 @@ class Jobcreatemodal extends Component {
     this.state = {
       modalIsOpen: false
     };
-
     this.openModal = this.openModal.bind(this);
-    this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
 
   openModal() {
     this.setState({ modalIsOpen: true });
-  }
-
-  afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    this.subtitle.style.color = '#f00';
   }
 
   closeModal() {
@@ -55,21 +31,49 @@ class Jobcreatemodal extends Component {
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
-          onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
-          style={customStyles}
           contentLabel="Example Modal"
+          overlayClassName="Overlay1"
+          className="hello"
         >
-          <h2 ref={subtitle => (this.subtitle = subtitle)}>Hello</h2>
-          <button onClick={this.closeModal}>close</button>
-          <div>I am a modal</div>
-          <form>
+          <div className="Jobtimeline1">
+            <h2>Job Timeline</h2>
+            <div className="Checkboxes1">
+              <form className="form">
+                <input name="isGoing" type="checkbox" />
+                <label>Submitted Job Application</label>
+                <input name="isGoing" type="checkbox" />
+                <label>On-Site Interview</label>
+                <br />
+                <input name="isGoing" type="checkbox" />
+                <label>Received Response</label>
+                <input name="isGoing" type="checkbox" />
+                <label>Whiteboarding</label>
+                <br />
+                <input name="isGoing" type="checkbox" />
+                <label>Phone Interview</label>
+                <input name="isGoing" type="checkbox" />
+                <label>Code Test</label>
+                <br />
+                <input />
+              </form>
+            </div>
+          </div>
+
+          <div className="Jobtimeline2">
+            <h2>Job Information</h2>
             <input />
-            <button>tab navigation</button>
-            <button>stays</button>
-            <button>inside</button>
-            <button>the modal</button>
-          </form>
+            <input />
+            <br />
+            <input />
+            <input />
+            <br />
+            <input />
+            <input />
+          </div>
+          <button className="openModal" onClick={this.openModal}>
+            Add Job &#10010;
+          </button>
         </Modal>
       </div>
     );
