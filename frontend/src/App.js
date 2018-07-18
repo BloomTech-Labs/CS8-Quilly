@@ -28,3 +28,24 @@ class App extends Component {
 }
 
 export default App;
+
+// Testing on Job Board - Display
+/*import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import JobBoard from './components/jobboard/jobboard';
+import Sidebar from './components/sidebar/sidebar';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        <Sidebar />
+        <JobBoard />
+      </div>
+    );
+  }
+}
+
+export default App;
+*/

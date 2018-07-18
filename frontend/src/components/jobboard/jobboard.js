@@ -5,7 +5,7 @@ import Board from 'react-trello';
 
 // This NewCard will be replaced with AddJob
 import NewCard from 'react-trello';
-import './jobBoard.css';
+import './jobboard.css';
 
 // Temporary Data
 const data = {
