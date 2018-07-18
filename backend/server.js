@@ -2,7 +2,7 @@ const express = require('express');
 const helmet = require('helmet');
 const mongoose = require('mongoose');
 const cors = require('cors');
-const User = require('./users/userModel.js');
+const User = require('./models/userModel.js');
 const dbConfig = require('./config/database.config');
 
 const userRouter = require('./routers/userRouter');
