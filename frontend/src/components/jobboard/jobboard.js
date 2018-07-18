@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 // Need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
+
+// This NewCard will be replaced with AddJob
 import NewCard from 'react-trello';
 import './jobBoard.css';
 
