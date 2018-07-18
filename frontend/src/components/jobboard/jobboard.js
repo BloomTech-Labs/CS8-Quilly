@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+
 // Need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
+import NewCard from 'react-trello';
+import './jobBoard.css';
 
 // Temporary Data
 const data = {
@@ -27,11 +30,11 @@ class JobBoard extends Component {
   render() {
     return (
       <Board data={data}
-        // Movable Cards and Boards
-        cardDragClass="draggingCard"
-        laneDragClass="draggingLane"
-        draggable
-      />
+      cardDragClass="draggingCard"
+      laneDragClass="draggingLane"
+      draggable
+      editable newCardTemplate={<NewCard />}
+    />
     );
   }
 }
