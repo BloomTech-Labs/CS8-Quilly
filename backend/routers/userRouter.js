@@ -5,15 +5,37 @@ const applicationRouter = require('./applicationRouter.js');
 const contributionRouter = require('./contributionsRouter');
 const meetupRouter = require('./meetupsRouter');
 
+//authenticate that the user is signed in
 function authenticate(req, res, next) {
-    //authenticate that the user is signed in
-    console.log('authenticating');
+    if (req.session && req.session.userId)
     next();
+else
+    res.json({ msg:'You must be logged in to do this function.' })
 }
 
 // end point to register a new user
 router.post('/register', (req, res) => {
-    console.log('register');
+    const { username } = req.body;
+    User
+    .findOne({ username })
+    .then(response => {
+        if (response) {
+            const user = new User(req.body)
+            user
+            .save()
+            .then(newUser => {
+                res.json(newUser);
+            })
+            .catch(err => {
+                res.status(500).json({error: 'New user could not be created.'});
+            });
+        } else {
+            res.status(422).json({error: 'User name already exists'});
+        }
+    })
+    .catch(error => {
+        res.status(500).json({error: 'New user could not be created.'});
+    }) 
 });
 
 // end point to log in to the app
