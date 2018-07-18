@@ -26,7 +26,12 @@ const data = {
 class JobBoard extends Component {
   render() {
     return (
-      <Board data={data}/>
+      <Board data={data}
+        // Movable Cards and Boards
+        cardDragClass="draggingCard"
+        laneDragClass="draggingLane"
+        draggable
+      />
     );
   }
 }
