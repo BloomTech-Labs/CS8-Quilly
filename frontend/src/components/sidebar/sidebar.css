@@ -1,0 +1,37 @@
+.Sidebar {
+  height: 88%; /* 88% of screen height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top of all other elements*/
+  top: 65px; /* Stay at the top of page*/
+  left: 30px;
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 10px; /* gives space between border and nav links */
+  outline-style: solid;
+  text-align: left;
+}
+
+.Sidebar a {
+  padding: 6px 8px 6px 16px; /*spacing around each link*/
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  display: block;
+}
+
+.Sidebar a:hover {
+  color: hotpink;
+}
+
+.main {
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .Sidebar {
+    padding-top: 15px;
+  }
+  .Sidebar a {
+    font-size: 18px;
+  }
+}
