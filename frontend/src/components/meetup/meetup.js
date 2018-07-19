@@ -20,17 +20,31 @@ class Meetup extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="Meetup">
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Date:
+            <input
+              type="date"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Activity"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Notes"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }
