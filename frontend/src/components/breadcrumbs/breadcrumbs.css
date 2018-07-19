@@ -1,0 +1,12 @@
+.topleftnav {
+  left: 30px;
+  top: 20px;
+  position: fixed;
+  z-index: 0;
+}
+
+.topleftnav a {
+  display: inline;
+  font-size: 20px;
+  padding-right: 10px;
+}

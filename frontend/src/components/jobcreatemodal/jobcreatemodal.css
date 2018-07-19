@@ -8,7 +8,7 @@
   font-size: 20px;
 }
 
-.Jobtimeline1 {
+.Jobtimeline {
   position: absolute;
   top: 40px;
   left: 250px;
@@ -16,18 +16,14 @@
   bottom: 500px;
   border: 3px solid #000;
   background: #fff;
-  /* overflow: auto; */
+  overflow: auto;
   border-radius: 20px;
   outline: none;
   padding-top: 10px;
   padding-left: 20px;
 }
 
-.Checkboxes1 input label {
-  background-color: hotpink;
-}
-
-.Jobtimeline2 {
+.Jobinformation {
   position: absolute;
   top: 475px;
   left: 250px;
@@ -42,7 +38,11 @@
   padding-left: 20px;
 }
 
-.Overlay1 {
+.Checkboxes {
+  display: inline-block;
+}
+
+.Overlay {
   position: fixed;
   top: 0;
   left: 0;

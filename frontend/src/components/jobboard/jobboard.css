@@ -1,4 +1,10 @@
 .smooth-dnd-container.horizontal {
   white-space: nowrap;
-  margin: 3% 0 0 12%;
+  margin-top: 65px;
+  margin-left: 200px;
+  z-index: 0;
+}
+
+.cBXKgf {
+  background-color: rgba(256, 256, 256);
 }
