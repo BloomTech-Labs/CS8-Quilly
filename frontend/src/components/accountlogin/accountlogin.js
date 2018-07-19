@@ -5,8 +5,8 @@ class Accountlogin extends Component {
   render() {
     return (
       <div className="Accountlogin">
-        <a href="url">Sign Up</a>
-        <a href="url">Sign In</a>
+        <a href="/">Sign Up</a>
+        <a href="joblist">Sign In</a>
       </div>
     );
   }

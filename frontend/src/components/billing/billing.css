@@ -1,0 +1,25 @@
+.Billing {
+  margin-left: 210px;
+  margin-top: 65px;
+}
+
+.Paymentinfo {
+  width: 300px;
+  display: flex;
+  border: 3px solid #000;
+}
+
+.Paymentinfo input {
+  margin: 10px;
+  float: left;
+  width: 80%;
+}
+
+.Buynow {
+  position: fixed;
+  top: 400px;
+  left: 210px;
+  outline: thick ridge black;
+  padding: 20px 40px;
+  font-size: 20px;
+}
