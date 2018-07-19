@@ -23,7 +23,6 @@ router.get('/refs', (req, res) => {
     const userId = req.session.userId; // The user id of the logged in user
     User
     .findById(userId)
-    //.populate({path: 'contributions'})
     .then(user => {
         res.status(200).send(user.contributions);
     })
@@ -31,6 +30,20 @@ router.get('/refs', (req, res) => {
         res.status(500).json({error: 'Request could not be fulfilled.'});
 
     })
+});
+
+// End point for retrieving a single contribution by id
+router.get('/:contributionId', (req, res) => {
+    const { contributionId } = req.params;
+    Contribution
+    .findById(contributionId)
+    .then(contribution => {
+        res.status(200).json(contribution);
+    })
+    .catch(error => {
+        res.status(500).json({error: 'Contribution could not be retrieved'})
+    })
+
 });
 
 // end point to add a contribution to a user

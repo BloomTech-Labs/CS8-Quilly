@@ -24,7 +24,6 @@ router.get('/refs', (req, res) => {
     const userId = req.session.userId; // The user id of the logged in user
     User
     .findById(userId)
-    //.populate({path: 'meetups'})
     .then(user => {
         res.status(200).send(user.meetups);
     })
@@ -32,6 +31,20 @@ router.get('/refs', (req, res) => {
         res.status(500).json({error: 'Request could not be fulfilled.'});
 
     })
+});
+
+// End point for retrieving a single meetup by id
+router.get('/:meetupId', (req, res) => {
+    const { meetupId } = req.params;
+    Meetup
+    .findById(meetupId)
+    .then(meetup => {
+        res.status(200).json(meetup);
+    })
+    .catch(error => {
+        res.status(500).json({error: 'meetup could not be retrieved'})
+    })
+
 });
 
 // end point to add a meetup to a user

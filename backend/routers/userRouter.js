@@ -15,9 +15,16 @@ else
     res.json({ message:'You must be logged in to do this function' })
 }
 
-// route test
-router.get('/', (req, res) => {
-  res.send({ message: 'Success' });
+// end point that returns user data if logged in
+router.get('/', authenticate, (req, res) => {
+  User
+  .findById(req.session.userId)
+  .then(user => {
+    res.status(200).json(user);
+  })
+  .catch(error => {
+    res.status(500).json({error: "Could not retrieve user information"})
+  })
 })
 
 // end point to register a new user
@@ -91,7 +98,7 @@ router.get('/logout', (req, res) => {
 });
 
 // end point to delete a user
-router.delete('/delete', (req, res) => {
+router.delete('/delete', authenticate, (req, res) => {
     const { userId } = req.session;
     if (!userId) res.status(500).json({ error: 'Invalid session' });
     User
@@ -104,6 +111,20 @@ router.delete('/delete', (req, res) => {
       }
     })
 });
+
+// end point to update users data
+router.put('/update', authenticate, (req, res) => {
+  const newData = req.body;
+  const { userId } = req.session;
+  User
+  .findByIdAndUpdate(userId, newData)
+  .then(response => {
+    res.status(200).json(response);
+  })
+  .catch(error => {
+    res.status(500).json({error: 'User information could not be updated'});
+  });
+})
 
 router.use('/applications', authenticate, applicationRouter);
 router.use('/contributions', authenticate, contributionRouter);

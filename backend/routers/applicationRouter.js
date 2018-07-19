@@ -15,8 +15,7 @@ router.get('/', (req, res) => {
     })
     .catch(error => {
         res.status(500).json({error: 'Request could not be fulfilled.'});
-
-    })
+    });
 });
 
 // This endpoint gets the list of refs from user.applications(for testing purposes)
@@ -24,7 +23,6 @@ router.get('/refs', (req, res) => {
     const userId = req.session.userId; // The user id of the logged in user
     User
     .findById(userId)
-    //.populate({path: 'applications'})
     .then(user => {
         res.status(200).send(user.applications);
     })
@@ -33,6 +31,20 @@ router.get('/refs', (req, res) => {
 
     })
 });
+
+// End point for retrieving a single application by id
+router.get('/:applicationId', (req, res) => {
+    const { applicationId } = req.params;
+    Application
+    .findById(applicationId)
+    .then(application => {
+        res.status(200).json(application);
+    })
+    .catch(error => {
+        res.status(500).json({error: 'Application could not be retrieved'})
+    })
+
+})
 
 // end point for adding an application to user
 router.post('/add', (req, res) => {
@@ -55,6 +67,7 @@ router.post('/add', (req, res) => {
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
+            next(error)
         });
     })
     .catch(error => {
