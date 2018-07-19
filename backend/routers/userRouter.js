@@ -1,16 +1,19 @@
 const express = require('express');
 const router = express.Router();
 
-const applicationRouter = require('./applicationRouter.js');
+const applicationRouter = require('./applicationRouter');
 const contributionRouter = require('./contributionsRouter');
 const meetupRouter = require('./meetupsRouter');
 
+const User = require('../models/userModel');
+
 //authenticate that the user is signed in
 function authenticate(req, res, next) {
-    if (req.session && req.session.userId)
-    next();
-else
-    res.json({ msg:'You must be logged in to do this function.' })
+//     if (req.session && req.session.userId)
+//     next();
+// else
+//     res.json({ msg:'You must be logged in to do this function.' })
+next();
 }
 
 // end point to register a new user
@@ -20,6 +23,8 @@ router.post('/register', (req, res) => {
     .findOne({ username })
     .then(response => {
         if (response) {
+            res.status(422).json({error: 'User name already exists'});
+        } else {
             const user = new User(req.body)
             user
             .save()
@@ -29,8 +34,6 @@ router.post('/register', (req, res) => {
             .catch(err => {
                 res.status(500).json({error: 'New user could not be created.'});
             });
-        } else {
-            res.status(422).json({error: 'User name already exists'});
         }
     })
     .catch(error => {
