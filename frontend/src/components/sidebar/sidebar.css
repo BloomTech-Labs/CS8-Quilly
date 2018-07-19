@@ -1,32 +1,37 @@
 .Sidebar {
-  height: 88%; /* 88% of screen height */
+  height: 88%; /* Full-height: remove this if you want "auto" height */
   width: 160px; /* Set the width of the sidebar */
   position: fixed; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 1; /* Stay on top of all other elements*/
-  top: 65px; /* Stay at the top of page*/
+  z-index: 0; /* Stay on top */
+  top: 65px; /* Stay at the top */
   left: 30px;
   overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 10px; /* gives space between border and nav links */
+  padding-top: 10px;
   outline-style: solid;
   text-align: left;
 }
 
+/* The navigation menu links */
 .Sidebar a {
-  padding: 6px 8px 6px 16px; /*spacing around each link*/
+  padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
   color: black;
   display: block;
 }
 
+/* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
   color: hotpink;
 }
 
+/* Style page content */
 .main {
+  /* Same as the width of the sidebar */
   padding: 0px 10px;
 }
 
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {
   .Sidebar {
     padding-top: 15px;

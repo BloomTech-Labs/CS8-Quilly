@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 
-
 // I a
-class Meetup extends Component {
-    render() {
-        return (
-
-        );
-    }
+class Contribution extends Component {
+  render() {
+    return <div />;
+  }
 }
+
+export default Contribution;

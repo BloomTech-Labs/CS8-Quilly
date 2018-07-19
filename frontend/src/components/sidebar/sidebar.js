@@ -4,13 +4,12 @@ import './sidebar.css';
 class Sidebar extends Component {
   render() {
     return (
-      //side navigation  bar
-      <div className="Sidebar"> 
-        <a href="#">Jobs</a>
-        <a href="#">Meetups</a>
-        <a href="#">Contributions</a>
-        <a href="#">Billing</a>
-        <a href="#">Setting</a>
+      <div className="Sidebar">
+        <a href="joblist">Jobs</a>
+        <a href="meetups">Meetups</a>
+        <a href="contributions">Contributions</a>
+        <a href="billing">Billing</a>
+        <a href="settings">Settings</a>
       </div>
     );
   }

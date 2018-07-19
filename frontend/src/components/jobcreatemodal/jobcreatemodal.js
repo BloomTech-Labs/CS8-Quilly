@@ -33,43 +33,56 @@ class Jobcreatemodal extends Component {
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="Example Modal"
-          overlayClassName="Overlay1"
+          overlayClassName="Overlay"
           className="hello"
         >
-          <div className="Jobtimeline1">
+          <div className="Jobtimeline">
             <h2>Job Timeline</h2>
-            <div className="Checkboxes1">
+
+            <div className="Checkboxes">
               <form className="form">
-                <input name="isGoing" type="checkbox" />
-                <label>Submitted Job Application</label>
-                <input name="isGoing" type="checkbox" />
-                <label>On-Site Interview</label>
+                <label>
+                  <input type="checkbox" />
+                  Submitted Job Application
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  On-Site Interview
+                </label>
                 <br />
-                <input name="isGoing" type="checkbox" />
-                <label>Received Response</label>
-                <input name="isGoing" type="checkbox" />
-                <label>Whiteboarding</label>
+                <label>
+                  <input type="checkbox" />
+                  Received Response
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  Whiteboarding
+                </label>
                 <br />
-                <input name="isGoing" type="checkbox" />
-                <label>Phone Interview</label>
-                <input name="isGoing" type="checkbox" />
-                <label>Code Test</label>
+                <label>
+                  <input type="checkbox" />
+                  Phone Interview
+                </label>
+                <label>
+                  <input type="checkbox" />
+                  Code Test
+                </label>
                 <br />
-                <input />
+                <input placeholder="Notes" />
               </form>
             </div>
           </div>
 
-          <div className="Jobtimeline2">
+          <div className="Jobinformation">
             <h2>Job Information</h2>
-            <input />
-            <input />
+            <input placeholder="Company" />
+            <input placeholder="Souce of Job" />
             <br />
-            <input />
-            <input />
+            <input placeholder="Link to Job Posting" />
+            <input placeholder="Resolution(Open/Closed" />
             <br />
-            <input />
-            <input />
+            <input placeholder="Point of Contact" />
+            <input placeholder="Upload resume/CV" />
           </div>
           <button className="openModal" onClick={this.openModal}>
             Add Job &#10010;
