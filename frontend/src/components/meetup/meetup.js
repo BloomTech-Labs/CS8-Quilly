@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import './meetup.css';
 
 class Meetup extends Component {
   constructor(props) {
@@ -22,32 +23,33 @@ class Meetup extends Component {
     return (
       <div className="Meetup">
         <form onSubmit={this.handleSubmit}>
-          <label>
-            Date:
             <input
+              className="Date"
               type="date"
               value={this.state.value}
               onChange={this.handleChange}
             />
             <input
+              className="Activity"
               type="text"
               placeholder="Activity"
               value={this.state.value}
               onChange={this.handleChange}
             />
             <input
+              className="Link"
               type="text"
               placeholder="Link"
               value={this.state.value}
               onChange={this.handleChange}
             />
             <input
+              className="Notes"
               type="text"
               placeholder="Notes"
               value={this.state.value}
               onChange={this.handleChange}
             />
-          </label>
           <input type="submit" value="Submit" />
         </form>
       </div>
