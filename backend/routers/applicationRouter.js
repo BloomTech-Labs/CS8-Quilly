@@ -70,17 +70,18 @@ router.delete('/delete/:applicationId', (req, res) => {
     Application
     .findByIdAndDelete(applicationId)
     .then(deletedApplication => {
-        User.update( { _id: req.session.userId }, { $pull: { applications: [applicationId] } });
-        res.status(200).json(deletedApplication._id);
+        //Delete the refrence in user.applicaions
+        User
+        .findOneAndUpdate({_id: req.session.userId}, { $pull: { applications: applicationId } })
+        .then(response => {
+            res.status(200).json(deletedApplication._id);
+        })
+        .catch(error => {
+            res.status(500).json({error: 'Ref not deleted'});
+        });
     })
     .catch(error => {
         res.status(500).json({error: 'Delete failed'});
-    });
-    // Delete the refrence in user.applicaions
-    User
-    .findOneAndUpdate(req.session.userId, { $pull: { 'applications': applicationId } })
-    .catch(error => {
-        res.status(500).json({error: 'Ref not deleted'});
     });
 });
 

@@ -31,20 +31,18 @@ router.post('/register', (req, res) => {
     .then(response => {
         if (!response) {
             const user = new User(req.body)
-            user
-            .save()
+            user.save()
             .then(newUser => {
-                res.json(newUser);
+              res.status(201).json(newUser);
             })
             .catch(err => {
-                res.status(500).json({ error: 'New user could not be created' });
+              res.status(500).json({ error: 'New user could not be created' });
             });
         } else {
             res.status(422).json({ error: 'User already exists' });
         }
     })
     .catch(err => {
-      console.log('here');
       res.status(500).json({ error: 'New user could not be created' });
     })
 });

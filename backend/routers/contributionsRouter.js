@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const User = require('../models/userModel');
+const Contribution = require('../models/contributionModel');
 
 //end points for '/user/contributions'
 //should return all meetups for logged in user
@@ -9,6 +11,19 @@ router.get('/', (req, res) => {
     User
     .findById(userId)
     .populate({path: 'contributions'})
+    .then(user => {
+        res.status(200).send(user.contributions);
+    })
+    .catch(error => {
+        res.status(500).json({error: 'Request could not be fulfilled.'});
+
+    })
+});
+router.get('/refs', (req, res) => {
+    const userId = req.session.userId; // The user id of the logged in user
+    User
+    .findById(userId)
+    //.populate({path: 'contributions'})
     .then(user => {
         res.status(200).send(user.contributions);
     })
@@ -54,17 +69,18 @@ router.delete('/delete/:contributionId', (req, res) => {
     Contribution
     .findByIdAndDelete(contributionId)
     .then(deletedContribution => {
-        User.update( { _id: req.session.userId }, { $pull: { contributions: [contributionId] } });
-        res.status(200).json(deletedContribution._id);
+        //Delete the refrence in user.applicaions
+        User
+        .findOneAndUpdate({_id: req.session.userId}, { $pull: { contributions: contributionId } })
+        .then(response => {
+            res.status(200).json(deletedContribution._id);
+        })
+        .catch(error => {
+            res.status(500).json({error: 'Ref not deleted'});
+        });
     })
     .catch(error => {
         res.status(500).json({error: 'Delete failed'});
-    });
-    // Delete the refrence in user.applicaions
-    User
-    .findOneAndUpdate(req.session.userId, { $pull: { 'Contributions': contributionId } })
-    .catch(error => {
-        res.status(500).json({error: 'Ref not deleted'});
     });
 });
 
