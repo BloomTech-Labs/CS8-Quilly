@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 
 import './App.css';
 import Coverflow from './components/coverflow/coverflow';
@@ -22,6 +22,28 @@ class App extends Component {
         <div>
           <button className="button">Buy Now</button>
         </div>
+      </div>
+    );
+  }
+}
+
+export default App;*/
+
+// Testing for Kia
+import React, { Component } from 'react';
+import logo from './logo.svg';
+import './App.css';
+import JobBoard from './components/jobboard/jobboard';
+import Sidebar from './components/sidebar/sidebar';
+import Meetup from './components/meetup/meetup';
+
+class App extends Component {
+  render() {
+    return (
+      <div>
+        {/* <Sidebar /> */}
+        <JobBoard />
+        {/* <Meetup /> */}
       </div>
     );
   }
