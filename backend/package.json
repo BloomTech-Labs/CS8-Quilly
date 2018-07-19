@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Lambda-School-Labs/CS8-jobapp#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "connect-mongo": "^2.0.1",
     "connect-redis": "^3.3.3",
     "cors": "^2.8.4",
     "express": "^4.16.3",
