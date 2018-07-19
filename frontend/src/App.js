@@ -29,19 +29,21 @@ class App extends Component {
 
 export default App;*/
 
-// Testing on Job Board - Display
+// Testing for Kia
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import JobBoard from './components/jobboard/jobboard';
 import Sidebar from './components/sidebar/sidebar';
+import Meetup from './components/meetup/meetup';
 
 class App extends Component {
   render() {
     return (
       <div>
-        <Sidebar />
+        {/* <Sidebar /> */}
         <JobBoard />
+        {/* <Meetup /> */}
       </div>
     );
   }
