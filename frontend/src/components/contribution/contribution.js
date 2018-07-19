@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Contribution extends React.Component {
+class Contribution extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
@@ -20,17 +20,38 @@ class Contribution extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="Contribution">
+      Contributions
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            Date:
+            <input
+              type="date"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Activity"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Link"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Notes"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }

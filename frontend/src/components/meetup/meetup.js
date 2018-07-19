@@ -37,6 +37,12 @@ class Meetup extends Component {
             />
             <input
               type="text"
+              placeholder="Link"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              type="text"
               placeholder="Notes"
               value={this.state.value}
               onChange={this.handleChange}
