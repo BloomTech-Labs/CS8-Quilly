@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Meetup extends React.Component {
+class Contribution extends React.Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
