@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+/*import React, { Component } from 'react';
 
 import './App.css';
 import Coverflow from './components/coverflow/coverflow';
@@ -27,10 +27,10 @@ class App extends Component {
   }
 }
 
-export default App;
+export default App;*/
 
 // Testing on Job Board - Display
-/*import React, { Component } from 'react';
+import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import JobBoard from './components/jobboard/jobboard';
@@ -48,4 +48,3 @@ class App extends Component {
 }
 
 export default App;
-*/
