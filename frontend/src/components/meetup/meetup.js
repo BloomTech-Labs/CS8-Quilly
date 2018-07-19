@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import './meetup.css';
 
-class Meetup extends React.Component {
+class Meetup extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
@@ -20,17 +21,38 @@ class Meetup extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
-          <input
-            type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
-          />
-        </label>
-        <input type="submit" value="Submit" />
-      </form>
+      <div className="Meetup">
+        <form onSubmit={this.handleSubmit}>
+            <input
+              className="Date"
+              type="date"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              className="Activity"
+              type="text"
+              placeholder="Activity"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              className="Link"
+              type="text"
+              placeholder="Link"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+            <input
+              className="Notes"
+              type="text"
+              placeholder="Notes"
+              value={this.state.value}
+              onChange={this.handleChange}
+            />
+          <input type="submit" value="Submit" />
+        </form>
+      </div>
     );
   }
 }

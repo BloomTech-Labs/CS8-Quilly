@@ -30,7 +30,7 @@ class Billing extends Component {
             1 Decision - $1.99
           </label>
         </div>
-        <button className="Buynow">Add Job &#10010;</button>
+        <button className="Buynow">Buy Now</button>
       </div>
     );
   }
