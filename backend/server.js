@@ -5,8 +5,8 @@ const cors = require('cors');
 const User = require('./models/userModel.js');
 const dbConfig = require('./config/database.config');
 const session = require('express-session');
+const MongoStore = require('connect-mongo')(session)
 
-const redisStore = require('connect-redis')(session);
 const redisConfig = require('./config/redis.config');
 
 const userRouter = require('./routers/userRouter');
@@ -20,13 +20,22 @@ const server = express();
 // Use middleware
 server.use(express.json());
 server.use(helmet());
-server.use(session({
-  store: new redisStore(),
-  secret: redisConfig.secret, // don't forget to change this later
-  resave: false,
-  saveUninitialized: true,
-  // cookie: { secure: true }   // enable this in production when you can use https
-}));
+
+server.use(
+    session({
+        secret: require('./config/redis.config').secret,
+        cookie: { maxAge: 1 * 24 * 60 * 60 * 1000 },
+        secure: false,
+        httpOnly: true,
+        name: 'quilly-sessions',
+        resave: true,
+        saveUninitialized: false,
+        store: new MongoStore({
+            mongooseConnection: mongoose.connection,
+            ttl: 1000 * 60 * 60 * 24 
+        })
+    })
+)
 
 server.get('/', (req, res) => {
     res.json({ api:'running' });
