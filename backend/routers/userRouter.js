@@ -12,13 +12,14 @@ function authenticate(req, res, next) {
     if (req.session && req.session.userId)
     next();
 else
-    res.json({ message:'You must be logged in to do this function' })
+    res.status(400).json({ message:'You must be logged in to do this function' })
 }
 
 // end point that returns user data if logged in
 router.get('/', authenticate, (req, res) => {
   User
   .findById(req.session.userId)
+  .select('_id username email firstname lastname createdAt updatedAt')
   .then(user => {
     res.status(200).json(user);
   })
@@ -40,7 +41,9 @@ router.post('/register', (req, res) => {
             const user = new User(req.body)
             user.save()
             .then(newUser => {
-              res.status(201).json(newUser);
+              const { username, email, firstname, lastname, createdAt, _id } = newUser;
+              const response = { username, email, firstname, lastname, createdAt, _id };
+              res.status(201).json(response);
             })
             .catch(err => {
               res.status(500).json({ error: 'New user could not be created' });
@@ -94,7 +97,7 @@ router.get('/logout', (req, res) => {
         else res.status(200).json({ success: 'Successfully logged out' });
       });
     }
-    else res.send({ message: 'Not logged in' });
+    else res.status(401).send({ message: 'Not logged in' });
 });
 
 // end point to delete a user
@@ -119,7 +122,7 @@ router.put('/update', authenticate, (req, res) => {
   User
   .findByIdAndUpdate(userId, newData)
   .then(response => {
-    res.status(200).json(response);
+    res.status(200).json({message: "User informatoin sucessfully updated"});
   })
   .catch(error => {
     res.status(500).json({error: 'User information could not be updated'});

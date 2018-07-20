@@ -49,6 +49,11 @@ router.get('/:applicationId', (req, res) => {
 // end point for adding an application to user
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
+    if (!req.body.company || !req.body.title) {
+        res.status(422).json({message: 'company and position are required'});
+        return;
+    }
+    
     const newApplication = new Application(req.body);
     newApplication
     .save(function(error){
@@ -58,12 +63,13 @@ router.post('/add', (req, res) => {
 
     User
     .findById(userId)
+    .populate('applications')
     .then(user => {
         user.applications.push(newApplication);
         user
         .save()
         .then(savedUser => {
-            res.status(200).json(savedUser);
+            res.status(200).json(savedUser.applications);
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
