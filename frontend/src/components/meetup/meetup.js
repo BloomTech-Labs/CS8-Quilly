@@ -46,7 +46,22 @@ class Meetup extends Component {
   }
 
   handleSubmit(event) {
-    
+    // !!!!! Need to add url path from backend !!!!!!!
+    axios.post('/user/meetup/:meetupId', {
+      dateInput: this.state.dateInput,
+      titleInput: this.state.titleInput,
+      linkInput: this.state.linkInput,
+      notesInput: "",
+    })
+    .then(function (response) {
+      // resultElement.innerHTML = generateSuccessHTMLOutput(response);
+      console.log(`This is the RESPONSE: ${response}`);
+    })
+    .catch(function (error) {
+      // resultElement.innerHTML = generateErrorHTMLOutput(error);
+      console.log(`ERROR: ${error}!`);
+    });
+
     event.preventDefault();
   }
 
