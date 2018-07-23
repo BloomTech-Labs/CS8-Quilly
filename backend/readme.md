@@ -1,16 +1,16 @@
 # Quilly API
 # User endpoints
 ## Register new user
-* Description: Registers a new user
+* **Description:** Registers a new user
 
 * #### URL:      ```/user/register```
 * #### Method:   ```POST```
 
-* URL Params: None
+* **URL Params:** None
 
-* Data Params:
+ **Data Params:**
 |Name        |Type       |Required (Y/N)|
-||--|--|
+|------------|-----------|--------------|
 |username    |string     |Y             |
 |password    |string     |Y             |
 |email       |string     |Y             |
@@ -19,7 +19,7 @@
 
 
 ### Success Response
-* **Code**: 201 <br/>
+* **Code:** 201 <br/>
 **Content:** 
 ```
 {
@@ -33,28 +33,26 @@
 ```
 
 ### Error Response
-Code: 422
+* **Code:** 422 <br/>
+**Content:** ``` {error: 'User already exists} ```
 
-Content: ``` {error: 'User already exists} ```
-
-Code: 500
-
-Content: ``` { error: 'New user could not be created' } ```
+* **Code:** 500 <br/>
+**Content:** ``` { error: 'New user could not be created' } ```
 
 
 ## Get User Information
-Description: Returns information associated with logged in user
+* **Description:** Returns information associated with logged in user
 
-#### URL:      ```/user/```
-#### Method:   ```GET```
+* #### URL:      ```/user/```
+* #### Method:   ```GET```
 
-URL Params: None
+* **URL Params:** None
 
-Data Params: None
+**Data Params:** None
 
 ### Success Response
-Code: 201
-Content: 
+* **Code:** 201 <br/>
+**Content:** 
 ```
 {
     _id: [string],
@@ -67,124 +65,111 @@ Content:
 ```
 
 ### Error Response
-Code: 400
+* **Code:** 400 <br/>
+**Content:** ``` { message:'You must be logged in to do this function' } ```
 
-Content: ``` { message:'You must be logged in to do this function' } ```
-
-Code: 500
-
-Content: ``` {error: "Could not retrieve user information"} ```
+* **Code:** 500 <br/>
+**Content:** ``` {error: "Could not retrieve user information"} ```
 
 
 
 ## Login
-Description: Logs in an exsisting user
+**Description:** Logs in an exsisting user
 
-#### URL:      ```/user/login```
-#### Method:   ```POST```
+* #### URL:      ```/user/login```
+* #### Method:   ```POST```
 
-URL Params: None
+* **URL Params:** None
 
-Data Params:
+**Data Params:**
 |Name        |Type       |Required (Y/N)|
-||--|--|
+|------------|-----------|--------------|
 |username    |string     |Y             |
 |password    |string     |Y             |
 
 
 ### Success Response
-Code: 200
-Content: 
+* **Code:** 200 <br/>
+**Content:** 
 ```
 { success: 'Login successful' }
 ```
 
 ### Error Response
-Code: 422
-
-Content: 
+* **Code:** 422 <br/>
+**Content:** 
 ```{ error: 'Invalid credentials' } ```
 
-Code: 422
-
-Content: 
+* **Code:** 422 <br/>
+**Content:** 
 ```{ error: 'User not found' } ```
 
-Code: 500
-
-Content: ``` { error: 'Database error' } ```
+* **Code:** 500 <br/>
+**Content:** ``` { error: 'Database error' } ```
 
 
 
 ## Logout
-Description: Logs out current user
+* **Description:** Logs out current user
 
-#### URL:      ```/user/logout```
-#### Method:   ```GET```
+* #### URL:      ```/user/logout```
+* #### Method:   ```GET```
 
-URL Params: None
+* **URL Params:** None
 
-Data Params: None
+* **Data Params:** None
 
 ### Success Response
-Code: 200
-Content: 
-```
-{ success: 'Successfully logged out' }
-```
+* **Code:** 200 <br/>
+**Content:** 
+```{ success: 'Successfully logged out' }```
 
 ### Error Response
-Code: 422
-
-Content: 
+* **Code:** 422 <br/>
+**Content:** 
 ```{ error: 'Invalid credentials' } ```
 
-Code: 422
-
-Content: 
+* **Code:** 422 <br/>
+**Content:** 
 ```{ message: 'Not logged in' }```
 
-Code: 500
-
-Content: ``` { error: 'Error logging out' } ```
+* **Code:** 500 <br/>
+**Content:** ``` { error: 'Error logging out' } ```
 
 
 
 ## Delete User
-Description: Deletes logged in user
+* **Description:** Deletes logged in user
 
 #### URL:      ```/user/delete```
 #### Method:   ```DELETE```
 
-URL Params: None
+* **URL Params:** None
 
-Data Params: None
+* **Data Params:** None
 
 ### Success Response
-Code: 201
-Content: 
-```
-{ success: 'User has been deleted' }
-```
+* **Code:** 201 <br/>
+**Content:** 
+```{ success: 'User has been deleted' }```
 
-### Error Response
-Code: 500
-
-Content: ```{ error: 'User does not exist'}```
+### Error Response 
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'User does not exist'}```
 
 
 
-## Updat user information
-Description: Registers a new user
+## Update user information
+* **Description:** Registers a new user
 
-#### URL:      ```/user/update```
-#### Method:   ```PUT```
+* #### URL:      ```/user/update```
+* #### Method:   ```PUT```
 
-URL Params: None
+* **URL Params:** None
 
-Data Params:
+**Data Params:**
 |Name        |Type       |Required (Y/N)|
-||--|--|
+|------------|-----------|--------------|
 |username    |string     |N             |
 |password    |string     |N             |
 |email       |string     |N             |
@@ -193,33 +178,31 @@ Data Params:
 
 
 ### Success Response
-Code: 201
-Content: 
-```
-{message: "User informatoin sucessfully updated"}
-```
+* **Code:** 200 <br/>
+**Content:** 
+```{ message: 'User informatoin sucessfully updated' }```
 
 ### Error Response
-Code: 500
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'User information could not be updated' }```
 
-Content: ```{error: 'User information could not be updated'}```
 
 
 # === Application endpoints ===
 
-## Get Applications
-* Description: Returns applications associated with logged in user
+## Get all applications
+* **Description:** Returns applications associated with logged in user
 
 * #### URL:      ```/user/applications/```
 * #### Method:   ```GET```
 
-* URL Params: None
+* **URL Params:** None
 
-* Data Params: None
+* **Data Params:** None
 
 ### Success Response
-* Code: 200 <br/>
-Content: 
+* **Code:** 200 <br/>
+**Content:** 
 ```
 {
     [
@@ -255,17 +238,63 @@ Content:
 
 
 
+## Get a single application
+* **Description:** Returns a single application with matching applicationID
+
+* #### URL:      ```/user/applications/:applicationId```
+* #### Method:   ```GET```
+
+* **URL Params:** <br/>
+**Required:** applicationId=[string] 
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** 
+```
+{
+    {
+        "submitted": false,
+        "onsiteInterview": false,
+        "receivedResponse": false,
+        "whiteboard": false,
+        "phoneInterview": false,
+        "codeTest": false,
+        "rejection": false,
+        "offer": false,
+        "open": true,
+        "status": "wishlist",
+        "testData": false,
+        "_id": "5b5267c8d107c9405856ca10",
+        "company": "Company",
+        "position": "Position",
+        "createdAt": "2018-07-20T22:52:56.133Z",
+        "updatedAt": "2018-07-20T22:52:56.133Z",
+        "__v": 0
+    }
+}
+```
+
+### Error Response
+* **Code:** 400 <br/> 
+**Content:** ``` { message:'You must be logged in to do this function' } ```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Request could not be fulfilled.' }```
+
+
 ## Add application
-Description: Adds application to logged in user
+**Description:** Adds application to logged in user
 
-#### URL:      ```/users/applications/```
-#### Method:   ```POST```
+* #### URL:      ```/users/applications/```
+* #### Method:   ```POST```
 
-URL Params: None
+* **URL Params:** None
 
-Data Params:
+**Data Params:**
 |Name                |Type       |Required (Y/N)|
-|--|--|--|
+|--------------------|-----------|--------------|
 |company             |string     |Y             |
 |positions           |string     |Y             |
 |submitted           |bool       |N             |
@@ -280,8 +309,8 @@ Data Params:
 |status              |string     |N             |
 
 ### Success Response
-Code: 200
-Content: 
+* **Code:** 201 <br/>
+**Content:** 
 ```
 {
     [
@@ -314,79 +343,51 @@ Content:
 ```{message: 'company and position are required'}```
 
 * **Code:** 500 <br/>
-**Content:** ``` { error: 'Database error' } ```
+**Content:** ``` { error: 'Application creation failed' } ```
+
+* **Code:** 500 <br/>
+**Content:** ``` { error: 'Failed to save the document.' }```
 
 
 
-## Logout
-Description: Logs out current user
+## Delete application
+**Description:** Deletes application matching applicationId
 
-#### URL:      ```/users/logout```
-#### Method:   ```GET```
+* #### URL:      ```/users/applications/delete/:applicationId```
+* #### Method:   ```DELETE```
 
-URL Params: None
+* **URL Params:**<br/>
+**Required:** applicationId=[string] 
 
-Data Params: None
+* **Data Params:** None
 
 ### Success Response
-Code: 200
-Content: 
+* **Code:** 200 <br/>
+**Content:** 
 ```
-{ success: 'Successfully logged out' }
+{message:'Application successfully deleted'}
 ```
 
 ### Error Response
-Code: 422
-
-Content: 
-```{ error: 'Invalid credentials' } ```
-
-Code: 422
-
-Content: 
-```{ message: 'Not logged in' }```
-
-Code: 500
-
-Content: ``` { error: 'Error logging out' } ```
+* **Code:** 500 <br/>
+**Content:** ```{error: 'Ref not deleted'}```
+* **Code:** 500 <br/>
+**Content:** ```{error: 'Delete failed'}```
 
 
 
-## Delete User
-Description: Deletes logged in user
+## Change application information
+* **Description:** Changes appication information for application matching applicationId
 
-#### URL:      ```/users/delete```
-#### Method:   ```DELETE```
+* #### URL:      ```/users/applications/update/:applicationId```
+* #### Method:   ```PUT```
 
-URL Params: None
+* **URL Params:** <br/>
+**Required:** applicationId=[string]
 
-Data Params: None
-
-### Success Response
-Code: 201
-Content: 
-```
-{ success: 'User has been deleted' }
-```
-
-### Error Response
-Code: 500
-
-Content: ```{ error: 'User does not exist'}```
-
-
-
-## Updat user information
-Description: Registers a new user
-
-#### URL:      ```/users/update```
-#### Method:   ```PUT```
-
-URL Params: None
-
-Data Params:
+**Data Params:**
 |Name        |Type       |Required (Y/N)|
-||--|--|
+|------------|-----------|--------------|
 |username    |string     |N             |
 |password    |string     |N             |
 |email       |string     |N             |
@@ -395,13 +396,312 @@ Data Params:
 
 
 ### Success Response
-Code: 201
-Content: 
+* **Code: 201** <br/>
+**Content:** 
 ```
-{message: "User informatoin sucessfully updated"}
+{ message: 'Application Successfully updated' }
 ```
 
 ### Error Response
-Code: 500
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Failed to update' }```
 
-Content: ```{error: 'User information could not be updated'}```
+
+
+# === Meetups endpoints ===
+
+## Get all meetups
+* **Description:** Returns meetups associated with logged in user
+
+* #### URL:      ```/user/meetups/```
+* #### Method:   ```GET```
+
+* **URL Params:** None
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** 
+```
+[
+    {
+        "_id": "5b55e61e9742c910b4931eb8",
+        "date": "2019-04-26T04:00:00.000Z",
+        "activity": "JS Meetup group",
+        "__v": 0
+    }
+]
+```
+
+### Error Response
+* **Code:** 400 <br/> 
+**Content:** ``` { message:'You must be logged in to do this function' } ```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Request could not be fulfilled' }```
+
+
+
+## Get a single meetup
+* **Description:** Returns a single meetup with matching meetupId
+
+* #### URL:      ```/user/meetup/:meetupId```
+* #### Method:   ```GET```
+
+* **URL Params:** <br/>
+**Required:** meetupId=[string] 
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** 
+```
+{
+    "_id": "5b55e61e9742c910b4931eb8",
+    "date": "2019-04-26T04:00:00.000Z",
+    "activity": "JS Meetup group",
+    "__v": 0
+}
+```
+
+### Error Response
+* **Code:** 400 <br/> 
+**Content:** ``` { message:'You must be logged in to do this function' } ```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Request could not be fulfilled' }```
+
+
+## Add meetup
+**Description:** Adds meetup to logged in user
+
+* #### URL:      ```/users/meetups/add```
+* #### Method:   ```POST```
+
+* **URL Params:** None
+
+**Data Params:**
+|Name                |Type       |Required (Y/N)|
+|--------------------|-----------|--------------|
+|date                |date       |Y             |
+|activity            |string     |Y             |
+|link                |string     |N             |
+|notes               |string     |N             |
+
+### Success Response
+* **Code:** 201 <br/>
+**Content:** ```{ message: 'Meetup successfully created' }```
+
+### Error Response
+* **Code:** 422 <br/>
+**Content:** 
+```{ message: 'company and position are required' }```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Meetup creation failed' }```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Failed to save the document.' }```
+
+
+
+## Delete meetup
+**Description:** Deletes meetup matching meetupId
+
+* #### URL:      ```/users/meetup/delete```
+* #### Method:   ```DELETE```
+
+* **URL Params:**<br/>
+**Required:** meetupId=[string] 
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** ```{ message: 'Meetup Successfully deleted' }```
+
+### Error Response
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Delete failed' }```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Ref not deleted' }```
+
+
+
+## Change meetup information
+* **Description:** Changes meetup information for  matching meetupId
+
+* #### URL:      ```/users/meetup/update/:meetupId```
+* #### Method:   ```PUT```
+
+* **URL Params:** <br/>
+**Required:** meetupId=[string]
+
+**Data Params:**
+|Name        |Type       |Required (Y/N)|
+|------------|-----------|--------------|
+|company     |string     |N             |
+|position    |string     |N             |
+|link        |string     |N             |
+|notes       |string     |N             |
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** ```{ message: 'User informatoin sucessfully updated' }```
+
+### Error Response
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Failed to update' }```
+
+
+
+# === Contributions endpoints ===
+
+## Get all contributions
+* **Description:** Returns contributions associated with logged in user
+
+* #### URL:      ```/user/contributions/```
+* #### Method:   ```GET```
+
+* **URL Params:** None
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** 
+```
+[
+    {
+        "_id": "5b55e61e9742c910b4931eb8",
+        "date": "2019-04-26T04:00:00.000Z",
+        "contribution": "Blog Post",
+        "__v": 0
+    }
+]
+```
+
+### Error Response
+* **Code:** 400 <br/> 
+**Content:** ``` { message:'You must be logged in to do this function' } ```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Request could not be fulfilled' }```
+
+
+
+## Get a single contribution
+* **Description:** Returns a single contribution with matching contributionId
+
+* #### URL:      ```/user/meetup/:contributionId```
+* #### Method:   ```GET```
+
+* **URL Params:** <br/>
+**Required:** contributionId=[string] 
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** 
+```
+{
+    "_id": "5b55e61e9742c910b4931eb8",
+    "date": "2019-04-26T04:00:00.000Z",
+    "contribution": "Blog Post",
+    "__v": 0
+}
+```
+
+### Error Response
+* **Code:** 400 <br/> 
+**Content:** ``` { message:'You must be logged in to do this function' } ```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Request could not be fulfilled' }```
+
+
+## Add contribution
+**Description:** Adds a contribution to logged in user
+
+* #### URL:      ```/users/contributions/add```
+* #### Method:   ```POST```
+
+* **URL Params:** None
+
+**Data Params:**
+|Name                |Type       |Required (Y/N)|
+|--------------------|-----------|--------------|
+|date                |date       |Y             |
+|contribution        |string     |Y             |
+|link                |string     |N             |
+|notes               |string     |N             |
+
+### Success Response
+* **Code:** 201 <br/>
+**Content:** ```{ message: 'Contribution successfully created' }```
+
+### Error Response
+* **Code:** 422 <br/>
+**Content:** 
+```{ message: 'contribution and date are required' }```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Contribution creation failed' }```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Failed to save the document.' }```
+
+
+
+## Delete contribution
+**Description:** Deletes meetup contribution contributionId
+
+* #### URL:      ```/users/contributions/delete```
+* #### Method:   ```DELETE```
+
+* **URL Params:**<br/>
+**Required:** contributionId=[string] 
+
+* **Data Params:** None
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** ```{ message: 'Contribution Successfully deleted' }```
+
+### Error Response
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Delete failed' }```
+
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Ref not deleted' }```
+
+
+
+## Change contribution information
+* **Description:** Changes contribution information for  matching contributionId
+
+* #### URL:      ```/users/contributions/update/applicationId```
+* #### Method:   ```PUT```
+
+* **URL Params:** <br/>
+**Required:** contributionId=[string]
+
+**Data Params:**
+|Name        |Type       |Required (Y/N)|
+|------------|-----------|--------------|
+|date        |date       |N             |
+|contribution|string     |N             |
+|link        |string     |N             |
+|notes       |string     |N             |
+
+### Success Response
+* **Code:** 200 <br/>
+**Content:** ```{ message: 'Contribution informatoin sucessfully updated' }```
+
+### Error Response
+* **Code:** 500 <br/>
+**Content:** ```{ error: 'Failed to update' }```
