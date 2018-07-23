@@ -18,6 +18,7 @@ const server = express();
 // Use middleware
 server.use(express.json());
 server.use(helmet());
+server.use(cors(config.corsOptions));
 
 server.use(
     session({
