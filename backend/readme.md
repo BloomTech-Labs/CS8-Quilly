@@ -180,7 +180,7 @@
 ### Success Response
 * **Code:** 200 <br/>
 **Content:** 
-```{ message: 'User informatoin sucessfully updated' }```
+```{ message: 'User information sucessfully updated' }```
 
 ### Error Response
 * **Code:** 500 <br/>
@@ -550,7 +550,7 @@
 
 ### Success Response
 * **Code:** 200 <br/>
-**Content:** ```{ message: 'User informatoin sucessfully updated' }```
+**Content:** ```{ message: 'User information sucessfully updated' }```
 
 ### Error Response
 * **Code:** 500 <br/>
@@ -700,7 +700,7 @@
 
 ### Success Response
 * **Code:** 200 <br/>
-**Content:** ```{ message: 'Contribution informatoin sucessfully updated' }```
+**Content:** ```{ message: 'Contribution information sucessfully updated' }```
 
 ### Error Response
 * **Code:** 500 <br/>
