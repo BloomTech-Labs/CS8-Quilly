@@ -7,6 +7,12 @@
     height: 50vh;
 }
 
+.date, .title, .notes {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+
 input {
     margin-right: 15px;
 }
