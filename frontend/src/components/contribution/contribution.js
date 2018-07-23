@@ -1,13 +1,7 @@
-import React, { Component } from 'react';
-import './contribution.css';
+import React, { Component } from "react";
+import "./contribution.css";
 
-let fakeServerData = {
-  contribution: { 
-    date: 'May 1, 1000'
-  },
-};
-
-class Contribution extends Component {
+/*class Contribution extends Component {
   constructor(props) {
     super(props);
     this.state = { value: '' };
@@ -66,6 +60,54 @@ class Contribution extends Component {
         </form>
       </div>
     </div>
+    );
+  }
+}
+
+export default Contribution;
+*/
+
+let fakeServerData = {
+  contributions: [
+    ({
+      date: "5/10/2018",
+      title: "Blog Post",
+      link: "www.google.com",
+      notes: "Retweeted"
+    })
+  ]
+};
+
+class Contribution extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      serverData: {}
+    };
+  }
+
+  componentWillMount() {
+    this.setState({ serverData: fakeServerData });
+  }
+
+  render() {
+    console.log(this.state);
+    return (
+      <div className="ContributionComponents">
+        <div className="contributions">
+        { this.state.serverData.contributions.map(function(contribution) {
+         return( 
+         <div key={contribution.title}>
+            <div className="date">{contribution.date}</div>
+            <div className="title">{contribution.title}</div>
+            <div className="notes">{contribution.notes}</div>
+        </div>)
+        })}
+        </div>
+
+        <div className="ContributionForm" />
+      </div>
     );
   }
 }
