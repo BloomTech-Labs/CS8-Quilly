@@ -46,11 +46,7 @@ class Meetup extends Component {
   }
 
   handleSubmit(event) {
-    console.log(`This is the stateee ${this.state}`);
-    // alert("Contribution Submitted: " + this.state.value);
-    // $.post("/submitFormData", {data: this.state.dateInput...}, function(res) {
-
-    // })
+    
     event.preventDefault();
   }
 
@@ -59,7 +55,7 @@ class Meetup extends Component {
     return (
       <div className="MeetupComponents">
         <div className="meetupss">
-          {/* Displaying over user's contributions -- will display nothing if no input given */}
+          {/* Displaying over user's meetups -- will display nothing if no input given */}
           {this.state.serverData.meetups.map(function(meetup) {
             return (
               <div key={meetup.title}>
