@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
         res.status(200).send(user.contributions);
     })
     .catch(error => {
-        res.status(500).json({error: 'Request could not be fulfilled.'});
+        res.status(500).json({ error: 'Request could not be fulfilled.' });
 
     })
 });
@@ -41,7 +41,7 @@ router.get('/:contributionId', (req, res) => {
         res.status(200).json(contribution);
     })
     .catch(error => {
-        res.status(500).json({error: 'Contribution could not be retrieved'})
+        res.status(500).json({ error: 'Request could not be fulfilled' })
     })
 
 });
@@ -63,7 +63,7 @@ router.post('/add', (req, res) => {
         user
         .save()
         .then(savedUser => {
-            res.status(200).json(savedUser);
+            res.status(200).json({ message: 'Contribution successfully created' });
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
@@ -86,7 +86,7 @@ router.delete('/delete/:contributionId', (req, res) => {
         User
         .findOneAndUpdate({_id: req.session.userId}, { $pull: { contributions: contributionId } })
         .then(response => {
-            res.status(200).json(deletedContribution._id);
+            res.status(200).json({ message: 'Contribution Successfully deleted' });
         })
         .catch(error => {
             res.status(500).json({error: 'Ref not deleted'});
@@ -103,7 +103,7 @@ router.put('/update/:contributionId', (req, res) => {
     Contribution
     .findByIdAndUpdate(contributionId, { ...req.body })
     .then(response => {
-        res.status(200).json(response);
+        res.status(200).json({ message: 'Contribution informatoin sucessfully updated' });
     })
     .catch(error => {
         res.status(500).json({error: "Failed to update"});
