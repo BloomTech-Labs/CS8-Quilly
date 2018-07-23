@@ -1,6 +1,6 @@
 # Quilly API
-# User endpoints
-## Register new user
+# ===User endpoints===
+## ---Register new user---
 * **Description:** Registers a new user
 
 * #### URL:      ```/user/register```
@@ -40,7 +40,7 @@
 **Content:** ``` { error: 'New user could not be created' } ```
 
 
-## Get User Information
+## ---Get User Information---
 * **Description:** Returns information associated with logged in user
 
 * #### URL:      ```/user/```
@@ -109,7 +109,7 @@
 
 
 
-## Logout
+## ---Logout---
 * **Description:** Logs out current user
 
 * #### URL:      ```/user/logout```
@@ -138,7 +138,7 @@
 
 
 
-## Delete User
+## ---Delete User---
 * **Description:** Deletes logged in user
 
 #### URL:      ```/user/delete```
@@ -159,7 +159,7 @@
 
 
 
-## Update user information
+## ---Update user information---
 * **Description:** Registers a new user
 
 * #### URL:      ```/user/update```
@@ -188,9 +188,9 @@
 
 
 
-# === Application endpoints ===
+# ===Application endpoints===
 
-## Get all applications
+## ---Get all applications---
 * **Description:** Returns applications associated with logged in user
 
 * #### URL:      ```/user/applications/```
@@ -284,7 +284,7 @@
 **Content:** ```{ error: 'Request could not be fulfilled.' }```
 
 
-## Add application
+## ---Add application---
 **Description:** Adds application to logged in user
 
 * #### URL:      ```/users/applications/```
@@ -350,7 +350,7 @@
 
 
 
-## Delete application
+## ---Delete application---
 **Description:** Deletes application matching applicationId
 
 * #### URL:      ```/users/applications/delete/:applicationId```
@@ -376,7 +376,7 @@
 
 
 
-## Change application information
+## ---Change application information---
 * **Description:** Changes appication information for application matching applicationId
 
 * #### URL:      ```/users/applications/update/:applicationId```
@@ -408,9 +408,9 @@
 
 
 
-# === Meetups endpoints ===
+# ===Meetups endpoints===
 
-## Get all meetups
+## ---Get all meetups---
 * **Description:** Returns meetups associated with logged in user
 
 * #### URL:      ```/user/meetups/```
@@ -443,7 +443,7 @@
 
 
 
-## Get a single meetup
+## ---Get a single meetup---
 * **Description:** Returns a single meetup with matching meetupId
 
 * #### URL:      ```/user/meetup/:meetupId```
@@ -474,7 +474,7 @@
 **Content:** ```{ error: 'Request could not be fulfilled' }```
 
 
-## Add meetup
+## ---Add meetup---
 **Description:** Adds meetup to logged in user
 
 * #### URL:      ```/users/meetups/add```
@@ -507,7 +507,7 @@
 
 
 
-## Delete meetup
+## ---Delete meetup---
 **Description:** Deletes meetup matching meetupId
 
 * #### URL:      ```/users/meetup/delete```
@@ -531,7 +531,7 @@
 
 
 
-## Change meetup information
+## ---Change meetup information---
 * **Description:** Changes meetup information for  matching meetupId
 
 * #### URL:      ```/users/meetup/update/:meetupId```
@@ -558,9 +558,9 @@
 
 
 
-# === Contributions endpoints ===
+# ===Contributions endpoints===
 
-## Get all contributions
+## ---Get all contributions---
 * **Description:** Returns contributions associated with logged in user
 
 * #### URL:      ```/user/contributions/```
@@ -593,7 +593,7 @@
 
 
 
-## Get a single contribution
+## ---Get a single contribution---
 * **Description:** Returns a single contribution with matching contributionId
 
 * #### URL:      ```/user/meetup/:contributionId```
@@ -624,7 +624,7 @@
 **Content:** ```{ error: 'Request could not be fulfilled' }```
 
 
-## Add contribution
+## ---Add contribution---
 **Description:** Adds a contribution to logged in user
 
 * #### URL:      ```/users/contributions/add```
@@ -657,7 +657,7 @@
 
 
 
-## Delete contribution
+## ---Delete contribution---
 **Description:** Deletes meetup contribution contributionId
 
 * #### URL:      ```/users/contributions/delete```
@@ -681,7 +681,7 @@
 
 
 
-## Change contribution information
+## ---Change contribution information---
 * **Description:** Changes contribution information for  matching contributionId
 
 * #### URL:      ```/users/contributions/update/applicationId```
