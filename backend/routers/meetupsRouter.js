@@ -15,7 +15,7 @@ router.get('/', (req, res) => {
         res.status(200).send(user.meetups);
     })
     .catch(error => {
-        res.status(500).json({error: 'Request could not be fulfilled.'});
+        res.status(500).json({error: 'Request could not be fulfilled'});
 
     })
 });
@@ -28,7 +28,7 @@ router.get('/refs', (req, res) => {
         res.status(200).send(user.meetups);
     })
     .catch(error => {
-        res.status(500).json({error: 'Request could not be fulfilled.'});
+        res.status(500).json({error: 'Request could not be fulfilled'});
 
     })
 });
@@ -42,9 +42,8 @@ router.get('/:meetupId', (req, res) => {
         res.status(200).json(meetup);
     })
     .catch(error => {
-        res.status(500).json({error: 'meetup could not be retrieved'})
-    })
-
+        res.status(500).json({ error: 'Request could not be fulfilled' })
+    });
 });
 
 // end point to add a meetup to a user
@@ -64,14 +63,14 @@ router.post('/add', (req, res) => {
         user
         .save()
         .then(savedUser => {
-            res.status(200).json(savedUser);
+            res.status(201).json({message: 'Meetup successfully created'});
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
         });
     })
     .catch(error => {
-        res.status(500).json(error);
+        res.status(500).json({error: 'Meetup creation failed'});
     });
 });
 
@@ -86,7 +85,7 @@ router.delete('/delete/:meetupId', (req, res) => {
         User
         .findOneAndUpdate({_id: req.session.userId}, { $pull: { meetups: meetupId } })
         .then(response => {
-            res.status(200).json(deletedMeetup._id);
+            res.status(200).json({ message: 'Meetup Successfully deleted' });
         })
         .catch(error => {
             res.status(500).json({error: 'Ref not deleted'});

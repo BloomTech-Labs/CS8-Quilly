@@ -49,21 +49,28 @@ router.get('/:applicationId', (req, res) => {
 // end point for adding an application to user
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
+    if (!req.body.company || !req.body.position) {
+        res.status(422).json({message: 'company and position are required'});
+        return;
+    }
+    
     const newApplication = new Application(req.body);
     newApplication
     .save(function(error){
         if (error)
             res.status(500).json({error: 'Application creation failed'});
+            return;
     });
 
     User
     .findById(userId)
+    .populate('applications')
     .then(user => {
         user.applications.push(newApplication);
         user
         .save()
         .then(savedUser => {
-            res.status(200).json(savedUser);
+            res.status(201).json(savedUser.applications);
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
@@ -87,7 +94,7 @@ router.delete('/delete/:applicationId', (req, res) => {
         User
         .findOneAndUpdate({_id: req.session.userId}, { $pull: { applications: applicationId } })
         .then(response => {
-            res.status(200).json(deletedApplication._id);
+            res.status(200).json({message:'Application successfully deleted'});
         })
         .catch(error => {
             res.status(500).json({error: 'Ref not deleted'});
@@ -104,7 +111,7 @@ router.put('/update/:applicationId', (req, res) => {
     Application
     .findByIdAndUpdate(applicationId, { ...req.body })
     .then(response => {
-        res.status(200).json(response);
+        res.status(200).json({message: 'Application Successfully updated'});
     })
     .catch(error => {
         res.status(500).json({error: "Failed to update"});
