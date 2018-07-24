@@ -6,7 +6,7 @@ let fakeServerData = {
   meetups: [
     {
       date: "5/10/2018",
-      activity: "Blog Post",
+      activity: 'Blog Post',
       link: "www.google.com",
       notes: "Retweeted"
     },
@@ -18,6 +18,8 @@ let fakeServerData = {
     }
   ]
 };
+
+axios.defaults.withCredentials = true;
 
 class Meetup extends Component {
   constructor() {
@@ -44,15 +46,19 @@ class Meetup extends Component {
     this.setState({
       [name]: value
     });
+
+    console.log(this.state);
   }
 
   handleSubmit(event) {
+    event.preventDefault();
+
     axios
       .post(`http://localhost:5000/user/meetups/add`, {
         date: this.state.date,
         activity: this.state.activity,
         link: this.state.link,
-        notes: this.state.note
+        notes: this.state.notes
       })
       .then(function(response) {
         console.log(`This is the RESPONSE: ${response}`);
@@ -61,7 +67,6 @@ class Meetup extends Component {
         console.log(`ERROR: ${error}!`);
       });
 
-    event.preventDefault();
   }
 
   render() {
@@ -75,6 +80,7 @@ class Meetup extends Component {
               <div key={meetup.activity}>
                 <div className="date">{meetup.date}</div>
                 <div className="activity">{meetup.activity}</div>
+                <div className="link">{meetup.link}</div>
                 <div className="notes">{meetup.notes}</div>
               </div>
             );
@@ -105,7 +111,6 @@ class Meetup extends Component {
               className="formLink"
               type="text"
               placeholder="Link"
-              required="true"
               name="link"
               value={this.state.link}
               onChange={this.handleChange}
