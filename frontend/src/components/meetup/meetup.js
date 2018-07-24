@@ -64,8 +64,6 @@ class Meetup extends Component {
     event.preventDefault();
   }
 
-
-
   render() {
     // console.log(this.state);
     return (
