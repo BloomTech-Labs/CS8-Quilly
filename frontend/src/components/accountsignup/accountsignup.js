@@ -86,7 +86,7 @@ class Accountsignup extends Component {
     return (
       <div className="Accountsignup">
         <button className="openModal" onClick={this.openModal}>
-          sign up
+          Sign Up
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -96,63 +96,53 @@ class Accountsignup extends Component {
           className="hello"
         >
           <div className="signupmodal">
-            <h2>signup</h2>
+            <h2>Sign Up</h2>
             <form onSubmit={this.handleSubmit}>
-              <label>
-                <input
-                  placeholder="username"
-                  className="formUsername"
-                  type="text"
-                  required="true"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  placeholder="password"
-                  className="formPassword"
-                  type="password"
-                  required="true"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  placeholder="email"
-                  className="formEmail"
-                  type="email"
-                  required="true"
-                  name="email"
-                  value={this.state.email}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  placeholder="firstname"
-                  className="formFirstname"
-                  type="text"
-                  required="true"
-                  name="firstname"
-                  value={this.state.firstname}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  placeholder="lastname"
-                  className="formLastname"
-                  type="text"
-                  required="true"
-                  name="lastname"
-                  value={this.state.lastname}
-                  onChange={this.handleChange}
-                />
-              </label>
+              <input
+                placeholder="username"
+                className="formUsername"
+                type="text"
+                required="true"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+              <input
+                placeholder="password"
+                className="formPassword"
+                type="password"
+                required="true"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+              <input
+                placeholder="email"
+                className="formEmail"
+                type="email"
+                required="true"
+                name="email"
+                value={this.state.email}
+                onChange={this.handleChange}
+              />
+              <input
+                placeholder="firstname"
+                className="formFirstname"
+                type="text"
+                required="true"
+                name="firstname"
+                value={this.state.firstname}
+                onChange={this.handleChange}
+              />
+              <input
+                placeholder="lastname"
+                className="formLastname"
+                type="text"
+                required="true"
+                name="lastname"
+                value={this.state.lastname}
+                onChange={this.handleChange}
+              />
               <input type="submit" value="Submit" />
             </form>
           </div>
