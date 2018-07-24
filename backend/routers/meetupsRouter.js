@@ -50,6 +50,11 @@ router.get('/:meetupId', (req, res) => {
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
     const newMeetup = new Meetup(req.body);
+
+    if (!req.body.date || !req.body.activity) {
+        res.status(422).json({ error: 'date and activity are required' });
+        return;
+    }
     newMeetup
     .save(function(error){
         if (error)
@@ -63,7 +68,7 @@ router.post('/add', (req, res) => {
         user
         .save()
         .then(savedUser => {
-            res.status(201).json({message: 'Meetup successfully created'});
+            res.status(201).json({ message: 'Meetup successfully created' });
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
@@ -102,10 +107,10 @@ router.put('/update/:meetupId', (req, res) => {
     Meetup
     .findByIdAndUpdate(meetupId, { ...req.body })
     .then(response => {
-        res.status(200).json(response);
+        res.status(200).json({ message: 'Meetup information sucessfully updated' });
     })
     .catch(error => {
-        res.status(500).json({error: "Failed to update"});
+        res.status(500).json({ error: "Failed to update" });
     });
 });
 

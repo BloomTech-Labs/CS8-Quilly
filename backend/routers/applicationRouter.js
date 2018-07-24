@@ -50,7 +50,7 @@ router.get('/:applicationId', (req, res) => {
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
     if (!req.body.company || !req.body.position) {
-        res.status(422).json({message: 'company and position are required'});
+        res.status(422).json({ error: 'company and position are required' });
         return;
     }
     
@@ -58,7 +58,7 @@ router.post('/add', (req, res) => {
     newApplication
     .save(function(error){
         if (error)
-            res.status(500).json({error: 'Application creation failed'});
+            res.status(500).json({ error: 'Application creation failed' });
             return;
     });
 
@@ -73,12 +73,11 @@ router.post('/add', (req, res) => {
             res.status(201).json(savedUser.applications);
         })
         .catch(error => {
-            res.status(500).json({error: 'Failed to save the document.'});
-            next(error)
+            res.status(500).json({ error: 'Failed to save the document.' });
         });
     })
     .catch(error => {
-        res.status(500).json(error);
+        res.status(500).json({ error: 'Application creation failed' });
     });
 });
 
@@ -94,14 +93,14 @@ router.delete('/delete/:applicationId', (req, res) => {
         User
         .findOneAndUpdate({_id: req.session.userId}, { $pull: { applications: applicationId } })
         .then(response => {
-            res.status(200).json({message:'Application successfully deleted'});
+            res.status(200).json({ message:'Application successfully deleted' });
         })
         .catch(error => {
-            res.status(500).json({error: 'Ref not deleted'});
+            res.status(500).json({ error: 'Ref not deleted' });
         });
     })
     .catch(error => {
-        res.status(500).json({error: 'Delete failed'});
+        res.status(500).json({ error: 'Delete failed' });
     });
 });
 
@@ -111,10 +110,10 @@ router.put('/update/:applicationId', (req, res) => {
     Application
     .findByIdAndUpdate(applicationId, { ...req.body })
     .then(response => {
-        res.status(200).json({message: 'Application Successfully updated'});
+        res.status(200).json({ message: 'Application Successfully updated' });
     })
     .catch(error => {
-        res.status(500).json({error: "Failed to update"});
+        res.status(500).json({ error: 'Failed to update' });
     });
 });
 
