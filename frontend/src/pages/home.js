@@ -1,11 +1,13 @@
-import React, { Component } from 'react';
-import Accountlogin from '../components/accountlogin/accountlogin';
-import Coverflow from '../components/coverflow/coverflow';
+import React, { Component } from "react";
+import Accountlogin from "../components/accountlogin/accountlogin";
+import Coverflow from "../components/coverflow/coverflow";
+import Accountsignup from "../components/accountsignup/accountsignup";
 
 class Home extends Component {
   render() {
     return (
       <div className="Homeapp">
+        <Accountsignup />
         <Accountlogin />
         <div className="Coverflow">
           <Coverflow />

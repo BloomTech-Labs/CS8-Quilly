@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./contribution.css";
+import axios from 'axios';
 
 let fakeServerData = {
   contributions: [
@@ -46,11 +47,20 @@ class Contribution extends Component {
   }
 
   handleSubmit(event) {
-    console.log(`This is the stateee ${this.state}`);
-    // alert("Contribution Submitted: " + this.state.value);
-    // $.post("/submitFormData", {data: this.state.dateInput...}, function(res) {
+    axios
+      .post(`http://localhost:5000/user/contributions/add`, {
+        date: this.state.date,
+        contribution: this.state.contribution,
+        link: this.state.link,
+        notes: this.state.note
+      })
+      .then(function(response) {
+        console.log(`This is the RESPONSE: ${response}`);
+      })
+      .catch(function(error) {
+        console.log(`ERROR: ${error}!`);
+      });
 
-    // })
     event.preventDefault();
   }
 
@@ -78,8 +88,8 @@ class Contribution extends Component {
               className="formDate"
               required="true"
               type="date"
-              name="dateInput"
-              value={this.state.dateInput}
+              name="date"
+              value={this.state.date}
               onChange={this.handleChange}
             />
             <input
@@ -87,8 +97,8 @@ class Contribution extends Component {
               type="text"
               placeholder="Contribution"
               required="true"
-              name="titleInput"
-              value={this.state.titleInput}
+              name="contribution"
+              value={this.state.contribution}
               onChange={this.handleChange}
             />
             <input
@@ -96,16 +106,16 @@ class Contribution extends Component {
               type="text"
               placeholder="Link"
               required="true"
-              name="linkInput"
-              value={this.state.linkInput}
+              name="link"
+              value={this.state.link}
               onChange={this.handleChange}
             />
             <input
               className="Notes"
               type="text"
               placeholder="Notes"
-              name="notesInput"
-              value={this.state.notesInput}
+              name="notes"
+              value={this.state.notes}
               onChange={this.handleChange}
             />
             <input type="submit" value="Submit" />

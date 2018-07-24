@@ -15,3 +15,13 @@
   color: black;
   text-decoration: none;
 }
+
+.openLogin {
+  position: fixed;
+  bottom: 40px;
+  left: 40px;
+  background-color: white;
+  outline: thick ridge black;
+  padding: 20px 40px;
+  font-size: 20px;
+}

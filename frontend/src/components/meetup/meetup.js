@@ -1,22 +1,25 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./meetup.css";
 
 let fakeServerData = {
   meetups: [
     {
       date: "5/10/2018",
-      title: "Blog Post",
+      activity: 'Blog Post',
       link: "www.google.com",
       notes: "Retweeted"
     },
     {
       date: "5/11/2018",
-      title: "Blof Post",
+      activity: "Blof Post",
       link: "www.goofle.com",
       notes: "Retweefed"
     }
   ]
 };
+
+axios.defaults.withCredentials = true;
 
 class Meetup extends Component {
   constructor() {
@@ -24,10 +27,10 @@ class Meetup extends Component {
 
     this.state = {
       serverData: {},
-      dateInput: "",
-      titleInput: "",
-      linkInput: "",
-      notesInput: "",
+      date: "",
+      activity: "",
+      link: "",
+      notes: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -43,28 +46,41 @@ class Meetup extends Component {
     this.setState({
       [name]: value
     });
+
+    console.log(this.state);
   }
 
   handleSubmit(event) {
-    console.log(`This is the stateee ${this.state}`);
-    // alert("Contribution Submitted: " + this.state.value);
-    // $.post("/submitFormData", {data: this.state.dateInput...}, function(res) {
-
-    // })
     event.preventDefault();
+
+    axios
+      .post(`http://localhost:5000/user/meetups/add`, {
+        date: this.state.date,
+        activity: this.state.activity,
+        link: this.state.link,
+        notes: this.state.notes
+      })
+      .then(function(response) {
+        console.log(`This is the RESPONSE: ${response}`);
+      })
+      .catch(function(error) {
+        console.log(`ERROR: ${error}!`);
+      });
+
   }
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="MeetupComponents">
         <div className="meetupss">
-          {/* Displaying over user's contributions -- will display nothing if no input given */}
+          {/* Displaying over user's meetups -- will display nothing if no input given */}
           {this.state.serverData.meetups.map(function(meetup) {
             return (
-              <div key={meetup.title}>
+              <div key={meetup.activity}>
                 <div className="date">{meetup.date}</div>
-                <div className="title">{meetup.title}</div>
+                <div className="activity">{meetup.activity}</div>
+                <div className="link">{meetup.link}</div>
                 <div className="notes">{meetup.notes}</div>
               </div>
             );
@@ -78,8 +94,8 @@ class Meetup extends Component {
               className="formDate"
               required="true"
               type="date"
-              name="dateInput"
-              value={this.state.dateInput}
+              name="date"
+              value={this.state.date}
               onChange={this.handleChange}
             />
             <input
@@ -87,25 +103,24 @@ class Meetup extends Component {
               type="text"
               placeholder="Meetup"
               required="true"
-              name="titleInput"
-              value={this.state.titleInput}
+              name="activity"
+              value={this.state.activity}
               onChange={this.handleChange}
             />
             <input
               className="formLink"
               type="text"
               placeholder="Link"
-              required="true"
-              name="linkInput"
-              value={this.state.linkInput}
+              name="link"
+              value={this.state.link}
               onChange={this.handleChange}
             />
             <input
               className="Notes"
               type="text"
               placeholder="Notes"
-              name="notesInput"
-              value={this.state.notesInput}
+              name="notes"
+              value={this.state.notes}
               onChange={this.handleChange}
             />
             <input type="submit" value="Submit" />
