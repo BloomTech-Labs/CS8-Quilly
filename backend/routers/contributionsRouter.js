@@ -19,6 +19,7 @@ router.get('/', (req, res) => {
 
     })
 });
+
 router.get('/refs', (req, res) => {
     const userId = req.session.userId; // The user id of the logged in user
     User

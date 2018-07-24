@@ -1,17 +1,18 @@
 import React, { Component } from "react";
+import axios from "axios";
 import "./meetup.css";
 
 let fakeServerData = {
   meetups: [
     {
       date: "5/10/2018",
-      title: "Blog Post",
+      activity: "Blog Post",
       link: "www.google.com",
       notes: "Retweeted"
     },
     {
       date: "5/11/2018",
-      title: "Blof Post",
+      activity: "Blof Post",
       link: "www.goofle.com",
       notes: "Retweefed"
     }
@@ -24,10 +25,10 @@ class Meetup extends Component {
 
     this.state = {
       serverData: {},
-      dateInput: "",
-      titleInput: "",
-      linkInput: "",
-      notesInput: "",
+      date: "",
+      activity: "",
+      link: "",
+      notes: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -46,36 +47,36 @@ class Meetup extends Component {
   }
 
   handleSubmit(event) {
-    // !!!!! Need to add url path from backend !!!!!!!
-    axios.post('/user/meetup/:meetupId', {
-      dateInput: this.state.dateInput,
-      titleInput: this.state.titleInput,
-      linkInput: this.state.linkInput,
-      notesInput: "",
-    })
-    .then(function (response) {
-      // resultElement.innerHTML = generateSuccessHTMLOutput(response);
-      console.log(`This is the RESPONSE: ${response}`);
-    })
-    .catch(function (error) {
-      // resultElement.innerHTML = generateErrorHTMLOutput(error);
-      console.log(`ERROR: ${error}!`);
-    });
+    axios
+      .post(`localhost:5000/user/meetups/add`, {
+        date: this.state.date,
+        activity: this.state.activity,
+        link: this.state.link,
+        notes: this.state.note
+      })
+      .then(function(response) {
+        console.log(`This is the RESPONSE: ${response}`);
+      })
+      .catch(function(error) {
+        console.log(`ERROR: ${error}!`);
+      });
 
     event.preventDefault();
   }
 
+
+
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div className="MeetupComponents">
         <div className="meetupss">
           {/* Displaying over user's meetups -- will display nothing if no input given */}
           {this.state.serverData.meetups.map(function(meetup) {
             return (
-              <div key={meetup.title}>
+              <div key={meetup.activity}>
                 <div className="date">{meetup.date}</div>
-                <div className="title">{meetup.title}</div>
+                <div className="activity">{meetup.activity}</div>
                 <div className="notes">{meetup.notes}</div>
               </div>
             );
@@ -89,8 +90,8 @@ class Meetup extends Component {
               className="formDate"
               required="true"
               type="date"
-              name="dateInput"
-              value={this.state.dateInput}
+              name="date"
+              value={this.state.date}
               onChange={this.handleChange}
             />
             <input
@@ -98,8 +99,8 @@ class Meetup extends Component {
               type="text"
               placeholder="Meetup"
               required="true"
-              name="titleInput"
-              value={this.state.titleInput}
+              name="activity"
+              value={this.state.activity}
               onChange={this.handleChange}
             />
             <input
@@ -107,16 +108,16 @@ class Meetup extends Component {
               type="text"
               placeholder="Link"
               required="true"
-              name="linkInput"
-              value={this.state.linkInput}
+              name="link"
+              value={this.state.link}
               onChange={this.handleChange}
             />
             <input
               className="Notes"
               type="text"
               placeholder="Notes"
-              name="notesInput"
-              value={this.state.notesInput}
+              name="notes"
+              value={this.state.notes}
               onChange={this.handleChange}
             />
             <input type="submit" value="Submit" />
