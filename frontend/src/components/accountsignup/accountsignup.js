@@ -6,23 +6,32 @@ let fakeServerData = {
   users: [
     {
       username: "aa",
-      password: "123"
+      password: "123",
+      email: "aa@aa.com",
+      firstname: "aa",
+      lastname: "aa"
     },
     {
       username: "bb",
-      password: "123"
+      password: "123",
+      email: "bb@bb.com",
+      firstname: "bb",
+      lastname: "bb"
     }
   ]
 };
 
-class Accountlogin extends Component {
+class Accountsignup extends Component {
   constructor() {
     super();
 
     this.state = {
       modalIsOpen: false,
       username: "",
-      password: ""
+      password: "",
+      email: "",
+      firstname: "",
+      lastname: ""
     };
 
     this.openModal = this.openModal.bind(this);
@@ -41,8 +50,8 @@ class Accountlogin extends Component {
 
   render() {
     return (
-      <div className="Accountlogin">
-        <a href="/">Sign In</a>
+      <div className="Accountsignup">
+        <a href="/">Sign Up</a>
         <a onClick={this.openModal}>Sign In</a>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -51,16 +60,28 @@ class Accountlogin extends Component {
           overlayClassName="Overlay"
           className="hello"
         >
-          <div className="signinmodal">
-            <h2>signin</h2>
+          <div className="signupmodal">
+            <h2>signup</h2>
             <form onSubmit={this.handleSubmit}>
+              <label>
+                <input required="true" placeholder="username" />
+                username
+              </label>
+              <label>
+                <input placeholder="password" />
+                password
+              </label>
               <label>
                 <input placeholder="email" />
                 email
               </label>
               <label>
-                <input placeholder="password" />
-                password
+                <input placeholder="firstname" />
+                firstname
+              </label>
+              <label>
+                <input placeholder="lastname" />
+                lastname
               </label>
               <button onChange={this.handleChange}> </button>
             </form>
@@ -71,4 +92,4 @@ class Accountlogin extends Component {
   }
 }
 
-export default Accountlogin;
+export default Accountsignup;
