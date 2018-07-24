@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import "./accountlogin.css";
+import "./accountsignup.css";
 import Modal from "react-modal";
+import axios from "axios";
 
 let fakeServerData = {
   users: [
@@ -36,8 +37,41 @@ class Accountsignup extends Component {
 
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentWillMount() {
+    this.setState({ serverData: fakeServerData });
+  }
+
+  handleChange(event) {
+    const { name, value } = event.target;
+    this.setState({
+      [name]: value
+    });
+
+    console.log(this.state);
+  }
+
+  handleSubmit(event) {
+    axios
+      .post(`http://localhost:5000/user/register`, {
+        username: this.state.username,
+        password: this.state.password,
+        email: this.state.email,
+        firstname: this.state.firstname,
+        lastname: this.state.lastname
+      })
+      .then(function(response) {
+        console.log(`This is the RESPONSE: ${response}`);
+      })
+      .catch(function(error) {
+        console.log(`HANDLE SUBMIT ERROR: ${error}!`);
+      });
+
+    event.preventDefault();
   }
 
   openModal() {
@@ -51,8 +85,9 @@ class Accountsignup extends Component {
   render() {
     return (
       <div className="Accountsignup">
-        <a href="/">Sign Up</a>
-        <a onClick={this.openModal}>Sign In</a>
+        <button className="openModal" onClick={this.openModal}>
+          sign up
+        </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
@@ -64,26 +99,61 @@ class Accountsignup extends Component {
             <h2>signup</h2>
             <form onSubmit={this.handleSubmit}>
               <label>
-                <input required="true" placeholder="username" />
-                username
+                <input
+                  placeholder="username"
+                  className="formUsername"
+                  type="text"
+                  required="true"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
               </label>
               <label>
-                <input placeholder="password" />
-                password
+                <input
+                  placeholder="password"
+                  className="formPassword"
+                  type="password"
+                  required="true"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
               </label>
               <label>
-                <input placeholder="email" />
-                email
+                <input
+                  placeholder="email"
+                  className="formEmail"
+                  type="email"
+                  required="true"
+                  name="email"
+                  value={this.state.email}
+                  onChange={this.handleChange}
+                />
               </label>
               <label>
-                <input placeholder="firstname" />
-                firstname
+                <input
+                  placeholder="firstname"
+                  className="formFirstname"
+                  type="text"
+                  required="true"
+                  name="firstname"
+                  value={this.state.firstname}
+                  onChange={this.handleChange}
+                />
               </label>
               <label>
-                <input placeholder="lastname" />
-                lastname
+                <input
+                  placeholder="lastname"
+                  className="formLastname"
+                  type="text"
+                  required="true"
+                  name="lastname"
+                  value={this.state.lastname}
+                  onChange={this.handleChange}
+                />
               </label>
-              <button onChange={this.handleChange}> </button>
+              <input type="submit" value="Submit" />
             </form>
           </div>
         </Modal>
