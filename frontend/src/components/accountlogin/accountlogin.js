@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-import axios from 'axios';
-import './accountlogin.css';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import axios from "axios";
+import "./accountlogin.css";
 
 class Accountlogin extends Component {
   constructor() {
@@ -59,7 +59,6 @@ class Accountlogin extends Component {
   render() {
     return (
       <div className="Accountlogin">
-<<<<<<< HEAD
         <button className="openLogin" onClick={this.openModal}>
           sign in
         </button>
@@ -99,10 +98,8 @@ class Accountlogin extends Component {
             </form>
           </div>
         </Modal>
-=======
         <Link to="/">Sign Up</Link>
         <Link to="/jobs">Sign In</Link>
->>>>>>> bc6300b3f16e6260d47d3c7de43072af4327bc7e
       </div>
     );
   }

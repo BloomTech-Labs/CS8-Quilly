@@ -23,11 +23,6 @@ const server = express();
 server.use(express.json());
 server.use(helmet());
 server.use(cors(config.corsOptions));
-<<<<<<< HEAD
-server.options("*", cors(config.corsOptions));
-=======
-server.options('*', cors(config.corsOptions));
->>>>>>> bc6300b3f16e6260d47d3c7de43072af4327bc7e
 
 server.use(
   session({
