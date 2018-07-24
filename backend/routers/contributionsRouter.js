@@ -51,10 +51,16 @@ router.get('/:contributionId', (req, res) => {
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
     const newContribution = new Contribution(req.body);
+
+    if (!req.body.contribution || !req.body.date) {
+        res.status(422).json({ error:'date and contribution are required' });
+        return;
+    }
+
     newContribution
     .save(function(error){
         if (error)
-            res.status(500).json({error: 'Contribution creation failed'});
+            res.status(500).json({ error: 'Contribution creation failed' });
     });
 
     User
@@ -64,7 +70,7 @@ router.post('/add', (req, res) => {
         user
         .save()
         .then(savedUser => {
-            res.status(200).json({ message: 'Contribution successfully created' });
+            res.status(201).json({ message: 'Contribution successfully created' });
         })
         .catch(error => {
             res.status(500).json({error: 'Failed to save the document.'});
@@ -85,16 +91,16 @@ router.delete('/delete/:contributionId', (req, res) => {
     .then(deletedContribution => {
         //Delete the refrence in user.applicaions
         User
-        .findOneAndUpdate({_id: req.session.userId}, { $pull: { contributions: contributionId } })
+        .findOneAndUpdate({ _id: req.session.userId }, { $pull: { contributions: contributionId } })
         .then(response => {
             res.status(200).json({ message: 'Contribution Successfully deleted' });
         })
         .catch(error => {
-            res.status(500).json({error: 'Ref not deleted'});
+            res.status(500).json({ error: 'Ref not deleted' });
         });
     })
     .catch(error => {
-        res.status(500).json({error: 'Delete failed'});
+        res.status(500).json({ error: 'Delete failed' });
     });
 });
 
