@@ -6,7 +6,7 @@ let fakeServerData = {
   meetups: [
     {
       date: "5/10/2018",
-      activity: 'Blog Post',
+      activity: "Blog Post",
       link: "www.google.com",
       notes: "Retweeted"
     },
@@ -66,14 +66,13 @@ class Meetup extends Component {
       .catch(function(error) {
         console.log(`ERROR: ${error}!`);
       });
-
   }
 
   render() {
     // console.log(this.state);
     return (
       <div className="MeetupComponents">
-        <div className="meetupss">
+        <div className="meetups">
           {/* Displaying over user's meetups -- will display nothing if no input given */}
           {this.state.serverData.meetups.map(function(meetup) {
             return (

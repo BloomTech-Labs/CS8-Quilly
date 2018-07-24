@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import './billing.css';
+import React, { Component } from "react";
+import "./billing.css";
 
 class Billing extends Component {
   render() {
@@ -22,13 +22,10 @@ class Billing extends Component {
         <div>
           <label>
             <input type="checkbox" />
-            1 Month Subscription - $20
+            1 Month Subscription - $4.99
           </label>
           <br />
-          <label>
-            <input type="checkbox" />
-            1 Decision - $1.99
-          </label>
+          <p>Special introductory rate!</p>
         </div>
         <button className="Buynow">Buy Now</button>
       </div>

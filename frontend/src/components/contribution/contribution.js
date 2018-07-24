@@ -1,20 +1,14 @@
 import React, { Component } from "react";
 import "./contribution.css";
-import axios from 'axios';
+import axios from "axios";
 
 let fakeServerData = {
   contributions: [
     {
-      date: "5/10/2018",
-      title: "Blog Post",
-      link: "www.google.com",
-      notes: "Retweeted"
-    },
-    {
-      date: "5/11/2018",
-      title: "Blof Post",
-      link: "www.goofle.com",
-      notes: "Retweefed"
+      date: "",
+      title: "",
+      link: "",
+      notes: ""
     }
   ]
 };
@@ -28,7 +22,7 @@ class Contribution extends Component {
       dateInput: "",
       titleInput: "",
       linkInput: "",
-      notesInput: "",
+      notesInput: ""
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -52,7 +46,7 @@ class Contribution extends Component {
         date: this.state.date,
         contribution: this.state.contribution,
         link: this.state.link,
-        notes: this.state.note
+        notes: this.state.notes
       })
       .then(function(response) {
         console.log(`This is the RESPONSE: ${response}`);
