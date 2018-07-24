@@ -43,18 +43,25 @@ class Meetup extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    let serverPort = {
+      date: this.state.date,
+      activity: this.state.activity,
+      link: this.state.link,
+      notes: this.state.notes
+    };
+
     axios
-      .post(`http://localhost:5000/user/meetups/add`, {
-        date: this.state.date,
-        activity: this.state.activity,
-        link: this.state.link,
-        notes: this.state.notes
-      })
-      .then(function(response) {
-        console.log(`This is the RESPONSE: ${response}`);
+      .post(`http://localhost:5000/user/meetups/add`, serverPort)
+      .then(res => {
+        console.log(`RES.DATA: ${res.data}`);
+        console.log(`SERVERPORT: ${serverPort}`);
+        console.log(`STATE: ${this.state}`);
+        let temp = this.state.serverData;
+        temp.push(serverPort);
+        this.setState({ serverData: temp });
       })
       .catch(function(error) {
-        console.log(`ERROR: ${error}!`);
+        console.log(error);
       });
   }
 
