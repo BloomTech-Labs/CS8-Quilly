@@ -48,7 +48,7 @@ class Meetup extends Component {
 
   handleSubmit(event) {
     axios
-      .post(`localhost:5000/user/meetups/add`, {
+      .post(`http://localhost:5000/user/meetups/add`, {
         date: this.state.date,
         activity: this.state.activity,
         link: this.state.link,

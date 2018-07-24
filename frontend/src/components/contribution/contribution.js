@@ -47,21 +47,19 @@ class Contribution extends Component {
   }
 
   handleSubmit(event) {
-    // !!!!! Need to add url path from backend !!!!!!!
-    axios.post('/user/meetup/:meetupId', {
-      dateInput: this.state.dateInput,
-      titleInput: this.state.titleInput,
-      linkInput: this.state.linkInput,
-      notesInput: "",
-    })
-    .then(function (response) {
-      // resultElement.innerHTML = generateSuccessHTMLOutput(response);
-      console.log(`This is the RESPONSE: ${response}`);
-    })
-    .catch(function (error) {
-      // resultElement.innerHTML = generateErrorHTMLOutput(error);
-      console.log(`ERROR: ${error}!`);
-    });
+    axios
+      .post(`http://localhost:5000/user/contributions/add`, {
+        date: this.state.date,
+        contribution: this.state.contribution,
+        link: this.state.link,
+        notes: this.state.note
+      })
+      .then(function(response) {
+        console.log(`This is the RESPONSE: ${response}`);
+      })
+      .catch(function(error) {
+        console.log(`ERROR: ${error}!`);
+      });
 
     event.preventDefault();
   }
@@ -90,8 +88,8 @@ class Contribution extends Component {
               className="formDate"
               required="true"
               type="date"
-              name="dateInput"
-              value={this.state.dateInput}
+              name="date"
+              value={this.state.date}
               onChange={this.handleChange}
             />
             <input
@@ -99,8 +97,8 @@ class Contribution extends Component {
               type="text"
               placeholder="Contribution"
               required="true"
-              name="titleInput"
-              value={this.state.titleInput}
+              name="contribution"
+              value={this.state.contribution}
               onChange={this.handleChange}
             />
             <input
@@ -108,16 +106,16 @@ class Contribution extends Component {
               type="text"
               placeholder="Link"
               required="true"
-              name="linkInput"
-              value={this.state.linkInput}
+              name="link"
+              value={this.state.link}
               onChange={this.handleChange}
             />
             <input
               className="Notes"
               type="text"
               placeholder="Notes"
-              name="notesInput"
-              value={this.state.notesInput}
+              name="notes"
+              value={this.state.notes}
               onChange={this.handleChange}
             />
             <input type="submit" value="Submit" />
