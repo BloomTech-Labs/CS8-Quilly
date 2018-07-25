@@ -2,13 +2,11 @@ const stripe = require('stripe')("pk_test_K1tJV1QhjRPnqQFwDFxe6vZd");
 const express = require("express");
 const router = express.Router();
 
-router.get("/charge", function (req, res, next) {
+router.post("/charge", function (req, res, next) {
   const stripeToken = req.body.stripeToken;
 
   stripe.charges.create({
-    amount: 499,
-    currency: "usd",
-    description: "Professional planning services",
+    email: "asdf@gmail.com",
     source: stripeToken
   }, function (err, charge) {
     console.log('charge');
@@ -19,10 +17,30 @@ router.get("/charge", function (req, res, next) {
         message: 'Error'
       });
     } else {
-      res.send({
-        success: true,
-        message: 'Success'
+      const { id } = customer;
+      stripe.subscriptions.create({
+        customer: id,
+        items: [
+          {
+            plan: "plan_DIBFYLHH0MvZx3",
+          },
+        ],
+      }, function (err, subscription) {
+        if (err) {
+          res.send({
+            success: false,
+            message: 'Error'
+          });
+        } else {
+          res.send({
+            success: true,
+            message: 'Success'
+          });
+        }
       });
+
+
     }
   });
 })
+
