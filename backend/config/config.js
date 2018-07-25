@@ -3,7 +3,8 @@ module.exports = {
   db: process.env.DBURL || 'mongodb://localhost:27017/quilly',
   sessionSecret: process.env.SESSION_SECRET || 'change this',
   corsOptions: {
-    origin: process.env.CLIENTURL || "*",
+    origin: process.env.CLIENTURL || "http://localhost:3000",
+    credentials: true,
     optionsSuccessStatus: 200,
   },  
   stripe: {

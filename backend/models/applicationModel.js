@@ -45,7 +45,7 @@ const applicationSchema = new mongoose.Schema({
       type: Boolean,
       default: true
     },
-    status: {
+    category: {
       type: String,
       default: 'wishlist'
     },
@@ -61,5 +61,5 @@ const applicationSchema = new mongoose.Schema({
     {
       timestamps: true
   });
-  
+
   module.exports = mongoose.model('Application', applicationSchema);
