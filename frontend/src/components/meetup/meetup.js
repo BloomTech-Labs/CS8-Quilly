@@ -53,9 +53,6 @@ class Meetup extends Component {
     axios
       .post(`http://localhost:5000/user/meetups/add`, serverPort)
       .then(res => {
-        console.log(`RES.DATA: ${res.data}`);
-        console.log(`SERVERPORT: ${serverPort}`);
-        console.log(`STATE: ${this.state}`);
         let temp = this.state.serverData;
         temp.push(serverPort);
         this.setState({ serverData: temp });
