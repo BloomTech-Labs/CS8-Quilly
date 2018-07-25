@@ -21,7 +21,7 @@ class Accountlogin extends Component {
   }
 
   componentWillMount() {
-    //this.setState({ serverData: fakeServerData });
+    // this.setState({ serverData: fakeServerData });
   }
 
   handleChange(event) {
@@ -67,7 +67,7 @@ class Accountlogin extends Component {
     return (
       <div className="Accountlogin">
         <button className="openLogin" onClick={this.openModal}>
-          sign in
+         <p>sign in</p>
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
