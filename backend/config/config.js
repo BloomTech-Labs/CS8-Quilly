@@ -5,8 +5,13 @@ module.exports = {
   corsOptions: {
     origin: process.env.CLIENTURL || "http://localhost:3000",
     credentials: true,
+<<<<<<< HEAD
     optionsSuccessStatus: 200
   },
+=======
+    optionsSuccessStatus: 200,
+  },  
+>>>>>>> 858805fb91e4e85793dc4dc5aa66dbb8c43f06fe
   stripe: {
     secret_key:
       process.env.STRIPE_SECRET_KEY || "sk_test_QixOiUfMKS32WljW9ThkIi1e"

@@ -46,4 +46,8 @@ class CheckoutForm extends Component {
   }
 }
 
+<<<<<<< HEAD
 export default injectStripe(CheckoutForm);
+=======
+export default injectStripe(CheckoutForm);
+>>>>>>> 858805fb91e4e85793dc4dc5aa66dbb8c43f06fe
