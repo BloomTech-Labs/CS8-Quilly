@@ -4,12 +4,9 @@ import CheckoutForm from './checkoutform';
 import './billing.css';
 
 class Billing extends Component {
-<<<<<<< HEAD
   constructor(props) {
     super(props);
   }
-=======
->>>>>>> 858805fb91e4e85793dc4dc5aa66dbb8c43f06fe
 
   render() {
     return (
