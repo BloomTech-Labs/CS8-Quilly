@@ -1,13 +1,28 @@
-const stripe = require('stripe')(process.env.STRIPE_SECRET);
+const stripe = require('stripe')("pk_test_K1tJV1QhjRPnqQFwDFxe6vZd");
+const express = require("express");
+const router = express.Router();
 
-module.exports = (req) => {
-  const token = req.body.stripeToken;
+router.get("/charge", function (req, res, next) {
+  const stripeToken = req.body.stripeToken;
 
-  return stripe.charges.create({
-    amount: parseInt(process.env.STRIPE_COST, 10),
-    currency: process.env.STRIPE_CCY,
-    source: token,
-    description: 'Subscription',
-    metadata: {}, // Holds 
+  stripe.charges.create({
+    amount: 499,
+    currency: "usd",
+    description: "Professional planning services",
+    source: stripeToken
+  }, function (err, charge) {
+    console.log('charge');
+    console.log(charge)
+    if (err) {
+      res.send({
+        success: false,
+        message: 'Error'
+      });
+    } else {
+      res.send({
+        success: true,
+        message: 'Success'
+      });
+    }
   });
-}
+})
