@@ -4,9 +4,6 @@ import CheckoutForm from './checkoutform';
 import './billing.css';
 
 class Billing extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     return (
