@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Modal from 'react-modal';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./accountlogin.css";
@@ -20,7 +21,7 @@ class Accountlogin extends Component {
   }
 
   componentWillMount() {
-    this.setState({ serverData: fakeServerData });
+    //this.setState({ serverData: fakeServerData });
   }
 
   handleChange(event) {
@@ -39,10 +40,11 @@ class Accountlogin extends Component {
         password: this.state.password
       })
       .then(function(response) {
-        console.log(`This is the RESPONSE: ${response}`);
+        console.log(response);
+        window.location.pathname = '/jobs';
       })
       .catch(function(error) {
-        console.log(`HANDLE SUBMIT ERROR: ${error}!`);
+        console.log(error);
       });
 
     event.preventDefault();
@@ -50,10 +52,15 @@ class Accountlogin extends Component {
 
   openModal() {
     this.setState({ modalIsOpen: true });
+    setTimeout(() => this.setFocus(), 100);
   }
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+  }
+  
+  setFocus() {
+    document.getElementById('startFocus').focus();
   }
 
   render() {
@@ -75,7 +82,8 @@ class Accountlogin extends Component {
               <label>
                 <input
                   placeholder="username"
-                  className="formUsername"
+                  className="formInput"
+                  id="startFocus"
                   type="username"
                   required="true"
                   name="username"
@@ -86,7 +94,7 @@ class Accountlogin extends Component {
               <label>
                 <input
                   placeholder="password"
-                  className="formPassword"
+                  className="formInput"
                   type="password"
                   required="true"
                   name="password"
@@ -94,7 +102,7 @@ class Accountlogin extends Component {
                   onChange={this.handleChange}
                 />
               </label>
-              <input type="submit" value="Submit" />
+              <input type="submit" value="Submit" className="btn"/>
             </form>
           </div>
         </Modal>

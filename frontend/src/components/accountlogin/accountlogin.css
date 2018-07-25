@@ -25,3 +25,23 @@
   padding: 20px 40px;
   font-size: 20px;
 }
+
+.signinmodal {
+  padding: 5% 10%;
+    margin: 5% auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    border-radius: 15px;
+}
+
+.signinmodal .btn {
+  outline: thick ridge black;
+  background: white;
+  width: 130px;
+  height: 32px;
+  margin: 40px auto 0;
+  font-size: 17px;
+  float: right;
+
+}
