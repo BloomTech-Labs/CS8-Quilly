@@ -82,46 +82,44 @@ class Accountlogin extends Component {
         <button className="openLogin" onClick={this.openModal}>
           <p>sign in</p>
         </button>
+      {/* </div> */}
+      <Modal
+        isOpen={this.state.modalIsOpen}
+        onRequestClose={this.closeModal}
+        contentLabel="Example Modal"
+        overlayClassName="Overlay"
+        className="hello"
+      >
+      <div className="signinmodal">
+        <h2>signin</h2>
+        <form onSubmit={this.handleSubmit}>
+          <label>
+            <input
+              placeholder="username"
+              className="formUsername"
+              type="username"
+              required="true"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+            />
+          </label>
+          <label>
+            <input
+              placeholder="password"
+              className="formPassword"
+              type="password"
+              required="true"
+              name="password"
+              value={this.state.password}
+              onChange={this.handleChange}
+            />
+          </label>
+          <input type="submit" value="Submit" />
+        </form>
       </div>
-      // <Modal
-      //   isOpen={this.state.modalIsOpen}
-      //   onRequestClose={this.closeModal}
-      //   contentLabel="Example Modal"
-      //   overlayClassName="Overlay"
-      //   className="hello"
-      // >
-      // <div className="signinmodal">
-      //   <h2>signin</h2>
-      //   <form onSubmit={this.handleSubmit}>
-      //     <label>
-      //       <input
-      //         placeholder="username"
-      //         className="formUsername"
-      //         type="username"
-      //         required="true"
-      //         name="username"
-      //         value={this.state.username}
-      //         onChange={this.handleChange}
-      //       />
-      //     </label>
-      //     <label>
-      //       <input
-      //         placeholder="password"
-      //         className="formPassword"
-      //         type="password"
-      //         required="true"
-      //         name="password"
-      //         value={this.state.password}
-      //         onChange={this.handleChange}
-      //       />
-      //     </label>
-      //     <input type="submit" value="Submit" />
-      //   </form>
-      // </div>
-      // </Modal>
-      // <Link to="/">Sign Up</Link>
-      // <Link to="/jobs">Sign In</Link>
-      // </div>
+      </Modal>
+      </div>
     );
   }
 }

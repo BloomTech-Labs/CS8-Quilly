@@ -24,7 +24,7 @@ class Accountlogout extends Component {
     return (
       <div className="Accountlogout">
         <input type="submit" value="Submit">
-          <p>sign in</p>
+          <p>sign out</p>
 
         </input>
 
