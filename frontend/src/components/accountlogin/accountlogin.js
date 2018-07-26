@@ -3,26 +3,7 @@ import Modal from 'react-modal';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./accountlogin.css";
-import Modal from "react-modal";
 
-let fakeServerData = {
-  users: [
-    {
-      username: "aa",
-      password: "123",
-      email: "aa@aa.com",
-      firstname: "aa",
-      lastname: "aa"
-    },
-    {
-      username: "bb",
-      password: "123",
-      email: "bb@bb.com",
-      firstname: "bb",
-      lastname: "bb"
-    }
-  ]
-};
 
 class Accountlogin extends Component {
   constructor() {
@@ -38,10 +19,6 @@ class Accountlogin extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {
-    // this.setState({ serverData: fakeServerData });
   }
 
   handleChange(event) {
@@ -60,11 +37,11 @@ class Accountlogin extends Component {
         password: this.state.password
       })
 
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
         window.location.pathname = '/jobs';
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
 
@@ -79,7 +56,7 @@ class Accountlogin extends Component {
   closeModal() {
     this.setState({ modalIsOpen: false });
   }
-  
+
   setFocus() {
     document.getElementById('startFocus').focus();
   }
@@ -123,12 +100,10 @@ class Accountlogin extends Component {
                   onChange={this.handleChange}
                 />
               </label>
-              <input type="submit" value="Submit" className="btn"/>
+              <input type="submit" value="Submit" className="btn" />
             </form>
           </div>
         </Modal>
-        <Link to="/">Sign Up</Link>
-        <Link to="/jobs">Sign In</Link>
       </div>
     );
   }

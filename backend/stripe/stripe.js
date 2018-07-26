@@ -1,46 +1,39 @@
-const stripe = require('stripe')("pk_test_K1tJV1QhjRPnqQFwDFxe6vZd");
+// Need to add API key in line 2 from Stripe
+const stripe = require('stripe')("");
 const express = require("express");
 const router = express.Router();
+const User = require('../models/userModel');
 
-router.post("/charge", function (req, res, next) {
-  const stripeToken = req.body.stripeToken;
+router.get("/", (req, res) => {
+  const userId = req.session.userId; // The user id of the logged in user
+  User.findById(userId)
+    .populate({ path: "billing" })
+    .then(user => {
+      console.log("hello this request was made!");
+      res.status(200).send(user.billing);
+    })
+    .catch(error => {
+      res.status(500).json({ error: "Request could not be fulfilled" });
+    });
+});
 
-  stripe.charges.create({
-    email: "asdf@gmail.com",
-    source: stripeToken
-  }, function (err, charge) {
-    console.log('charge');
-    console.log(charge)
-    if (err) {
-      res.send({
-        success: false,
-        message: 'Error'
-      });
-    } else {
-      const { id } = customer;
-      stripe.subscriptions.create({
-        customer: id,
-        items: [
-          {
-            plan: "plan_DIBFYLHH0MvZx3",
-          },
-        ],
-      }, function (err, subscription) {
-        if (err) {
-          res.send({
-            success: false,
-            message: 'Error'
-          });
-        } else {
-          res.send({
-            success: true,
-            message: 'Success'
-          });
-        }
-      });
-
-
-    }
+router.post("/charge", (req, res) => {
+  stripe.customers.create({
+    email: 'aa@aa.com',
+    source: req.body.data
+  }).then(customer => {
+    stripe.subscriptions.create({
+      customer: customer.id,
+      plan: "plan_DIBFYLHH0MvZx3",
+    }).then(subscription => {
+      // Checking to see if Subscription has been created
+      console.log("SUBSCRIPTION", subscription);
+    }).catch(err => {
+      console.log(err);
+    })
+  }).catch(err => {
+    console.log(err);
   });
 })
 
+module.exports = router;

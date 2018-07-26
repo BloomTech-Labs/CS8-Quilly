@@ -4,6 +4,7 @@ const router = express.Router();
 const applicationRouter = require("./applicationRouter");
 const contributionRouter = require("./contributionsRouter");
 const meetupRouter = require("./meetupsRouter");
+const billingRouter = require("../stripe/stripe")
 
 const User = require("../models/userModel");
 
@@ -155,5 +156,6 @@ router.put("/update", authenticate, (req, res) => {
 router.use("/applications", authenticate, applicationRouter);
 router.use("/contributions", authenticate, contributionRouter);
 router.use("/meetups", authenticate, meetupRouter);
+router.use("/billing", authenticate, billingRouter);
 
 module.exports = router;

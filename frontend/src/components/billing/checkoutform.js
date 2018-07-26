@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
+import axios from 'axios';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -7,31 +8,27 @@ class CheckoutForm extends Component {
     this.state = {
       purchaseCompleted: false
     };
-
     this.submit = this.submit.bind(this);
   }
 
 
   submit(event) {
     this.props.stripe.createToken({ name: "Name" }) // add name/address fields, see here for details: https://stripe.com/docs/stripe-js/reference#stripe-create-token
-    .then(result => {
-      if (result.token) {
-        // edit here after backend is finished
-        fetch("/charge", {
-         method: "POST",
-         headers: { "Content-Type": "text/plain" },
-         body: result.token.id
-        })
-        .then(res => {
-          if (res.ok) {
-            console.log("Successful payment");
-            this.setState({ purchaseCompleted: true });
-          }
-        });
-      } else {
-        console.log("Error creating token");
-      }
-    });
+      .then(result => {
+        console.log('RESULT: ', result.token);
+        if (result.token) {
+          // edit here after backend is finished
+          axios.post("http://localhost:5000/user/billing/charge", { data: result.token.id })
+            .then(res => {
+              if (res.ok) {
+                console.log("Successful payment");
+                this.setState({ purchaseCompleted: true });
+              }
+            });
+        } else {
+          console.log("Error creating token");
+        }
+      });
   }
 
   render() {
