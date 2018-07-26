@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
+import axios from 'axios';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -17,11 +18,11 @@ class CheckoutForm extends Component {
         console.log('RESULT: ', result.token);
         if (result.token) {
           // edit here after backend is finished
-          fetch("http://localhost:5000/user/billing/charge", {
-            method: "POST",
-            headers: { "Content-Type": "text/plain" },
-            body: result.token.id
-          })
+          axios.post("http://localhost:5000/user/billing/charge", { data: result.token.id })
+            // fetch("http://localhost:5000/user/billing/charge", {
+            //   method: "POST",
+            //   headers: { "Content-Type": "text/plain" },
+            //   body: result.token.id
             .then(res => {
               if (res.ok) {
                 console.log("Successful payment");

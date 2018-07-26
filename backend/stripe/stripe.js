@@ -1,4 +1,4 @@
-const stripe = require('stripe')("sk_live_XgC9ppdTgqWGIoCzpftnko0a");
+const stripe = require('stripe')("sk_test_QixOiUfMKS32WljW9ThkIi1e");
 //pk_live_rkM9rtRZKBLaFRUTHUX3W71X
 const express = require("express");
 const router = express.Router();
@@ -78,53 +78,64 @@ router.get("/", (req, res) => {
   });
 })*/
 
-router.post("/charge", function (req, res) {
+router.post("/charge", (req, res) => {
   stripe.customers.create({
-    email: 'aa@aa.com'
-  }).then(function (customer) {
-    console.log("TRYING TO FIND SOMETHING: ", req.body);
-    return stripe.customers.createSource(customer.id, {
-      source: customer.id
-    });
-  }).then(function (source) {
-    return stripe.charges.create({
-      amount: 1600,
-      currency: 'usd',
-      customer: source
-    }, function (err, charge) {
-      // console.log('source: ', source);
-      if (err) {
-        console.log("ERROR MESSAGE IN CHARGES: ", err);
-        res.send({
-          success: false,
-          message: 'Error'
-        });
-      } else {
-        // const { id } = customer;
-        stripe.subscriptions.create({
-          // customer: source,
-          items: [
-            {
-              plan: "plan_DIBFYLHH0MvZx3",
-            },
-          ],
-        }, function (err, subscription) {
-          // console.log("ERROR MESSAGE IN SUB: ", err);
-          if (err) {
-            res.send({
-              success: false,
-              message: 'Error'
-            });
-          } else {
-            res.send({
-              success: true,
-              message: 'Success'
-            });
-          }
-        });
-      }
+    email: 'aa@aa.com',
+    source: req.body.data
+  }).then(customer => {
+    stripe.subscriptions.create({
+      customer: customer.id,
+      plan: "plan_DIBFYLHH0MvZx3",
+    }).then(subscription => {
+      console.log("SUBSCRIPTION", subscription);
+    }).catch(err => {
+      console.log(err);
     })
-  })
-});
+  }).catch(err => {
+    console.log(err);
+  });
+})
 
 module.exports = router;
+
+/*(err, subscription) => {
+        if (err) {
+      res.send({
+        success: false,
+        message: 'Error'
+      });
+    } else {
+      res.send({
+        success: true,
+        message: 'Success'
+      });
+    }
+  })
+
+    .then(function (customer) {
+      console.log("TRYING TO FIND SOMETHING: ", req.body);
+      return stripe.customers.createSource(customer.id, {
+        source: customer.id
+      });
+    })
+    .then(function (customer) {
+      // console.log("THIS IS LOOKING FOR STUFF:", req);
+      return stripe.customers.createSource(customer.id, {
+        source: req.body.data
+      });
+    })
+    .then(function (source) {
+      return stripe.charges.create({
+        amount: 1600,
+        currency: 'usd'
+        // customer: source
+      }, function (err, charge) {
+        // console.log('source: ', source);
+        if (err) {
+          console.log("ERROR MESSAGE IN CHARGES: ", err);
+          res.send({
+            success: false,
+            message: 'Error'
+          });
+        } else {
+          // const { id } = customer;*/
