@@ -17,67 +17,6 @@ router.get("/", (req, res) => {
     });
 });
 
-// router.post("/charge", function (req, res, next) {
-//   const token = req.body.token.id; // Retrieving token id
-//   stripe.charges.create({
-//     email: "aa@aa.com",
-//     source: token
-//   }, function (err, charge) {
-//     console.log('charge: ', charge);
-//     if (err) {
-//       res.send({
-//         success: false,
-//         message: 'Error'
-//       });
-//     } else {
-//       const { id } = customer;
-//       stripe.subscriptions.create({
-//         customer: id,
-//         items: [
-//           {
-//             plan: "plan_DIBFYLHH0MvZx3",
-//           },
-//         ],
-//       }, function (err, subscription) {
-//         if (err) {
-//           res.send({
-//             success: false,
-//             message: 'Error'
-//           });
-//         } else {
-//           res.send({
-//             success: true,
-//             message: 'Success'
-//           });
-//         }
-//       });
-//     }
-//   });
-// })
-
-
-/*router.post("/charge", function (req, res, next) {
-  const token = req.body.token.id; // Retrieving token id
-  // const { id } = token;
-  console.log(token);
-  stripe.subscriptions.create({
-    customer: token,
-    plan: "plan_DIBFYLHH0MvZx3",
-  }, function (err, subscription) {
-    if (err) {
-      res.send({
-        success: false,
-        message: 'Error'
-      });
-    } else {
-      res.send({
-        success: true,
-        message: 'Success'
-      });
-    }
-  });
-})*/
-
 router.post("/charge", (req, res) => {
   stripe.customers.create({
     email: 'aa@aa.com',
@@ -87,6 +26,7 @@ router.post("/charge", (req, res) => {
       customer: customer.id,
       plan: "plan_DIBFYLHH0MvZx3",
     }).then(subscription => {
+      // Checking to see if Subscription has been created
       console.log("SUBSCRIPTION", subscription);
     }).catch(err => {
       console.log(err);
@@ -97,45 +37,3 @@ router.post("/charge", (req, res) => {
 })
 
 module.exports = router;
-
-/*(err, subscription) => {
-        if (err) {
-      res.send({
-        success: false,
-        message: 'Error'
-      });
-    } else {
-      res.send({
-        success: true,
-        message: 'Success'
-      });
-    }
-  })
-
-    .then(function (customer) {
-      console.log("TRYING TO FIND SOMETHING: ", req.body);
-      return stripe.customers.createSource(customer.id, {
-        source: customer.id
-      });
-    })
-    .then(function (customer) {
-      // console.log("THIS IS LOOKING FOR STUFF:", req);
-      return stripe.customers.createSource(customer.id, {
-        source: req.body.data
-      });
-    })
-    .then(function (source) {
-      return stripe.charges.create({
-        amount: 1600,
-        currency: 'usd'
-        // customer: source
-      }, function (err, charge) {
-        // console.log('source: ', source);
-        if (err) {
-          console.log("ERROR MESSAGE IN CHARGES: ", err);
-          res.send({
-            success: false,
-            message: 'Error'
-          });
-        } else {
-          // const { id } = customer;*/
