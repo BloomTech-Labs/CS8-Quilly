@@ -1,5 +1,5 @@
-const stripe = require('stripe')("sk_test_QixOiUfMKS32WljW9ThkIi1e");
-//pk_live_rkM9rtRZKBLaFRUTHUX3W71X
+// Need to add API key in line 2 from Stripe
+const stripe = require('stripe')("");
 const express = require("express");
 const router = express.Router();
 const User = require('../models/userModel');
