@@ -49,13 +49,15 @@ class Meetup extends Component {
       link: this.state.link,
       notes: this.state.notes
     };
-
     axios
-      .post(`http://localhost:5000/user/meetups/add`, serverPort)
-      .then(res => {
-        let temp = this.state.serverData;
-        temp.push(serverPort);
-        this.setState({ serverData: temp });
+      .post(`http://localhost:5000/user/meetups/add`, {
+        date: this.state.date,
+        activity: this.state.activity,
+        link: this.state.link,
+        notes: this.state.notes
+      })
+      .then(function(response) {
+        console.log(response);
       })
       .catch(function(error) {
         console.log(error);
