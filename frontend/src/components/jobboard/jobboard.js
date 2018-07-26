@@ -4,7 +4,7 @@ import React, { Component } from 'react';
 import Board from 'react-trello';
 
 // This NewCard will be replaced with AddJob
-import NewCard from 'react-trello';
+import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
 import './jobboard.css';
 
 // Temporary Data
@@ -40,21 +40,8 @@ const data = {
 };
 
 class JobBoard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lists: {
-        wishlist: [],
-        applied: [],
-        phone: [],
-        "on site": [],
-        offer: [],
-        rejected: []
-      }
-    };
-  }
-
   render() {
+    console.log(this.props.jobs)
     return (
       <Board
         data={data}
@@ -62,7 +49,7 @@ class JobBoard extends Component {
         laneDragClass="draggingLane"
         draggable
         editable
-        newCardTemplate={<NewCard />}
+        newCardTemplate={<Jobcreatemodal />}
       />
     );
   }
