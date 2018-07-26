@@ -59,24 +59,26 @@ router.post('/add', (req, res) => {
     .save(function(error){
         if (error)
             res.status(500).json({error: 'Meetup creation failed'});
+        else {
+            User
+            .findById(userId)
+            .then(user => {
+                user.meetups.push(newMeetup);
+                user
+                .save()
+                .then(savedUser => {
+                    res.status(201).json({ message: 'Meetup successfully created' });
+                })
+                .catch(error => {
+                    res.status(500).json({error: 'Failed to save the document.'});
+                });
+            })
+            .catch(error => {
+                res.status(500).json({error: 'Meetup creation failed'});
+            });
+        }
     });
 
-    User
-    .findById(userId)
-    .then(user => {
-        user.meetups.push(newMeetup);
-        user
-        .save()
-        .then(savedUser => {
-            res.status(201).json({ message: 'Meetup successfully created' });
-        })
-        .catch(error => {
-            res.status(500).json({error: 'Failed to save the document.'});
-        });
-    })
-    .catch(error => {
-        res.status(500).json({error: 'Meetup creation failed'});
-    });
 });
 
 //end point to delete a meetup

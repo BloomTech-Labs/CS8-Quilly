@@ -59,26 +59,27 @@ router.post('/add', (req, res) => {
     .save(function(error){
         if (error)
             res.status(500).json({ error: 'Application creation failed' });
-            return;
+        else {
+            User
+            .findById(userId)
+            .populate('applications')
+            .then(user => {
+                user.applications.push(newApplication);
+                user
+                .save()
+                .then(savedUser => {
+                    res.status(201).json(savedUser.applications);
+                })
+                .catch(error => {
+                    res.status(500).json({ error: 'Failed to save the document.' });
+                });
+            })
+            .catch(error => {
+                res.status(500).json({ error: 'Application creation failed' });
+            });
+        }
     });
 
-    User
-    .findById(userId)
-    .populate('applications')
-    .then(user => {
-        user.applications.push(newApplication);
-        user
-        .save()
-        .then(savedUser => {
-            res.status(201).json(savedUser.applications);
-        })
-        .catch(error => {
-            res.status(500).json({ error: 'Failed to save the document.' });
-        });
-    })
-    .catch(error => {
-        res.status(500).json({ error: 'Application creation failed' });
-    });
 });
 
 //end point for deleting an applications
