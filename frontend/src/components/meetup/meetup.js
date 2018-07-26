@@ -61,7 +61,7 @@ class Meetup extends Component {
         notes: this.state.notes
       })
       .then(function(response) {
-        console.log(`This is the RESPONSE: ${response}`);
+        console.log(response);
       })
       .catch(function(error) {
         console.log(`ERROR: ${error}!`);
