@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 // Need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
 
@@ -40,41 +39,8 @@ const data = {
 };
 
 class JobBoard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lists: {
-        wishlist: [],
-        applied: [],
-        phone: [],
-        "on site": [],
-        offer: [],
-        rejected: []
-      }
-    };
-  }
-
-  componentDidMount() {
-    axios
-      .get('http://localhost:5000/user')
-      .then(user => {
-        let applications = user.data.applications;
-        let lists = this.state.lists;
-
-        applications.forEach(application => {
-          let category = application.category;
-          if (!lists[category]) {
-            lists[category] = [];
-          }
-          lists[category].push(application);
-        });
-
-        this.setState({ lists: lists });
-      })
-      .catch(err => console.error(err));
-  }
-
   render() {
+    console.log(this.props.jobs)
     return (
       <Board
         data={data}
