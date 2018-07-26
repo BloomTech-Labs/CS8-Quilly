@@ -63,14 +63,10 @@ class JobBoard extends Component {
 
         applications.forEach(application => {
           let category = application.category;
-<<<<<<< HEAD
-          lists[`${category}`].push(application);
-=======
           if (!lists[category]) {
             lists[category] = [];
           }
           lists[category].push(application);
->>>>>>> 860edfce11da4704d86c65c42e1a60e57e627ed0
         });
 
         this.setState({ lists: lists });
