@@ -104,8 +104,6 @@ class Accountlogin extends Component {
             </form>
           </div>
         </Modal>
-        <Link to="/">Sign Up</Link>
-        <Link to="/jobs">Sign In</Link>
       </div>
     );
   }
