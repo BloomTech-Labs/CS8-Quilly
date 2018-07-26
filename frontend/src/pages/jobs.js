@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 import Sidebar from '../components/sidebar/sidebar';
-
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
+import Signout from '../components/signout/signout'
 
 class Joblistpage extends Component {
   constructor(props) {
@@ -50,6 +50,7 @@ class Joblistpage extends Component {
   render() {
     return (
       <div className="App">
+        <Signout />
         <Breadcrumbs />
         <Sidebar />
         <Jobboard jobs={this.state.lists} />

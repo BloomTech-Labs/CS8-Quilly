@@ -23,6 +23,7 @@ const server = express();
 server.use(express.json());
 server.use(helmet());
 server.use(cors(config.corsOptions));
+server.options("http://localhost:3000", cors(config.corsOptions));
 
 server.use(
   session({
