@@ -2,23 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 import "./meetup.css";
 
-let fakeServerData = {
-  meetups: [
-    {
-      date: "5/10/2018",
-      activity: 'Blog Post',
-      link: "www.google.com",
-      notes: "Retweeted"
-    },
-    {
-      date: "5/11/2018",
-      activity: "Blof Post",
-      link: "www.goofle.com",
-      notes: "Retweefed"
-    }
-  ]
-};
-
 axios.defaults.withCredentials = true;
 
 class Meetup extends Component {
@@ -26,7 +9,7 @@ class Meetup extends Component {
     super();
 
     this.state = {
-      serverData: {},
+      serverData: [],
       date: "",
       activity: "",
       link: "",
@@ -37,8 +20,15 @@ class Meetup extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentWillMount() {
-    this.setState({ serverData: fakeServerData });
+  componentDidMount() {
+    axios
+      .get("http://localhost:5000/user/meetups")
+      .then(response => {
+        this.setState({ serverData: response.data });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
 
   handleChange(event) {
@@ -53,6 +43,12 @@ class Meetup extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    let serverPort = {
+      date: this.state.date,
+      activity: this.state.activity,
+      link: this.state.link,
+      notes: this.state.notes
+    };
     axios
       .post(`http://localhost:5000/user/meetups/add`, {
         date: this.state.date,
@@ -64,18 +60,16 @@ class Meetup extends Component {
         console.log(response);
       })
       .catch(function(error) {
-        console.log(`ERROR: ${error}!`);
+        console.log(error);
       });
-
   }
 
   render() {
-    // console.log(this.state);
     return (
       <div className="MeetupComponents">
-        <div className="meetupss">
+        <div className="meetups">
           {/* Displaying over user's meetups -- will display nothing if no input given */}
-          {this.state.serverData.meetups.map(function(meetup) {
+          {this.state.serverData.map(function(meetup) {
             return (
               <div key={meetup.activity}>
                 <div className="date">{meetup.date}</div>

@@ -3,6 +3,26 @@ import Modal from 'react-modal';
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./accountlogin.css";
+import Modal from "react-modal";
+
+let fakeServerData = {
+  users: [
+    {
+      username: "aa",
+      password: "123",
+      email: "aa@aa.com",
+      firstname: "aa",
+      lastname: "aa"
+    },
+    {
+      username: "bb",
+      password: "123",
+      email: "bb@bb.com",
+      firstname: "bb",
+      lastname: "bb"
+    }
+  ]
+};
 
 class Accountlogin extends Component {
   constructor() {
@@ -39,6 +59,7 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
+
       .then(function(response) {
         console.log(response);
         window.location.pathname = '/jobs';
@@ -67,7 +88,7 @@ class Accountlogin extends Component {
     return (
       <div className="Accountlogin">
         <button className="openLogin" onClick={this.openModal}>
-         <p>sign in</p>
+          <p>sign in</p>
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
