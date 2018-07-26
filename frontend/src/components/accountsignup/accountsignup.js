@@ -64,8 +64,22 @@ class Accountsignup extends Component {
         firstname: this.state.firstname,
         lastname: this.state.lastname
       })
-      .then(function(response) {
-        console.log(`This is the RESPONSE: ${response}`);
+      .then(response => {
+        console.log(response);
+        // Now that the user is created. Login the user
+        axios
+        .post(`http://localhost:5000/user/login`, {
+          username: this.state.username,
+          password: this.state.password
+        })
+        .then(function(response) {
+          console.log(response);
+          window.location.pathname = '/jobs';
+        })
+        .catch(function(error) {
+          console.log(error);
+        });
+
       })
       .catch(function(error) {
         console.log(`HANDLE SUBMIT ERROR: ${error}!`);
@@ -76,10 +90,15 @@ class Accountsignup extends Component {
 
   openModal() {
     this.setState({ modalIsOpen: true });
+    setTimeout(() => this.setFocus(), 100);
   }
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+  }
+
+  setFocus() {
+    document.getElementById('startFocus').focus();
   }
 
   render() {
@@ -96,54 +115,65 @@ class Accountsignup extends Component {
           className="hello"
         >
           <div className="signupmodal">
-            <h2>Sign Up</h2>
-            <form onSubmit={this.handleSubmit}>
+            <h2 className="signupHeader">Sign Up</h2>
+            <form onSubmit={this.handleSubmit} className="inputform">
+              <h3 className="inputlable
+              ">Username:</h3>
               <input
                 placeholder="username"
-                className="formUsername"
+                className="inputField"
                 type="text"
                 required="true"
                 name="username"
                 value={this.state.username}
                 onChange={this.handleChange}
+                id="startFocus"
               />
+              <h3 className="inputlable
+              ">Password:</h3>
               <input
                 placeholder="password"
-                className="formPassword"
+                className="inputField"
                 type="password"
                 required="true"
                 name="password"
                 value={this.state.password}
                 onChange={this.handleChange}
               />
+              <h3 className="inputlable
+              ">E-mail:</h3>
               <input
                 placeholder="email"
-                className="formEmail"
+                className="inputField"
                 type="email"
                 required="true"
                 name="email"
                 value={this.state.email}
                 onChange={this.handleChange}
               />
+              <h3 className="inputlable
+              ">First Name:</h3>
               <input
                 placeholder="firstname"
-                className="formFirstname"
+                className="inputField"
                 type="text"
                 required="true"
                 name="firstname"
                 value={this.state.firstname}
                 onChange={this.handleChange}
               />
+              <h3 className="inputlable
+              ">Last Name:</h3>
               <input
                 placeholder="lastname"
-                className="formLastname"
+                className="inputField"
                 type="text"
                 required="true"
                 name="lastname"
                 value={this.state.lastname}
                 onChange={this.handleChange}
               />
-              <input type="submit" value="Submit" />
+              <input className="btn" type="submit" value="Create New Account" />
             </form>
           </div>
         </Modal>

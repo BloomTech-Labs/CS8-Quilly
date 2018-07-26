@@ -1,7 +1,8 @@
 import React, { Component } from "react";
+import Modal from 'react-modal';
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "./accountlogin.css";
-import Modal from "react-modal";
 
 
 class Accountlogin extends Component {
@@ -35,11 +36,13 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
+
       .then(function (response) {
-        console.log(`This is the RESPONSE: ${response}`);
+        console.log(response);
+        window.location.pathname = '/jobs';
       })
       .catch(function (error) {
-        console.log(`HANDLE SUBMIT ERROR: ${error}!`);
+        console.log(error);
       });
 
     event.preventDefault();
@@ -47,10 +50,15 @@ class Accountlogin extends Component {
 
   openModal() {
     this.setState({ modalIsOpen: true });
+    setTimeout(() => this.setFocus(), 100);
   }
 
   closeModal() {
     this.setState({ modalIsOpen: false });
+  }
+
+  setFocus() {
+    document.getElementById('startFocus').focus();
   }
 
   render() {
@@ -59,43 +67,45 @@ class Accountlogin extends Component {
         <button className="openLogin" onClick={this.openModal}>
           <p>sign in</p>
         </button>
-      {/* </div> */}
-      <Modal
-        isOpen={this.state.modalIsOpen}
-        onRequestClose={this.closeModal}
-        contentLabel="Example Modal"
-        overlayClassName="Overlay"
-        className="hello"
-      >
-      <div className="signinmodal">
-        <h2>signin</h2>
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            <input
-              placeholder="username"
-              className="formUsername"
-              type="username"
-              required="true"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-            />
-          </label>
-          <label>
-            <input
-              placeholder="password"
-              className="formPassword"
-              type="password"
-              required="true"
-              name="password"
-              value={this.state.password}
-              onChange={this.handleChange}
-            />
-          </label>
-          <input type="submit" value="Submit" />
-        </form>
-      </div>
-      </Modal>
+        <Modal
+          isOpen={this.state.modalIsOpen}
+          onRequestClose={this.closeModal}
+          contentLabel="Example Modal"
+          overlayClassName="Overlay"
+          className="hello"
+        >
+          <div className="signinmodal">
+            <h2>signin</h2>
+            <form onSubmit={this.handleSubmit}>
+              <label>
+                <input
+                  placeholder="username"
+                  className="formInput"
+                  id="startFocus"
+                  type="username"
+                  required="true"
+                  name="username"
+                  value={this.state.username}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <label>
+                <input
+                  placeholder="password"
+                  className="formInput"
+                  type="password"
+                  required="true"
+                  name="password"
+                  value={this.state.password}
+                  onChange={this.handleChange}
+                />
+              </label>
+              <input type="submit" value="Submit" className="btn" />
+            </form>
+          </div>
+        </Modal>
+        <Link to="/">Sign Up</Link>
+        <Link to="/jobs">Sign In</Link>
       </div>
     );
   }

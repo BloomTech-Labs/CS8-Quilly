@@ -40,21 +40,8 @@ const data = {
 };
 
 class JobBoard extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      lists: {
-        wishlist: [],
-        applied: [],
-        phone: [],
-        "on site": [],
-        offer: [],
-        rejected: []
-      }
-    };
-  }
-
   render() {
+    console.log(this.props.jobs)
     return (
       <Board
         data={data}
