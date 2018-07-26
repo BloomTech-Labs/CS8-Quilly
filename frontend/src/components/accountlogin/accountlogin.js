@@ -34,6 +34,7 @@ class Accountlogin extends Component {
   }
 
   handleSubmit(event) {
+    console.log({username:this.state.username, password:this.state.password});
     axios
       .post(`http://localhost:5000/user/login`, {
         username: this.state.username,
@@ -44,7 +45,7 @@ class Accountlogin extends Component {
         window.location.pathname = '/jobs';
       })
       .catch(function(error) {
-        console.log(error);
+        console.log('the error is', error);
       });
 
     event.preventDefault();
