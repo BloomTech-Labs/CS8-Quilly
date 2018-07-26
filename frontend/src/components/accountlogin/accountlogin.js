@@ -1,27 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./accountlogin.css";
 import Modal from "react-modal";
 
-let fakeServerData = {
-  users: [
-    {
-      username: "aa",
-      password: "123",
-      email: "aa@aa.com",
-      firstname: "aa",
-      lastname: "aa"
-    },
-    {
-      username: "bb",
-      password: "123",
-      email: "bb@bb.com",
-      firstname: "bb",
-      lastname: "bb"
-    }
-  ]
-};
 
 class Accountlogin extends Component {
   constructor() {
@@ -37,10 +18,6 @@ class Accountlogin extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillMount() {
-    // this.setState({ serverData: fakeServerData });
   }
 
   handleChange(event) {

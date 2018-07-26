@@ -1,21 +1,25 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import "./signout.css";
 
 class Accountlogout extends Component {
+
+  constructor() {
+    super();
+    this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
 
   handleSubmit(event) {
     event.preventDefault();
     axios
       .get(`http://localhost:5000/user/logout`)
       .then(function (response) {
-        console.log(`This is the RESPONSE: ${response}`);
+        console.log(`This is the LOGOUT RESPONSE: `, response);
       })
       .catch(function (error) {
         console.log(`HANDLE SUBMIT ERROR: ${error}!`);
       });
-
   }
 
 
@@ -23,10 +27,10 @@ class Accountlogout extends Component {
   render() {
     return (
       <div className="Accountlogout">
-        <input type="submit" value="Submit">
-          <p>sign out</p>
-
-        </input>
+        <form onSubmit={this.handleSubmit}>
+          <input type="submit" value="Submit" />
+          <label>sign out</label>
+        </form>
 
       </div>
     );
