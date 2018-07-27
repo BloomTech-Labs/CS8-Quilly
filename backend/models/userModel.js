@@ -39,13 +39,13 @@ const userSchema = new mongoose.Schema({
     },
     // subscription checks if the user has an active subscription that has been purchased
     subscription: {
-      type: boolean,
+      type: Boolean,
       default: false
     },
     cards: {
       // active dependent on the validity of the card selected for the stripe user
       active: {
-        type: boolean
+        type: Boolean
       },
       // cardsonfile will be in array form and will populate accordingly
       cardsonfile: {
