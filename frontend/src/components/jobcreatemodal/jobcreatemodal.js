@@ -6,9 +6,9 @@ import axios from 'axios';
 Modal.setAppElement(document.getElementById('root'));
 
 class Jobcreatemodal extends Component {
-  constructor() {
-    super();
-
+  constructor(props) {
+    super(props);
+  
     this.state = {
       modalIsOpen: false,
       company: "",
@@ -24,8 +24,7 @@ class Jobcreatemodal extends Component {
       notes: "",
       jobSource: "",
       linkToJobPost: "",
-      pointOfContact: "",
-      status: "whishlist"
+      pointOfContact: ""
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -49,6 +48,23 @@ class Jobcreatemodal extends Component {
     });
   }
 
+  addToLists(newApplication) {
+    let lists = this.props.jobs;
+
+    // This will have to be reworked to handle user entered lists
+    if (newApplication.category === 'wishlist')
+      lists["wishlist"].push(newApplication);
+    else if (newApplication.category === 'onSiteInterview')
+      lists["on site"].push(newApplication);
+    else if (newApplication.category === 'phoneInterview')
+      lists["phone"].push(newApplication);
+    else if (newApplication.category === 'submitted')
+      lists["applied"].push(newApplication);
+
+    return lists;
+
+  }
+
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
@@ -62,44 +78,49 @@ class Jobcreatemodal extends Component {
       phoneInterview,
       codeTest,
       open,
-      category,
       notes,
       jobSource,
       linkToJobPost,
       pointOfContact
     } = this.state;
     const onsiteInterview = this.state.onSiteInterview;
-    // console.log(company);
-    console.log(onsiteInterview);
-    // let status = this.state.status;
-    // if (onSiteInterview)
-    //   status = 'onSiteInterview';
-    // else if (phoneInterview)
-    //   status = 'phoneInterview';
-    // else if (submitted)
-    //   status = 'submitted';
     
-    // const temp = {
-    //   company,
-    //   position,
-    //   submitted,
-    //   onsiteInterview,
-    //   recievedResponse,
-    //   whiteboard,
-    //   phoneInterview,
-    //   codeTest,
-    //   open,
-    //   category,
-    //   notes,
-    //   jobSource,
-    //   linkToJobPost,
-    //   pointOfContact,
-    //   status
-    // }
-    // console.log(temp);
-    // axios.post('http://localhost:5000/user/applications/add',{
-      
-    // } )
+    // set status based on checkboxes
+    let category = this.state.category;
+    if (onSiteInterview)
+      category = 'onSiteInterview';
+    else if (phoneInterview)
+      category = 'phoneInterview';
+    else if (submitted)
+      category = 'submitted';
+    
+    const temp = {
+      company,
+      position,
+      submitted,
+      onsiteInterview,
+      recievedResponse,
+      whiteboard,
+      phoneInterview,
+      codeTest,
+      open,
+      category,
+      notes,
+      jobSource,
+      linkToJobPost,
+      pointOfContact,
+    }
+    console.log(temp);
+    axios
+    .post('http://localhost:5000/user/applications/add', temp)
+    .then(response => {
+      console.log('Response:', response);
+      const newLists = this.addToLists(response.data.slice(-1)[0]);
+      this.props.handleJobChange(newLists);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   render() {
@@ -212,6 +233,12 @@ class Jobcreatemodal extends Component {
             <input 
             placeholder="Upload resume/CV"
              />
+             <br/>
+            <input 
+            placeholder="Position"
+            name="position"
+            value={this.state.position}
+            onChange={this.handleChange} />
             <button onClick={this.handleSubmit}>
               Add Job
             </button>
