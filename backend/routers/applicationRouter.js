@@ -50,6 +50,7 @@ router.get('/:applicationId', (req, res) => {
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
     if (!req.body.company || !req.body.position) {
+        error = new Error('Missing poistion and/or company');
         res.status(422).json({ error: 'company and position are required' });
         return;
     }
