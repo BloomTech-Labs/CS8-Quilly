@@ -29,16 +29,16 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  stripeemail: {
-    type: email,
-    unique: true,
-    lowercase: true,
-  },
-  issubscribed: {
-    type: boolean,
-    default: false,
-    // required: true,
-  },
+  // stripeemail: {
+  //   type: email,
+  //   unique: true,
+  //   lowercase: true,
+  // },
+  // issubscribed: {
+  //   type: boolean,
+  //   default: false,
+  //   // required: true,
+  // },
   applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
   meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
   contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
