@@ -27,9 +27,10 @@ router.post("/charge", (req, res) => {
       plan: "plan_DIBFYLHH0MvZx3",
     }).then(subscription => {
       // Checking to see if Subscription has been created
-      console.log("SUBSCRIPTION", subscription);
+      res.status(200).send(subscription.id);
     }).catch(err => {
       console.log(err);
+      res.status(500).json({ error: "Request could not be fulfilled" });
     })
   }).catch(err => {
     console.log(err);
