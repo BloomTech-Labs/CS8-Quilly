@@ -14,7 +14,7 @@ class Jobcreatemodal extends Component {
       company: "",
       position: "",
       submitted: false,
-      onsiteInterview: false,
+      onSiteInterview: false,
       recievedResponse: false,
       whiteboard: false,
       phoneInterview: false,
@@ -24,7 +24,7 @@ class Jobcreatemodal extends Component {
       notes: "",
       jobSource: "",
       linkToJobPost: "",
-      pointOfContact: ""
+      pointOfContact: "",
     };
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
@@ -114,12 +114,12 @@ class Jobcreatemodal extends Component {
     axios
     .post('http://localhost:5000/user/applications/add', temp)
     .then(response => {
-      console.log('Response:', response);
       const newLists = this.addToLists(response.data.slice(-1)[0]);
       this.props.handleJobChange(newLists);
+      this.closeModal();
     })
     .catch(error => {
-      console.log(error);
+      console.error(error.message, error.response.data);
     });
   }
 
@@ -208,22 +208,34 @@ class Jobcreatemodal extends Component {
             name="company"
             value={this.state.company}
             onChange={this.handleChange}/>
-            <input 
+            {/* <input 
             placeholder="Souce of Job"
             name="jobSource"
                   value={this.state.jobSource}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange} /> */}
+            <select name="jobSource" value={this.state.jobSource} onChange={this.handleChange}>
+              <option value="">Source of Job</option>    
+              <option value="Job Board">Job Board</option>
+              <option value="Linked In">Linked In</option>
+              <option value="Friend">Friend</option>
+              <option value="Recruiter">Recruiter</option>
+              <option value="Meetup">Meetup</option>
+            </select>
             <br />
             <input 
             placeholder="Link to Job Posting"
             name="linkToJobPost"
             value={this.state.link}
             onChange={this.handleChange} />
-            <input 
+            {/* <input 
             placeholder="Resolution(Open/Closed)"
             name="resolution"
             value={this.state.resolution}
-            onChange={this.handleChange} />
+            onChange={this.handleChange} /> */}
+            <select name="open" value={this.state.open} onChange={this.handleChange}>
+              <option value={true}>Open</option>
+              <option value={false}>Closed</option>
+            </select>
             <br />
             <input 
             placeholder="Point of Contact"
