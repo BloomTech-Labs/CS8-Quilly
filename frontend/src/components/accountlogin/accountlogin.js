@@ -31,6 +31,7 @@ class Accountlogin extends Component {
   }
 
   handleSubmit(event) {
+    console.log({username:this.state.username, password:this.state.password});
     axios
       .post(`http://localhost:5000/user/login`, {
         username: this.state.username,
