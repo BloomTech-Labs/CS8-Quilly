@@ -29,16 +29,31 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // stripeemail: {
-  //   type: email,
-  //   unique: true,
-  //   lowercase: true,
-  // },
-  // issubscribed: {
-  //   type: boolean,
-  //   default: false,
-  //   // required: true,
-  // },
+  stripe: {
+    // stripe.email is independent from the users email
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      lowercase: true,
+    },
+    // subscription checks if the user has an active subscription that has been purchased
+    subscription: {
+      type: boolean,
+      default: false
+    },
+    cards: {
+      // active dependent on the validity of the card selected for the stripe user
+      active: {
+        type: boolean
+      },
+      // cardsonfile will be in array form and will populate accordingly
+      cardsonfile: {
+        type: Object,
+        default: []
+      }
+    }
+  },
   applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
   meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
   contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
