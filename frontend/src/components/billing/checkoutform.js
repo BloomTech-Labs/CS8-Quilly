@@ -32,22 +32,6 @@ class CheckoutForm extends Component {
       });
   }
 
-
-
-
-  // onToken = (token) => {
-  //   fetch('/save-stripe-token', {
-  //     method: 'POST',
-  //     body: JSON.stringify(token),
-  //   }).then(response => {
-  //     response.json().then(data => {
-  //       alert(`We are in business, ${data.email}`);
-  //     });
-  //   });
-  // }
-
-
-  
   render() {
     if (this.state.purchaseCompleted) return <h1>Purchase Completed</h1>;
     return (

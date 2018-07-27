@@ -11,9 +11,8 @@ router.get("/", (req, res) => {
     .then(user => {
       console.log("hello this request was made!");
       res.status(200).send(user.billing);
-    })
-    .catch(error => {
-      res.status(500).json({ error: "Request could not be fulfilled" });
+    }).catch(error => {
+      res.status(500).json({ error: "Request could not be fulfilled", error });
     });
 });
 
@@ -28,6 +27,7 @@ router.post("/charge", (req, res) => {
     }).then(subscription => {
       // Checking to see if Subscription has been created
       res.status(200).send(subscription.id);
+      
     }).catch(err => {
       console.log(err);
       res.status(500).json({ error: "Request could not be fulfilled" });

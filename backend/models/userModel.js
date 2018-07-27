@@ -29,16 +29,27 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  applications: [{type: Schema.Types.ObjectId, ref: 'Application'}],
-  meetups: [{type: Schema.Types.ObjectId, ref: 'Meetup'}],
-  contributions: [{type: Schema.Types.ObjectId, ref: 'Contribution'}],
+  stripeemail: {
+    type: email,
+    unique: true,
+    lowercase: true,
+  },
+  issubscribed: {
+    type: boolean,
+    default: false,
+    // required: true,
+  },
+  applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
+  meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
+  contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
 },
   {
     timestamps: true
-});
+  }
+);
 
 // Password hashing
-userSchema.pre('save', function(next) {
+userSchema.pre('save', function (next) {
   bcrypt.hash(this.password, 10)
     .then(hash => {
       this.password = hash;
@@ -50,7 +61,7 @@ userSchema.pre('save', function(next) {
 });
 
 // Authentication method
-userSchema.methods.isPasswordValid = function(passwordGuess) {
+userSchema.methods.isPasswordValid = function (passwordGuess) {
   return bcrypt.compare(passwordGuess, this.password);
 }
 
