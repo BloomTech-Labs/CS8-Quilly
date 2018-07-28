@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+// Importing Stripe User Information
+const stripeCustomer = require('./stripeUserModel');
 
 const Schema = mongoose.Schema;
 
@@ -29,31 +31,6 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  stripe: {
-    // stripe.email is independent from the users email
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      lowercase: true,
-    },
-    // subscription checks if the user has an active subscription that has been purchased
-    subscription: {
-      type: Boolean,
-      default: false
-    },
-    cards: {
-      // active dependent on the validity of the card selected for the stripe user
-      active: {
-        type: Boolean
-      },
-      // cardsonfile will be in array form and will populate accordingly
-      cardsonfile: {
-        type: Object,
-        default: []
-      }
-    }
-  },
   applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
   meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
   contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
@@ -62,6 +39,9 @@ const userSchema = new mongoose.Schema({
     timestamps: true
   }
 );
+
+// adds last modified functionality to the user schema
+userSchema.plugin(stripeCustomer, stripeOptions);
 
 // Password hashing
 userSchema.pre('save', function (next) {

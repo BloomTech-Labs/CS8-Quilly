@@ -1,5 +1,5 @@
-// Need to add secret test API key in line 2 from Stripe
-const stripe = require('stripe')("");
+const config = require("./config/config");
+const stripe = require('stripe')(config.stripe.secret_key);
 const express = require("express");
 const router = express.Router();
 const User = require('../models/userModel');
@@ -18,9 +18,11 @@ router.get("/", (req, res) => {
 
 router.post("/charge", (req, res) => {
   stripe.customers.create({
-    email: 'aa@aa.com',
+    // Need to send req.session.email from frontend - billing.js
+    email: req.session.email,
     source: req.body.data
   }).then(customer => {
+    console.log("CUSTOMER:", customer);
     stripe.subscriptions.create({
       customer: customer.id,
       // Need to change plan id accordingly
@@ -28,9 +30,7 @@ router.post("/charge", (req, res) => {
     }).then(subscription => {
       // Checking to see if Subscription has been created
       res.status(200).send(subscription.id);
-
     }).catch(err => {
-      // console.log(err);
       res.status(500).json({ error: "Request could not be fulfilled" });
     })
   }).catch(err => {
