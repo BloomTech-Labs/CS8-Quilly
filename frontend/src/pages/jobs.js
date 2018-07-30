@@ -25,13 +25,21 @@ class Joblistpage extends Component {
   }
 
   componentDidMount() {
+    const lists = {
+      wishlist: [],
+      applied: [],
+      phone: [],
+      "on site": [],
+      offer: [],
+      rejected: [],
+    }
+
     axios
       .get(`${config.serverUrl}/user`)
       .then(user => {
         let applications = user.data.applications;
         applications.forEach(application => {
           let category = application.category;
-          let lists = this.state.lists;
           if (!lists[category]) {
             lists[category] = [];
           }
