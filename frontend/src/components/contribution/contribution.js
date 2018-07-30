@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "./contribution.css";
 import axios from "axios";
+
+import "./contribution.css";
+import config from "../../config/config";
 
 class Contribution extends Component {
   constructor() {
@@ -20,7 +22,7 @@ class Contribution extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/user/contributions")
+      .get(`${config.serverUrl}/user/contributions`)
       .then(response => {
         this.setState({ serverData: response.data });
       })
@@ -48,7 +50,7 @@ class Contribution extends Component {
     };
 
     axios
-      .post(`http://localhost:5000/user/contributions/add`, serverPort)
+      .post(`${config.serverUrl}/user/contributions/add`, serverPort)
       .then(res => {
         console.log(`RES.DATA: ${res.data}`);
         console.log(`SERVERPORT: ${serverPort}`);

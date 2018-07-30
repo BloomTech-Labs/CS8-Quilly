@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import "./accountsignup.css";
 import Modal from "react-modal";
 import axios from "axios";
+
+import config from "../../config/config"
+import "./accountsignup.css";
 
 let fakeServerData = {
   users: [
@@ -57,7 +59,7 @@ class Accountsignup extends Component {
 
   handleSubmit(event) {
     axios
-      .post(`http://localhost:5000/user/register`, {
+      .post(`${config.serverUrl}/user/register`, {
         username: this.state.username,
         password: this.state.password,
         email: this.state.email,
@@ -68,7 +70,7 @@ class Accountsignup extends Component {
         console.log(response);
         // Now that the user is created. Login the user
         axios
-        .post(`http://localhost:5000/user/login`, {
+        .post(`${config.serverUrl}/user/login`, {
           username: this.state.username,
           password: this.state.password
         })

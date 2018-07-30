@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
-import './jobcreatemodal.css';
 import axios from 'axios';
+
+import './jobcreatemodal.css';
 
 Modal.setAppElement(document.getElementById('root'));
 
 class Jobcreatemodal extends Component {
   constructor(props) {
     super(props);
-  
+
     this.state = {
       modalIsOpen: false,
       company: "",
@@ -84,7 +85,7 @@ class Jobcreatemodal extends Component {
       pointOfContact
     } = this.state;
     const onsiteInterview = this.state.onSiteInterview;
-    
+
     // set status based on checkboxes
     let category = this.state.category;
     if (onSiteInterview)
@@ -93,7 +94,7 @@ class Jobcreatemodal extends Component {
       category = 'phoneInterview';
     else if (submitted)
       category = 'submitted';
-    
+
     const temp = {
       company,
       position,
@@ -142,7 +143,7 @@ class Jobcreatemodal extends Component {
             <div className="Checkboxes">
               <form className="form">
                 <label>
-                  <input 
+                  <input
                   type="checkbox"
                   name="submitted"
                   checked={this.state.submitted}
@@ -150,7 +151,7 @@ class Jobcreatemodal extends Component {
                   Submitted Job Application
                 </label>
                 <label>
-                  <input 
+                  <input
                   type="checkbox"
                   name="onSiteInterview"
                   checked={this.state.onSiteInterview}
@@ -159,7 +160,7 @@ class Jobcreatemodal extends Component {
                 </label>
                 <br />
                 <label>
-                  <input 
+                  <input
                   type="checkbox"
                   name="recievedResponse"
                   checked={this.state.recievedResponse}
@@ -167,7 +168,7 @@ class Jobcreatemodal extends Component {
                   Received Response
                 </label>
                 <label>
-                  <input 
+                  <input
                   type="checkbox"
                   name="whiteboard"
                   checked={this.state.whiteboard}
@@ -176,7 +177,7 @@ class Jobcreatemodal extends Component {
                 </label>
                 <br />
                 <label>
-                  <input 
+                  <input
                   type="checkbox"
                   name="phoneInterview"
                   checked={this.state.phoneInterview}
@@ -184,7 +185,7 @@ class Jobcreatemodal extends Component {
                   Phone Interview
                 </label>
                 <label>
-                  <input 
+                  <input
                   type="checkbox"
                   name="codeTest"
                   checked={this.state.codeTest}
@@ -192,7 +193,7 @@ class Jobcreatemodal extends Component {
                   Code Test
                 </label>
                 <br />
-                <input 
+                <input
                 placeholder="Notes"
                 name="notes"
                 value={this.state.notes}
@@ -203,18 +204,18 @@ class Jobcreatemodal extends Component {
 
           <div className="Jobinformation">
             <h2>Job Information</h2>
-            <input 
-            placeholder="Company" 
+            <input
+            placeholder="Company"
             name="company"
             value={this.state.company}
             onChange={this.handleChange}/>
-            {/* <input 
+            {/* <input
             placeholder="Souce of Job"
             name="jobSource"
                   value={this.state.jobSource}
                   onChange={this.handleChange} /> */}
             <select name="jobSource" value={this.state.jobSource} onChange={this.handleChange}>
-              <option value="">Source of Job</option>    
+              <option value="">Source of Job</option>
               <option value="Job Board">Job Board</option>
               <option value="Linked In">Linked In</option>
               <option value="Friend">Friend</option>
@@ -222,12 +223,12 @@ class Jobcreatemodal extends Component {
               <option value="Meetup">Meetup</option>
             </select>
             <br />
-            <input 
+            <input
             placeholder="Link to Job Posting"
             name="linkToJobPost"
             value={this.state.link}
             onChange={this.handleChange} />
-            {/* <input 
+            {/* <input
             placeholder="Resolution(Open/Closed)"
             name="resolution"
             value={this.state.resolution}
@@ -237,16 +238,16 @@ class Jobcreatemodal extends Component {
               <option value={false}>Closed</option>
             </select>
             <br />
-            <input 
+            <input
             placeholder="Point of Contact"
             name="pointOfContact"
             value={this.state.pointOfContact}
             onChange={this.handleChange} />
-            <input 
+            <input
             placeholder="Upload resume/CV"
              />
              <br/>
-            <input 
+            <input
             placeholder="Position"
             name="position"
             value={this.state.position}

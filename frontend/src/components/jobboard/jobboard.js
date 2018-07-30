@@ -1,56 +1,113 @@
 import React, { Component } from 'react';
+import CustomCard from './jobcard/customCard';
+import formatDate from './formatDate.js';
 
-// Need to do `yarn add react-trello` to use the package.
+// need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
 
-// This NewCard will be replaced with AddJob
+// this NewCard will be replaced with AddJob
 import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
 import './jobboard.css';
 
-// Temporary Data
-const data = {
-  lanes: [
-    {
-      id: 'lane1',
-      title: 'Planned Tasks',
-      label: '2/2',
-      cards: [
-        {
-          id: 'Card1',
-          title: 'Write Blog',
-          description: 'Can AI make memes',
-          label: '30 mins'
-        },
-        {
-          id: 'Card2',
-          title: 'Pay Rent',
-          description: 'Transfer via NEFT',
-          label: '5 mins',
-          metadata: { sha: 'be312a1' }
-        }
-      ]
-    },
-    {
-      id: 'lane2',
-      title: 'Completed',
-      label: '0/0',
-      cards: []
-    }
-  ]
-};
-
 class JobBoard extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      data: {
+        lanes: [
+          {
+            id: 'lane1',
+            title: 'title',
+            label: 'test'
+          }
+        ]
+      },
+      lists: this.props.jobs,
+    };
+  }
+
+  generateData = (jobsData) => {
+    const data = {};
+    data.lanes = [];
+    let cardIndex = 0;
+    const listCards = {};
+
+    // grab the names of the categories
+    const listCategories = Object.keys(jobsData);
+
+    // format list titles by capitalizing each first word
+    const listTitles = listCategories
+                      .map(title => title.split(' ')
+                      .map(word => word[0].toUpperCase() + word.slice(1))
+                      .join(' '));
+
+    // get job count of each list
+    const listLabels = listCategories.map(list => jobsData[list].length.toString());
+
+    // make job cards
+    Object.entries(jobsData).forEach(([ listName, listData ]) => {
+      listCards[listName] = [];
+
+      // make sure there are some cards in the list before we start
+      if (listData.length > 0) {
+        listData.forEach((job) => {
+          cardIndex += 1;
+
+          listCards[listName].push({
+            id: `Card${cardIndex}`,
+            title: job.company,
+            description: job.position,
+            label: formatDate(job.createdAt)
+          });
+        });
+      }
+    });
+
+    // create lanes (aka columns)
+    for (let i = 0; i < listCategories.length; i++) {
+      data.lanes.push({
+        id: `lane${i + 1}`,
+        title: listTitles[i],
+        label: listLabels[i],
+        cards: listCards[listCategories[i]]
+      });
+    }
+
+    return data;
+  };
+
+  componentDidMount() {
+    const data = this.generateData(this.props.jobs);
+    this.setState({ data: data });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.lists !== this.state.lists) {
+      this.setState({ lists: this.state.lists });
+      const data = this.generateData(this.props.jobs);
+      this.setState({ data: data });
+    }
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.jobs !== prevState.lists) {
+      return { lists: nextProps.jobs };
+    }
+    else return null;
+  }
+
   render() {
-    console.log(this.props.jobs)
     return (
       <Board
-        data={data}
+        data={this.state.data}
+        customCardLayout
         cardDragClass="draggingCard"
-        laneDragClass="draggingLane"
         draggable
-        editable
+        laneDraggable={false}
         newCardTemplate={<Jobcreatemodal />}
-      />
+        >
+        <CustomCard cards={this.state.data.cards} />
+      </Board>
     );
   }
 }

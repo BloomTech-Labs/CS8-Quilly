@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+
+import config from "../../config/config";
 import "./meetup.css";
 
 axios.defaults.withCredentials = true;
@@ -22,7 +24,7 @@ class Meetup extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/user/meetups")
+      .get(`${config.serverUrl}/user/meetups`)
       .then(response => {
         this.setState({ serverData: response.data });
       })
@@ -50,7 +52,7 @@ class Meetup extends Component {
       notes: this.state.notes
     };
     axios
-      .post(`http://localhost:5000/user/meetups/add`, {
+      .post(`${config.serverUrl}/user/meetups/add`, {
         date: this.state.date,
         activity: this.state.activity,
         link: this.state.link,
