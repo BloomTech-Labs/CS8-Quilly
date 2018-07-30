@@ -5,7 +5,7 @@ const router = express.Router();
 const User = require('../models/userModel');
 
 router.get("/", (req, res) => {
-  const userId = req.session.userId; // the user id of the logged in user
+  const userId = req.session.userId; // The user id of the logged in user
   User.findById(userId)
     .populate({ path: "billing" })
     .then(user => {
@@ -28,9 +28,10 @@ router.post("/charge", (req, res) => {
       // Need to change plan id accordingly
       plan: "plan_DIBFYLHH0MvZx3",
     }).then(subscription => {
-      // checking to see if subscription has been created
+      // Checking to see if Subscription has been created
       res.status(200).send(subscription.id);
     }).catch(err => {
+      console.log(err);
       res.status(500).json({ error: "Request could not be fulfilled" });
     })
   }).catch(err => {
