@@ -100,6 +100,7 @@ router.post("/login", (req, res) => {
           .isPasswordValid(password)
           .then(result => {
             if (result) {
+              req.session.email = email;
               req.session.username = username;
               req.session.userId = user._id;
               res.status(200).json({ message: "Login successful" });

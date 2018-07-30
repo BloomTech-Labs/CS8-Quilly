@@ -21,7 +21,7 @@ class CheckoutForm extends Component {
           // edit here after backend is finished
           axios.post(`${config.serverUrl}/user/billing/charge`, { data: result.token.id })
             .then(res => {
-              console.log("STATE HERE", res);
+              // console.log("STATE HERE", res);
               if (res) {
                 console.log("Successful payment");
                 this.setState({ purchaseCompleted: true });
