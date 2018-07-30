@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './breadcrumbs.css';
 
 class Breadcrumbs extends Component {
@@ -8,7 +9,7 @@ class Breadcrumbs extends Component {
       currentPage: "Jobs",
     };
   }
-  
+
   componentWillMount() {
     let path = window.location.pathname.slice(1);
     let page = path[0].toUpperCase() + path.slice(1);

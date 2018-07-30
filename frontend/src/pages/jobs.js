@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
 import Signout from '../components/signout/signout'
+import config from '../config/config';
 
 class Joblistpage extends Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Joblistpage extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:5000/user')
+      .get(`${config.serverUrl}/user`)
       .then(user => {
         let applications = user.data.applications;
         let lists = this.state.lists;
