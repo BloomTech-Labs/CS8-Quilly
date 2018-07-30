@@ -4,6 +4,8 @@ import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
 import Signout from '../components/signout/signout'
+import config from '../config/config';
+import axios from 'axios';
 
 class Joblistpage extends Component {
   constructor(props) {
@@ -20,6 +22,24 @@ class Joblistpage extends Component {
     };
 
     this.handleJobChange = this.handleJobChange.bind(this);
+  }
+
+  componentDidMount() {
+    axios
+      .get(`${config.serverUrl}/user`)
+      .then(user => {
+        let applications = user.data.applications;
+        applications.forEach(application => {
+          let category = application.category;
+          let lists = this.state.lists;
+          if (!lists[category]) {
+            lists[category] = [];
+          }
+          lists[category].push(application);
+        });
+      })
+      .then(() => this.setState({ lists: lists }))
+      .catch(err => console.error(err));
   }
 
   handleJobChange(lists) {

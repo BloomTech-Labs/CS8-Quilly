@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import CustomCard from './jobcard/customCard';
 import formatDate from './formatDate.js';
 
@@ -8,7 +7,6 @@ import Board from 'react-trello';
 
 // this NewCard will be replaced with AddJob
 import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
-import config from '../../config/config';
 import './jobboard.css';
 
 class JobBoard extends Component {
@@ -24,6 +22,7 @@ class JobBoard extends Component {
           }
         ]
       },
+      lists: this.props.jobs,
     };
   }
 
@@ -75,42 +74,26 @@ class JobBoard extends Component {
     }
 
     return data;
-  }
+  };
 
   componentDidMount() {
-    const lists = {
-      wishlist: [],
-      applied: [],
-      phone: [],
-      "on site": [],
-      offer: [],
-      rejected: [],
+    const data = this.generateData(this.props.jobs);
+    this.setState({ data: data });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.lists !== this.state.lists) {
+      this.setState({ lists: this.state.lists });
+      const data = this.generateData(this.props.jobs);
+      this.setState({ data: data });
     }
+  }
 
-    axios
-      .get(`${config.serverUrl}/user`)
-      .then(user => {
-        let applications = user.data.applications;
-        applications.forEach(application => {
-          let category = application.category;
-          if (!lists[category]) {
-            lists[category] = [];
-          }
-          lists[category].push(application);
-        });
-
-        // format data for board
-        let data = this.generateData(lists);
-
-        this.setState({
-          lists: lists,
-          data: data
-        });
-
-        // send data up to jobs component
-        this.props.handleJobChange(lists);
-      })
-      .catch(err => console.error(err));
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.jobs !== prevState.lists) {
+      return { lists: nextProps.jobs };
+    }
+    else return null;
   }
 
   render() {
