@@ -1,0 +1,51 @@
+.signupmodal {
+    padding: 5% 10%;
+    margin: 5% auto;
+    display: flex;
+    flex-wrap: wrap;
+    background: white;
+    border-radius: 15px;
+    max-width: 500px;
+}
+
+.ReactModal__Content--after-open {
+    max-width: 500px;
+    border-radius: 15px;
+    margin: 5% auto;
+}
+
+.Modal {
+    margin: auto;
+}
+
+.inputform .inputlable {
+    width: 48%
+}
+
+.inputform .inputField {
+    width: 45%;
+    height: 18px;
+    align-self: center;
+}
+
+.inputform .btn {
+    outline: thick ridge black;
+    background: white;
+    width: 275px;
+    height: 42px;
+    margin: 40px auto 0;
+    font-size: 20px;
+}
+
+.inputform .btn:hover {
+    cursor: pointer;
+}
+
+.signupHeader {
+    width: 100%
+}
+
+.inputform {
+    display: flex;
+    flex-wrap: wrap;
+}
