@@ -8,7 +8,7 @@ module.exports = {
     optionsSuccessStatus: 200
   },
   stripe: {
-    secretKey:
-      process.env.STRIPE_SECRET_KEY || "sk_test_QixOiUfMKS32WljW9ThkIi1e"
+    secretKey: process.env.STRIPE_SECRET_KEY || "sk_test_QixOiUfMKS32WljW9ThkIi1e",
+    defaultPlan: "plan_DJCPpQI22daHen"
   }
 };

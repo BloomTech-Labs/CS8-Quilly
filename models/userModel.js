@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 // Importing Stripe User Information
-const stripeCustomer = require('./stripeUserModel');
+const stripeCustomer = require('./stripecustomer');
 
 const Schema = mongoose.Schema;
 const saltRounds = 10;

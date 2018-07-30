@@ -1,7 +1,8 @@
-const Stripe = require('stripe'), stripe;
+// const Stripe = require('stripe'), stripe;
+const Stripe = require('stripe');
 const config = require("./config/config");
 
-module.exports = exports = function stripeCustomer(schema, options) {
+module.exports = exports = function stripeCustomer(schema) {
   stripe = Stripe(config.stripe.secret_key);
 
   schema.add({
@@ -11,7 +12,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
       last4: String,
       plan: {
         type: String,
-        default: options.defaultPlan
+        default: config.stripe.defaultPlan // Plan default
       }
     }
   });
