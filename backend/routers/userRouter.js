@@ -90,13 +90,13 @@ router.post("/login", (req, res) => {
   const { username, password } = req.body;
   if (!username || !password)
     res.status(422).json({ error: "Invalid credentials" });
-
   User.findOne({ username })
     .then(user => {
       if (user) {
         user
           .isPasswordValid(password)
           .then(result => {
+            
             if (result) {
               req.session.email = email;
               req.session.username = username;

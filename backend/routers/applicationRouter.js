@@ -50,6 +50,7 @@ router.get('/:applicationId', (req, res) => {
 router.post('/add', (req, res) => {
     const userId = req.session.userId;
     if (!req.body.company || !req.body.position) {
+        error = new Error('Missing poistion and/or company');
         res.status(422).json({ error: 'company and position are required' });
         return;
     }
@@ -59,26 +60,27 @@ router.post('/add', (req, res) => {
     .save(function(error){
         if (error)
             res.status(500).json({ error: 'Application creation failed' });
-            return;
+        else {
+            User
+            .findById(userId)
+            .populate('applications')
+            .then(user => {
+                user.applications.push(newApplication);
+                user
+                .save()
+                .then(savedUser => {
+                    res.status(201).json(savedUser.applications);
+                })
+                .catch(error => {
+                    res.status(500).json({ error: 'Failed to save the document.' });
+                });
+            })
+            .catch(error => {
+                res.status(500).json({ error: 'Application creation failed' });
+            });
+        }
     });
 
-    User
-    .findById(userId)
-    .populate('applications')
-    .then(user => {
-        user.applications.push(newApplication);
-        user
-        .save()
-        .then(savedUser => {
-            res.status(201).json(savedUser.applications);
-        })
-        .catch(error => {
-            res.status(500).json({ error: 'Failed to save the document.' });
-        });
-    })
-    .catch(error => {
-        res.status(500).json({ error: 'Application creation failed' });
-    });
 });
 
 //end point for deleting an applications

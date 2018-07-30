@@ -47,29 +47,34 @@ router.post("/add", (req, res) => {
   const userId = req.session.userId;
   const newMeetup = new Meetup(req.body);
 
-  if (!req.body.date || !req.body.activity) {
-    res.status(422).json({ error: "date and activity are required" });
-    return;
-  }
-  newMeetup.save(function(error) {
-    if (error) res.status(500).json({ error: "Meetup creation failed" });
-  });
-
-  User.findById(userId)
-    .then(user => {
-      user.meetups.push(newMeetup);
-      user
-        .save()
-        .then(savedUser => {
-          res.status(201).json({ message: "Meetup successfully created" });
-        })
-        .catch(error => {
-          res.status(500).json({ error: "Failed to save the document." });
-        });
-    })
-    .catch(error => {
-      res.status(500).json({ error: "Meetup creation failed" });
+    if (!req.body.date || !req.body.activity) {
+        res.status(422).json({ error: 'date and activity are required' });
+        return;
+    }
+    newMeetup
+    .save(function(error){
+        if (error)
+            res.status(500).json({error: 'Meetup creation failed'});
+        else {
+            User
+            .findById(userId)
+            .then(user => {
+                user.meetups.push(newMeetup);
+                user
+                .save()
+                .then(savedUser => {
+                    res.status(201).json({ message: 'Meetup successfully created' });
+                })
+                .catch(error => {
+                    res.status(500).json({error: 'Failed to save the document.'});
+                });
+            })
+            .catch(error => {
+                res.status(500).json({error: 'Meetup creation failed'});
+            });
+        }
     });
+
 });
 
 //end point to delete a meetup
