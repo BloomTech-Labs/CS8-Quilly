@@ -4,10 +4,10 @@ const router = express.Router();
 const User = require("../models/userModel");
 const Meetup = require("../models/meetupModel");
 
-//end points for 'user/meetups'
-//should return all meetups for logged in user
+// end points for 'user/meetups'
+// should return all meetups for logged in user
 router.get("/", (req, res) => {
-  const userId = req.session.userId; // The user id of the logged in user
+  const userId = req.session.userId; // the user id of the logged in user
   User.findById(userId)
     .populate({ path: "meetups" })
     .then(user => {
@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
 });
 
 router.get("/refs", (req, res) => {
-  const userId = req.session.userId; // The user id of the logged in user
+  const userId = req.session.userId; // the user id of the logged in user
   User.findById(userId)
     .then(user => {
       res.status(200).send(user.meetups);
@@ -30,7 +30,7 @@ router.get("/refs", (req, res) => {
     });
 });
 
-// End point for retrieving a single meetup by id
+// end point for retrieving a single meetup by id
 router.get("/:meetupId", (req, res) => {
   const { meetupId } = req.params;
   Meetup.findById(meetupId)
@@ -77,11 +77,11 @@ router.post("/add", (req, res) => {
 
 });
 
-//end point to delete a meetup
+// end point to delete a meetup
 router.delete("/delete/:meetupId", (req, res) => {
   const { meetupId } = req.params;
 
-  // Delete the actual Meetup
+  // delete the actual meetup
   Meetup.findByIdAndDelete(meetupId)
     .then(deletedMeetup => {
       User.findOneAndUpdate(
@@ -100,7 +100,7 @@ router.delete("/delete/:meetupId", (req, res) => {
     });
 });
 
-// This end point modifies a single meetup
+// this end point modifies a single meetup
 router.put("/update/:meetupId", (req, res) => {
   const { meetupId } = req.params;
   Meetup.findByIdAndUpdate(meetupId, { ...req.body })

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
 import Signout from '../components/signout/signout'
+import config from '../config/config';
+import axios from 'axios';
 
 class Joblistpage extends Component {
   constructor(props) {
@@ -16,7 +17,7 @@ class Joblistpage extends Component {
         phone: [],
         "on site": [],
         offer: [],
-        rejected: []
+        rejected: [],
       }
     };
 
@@ -25,21 +26,19 @@ class Joblistpage extends Component {
 
   componentDidMount() {
     axios
-      .get('http://localhost:5000/user')
+      .get(`${config.serverUrl}/user`)
       .then(user => {
         let applications = user.data.applications;
-        let lists = this.state.lists;
-
         applications.forEach(application => {
           let category = application.category;
+          let lists = this.state.lists;
           if (!lists[category]) {
             lists[category] = [];
           }
           lists[category].push(application);
         });
-
-        this.setState({ lists: lists });
       })
+      .then(() => this.setState({ lists: lists }))
       .catch(err => console.error(err));
   }
 
@@ -53,7 +52,7 @@ class Joblistpage extends Component {
         <Signout />
         <Breadcrumbs />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} />
+        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} />
         <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
       </div>
     );

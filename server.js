@@ -19,11 +19,11 @@ mongoose
 
 const server = express();
 
-// Use middleware
+// use middleware
 server.use(express.json());
 server.use(helmet());
 server.use(cors(config.corsOptions));
-server.options("http://localhost:3000", cors(config.corsOptions));
+server.options(config.corsOptions.origin, cors(config.corsOptions));
 
 server.use(
   session({
@@ -32,7 +32,7 @@ server.use(
     secure: false,
     httpOnly: true,
     name: "quilly-sessions",
-    resave: true,
+    resave: false,
     saveUninitialized: false,
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
@@ -45,7 +45,7 @@ server.get("/", (req, res) => {
   res.json({ api: "running" });
 });
 
-//use routers
+// use routers
 server.use("/user", userRouter);
 
 server.listen(config.port, () =>

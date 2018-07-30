@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { CardElement, injectStripe } from 'react-stripe-elements';
 import axios from 'axios';
 
+import config from '../../config/config';
+
 class CheckoutForm extends Component {
   constructor(props) {
     super(props);
@@ -11,14 +13,13 @@ class CheckoutForm extends Component {
     this.submit = this.submit.bind(this);
   }
 
-
   submit(event) {
     this.props.stripe.createToken({ name: "Name" }) // add name/address fields, see here for details: https://stripe.com/docs/stripe-js/reference#stripe-create-token
       .then(result => {
         // console.log('RESULT: ', result.token);
         if (result.token) {
           // edit here after backend is finished
-          axios.post("http://localhost:5000/user/billing/charge", { data: result.token.id })
+          axios.post(`${config.serverUrl}/user/billing/charge`, { data: result.token.id })
             .then(res => {
               // console.log("STATE HERE", res);
               if (res) {

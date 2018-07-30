@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const stripeCustomer = require('./stripeUserModel');
 
 const Schema = mongoose.Schema;
+const saltRounds = 10;
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -43,19 +44,23 @@ const userSchema = new mongoose.Schema({
 // adds last modified functionality to the user schema
 userSchema.plugin(stripeCustomer, stripeOptions);
 
-// Password hashing
+// password hashing
 userSchema.pre('save', function (next) {
-  bcrypt.hash(this.password, 10)
-    .then(hash => {
-      this.password = hash;
-      next();
-    })
-    .catch(err => {
-      return next(err);
-    });
+
+  if (this.password && this.isModified('password')) {
+    bcrypt.hash(this.password, saltRounds)
+      .then(hash => {
+        this.password = hash;
+        next();
+      })
+      .catch(err => {
+        return next(err);
+      });
+  } else next();
+
 });
 
-// Authentication method
+// authentication method
 userSchema.methods.isPasswordValid = function (passwordGuess) {
   return bcrypt.compare(passwordGuess, this.password);
 }

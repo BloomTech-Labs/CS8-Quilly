@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
+
+import config from '../../config/config';
 import "./signout.css";
 
 class Accountlogout extends Component {
@@ -13,7 +15,7 @@ class Accountlogout extends Component {
   handleSubmit(event) {
     event.preventDefault();
     axios
-      .get(`http://localhost:5000/user/logout`)
+      .get(`${config.serverUrl}/user/logout`)
       .then(function (response) {
         console.log(`This is the LOGOUT RESPONSE: `, response);
         window.location.pathname = '/home';

@@ -8,7 +8,7 @@ const billingRouter = require("../stripe/stripe")
 
 const User = require("../models/userModel");
 
-// Authenticate that the user is signed in
+// authenticate that the user is signed in
 function authenticate(req, res, next) {
   if (req.session && req.session.userId) next();
   else
@@ -68,7 +68,7 @@ router.post("/register", (req, res) => {
           })
           .catch(err => {
             if (err.code === 11000)
-              //11000 is the mongo error code for a duplicate of a unique field
+              // 11000 is the mongo error code for a duplicate of a unique field
               res.status(422).json({
                 error:
                   "New user could not be created. A unqique email address is required."
@@ -88,15 +88,17 @@ router.post("/register", (req, res) => {
 // end point to log in to the app
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
+  console.log(req.body);
+  console.log('username', username);
+  console.log('password', password);
   if (!username || !password)
-    res.status(422).json({ error: "Invalid credentials" });
+    res.status(422).json({ error: "Username and password are required." });
   User.findOne({ username })
     .then(user => {
       if (user) {
         user
           .isPasswordValid(password)
           .then(result => {
-            
             if (result) {
               req.session.email = email;
               req.session.username = username;

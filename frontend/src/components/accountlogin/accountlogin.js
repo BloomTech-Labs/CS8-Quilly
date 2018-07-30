@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import Modal from 'react-modal';
-import { Link } from "react-router-dom";
 import axios from "axios";
-import "./accountlogin.css";
 
+import config from "../../config/config";
+import "./accountlogin.css";
 
 class Accountlogin extends Component {
   constructor() {
@@ -31,19 +31,17 @@ class Accountlogin extends Component {
   }
 
   handleSubmit(event) {
-    console.log({username:this.state.username, password:this.state.password});
+    // console.log({username:this.state.username, password:this.state.password});
     axios
-      .post(`http://localhost:5000/user/login`, {
+      .post(`${config.serverUrl}/user/login`, {
         username: this.state.username,
         password: this.state.password
       })
-
       .then(function (response) {
-        console.log(response);
         window.location.pathname = '/jobs';
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
 
     event.preventDefault();
