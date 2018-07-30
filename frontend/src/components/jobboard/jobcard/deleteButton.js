@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
-import './deleteButton.css'
+import './buttonStyle.css';
 
 const DeleteButton = () => {
   return (
     <Fragment>
-      <FontAwesomeIcon icon={faTrash} />
+      <FontAwesomeIcon icon={faTrash} className="cardButton deleteButton" />
     </Fragment>
   );
 };

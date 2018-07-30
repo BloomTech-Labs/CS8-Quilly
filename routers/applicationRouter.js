@@ -3,10 +3,10 @@ const router = express.Router();
 const Application = require('../models/applicationModel');
 const User = require('../models/userModel');
 
-//end point for /user/applications/
-//should return all applications for logged in user
+// end point for /user/applications
+// should return all applications for logged in user
 router.get('/', (req, res) => {
-    const userId = req.session.userId; // The user id of the logged in user
+    const userId = req.session.userId; // the user id of the logged in user
     User
     .findById(userId)
     .populate({path: 'applications'})
@@ -18,9 +18,9 @@ router.get('/', (req, res) => {
     });
 });
 
-// This endpoint gets the list of refs from user.applications(for testing purposes)
+// this endpoint gets the list of refs from user.applications (for testing purposes)
 router.get('/refs', (req, res) => {
-    const userId = req.session.userId; // The user id of the logged in user
+    const userId = req.session.userId; // the user id of the logged in user
     User
     .findById(userId)
     .then(user => {
@@ -32,7 +32,7 @@ router.get('/refs', (req, res) => {
     })
 });
 
-// End point for retrieving a single application by id
+// end point for retrieving a single application by id
 router.get('/:applicationId', (req, res) => {
     const { applicationId } = req.params;
     Application
@@ -54,7 +54,7 @@ router.post('/add', (req, res) => {
         res.status(422).json({ error: 'company and position are required' });
         return;
     }
-    
+
     const newApplication = new Application(req.body);
     newApplication
     .save(function(error){
@@ -69,7 +69,7 @@ router.post('/add', (req, res) => {
                 user
                 .save()
                 .then(savedUser => {
-                    res.status(201).json(savedUser.applications);
+                    res.status(201).json(savedUser);
                 })
                 .catch(error => {
                     res.status(500).json({ error: 'Failed to save the document.' });
@@ -83,15 +83,15 @@ router.post('/add', (req, res) => {
 
 });
 
-//end point for deleting an applications
+// end point for deleting an applications
 router.delete('/delete/:applicationId', (req, res) => {
     const { applicationId } = req.params;
 
-    // Delete the actual application
+    // delete the actual application
     Application
     .findByIdAndDelete(applicationId)
     .then(deletedApplication => {
-        //Delete the refrence in user.applicaions
+        // delete the reference in user.applications
         User
         .findOneAndUpdate({_id: req.session.userId}, { $pull: { applications: applicationId } })
         .then(response => {
@@ -106,7 +106,7 @@ router.delete('/delete/:applicationId', (req, res) => {
     });
 });
 
-// This end point modifies a single application
+// this end point modifies a single application
 router.put('/update/:applicationId', (req, res) => {
     const { applicationId } = req.params;
     Application

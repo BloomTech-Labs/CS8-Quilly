@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import Modal from 'react-modal';
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 import config from "../../config/config";
@@ -32,19 +31,17 @@ class Accountlogin extends Component {
   }
 
   handleSubmit(event) {
-    console.log({username:this.state.username, password:this.state.password});
+    // console.log({username:this.state.username, password:this.state.password});
     axios
       .post(`${config.serverUrl}/user/login`, {
         username: this.state.username,
         password: this.state.password
       })
-
       .then(function (response) {
-        console.log(response);
         window.location.pathname = '/jobs';
       })
       .catch(function (error) {
-        console.log(error);
+        console.error(error);
       });
 
     event.preventDefault();

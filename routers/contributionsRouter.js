@@ -4,10 +4,10 @@ const router = express.Router();
 const User = require('../models/userModel');
 const Contribution = require('../models/contributionModel');
 
-//end points for '/user/contributions'
-//should return all meetups for logged in user
+// end points for /user/contributions
+// should return all meetups for logged in user
 router.get('/', (req, res) => {
-    const userId = req.session.userId; // The user id of the logged in user
+    const userId = req.session.userId; // the user id of the logged in user
     User
     .findById(userId)
     .populate({path: 'contributions'})
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/refs', (req, res) => {
-    const userId = req.session.userId; // The user id of the logged in user
+    const userId = req.session.userId; // the user id of the logged in user
     User
     .findById(userId)
     .then(user => {
@@ -33,7 +33,7 @@ router.get('/refs', (req, res) => {
     })
 });
 
-// End point for retrieving a single contribution by id
+// end point for retrieving a single contribution by id
 router.get('/:contributionId', (req, res) => {
     const { contributionId } = req.params;
     Contribution
@@ -83,15 +83,15 @@ router.post('/add', (req, res) => {
 
 });
 
-//end point to delete a contribution
+// end point to delete a contribution
 router.delete('/delete/:contributionId', (req, res) => {
     const { contributionId } = req.params;
 
-    // Delete the actual Contribution
+    // delete the actual contribution
     Contribution
     .findByIdAndDelete(contributionId)
     .then(deletedContribution => {
-        //Delete the refrence in user.applicaions
+        // delete the reference in user.applications
         User
         .findOneAndUpdate({ _id: req.session.userId }, { $pull: { contributions: contributionId } })
         .then(response => {
@@ -106,7 +106,7 @@ router.delete('/delete/:contributionId', (req, res) => {
     });
 });
 
-// This end point modifies a single contribution
+// this end point modifies a single contribution
 router.put('/update/:contributionId', (req, res) => {
     const { contributionId } = req.params;
     Contribution

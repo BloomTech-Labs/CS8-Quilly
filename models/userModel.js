@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 
 const Schema = mongoose.Schema;
+const saltRounds = 10;
 
 const userSchema = new mongoose.Schema({
   username: {
@@ -37,9 +38,11 @@ const userSchema = new mongoose.Schema({
     timestamps: true
 });
 
-// Password hashing
+// password hashing
 userSchema.pre('save', function(next) {
-  bcrypt.hash(this.password, 10)
+
+  if (this.password && this.isModified('password')) {
+    bcrypt.hash(this.password, saltRounds)
     .then(hash => {
       this.password = hash;
       next();
@@ -47,9 +50,11 @@ userSchema.pre('save', function(next) {
     .catch(err => {
       return next(err);
     });
+  } else next();
+
 });
 
-// Authentication method
+// authentication method
 userSchema.methods.isPasswordValid = function(passwordGuess) {
   return bcrypt.compare(passwordGuess, this.password);
 }
