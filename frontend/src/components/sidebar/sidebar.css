@@ -1,7 +1,7 @@
 .Sidebar {
   height: 88%; /* Full-height: remove this if you want "auto" height */
   width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  position: absolute; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 0; /* Stay on top */
   top: 65px; /* Stay at the top */
   left: 30px;
@@ -23,20 +23,4 @@
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
   color: hotpink;
-}
-
-/* Style page content */
-.main {
-  /* Same as the width of the sidebar */
-  padding: 0px 10px;
-}
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .Sidebar {
-    padding-top: 15px;
-  }
-  .Sidebar a {
-    font-size: 18px;
-  }
 }
