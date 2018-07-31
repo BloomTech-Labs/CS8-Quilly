@@ -28,7 +28,7 @@ class Meetup extends Component {
       .then(response => {
         this.setState({ serverData: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -45,12 +45,12 @@ class Meetup extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    let serverPort = {
-      date: this.state.date,
-      activity: this.state.activity,
-      link: this.state.link,
-      notes: this.state.notes
-    };
+    // let serverPort = {
+    //   date: this.state.date,
+    //   activity: this.state.activity,
+    //   link: this.state.link,
+    //   notes: this.state.notes
+    // };
     axios
       .post(`${config.serverUrl}/user/meetups/add`, {
         date: this.state.date,
@@ -58,10 +58,10 @@ class Meetup extends Component {
         link: this.state.link,
         notes: this.state.notes
       })
-      .then(function(response) {
+      .then(function (response) {
         console.log(response);
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -71,7 +71,7 @@ class Meetup extends Component {
       <div className="MeetupComponents">
         <div className="meetups">
           {/* Displaying over user's meetups -- will display nothing if no input given */}
-          {this.state.serverData.map(function(meetup) {
+          {this.state.serverData.map(function (meetup) {
             return (
               <div key={meetup.activity}>
                 <div className="date">{meetup.date}</div>
