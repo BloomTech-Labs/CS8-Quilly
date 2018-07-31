@@ -9,28 +9,28 @@
   padding-top: 10px;
   /* outline-style: solid; */
   text-align: left;
-  background-color: rgba(255, 255, 255, 0.377);
+  background-color: #ffeedb34;
 }
 
 /* The navigation menu links */
 .Sidebar a {
-  padding: 6px 8px 6px 16px;
+  padding: 10px 10px 10px 25px;
   text-decoration: none;
   font-size: 20px;
-  color: black;
+  color: #ffeedb45;
   display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
-  color: hotpink;
+  color: #ffeedb;
 }
 
 /* Style page content */
-.main {
-  /* Same as the width of the sidebar */
-  /* padding: 0px 10px; */
-}
+/* .main {
+  Same as the width of the sidebar 
+  padding: 0px 10px;
+} */
 
 /* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
 @media screen and (max-height: 450px) {

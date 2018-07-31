@@ -8,6 +8,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar">
+        <Link to="/">Home</Link>
         <Link to="/jobs">Jobs</Link>
         <Link to="/meetups">Meetups</Link>
         <Link to="/contributions">Contributions</Link>
