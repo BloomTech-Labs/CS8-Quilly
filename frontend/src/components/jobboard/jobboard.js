@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import CustomCard from './jobcard/customCard';
+import CustomCard from './jobcard/customCard.js';
 import formatDate from './formatDate.js';
 
 // need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
 
-// this NewCard will be replaced with AddJob
 import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
 import './jobboard.css';
 
@@ -37,27 +36,28 @@ class JobBoard extends Component {
 
     // format list titles by capitalizing each first word
     const listTitles = listCategories
-                      .map(title => title.split(' ')
-                      .map(word => word[0].toUpperCase() + word.slice(1))
-                      .join(' '));
+      .map(title => title.split(' ')
+        .map(word => word[0].toUpperCase() + word.slice(1))
+        .join(' '));
 
     // get job count of each list
     const listLabels = listCategories.map(list => jobsData[list].length.toString());
 
     // make job cards
-    Object.entries(jobsData).forEach(([ listName, listData ]) => {
+    Object.entries(jobsData).forEach(([listName, listData]) => {
       listCards[listName] = [];
 
       // make sure there are some cards in the list before we start
       if (listData.length > 0) {
         listData.forEach((job) => {
           cardIndex += 1;
-
+          console.log(job);
           listCards[listName].push({
             id: `Card${cardIndex}`,
             title: job.company,
             description: job.position,
-            label: formatDate(job.createdAt)
+            label: formatDate(job.createdAt),
+            jobInfo: job
           });
         });
       }
@@ -82,7 +82,9 @@ class JobBoard extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
     if (prevState.lists !== this.state.lists) {
+      console.log('in if');
       this.setState({ lists: this.state.lists });
       const data = this.generateData(this.props.jobs);
       this.setState({ data: data });
@@ -90,7 +92,9 @@ class JobBoard extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('getDerivedStateFromProps');
     if (nextProps.jobs !== prevState.lists) {
+      console.log('in if in der')
       return { lists: nextProps.jobs };
     }
     else return null;
@@ -106,7 +110,7 @@ class JobBoard extends Component {
         laneDraggable={false}
         newCardTemplate={<Jobcreatemodal />}
         >
-        <CustomCard cards={this.state.data.cards} />
+        <CustomCard cards={this.state.data.cards} openEditModal={this.props.openEditModal} />
       </Board>
     );
   }
