@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import axios from 'axios';
 
 import './jobcreatemodal.css';
+import { runInThisContext } from 'vm';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -212,11 +213,6 @@ class Jobcreatemodal extends Component {
             name="company"
             value={this.state.company}
             onChange={this.handleChange}/>
-            {/* <input
-            placeholder="Souce of Job"
-            name="jobSource"
-                  value={this.state.jobSource}
-                  onChange={this.handleChange} /> */}
             <select name="jobSource" value={this.state.jobSource} onChange={this.handleChange}>
               <option value="">Source of Job</option>
               <option value="Job Board">Job Board</option>
@@ -231,11 +227,6 @@ class Jobcreatemodal extends Component {
             name="linkToJobPost"
             value={this.state.link}
             onChange={this.handleChange} />
-            {/* <input
-            placeholder="Resolution(Open/Closed)"
-            name="resolution"
-            value={this.state.resolution}
-            onChange={this.handleChange} /> */}
             <select name="open" value={this.state.open} onChange={this.handleChange}>
               <option value={true}>Open</option>
               <option value={false}>Closed</option>

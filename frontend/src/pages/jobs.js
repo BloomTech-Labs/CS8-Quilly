@@ -52,9 +52,7 @@ class Joblistpage extends Component {
   }
 
   handleJobChange(lists) {
-    console.log('lists on jobs page',lists)
     this.setState({ lists: lists });
-    console.log(this.state.lists);
   }
 
   render() {

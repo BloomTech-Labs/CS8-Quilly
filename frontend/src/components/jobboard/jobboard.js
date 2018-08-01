@@ -52,12 +52,13 @@ class JobBoard extends Component {
       if (listData.length > 0) {
         listData.forEach((job) => {
           cardIndex += 1;
-
+          console.log(job);
           listCards[listName].push({
             id: `Card${cardIndex}`,
             title: job.company,
             description: job.position,
-            label: formatDate(job.createdAt)
+            label: formatDate(job.createdAt),
+            jobInfo: job
           });
         });
       }
@@ -82,7 +83,9 @@ class JobBoard extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    console.log('componentDidUpdate');
     if (prevState.lists !== this.state.lists) {
+      console.log('in if');
       this.setState({ lists: this.state.lists });
       const data = this.generateData(this.props.jobs);
       this.setState({ data: data });
@@ -90,7 +93,9 @@ class JobBoard extends Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('getDerivedStateFromProps');
     if (nextProps.jobs !== prevState.lists) {
+      console.log('in if in der')
       return { lists: nextProps.jobs };
     }
     else return null;

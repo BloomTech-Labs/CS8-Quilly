@@ -1,7 +1,7 @@
 import React from 'react';
 import EditButton from './editButton';
 import DeleteButton from './deleteButton';
-
+import Jobeditmodal from '../../jobeditmodal/jobeditmodal';
 const CustomCard = props => {
   return (
     <div style={{ id: props.id }}>
@@ -19,7 +19,8 @@ const CustomCard = props => {
         <div style={{ fontSize: 14, fontWeight: 'bold' }}>{props.name}</div>
         <div style={{ fontSize: 11 }}>{props.dueOn}</div>
         <div className="buttonContainer" style={{ paddingTop: 3, paddingRight: 3 }}>
-          <EditButton />
+          {/* <EditButton /> */}
+          <Jobeditmodal jobInfo={props.jobInfo}/>
           <DeleteButton />
         </div>
       </header>
