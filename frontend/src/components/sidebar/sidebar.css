@@ -4,23 +4,24 @@
   position: absolute; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 0; /* Stay on top */
   top: 65px; /* Stay at the top */
-  left: 30px;
+  /* left: 30px; */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 10px;
-  outline-style: solid;
+  /* outline-style: solid; */
   text-align: left;
+  background-color: #ffffff34;
 }
 
 /* The navigation menu links */
 .Sidebar a {
-  padding: 6px 8px 6px 16px;
+  padding: 10px 10px 10px 25px;
   text-decoration: none;
   font-size: 20px;
-  color: black;
+  color: #ffffff45;
   display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
-  color: hotpink;
+  color: #ffffff;
 }
