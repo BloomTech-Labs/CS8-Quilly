@@ -111,7 +111,7 @@ class JobBoard extends Component {
         laneDraggable={false}
         newCardTemplate={<Jobcreatemodal />}
         >
-        <CustomCard cards={this.state.data.cards} />
+        <CustomCard cards={this.state.data.cards} openEditModal={this.props.openEditModal} />
       </Board>
     );
   }

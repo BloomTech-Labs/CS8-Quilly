@@ -3,7 +3,7 @@ import Modal from 'react-modal';
 import axios from 'axios';
 
 import './jobeditmodal.css';
-import '../jobboard/jobcard/editButton';
+
 import EditButton from '../jobboard/jobcard/editButton';
 
 Modal.setAppElement(document.getElementById('root'));
@@ -13,7 +13,7 @@ const defaultState = {
   company: "",
   position: "",
   submitted: false,
-  onSiteInterview: false,
+  onsiteInterview: false,
   recievedResponse: false,
   whiteboard: false,
   phoneInterview: false,
@@ -37,9 +37,8 @@ class Jobeditmodal extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true });
-    console.log(this.props.jobInfo);
+  openModal(jobInfo) {
+    this.setState({ modalIsOpen: true, ...jobInfo });
   }
 
   closeModal() {
@@ -50,27 +49,40 @@ class Jobeditmodal extends Component {
   handleChange(event) {
     const { name } = event.target;
     const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
-    console.log('name',name,'value',value);
     this.setState({
       [name]: value
     });
-    console.log(this.state[name]);
   }
 
-  addToLists(newApplication) {
-    let lists = this.props.jobs;
+  updateLists() {
+    const newLists = {};
+    axios
+    .get('http://localhost:5000/user/applications/')
+    .then(response => {
+      //response is updated list of applications. They need sorted into lists and returned.
+      const updatedApplications = response.data;
 
+      updatedApplications.forEach(job => {
+        if (!newLists[job.category])
+          newLists[job.category] = [];
+        newLists[job.category].push(job);
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+
+    return newLists;
     // This will have to be reworked to handle user entered lists
-    if (newApplication.category === 'wishlist')
-      lists["wishlist"].push(newApplication);
-    else if (newApplication.category === 'onSiteInterview')
-      lists["on site"].push(newApplication);
-    else if (newApplication.category === 'phoneInterview')
-      lists["phone"].push(newApplication);
-    else if (newApplication.category === 'submitted')
-      lists["applied"].push(newApplication);
-      console.log('in addToLists', lists);
-    return lists;
+    // if (newApplication.category === 'wishlist')
+    //   lists["wishlist"].push(newApplication);
+    // else if (newApplication.category === 'onSiteInterview')
+    //   lists["on site"].push(newApplication);
+    // else if (newApplication.category === 'phoneInterview')
+    //   lists["phone"].push(newApplication);
+    // else if (newApplication.category === 'submitted')
+    //   lists["applied"].push(newApplication);
+    // return lists;
   }
 
   handleSubmit(event) {
@@ -79,27 +91,35 @@ class Jobeditmodal extends Component {
       company,
       position,
       submitted,
-      onSiteInterview,
+      onsiteInterview,
       recievedResponse,
       whiteboard,
       phoneInterview,
       codeTest,
+      rejection,
+      offer,
       open,
       notes,
       jobSource,
       linkToJobPost,
       pointOfContact
     } = this.state;
-    const onsiteInterview = this.state.onSiteInterview;
+    //const onsiteInterview = this.state.onSiteInterview;
 
     // set status based on checkboxes
     let category = this.state.category;
-    if (onSiteInterview)
+    if (rejection)
+      category = 'rejected';
+    else if (offer)
+      category = 'offer';
+    else if (onsiteInterview)
       category = 'on site';
     else if (phoneInterview)
       category = 'phone';
     else if (submitted)
       category = 'applied';
+    else
+      category = 'wishlist';
 
     const temp = {
       company,
@@ -110,6 +130,8 @@ class Jobeditmodal extends Component {
       whiteboard,
       phoneInterview,
       codeTest,
+      rejection,
+      offer,
       open,
       category,
       notes,
@@ -118,9 +140,9 @@ class Jobeditmodal extends Component {
       pointOfContact,
     }
     axios
-    .post('http://localhost:5000/user/applications/add', temp)
+    .put(`http://localhost:5000/user/applications/update/${this.state._id}`, temp)
     .then(response => {
-      const newLists = this.addToLists(response.data.applications.slice(-1)[0]);
+      const newLists = this.updateLists();
       this.props.handleJobChange(newLists);
       this.closeModal();
       
@@ -128,7 +150,7 @@ class Jobeditmodal extends Component {
     .catch(error => {
       console.log(error);
     });
-  }
+   }
 
   render() {
     return (
@@ -139,7 +161,7 @@ class Jobeditmodal extends Component {
           onRequestClose={this.closeModal}
           contentLabel="Example Modal"
           overlayClassName="Overlay"
-          className="hello"
+          className="jobeditmodal"
         >
           <div className="Jobtimeline">
             <h2>Job Timeline</h2>
@@ -157,8 +179,8 @@ class Jobeditmodal extends Component {
                 <label>
                   <input
                   type="checkbox"
-                  name="onSiteInterview"
-                  checked={this.state.onSiteInterview}
+                  name="onsiteInterview"
+                  checked={this.state.onsiteInterview}
                   onChange={this.handleChange} />
                   On-Site Interview
                 </label>
@@ -168,7 +190,7 @@ class Jobeditmodal extends Component {
                   type="checkbox"
                   name="recievedResponse"
                   checked={this.state.recievedResponse}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}/>
                   Received Response
                 </label>
                 <label>
@@ -176,7 +198,7 @@ class Jobeditmodal extends Component {
                   type="checkbox"
                   name="whiteboard"
                   checked={this.state.whiteboard}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}/>
                   Whiteboarding
                 </label>
                 <br />
@@ -185,7 +207,7 @@ class Jobeditmodal extends Component {
                   type="checkbox"
                   name="phoneInterview"
                   checked={this.state.phoneInterview}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}/>
                   Phone Interview
                 </label>
                 <label>
@@ -202,7 +224,7 @@ class Jobeditmodal extends Component {
                 name="notes"
                 value={this.state.notes}
                 onChange={this.handleChange} />
-              </form>
+                </form> 
             </div>
           </div>
 
@@ -247,7 +269,7 @@ class Jobeditmodal extends Component {
             value={this.state.position}
             onChange={this.handleChange} />
             <button onClick={this.handleSubmit}>
-              Add Job
+              Update Application Info
             </button>
           </div>
         </Modal>

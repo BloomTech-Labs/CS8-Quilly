@@ -3,6 +3,7 @@ import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
+import Jobeditmodal from '../components/jobeditmodal/jobeditmodal';
 import Signout from '../components/signout/signout'
 import config from '../config/config';
 import axios from 'axios';
@@ -10,6 +11,7 @@ import axios from 'axios';
 class Joblistpage extends Component {
   constructor(props) {
     super(props);
+    this.editModal = React.createRef();
     this.state = {
       lists: {
         wishlist: [],
@@ -33,7 +35,7 @@ class Joblistpage extends Component {
       offer: [],
       rejected: [],
     }
-
+    console.log('Fetching inital data from server');
     axios
       .get(`${config.serverUrl}/user`)
       .then(user => {
@@ -55,14 +57,19 @@ class Joblistpage extends Component {
     this.setState({ lists: lists });
   }
 
+  openEditModal = (jobInfo) => {
+    this.editModal.current.openModal(jobInfo);
+  }
+
   render() {
     return (
       <div className="App">
         <Signout />
         <Breadcrumbs />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} />
+        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} />
         <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
+        <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChane={this.handleJobChange} />
       </div>
     );
   }

@@ -4,9 +4,13 @@ import { faCog} from '@fortawesome/free-solid-svg-icons';
 import './buttonStyle.css';
 
 const EditButton = (props) => {
+
+  const handleClick = () => {
+    props.openEditModal(props.jobInfo);
+  }
   return (
     <Fragment>
-      <FontAwesomeIcon icon={faCog} className="cardButton editButton" onClick={props.openModal}/>
+      <FontAwesomeIcon icon={faCog} className="cardButton editButton" onClick={handleClick}/>
     </Fragment>
   );
 };
