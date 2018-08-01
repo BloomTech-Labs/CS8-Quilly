@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import config from "../../config/config";
-import "./meetup.css";
+import config from '../../config/config';
+import './meetup.css';
 
 axios.defaults.withCredentials = true;
 
@@ -12,10 +12,10 @@ class Meetup extends Component {
 
     this.state = {
       serverData: [],
-      date: "",
-      activity: "",
-      link: "",
-      notes: ""
+      date: '',
+      activity: '',
+      link: '',
+      notes: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -44,6 +44,7 @@ class Meetup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+<<<<<<< HEAD
 
     // let serverPort = {
     //   date: this.state.date,
@@ -51,6 +52,8 @@ class Meetup extends Component {
     //   link: this.state.link,
     //   notes: this.state.notes
     // };
+=======
+>>>>>>> 176f14add6fa1df21109fb87af8d337783840a90
     axios
       .post(`${config.serverUrl}/user/meetups/add`, {
         date: this.state.date,
@@ -73,19 +76,22 @@ class Meetup extends Component {
           {/* Displaying over user's meetups -- will display nothing if no input given */}
           {this.state.serverData.map(function (meetup) {
             return (
-              <div key={meetup.activity}>
-                <div className="date">{meetup.date}</div>
-                <div className="activity">{meetup.activity}</div>
-                <div className="link">{meetup.link}</div>
-                <div className="notes">{meetup.notes}</div>
+              <div className="meetupsData">
+                <p className="date">{meetup.date}</p>
+                <p className="activity">{meetup.activity}</p>
+                <p className="link">
+                  <a href={meetup.link}>
+                    <span role="img">&#x1f517;</span>
+                  </a>
+                </p>
+                <p className="notes">{meetup.notes}</p>
               </div>
             );
           })}
         </div>
-
         {/* Form Component */}
-        <div className="MeetupForm">
-          <form onSubmit={this.handleSubmit}>
+        <div>
+          <form onSubmit={this.handleSubmit} className="MeetupForm">
             <input
               className="formDate"
               required="true"
@@ -106,7 +112,7 @@ class Meetup extends Component {
             <input
               className="formLink"
               type="text"
-              placeholder="Link"
+              placeholder="Link &#x1f517;"
               name="link"
               value={this.state.link}
               onChange={this.handleChange}

@@ -1,7 +1,7 @@
 .Sidebar {
   height: 88%; /* Full-height: remove this if you want "auto" height */
   width: 160px; /* Set the width of the sidebar */
-  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  position: absolute; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 0; /* Stay on top */
   top: 65px; /* Stay at the top */
   /* left: 30px; */
@@ -25,6 +25,7 @@
 .Sidebar a:hover {
   color: #ffffff;
 }
+<<<<<<< HEAD
 
 /* Style page content */
 /* .main {
@@ -41,3 +42,5 @@
     font-size: 18px;
   }
 }
+=======
+>>>>>>> 176f14add6fa1df21109fb87af8d337783840a90
