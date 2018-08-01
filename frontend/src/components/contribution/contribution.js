@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import "./contribution.css";
-import config from "../../config/config";
+import './contribution.css';
+import config from '../../config/config';
 
 class Contribution extends Component {
   constructor() {
@@ -10,10 +10,10 @@ class Contribution extends Component {
 
     this.state = {
       serverData: [],
-      date: "",
-      contribution: "",
-      link: "",
-      notes: ""
+      date: '',
+      contribution: '',
+      link: '',
+      notes: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -75,7 +75,7 @@ class Contribution extends Component {
                 <div className="date">{contribution.date}</div>
                 <div className="contribution">{contribution.contribution}</div>
                 <div className="link">
-                  <a href={contribution.link}>&#x2661;</a>
+                  <a href={contribution.link}>&#x1f517;</a>
                 </div>
                 <div className="notes">{contribution.notes}</div>
               </div>

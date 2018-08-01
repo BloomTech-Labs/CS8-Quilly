@@ -1,12 +1,22 @@
-.Accountlogout {
-  position: absolute;
+.signoutBtn {
+  /* position: absolute;
   right: 3px;
   top: 3px;
   width: 150px;
   display: flex;
   justify-content: space-around;
   outline-style: solid;
-  padding: 10px;
+  padding: 10px; */
+
+  position: fixed;
+  top: 10px;
+  right: 5px;
+  background-color: white;
+  border: 2px solid #ffeedb;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 60px;
+  width: 150px;
 }
 
 .Accountlogout a {

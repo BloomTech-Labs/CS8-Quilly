@@ -3,9 +3,11 @@
   bottom: 40px;
   right: 40px;
   background-color: white;
-  outline: thick ridge black;
-  padding: 20px 40px;
-  font-size: 20px;
+  border: 2px solid #ffeedb;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 60px;
+  width: 150px;
 }
 
 .Jobtimeline {

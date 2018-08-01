@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import CustomCard from './jobcard/customCard';
+import CustomCard from './jobcard/customCard.js';
 import formatDate from './formatDate.js';
 
 // need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
 
-// this NewCard will be replaced with AddJob
 import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
 import './jobboard.css';
 
@@ -37,15 +36,15 @@ class JobBoard extends Component {
 
     // format list titles by capitalizing each first word
     const listTitles = listCategories
-                      .map(title => title.split(' ')
-                      .map(word => word[0].toUpperCase() + word.slice(1))
-                      .join(' '));
+      .map(title => title.split(' ')
+        .map(word => word[0].toUpperCase() + word.slice(1))
+        .join(' '));
 
     // get job count of each list
     const listLabels = listCategories.map(list => jobsData[list].length.toString());
 
     // make job cards
-    Object.entries(jobsData).forEach(([ listName, listData ]) => {
+    Object.entries(jobsData).forEach(([listName, listData]) => {
       listCards[listName] = [];
 
       // make sure there are some cards in the list before we start
