@@ -105,7 +105,7 @@ class Accountsignup extends Component {
   render() {
     return (
       <div className="Accountsignup">
-        <button className="openModal" onClick={this.openModal}>
+        <button className="openSignup" onClick={this.openModal}>
           Register
         </button>
         <Modal

@@ -1,3 +1,15 @@
+.openSignup {
+  position: fixed;
+  top: 450px;
+  right: 30%;
+  background-color: white;
+  border: 2px solid #ffeedb;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 60px;
+  width: 150px;
+}
+
 .signupmodal {
   padding: 5% 10%;
   margin: 5% auto;
@@ -27,15 +39,6 @@
   height: 18px;
   align-self: center;
 }
-
-/* .inputform .btn {
-  outline: thick ridge black;
-  background: white;
-  width: 275px;
-  height: 42px;
-  margin: 40px auto 0;
-  font-size: 20px;
-} */
 
 .inputform .btn:hover {
   cursor: pointer;

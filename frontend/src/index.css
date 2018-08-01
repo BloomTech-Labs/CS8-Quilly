@@ -16,6 +16,7 @@ body {
   height: 100vh;
   z-index: -50;
   object-fit: cover;
+  filter: brightness(40%);
 }
 
 .homeDescription {
@@ -32,10 +33,10 @@ body {
 }
 
 #logo {
-  margin-top: 50px;
+  margin-top: 150px;
   height: 150px;
   width: 225px;
-  opacity: 0.6;
+  opacity: 0.7;
 }
 
 .homeDescription p {
@@ -75,7 +76,7 @@ body {
 }
 
 /* iphone */
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (min-device-width: 375px) and (max-device-width: 767px) and (-webkit-device-pixel-ratio: 3) {
   .Sidebar {
     padding-top: 15px;
   }

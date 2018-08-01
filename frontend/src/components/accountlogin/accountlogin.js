@@ -64,7 +64,7 @@ class Accountlogin extends Component {
     return (
       <div className="Accountlogin">
         <button className="openLogin" onClick={this.openModal}>
-          <p>Sign In</p>
+          <p>Login</p>
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}

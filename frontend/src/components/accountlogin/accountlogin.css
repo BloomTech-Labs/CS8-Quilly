@@ -7,12 +7,18 @@
 
 .openLogin {
   position: fixed;
-  bottom: 40px;
-  left: 40px;
+  top: 450px;
+  left: 30%;
   background-color: white;
-  outline: thick ridge black;
-  padding: 20px 40px;
-  font-size: 20px;
+  border: 2px solid #ffeedb;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 60px;
+  width: 150px;
+}
+
+.openLogin p {
+  padding-bottom: 30px;
 }
 
 .signinmodal {
