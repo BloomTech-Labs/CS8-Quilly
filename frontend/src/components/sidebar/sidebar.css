@@ -25,22 +25,3 @@
 .Sidebar a:hover {
   color: #ffffff;
 }
-<<<<<<< HEAD
-
-/* Style page content */
-/* .main {
-  Same as the width of the sidebar 
-  padding: 0px 10px;
-} */
-
-/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
-@media screen and (max-height: 450px) {
-  .Sidebar {
-    padding-top: 15px;
-  }
-  .Sidebar a {
-    font-size: 18px;
-  }
-}
-=======
->>>>>>> 176f14add6fa1df21109fb87af8d337783840a90

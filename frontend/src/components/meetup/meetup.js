@@ -44,16 +44,6 @@ class Meetup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-<<<<<<< HEAD
-
-    // let serverPort = {
-    //   date: this.state.date,
-    //   activity: this.state.activity,
-    //   link: this.state.link,
-    //   notes: this.state.notes
-    // };
-=======
->>>>>>> 176f14add6fa1df21109fb87af8d337783840a90
     axios
       .post(`${config.serverUrl}/user/meetups/add`, {
         date: this.state.date,
