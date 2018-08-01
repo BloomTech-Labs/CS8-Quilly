@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Accountlogin from '../components/accountlogin/accountlogin';
 import Accountsignup from '../components/accountsignup/accountsignup';
 import Background from '../img/background.jpg';
-import Logo from '../img/Quilly Full Logo - Black Text.png';
+import Logo from '../img/Quilly Full Logo - Black Border.svg';
 
 class Home extends Component {
   render() {
