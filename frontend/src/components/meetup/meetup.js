@@ -71,7 +71,9 @@ class Meetup extends Component {
                 <p className="activity">{meetup.activity}</p>
                 <p className="link">
                   <a href={meetup.link}>
-                    <span role="img">&#x1f517;</span>
+                    <span role="img" aria-label="link emoji">
+                      &#x1f517;
+                    </span>
                   </a>
                 </p>
                 <p className="notes">{meetup.notes}</p>

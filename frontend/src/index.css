@@ -16,13 +16,13 @@ body {
   height: 100vh;
   z-index: -50;
   object-fit: cover;
-  filter: brightness(40%);
+  filter: brightness(55%);
 }
 
 .homeDescription {
   background: #ffffff;
   opacity: 0.45;
-  margin: auto;
+  /* margin: auto; */
   position: fixed;
   top: 20px;
   right: 20px;
@@ -64,23 +64,40 @@ body {
 }
 
 /* ipad */
-@media screen and (max-height: 768px) {
-  @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-    .Sidebar {
-      padding-top: 15px;
-    }
-    .Sidebar a {
-      font-size: 18px;
-    }
-  }
-}
-
-/* iphone */
-@media only screen and (min-device-width: 375px) and (max-device-width: 767px) and (-webkit-device-pixel-ratio: 3) {
+@media only screen and (max-width: 770px) {
   .Sidebar {
     padding-top: 15px;
   }
   .Sidebar a {
     font-size: 18px;
+  }
+}
+
+/* iphone */
+@media only screen and (max-width: 400px) {
+  #logo {
+    margin-top: 10px;
+  }
+  .homeDescription p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /*login and signup buttons*/
+  .openSignup {
+    top: 340px;
+    left: 30%;
+  }
+  .openLogin {
+    top: 430px;
+    left: 30%;
+  }
+
+  /* signin and signup modals */
+  .signinmodal {
+    width: 70%;
+  }
+  .signupmodal {
+    width: 70%;
   }
 }
