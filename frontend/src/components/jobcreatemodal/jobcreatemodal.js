@@ -6,27 +6,29 @@ import './jobcreatemodal.css';
 
 Modal.setAppElement(document.getElementById('root'));
 
+const defaultState = {
+  modalIsOpen: false,
+  company: "",
+  position: "",
+  submitted: false,
+  onSiteInterview: false,
+  recievedResponse: false,
+  whiteboard: false,
+  phoneInterview: false,
+  codeTest: false,
+  open: true,
+  category: 'wishlist',
+  notes: "",
+  jobSource: "",
+  linkToJobPost: "",
+  pointOfContact: "",
+};
+
 class Jobcreatemodal extends Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      modalIsOpen: false,
-      company: "",
-      position: "",
-      submitted: false,
-      onSiteInterview: false,
-      recievedResponse: false,
-      whiteboard: false,
-      phoneInterview: false,
-      codeTest: false,
-      open: true,
-      category: 'wishlist',
-      notes: "",
-      jobSource: "",
-      linkToJobPost: "",
-      pointOfContact: "",
-    };
+    this.state = defaultState;
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +40,8 @@ class Jobcreatemodal extends Component {
   }
 
   closeModal() {
-    this.setState({ modalIsOpen: false });
+    
+    this.setState(defaultState);
   }
 
   handleChange(event) {
@@ -61,9 +64,8 @@ class Jobcreatemodal extends Component {
       lists["phone"].push(newApplication);
     else if (newApplication.category === 'submitted')
       lists["applied"].push(newApplication);
-
+      console.log('in addToLists', lists);
     return lists;
-
   }
 
   handleSubmit(event) {
@@ -89,11 +91,11 @@ class Jobcreatemodal extends Component {
     // set status based on checkboxes
     let category = this.state.category;
     if (onSiteInterview)
-      category = 'onSiteInterview';
+      category = 'on site';
     else if (phoneInterview)
-      category = 'phoneInterview';
+      category = 'phone';
     else if (submitted)
-      category = 'submitted';
+      category = 'applied';
 
     const temp = {
       company,
@@ -111,16 +113,17 @@ class Jobcreatemodal extends Component {
       linkToJobPost,
       pointOfContact,
     }
-    console.log(temp);
     axios
     .post('http://localhost:5000/user/applications/add', temp)
     .then(response => {
-      const newLists = this.addToLists(response.data.slice(-1)[0]);
+      const newLists = this.addToLists(response.data.applications.slice(-1)[0]);
+      console.log('new lists', newLists);
       this.props.handleJobChange(newLists);
       this.closeModal();
+      
     })
     .catch(error => {
-      console.error(error.message, error.response.data);
+      console.log(error);
     });
   }
 

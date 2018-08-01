@@ -37,6 +37,7 @@ class Joblistpage extends Component {
     axios
       .get(`${config.serverUrl}/user`)
       .then(user => {
+        console.log('fetching data from server');
         let applications = user.data.applications;
         applications.forEach(application => {
           let category = application.category;
@@ -51,7 +52,9 @@ class Joblistpage extends Component {
   }
 
   handleJobChange(lists) {
+    console.log('lists on jobs page',lists)
     this.setState({ lists: lists });
+    console.log(this.state.lists);
   }
 
   render() {
