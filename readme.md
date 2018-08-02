@@ -300,7 +300,7 @@
 |Name                |Type       |Required (Y/N)|
 |--------------------|-----------|--------------|
 |company             |string     |Y             |
-|positions           |string     |Y             |
+|position            |string     |Y             |
 |submitted           |bool       |N             |
 |onsiteInterview     |bool       |N             |
 |recievedResponse    |bool       |N             |
@@ -392,7 +392,7 @@
 |Name                |Type       |Required (Y/N)|
 |--------------------|-----------|--------------|
 |company             |string     |N             |
-|positions           |string     |N             |
+|position            |string     |N             |
 |submitted           |bool       |N             |
 |onsiteInterview     |bool       |N             |
 |recievedResponse    |bool       |N             |

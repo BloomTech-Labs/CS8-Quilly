@@ -3,13 +3,15 @@
   bottom: 40px;
   right: 40px;
   background-color: white;
-  outline: thick ridge black;
-  padding: 20px 40px;
-  font-size: 20px;
+  border: 2px solid #ffeedb;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 60px;
+  width: 150px;
 }
 
 .Jobtimeline {
-  position: absolute;
+  /* position: absolute;
   top: 40px;
   left: 250px;
   right: 250px;
@@ -21,22 +23,47 @@
   outline: none;
   padding-top: 10px;
   padding-left: 20px;
-  min-height: 240px;
+  /* min-height: 240px; */
+
+  position: absolute;
+  top: 7%;
+  left: 26%;
+  right: 26%;
+  bottom: 54%;
+  border: 3px solid #000;
+  background: #fff;
+  border-radius: 20px;
+  outline: none;
+  padding-top: 1%;
+  padding-left: 4%;
 }
 
 .Jobinformation {
-  position: absolute;
+  /* position: absolute;
   top: 475px;
   left: 250px;
   right: 250px;
   bottom: 35px;
   border: 3px solid #000;
   background: #fff;
-  /* overflow: auto; */
+  /* overflow: auto; 
   border-radius: 20px;
   outline: none;
   padding-top: 10px;
-  padding-left: 20px;
+  padding-left: 20px; */
+
+
+  position: absolute;
+  top: 50%;
+  left: 26%;
+  right: 26%;
+  bottom: 5%;
+  border: 3px solid #000;
+  background: #fff;
+  border-radius: 20px;
+  outline: none;
+  padding-top: 1%;
+  padding-left: 4%;
 }
 
 .Checkboxes {

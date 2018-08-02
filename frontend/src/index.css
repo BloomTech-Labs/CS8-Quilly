@@ -1,5 +1,104 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Quicksand', sans-serif;
+}
+
+/* homescreen */
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -50;
+  object-fit: cover;
+  filter: brightness(55%);
+}
+
+.homeDescription {
+  background: #ffffff;
+  opacity: 0.45;
+  /* margin: auto; */
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  left: 20px;
+  bottom: 20px;
+  border-radius: 40px;
+  text-align: center;
+}
+
+#logo {
+  margin-top: 150px;
+  height: 150px;
+  width: 225px;
+  opacity: 0.7;
+}
+
+.homeDescription p {
+  opacity: 1;
+}
+
+/*background for the logged in pages*/
+.App {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -100;
+  object-fit: cover;
+  background: rgb(122, 125, 125);
+  background: linear-gradient(
+    45deg,
+    rgba(122, 125, 125, 1) 11%,
+    rgba(64, 121, 140, 0.8627297794117648) 62%,
+    rgba(255, 238, 219, 1) 100%
+  );
+}
+
+/* ipad */
+@media only screen and (max-width: 770px) {
+  .Sidebar {
+    padding-top: 15px;
+  }
+  .Sidebar a {
+    font-size: 18px;
+  }
+
+}
+
+/* iphone */
+@media only screen and (max-width: 400px) {
+  #logo {
+    margin-top: 10px;
+  }
+  .homeDescription p {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  /*login and signup buttons*/
+  .openSignup {
+    top: 340px;
+    left: 30%;
+  }
+  .openLogin {
+    top: 430px;
+    left: 30%;
+  }
+
+  /* signin and signup modals */
+  .signinmodal {
+    width: 70%;
+  }
+  .signupmodal {
+    width: 70%;
+  }
 }
