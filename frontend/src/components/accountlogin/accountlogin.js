@@ -37,10 +37,10 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then((response) => {
+      .then(response => {
         this.props.history.push('/jobs');
       })
-      .catch((error) => {
+      .catch(error => {
         console.error(error);
       });
 
