@@ -67,17 +67,17 @@ class Meetup extends Component {
           {this.state.serverData.map(function (meetup) {
             return (
               <div className="meetupsData">
-              {/* Need to fix format of date */}
-                <p className="date">{meetup.date}</p>
-                <p className="activity">{meetup.activity}</p>
-                <p className="link">
+                {/* Need to fix format of date */}
+                <div className="date">{meetup.date.slice(0, 10)}</div>
+                <div className="activity">{meetup.activity}</div>
+                <div className="link">
                   <a href={meetup.link}>
                     <span role="img" aria-label="link emoji">
                       &#x1f517;
                     </span>
                   </a>
-                </p>
-                <p className="notes">{meetup.notes}</p>
+                </div>
+                <div className="notes">{meetup.notes}</div>
               </div>
             );
           })}
