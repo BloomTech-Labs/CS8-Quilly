@@ -55,11 +55,12 @@ class Meetup extends Component {
     axios
       .post(`${config.serverUrl}/user/meetups/add`, serverPort)
       .then((res) => {
+        console.log(res);
         let temp = this.state.serverData;
         temp.push(serverPort);
         this.setState({ serverData: temp });
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -115,7 +116,7 @@ class Meetup extends Component {
               onChange={this.handleChange}
             />
             <input
-              className="Notes"
+              className="formNotes"
               type="text"
               placeholder="Notes"
               name="notes"

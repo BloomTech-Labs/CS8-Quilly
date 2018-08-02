@@ -69,7 +69,7 @@ class Contribution extends Component {
           {/* Displaying over user's contributions -- will display nothing if no input given */}
           {this.state.serverData.map(function (contribution) {
             return (
-              <div>
+              <div className="contributionsData">
                 <div className="date">{contribution.date.slice(0, 10)}</div>
                 <div className="contribution">{contribution.contribution}</div>
                 <div className="link">
@@ -115,7 +115,7 @@ class Contribution extends Component {
               onChange={this.handleChange}
             />
             <input
-              className="Notes"
+              className="formNotes"
               type="text"
               placeholder="Notes"
               name="notes"
