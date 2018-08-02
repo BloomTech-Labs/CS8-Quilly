@@ -51,7 +51,6 @@ class JobBoard extends Component {
       if (listData.length > 0) {
         listData.forEach((job) => {
           cardIndex += 1;
-          console.log(job);
           listCards[listName].push({
             id: `Card${cardIndex}`,
             title: job.company,
@@ -89,6 +88,12 @@ class JobBoard extends Component {
       const data = this.generateData(this.props.jobs);
       this.setState({ data: data });
     }
+  }
+
+  forceUpdate = () => {
+    console.log('forced update');
+    const data = this.generateData(this.props.jobs);
+      this.setState({ data: data });
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
