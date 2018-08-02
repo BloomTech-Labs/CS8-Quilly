@@ -2,7 +2,7 @@ const config = require('../config/config');
 const express = require('express');
 const router = express.Router();
 const User = require('../models/userModel');
-const Stripe = require('../models/stripecustomer');
+const StripeCustomer = require('../models/stripecustomer');
 
 router.get('/', (req, res) => {
   const userId = req.session.userId; // The user id of the logged in user
@@ -17,20 +17,19 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/charge', (req, res) => {
+/*router.post('/charge', (req, res) => {
   // Create the customer
-  Stripe.createCustomer((token) => {
-    // Static plan
-    let plan = 'plan_DIBFYLHH0MvZx3';
-    // Assuming that the createCustomer returns a token that reporesents the customer id
-    // We pass that token and plan to setPlan to save the plan
-    Stripe.setPlan(plan, token, () => {
-      console.log("Plan saved");
-    });
+  // StripeCustomer.createCustomer((token) => {
+  //   // Static plan
+  //   let plan = 'plan_DIBFYLHH0MvZx3';
+  //   // Assuming that the createCustomer returns a token that reporesents the customer id
+  //   // We pass that token and plan to setPlan to save the plan
+StripeCustomer.setPlan(plan, token, () => {
+    console.log("Plan saved");
   });
-});
+  // });
+});*/
 
-/*
 router.post('/charge', (req, res) => {
   stripe.customers
     .create({
@@ -59,5 +58,5 @@ router.post('/charge', (req, res) => {
       console.log(err);
     });
 });
-*/
+
 module.exports = router;

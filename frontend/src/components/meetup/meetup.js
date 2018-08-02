@@ -44,17 +44,23 @@ class Meetup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    let serverPort = {
+      date: this.state.date,
+      activity: this.state.activity,
+      link: this.state.link,
+      notes: this.state.notes
+    };
+
     axios
-      .post(`${config.serverUrl}/user/meetups/add`, {
-        date: this.state.date,
-        activity: this.state.activity,
-        link: this.state.link,
-        notes: this.state.notes
+      .post(`${config.serverUrl}/user/meetups/add`, serverPort)
+      .then((res) => {
+        console.log(res);
+        let temp = this.state.serverData;
+        temp.push(serverPort);
+        this.setState({ serverData: temp });
       })
-      .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -67,23 +73,23 @@ class Meetup extends Component {
           {this.state.serverData.map(function (meetup) {
             return (
               <div className="meetupsData">
-                <p className="date">{meetup.date}</p>
-                <p className="activity">{meetup.activity}</p>
-                <p className="link">
+                <div className="date">{meetup.date.slice(0, 10)}</div>
+                <div className="activity">{meetup.activity}</div>
+                <div className="link">
                   <a href={meetup.link}>
                     <span role="img" aria-label="link emoji">
                       &#x1f517;
                     </span>
                   </a>
-                </p>
-                <p className="notes">{meetup.notes}</p>
+                </div>
+                <div className="notes">{meetup.notes}</div>
               </div>
             );
           })}
         </div>
         {/* Form Component */}
-        <div>
-          <form onSubmit={this.handleSubmit} className="MeetupForm">
+        <div className="MeetupForm">
+          <form onSubmit={this.handleSubmit} className="FormSubmit">
             <input
               className="formDate"
               required="true"
@@ -110,7 +116,7 @@ class Meetup extends Component {
               onChange={this.handleChange}
             />
             <input
-              className="Notes"
+              className="formNotes"
               type="text"
               placeholder="Notes"
               name="notes"
