@@ -68,7 +68,6 @@ class Joblistpage extends Component {
       <div className="App">
 
         <Signout {...this.props} />
-        <Breadcrumbs />
         <Sidebar />
         <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} ref={this.jobboard}/>
         <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
