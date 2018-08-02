@@ -1,14 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Sidebar from '../components/sidebar/sidebar';
 import Settings from '../components/settings/settings';
 import Signout from '../components/signout/signout';
 
-class Settingspage extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
-  render() {
+const Settingspage = (props) => {
     return (
       <div className="App">
         <Signout {...this.props} />
@@ -16,7 +11,6 @@ class Settingspage extends Component {
         <Settings />
       </div>
     );
-  }
 }
 
 export default Settingspage;
