@@ -7,8 +7,8 @@ import './meetup.css';
 axios.defaults.withCredentials = true;
 
 class Meetup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       serverData: [],

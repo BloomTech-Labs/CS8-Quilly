@@ -40,7 +40,9 @@ class Accountlogin extends Component {
       .then(response => {
         this.props.history.push('/jobs');
       })
-      .catch(error => {
+
+      .catch((error) => {
+        document.getElementById("loginWarning").innerHTML = error.response.data.error;
         console.error(error);
       });
 
@@ -98,6 +100,8 @@ class Accountlogin extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
+              <div id="loginWarning" ></div>
+              
 
               <input type="submit" value="Submit" className="btn" />
             </form>

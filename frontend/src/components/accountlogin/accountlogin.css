@@ -73,3 +73,11 @@ h3 {
 .signinmodal .btn:hover {
   cursor: pointer;
 }
+
+#loginWarning {
+  color: lightcoral;
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  margin-bottom: -5%;
+}

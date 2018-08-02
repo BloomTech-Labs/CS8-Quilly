@@ -74,14 +74,14 @@ router.post("/register", (req, res) => {
                   "New user could not be created. A unqique email address is required."
               });
             else
-              res.status(500).json({ error: "New user could not be created" });
+              res.status(500).json({ error: "New user could not be created. Try again later." });
           });
       } else {
-        res.status(422).json({ error: "User already exists" });
+        res.status(422).json({ error: "Username not available. Choose a different username" });
       }
     })
     .catch(err => {
-      res.status(500).json({ error: "New user could not be created" });
+      res.status(500).json({ error: "New user could not be created. Try again later" });
     });
 });
 
@@ -102,18 +102,18 @@ router.post("/login", (req, res) => {
               req.session.userId = user._id;
               res.status(200).json({ message: "Login successful" });
             } else {
-              res.status(422).json({ error: "Invalid credentials" });
+              res.status(422).json({ error: "Invalid username or password" });
             }
           })
           .catch(err => {
-            res.status(500).json({ error: "Error in user validation" });
+            res.status(500).json({ error: "Server error. Try again" });
           });
       } else {
-        res.status(422).json({ error: "User not found" });
+        res.status(422).json({ error: "Invalid username or password" });
       }
     })
     .catch(err => {
-      res.status(500).json({ error: "Database error" });
+      res.status(500).json({ error: "Server error. Try again later" });
     });
 });
 
