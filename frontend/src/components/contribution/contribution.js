@@ -75,7 +75,11 @@ class Contribution extends Component {
                 <div className="date">{contribution.date}</div>
                 <div className="contribution">{contribution.contribution}</div>
                 <div className="link">
-                  <a href={contribution.link}>&#x1f517;</a>
+                  <a href={contribution.link}>
+                    <span role="img" aria-label="link emoji">
+                      &#x1f517;
+                    </span>
+                  </a>
                 </div>
                 <div className="notes">{contribution.notes}</div>
               </div>
