@@ -59,19 +59,17 @@ class Jobcreatemodal extends Component {
     // This will have to be reworked to handle user entered lists
     if (newApplication.category === 'wishlist')
       lists["wishlist"].push(newApplication);
-    else if (newApplication.category === 'onSiteInterview')
+    else if (newApplication.category === 'on site')
       lists["on site"].push(newApplication);
-    else if (newApplication.category === 'phoneInterview')
+    else if (newApplication.category === 'phone')
       lists["phone"].push(newApplication);
-    else if (newApplication.category === 'submitted')
+    else if (newApplication.category === 'applied')
       lists["applied"].push(newApplication);
-      console.log('in addToLists', lists);
     return lists;
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state);
     const {
       company,
       position,
@@ -118,7 +116,6 @@ class Jobcreatemodal extends Component {
     .post('http://localhost:5000/user/applications/add', temp)
     .then(response => {
       const newLists = this.addToLists(response.data.applications.slice(-1)[0]);
-      console.log('new lists', newLists);
       this.props.handleJobChange(newLists);
       this.closeModal();
       

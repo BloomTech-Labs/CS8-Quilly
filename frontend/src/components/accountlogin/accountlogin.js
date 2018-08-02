@@ -6,8 +6,8 @@ import config from '../../config/config';
 import './accountlogin.css';
 
 class Accountlogin extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false,
@@ -37,10 +37,10 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then(function(response) {
-        window.location.pathname = '/jobs';
+      .then((response) => {
+        this.props.history.push('/jobs');
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.error(error);
       });
 

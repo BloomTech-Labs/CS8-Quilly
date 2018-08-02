@@ -25,8 +25,8 @@ let fakeServerData = {
 };
 
 class Accountsignup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false,
@@ -70,17 +70,17 @@ class Accountsignup extends Component {
         console.log(response);
         // Now that the user is created. Login the user
         axios
-          .post(`${config.serverUrl}/user/login`, {
-            username: this.state.username,
-            password: this.state.password
-          })
-          .then(function(response) {
-            console.log(response);
-            window.location.pathname = '/jobs';
-          })
-          .catch(function(error) {
-            console.log(error);
-          });
+        .post(`${config.serverUrl}/user/login`, {
+          username: this.state.username,
+          password: this.state.password
+        })
+        .then((response) => {
+          this.props.history.push('/jobs');
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
       })
       .catch(function(error) {
         console.log(`HANDLE SUBMIT ERROR: ${error}!`);
