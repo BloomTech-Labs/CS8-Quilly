@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
+import config from '../../config/config';
 
 import './jobcreatemodal.css';
 import { runInThisContext } from 'vm';
@@ -41,7 +42,7 @@ class Jobcreatemodal extends Component {
   }
 
   closeModal() {
-    
+
     this.setState(defaultState);
   }
 
@@ -113,12 +114,12 @@ class Jobcreatemodal extends Component {
       pointOfContact,
     }
     axios
-    .post('http://localhost:5000/user/applications/add', temp)
+    .post(`${config.serverUrl}/user/applications/add`, temp)
     .then(response => {
       const newLists = this.addToLists(response.data.applications.slice(-1)[0]);
       this.props.handleJobChange(newLists);
       this.closeModal();
-      
+
     })
     .catch(error => {
       console.log(error);

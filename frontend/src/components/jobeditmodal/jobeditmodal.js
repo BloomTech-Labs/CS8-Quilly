@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import axios from 'axios';
+import config from '../../config/config';
 
 import './jobeditmodal.css';
 
@@ -42,7 +43,7 @@ class Jobeditmodal extends Component {
   }
 
   closeModal() {
-    
+
     this.setState(defaultState);
   }
 
@@ -57,7 +58,7 @@ class Jobeditmodal extends Component {
   updateLists() {
     const newLists = {};
     axios
-    .get('http://localhost:5000/user/applications/')
+    .get(`${config.serverUrl}/user/applications/`)
     .then(response => {
       //response is updated list of applications. They need sorted into lists and returned.
       const updatedApplications = response.data;
@@ -71,7 +72,7 @@ class Jobeditmodal extends Component {
       updatedApplications.forEach(job => {
         newLists[job.category].push(job);
       });
-      
+
 
       this.props.handleJobChange(newLists);
     })
@@ -147,11 +148,11 @@ class Jobeditmodal extends Component {
       pointOfContact,
     }
     axios
-    .put(`http://localhost:5000/user/applications/update/${this.state._id}`, temp)
+    .put(`${config.serverUrl}/user/applications/update/${this.state._id}`, temp)
     .then(response => {
       const newLists = this.updateLists();
       this.closeModal();
-      
+
     })
     .catch(error => {
       console.log(error);
@@ -230,7 +231,7 @@ class Jobeditmodal extends Component {
                 name="notes"
                 value={this.state.notes}
                 onChange={this.handleChange} />
-                </form> 
+                </form>
             </div>
           </div>
 
