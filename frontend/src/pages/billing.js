@@ -6,7 +6,7 @@ import Signout from '../components/signout/signout';
 const Billingpage = (props) => {
     return (
       <div className="App">
-        <Signout {...this.props} />
+        <Signout {...props} />
         <Sidebar />
         <Billing />
       </div>
