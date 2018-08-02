@@ -71,7 +71,6 @@ body {
   .Sidebar a {
     font-size: 18px;
   }
-
 }
 
 /* iphone */
@@ -82,6 +81,15 @@ body {
   .homeDescription p {
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .openSignup {
+    top: 340px;
+    left: 30%;
+  }
+  .openLogin {
+    top: 430px;
+    left: 30%;
   }
 
   /*login and signup buttons*/

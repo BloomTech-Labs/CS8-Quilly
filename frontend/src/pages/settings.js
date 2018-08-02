@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import Sidebar from '../components/sidebar/sidebar';
-import Breadcrumbs from '../components/breadcrumbs/breadcrumbs';
 import Settings from '../components/settings/settings';
-import Signout from '../components/signout/signout'
+import Signout from '../components/signout/signout';
 
 class Settingspage extends Component {
   constructor(props) {
@@ -14,7 +13,6 @@ class Settingspage extends Component {
       <div className="App">
         <Signout {...this.props} />
         <Sidebar />
-        <Breadcrumbs />
         <Settings />
       </div>
     );

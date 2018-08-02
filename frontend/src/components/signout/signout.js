@@ -16,7 +16,9 @@ class Accountlogout extends Component {
       .get(`${config.serverUrl}/user/logout`)
       .then((response) => {
         console.log(`This is the LOGOUT RESPONSE: `, response);
+
         this.props.history.replace('/');
+
       })
       .catch((error) => {
         console.log(`HANDLE SUBMIT ERROR: ${error}!`);
