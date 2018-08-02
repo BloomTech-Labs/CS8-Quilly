@@ -8,9 +8,9 @@ class Home extends Component {
   render() {
     return (
       <div className="homeApp">
-        <img src={Background} className="background" />
+        <img src={Background} className="background" alt="background" />
         <div className="homeDescription">
-          <img src={Logo} id="logo" />
+          <img src={Logo} id="logo" alt="logo" />
 
           <p>
             We have a huge selection of products to help you on your job hunt!

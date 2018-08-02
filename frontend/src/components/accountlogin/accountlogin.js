@@ -37,8 +37,8 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then(function(response) {
-        window.location.pathname = '/jobs';
+      .then(function (response) {
+        this.props.history.push('/jobs');
       })
       .catch(function(error) {
         console.error(error);
