@@ -70,6 +70,11 @@ class Jobcreatemodal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    if (this.state.position === "" || this.state.company === "") {
+      document.getElementById("jobCreateWarning").innerHTML = "Company name and position are required fields";
+      return;
+    }
     const {
       company,
       position,
@@ -121,6 +126,7 @@ class Jobcreatemodal extends Component {
       
     })
     .catch(error => {
+      document.getElementById("jobCreateWarning").innerHTML = error.response.data.error;
       console.log(error);
     });
   }
@@ -209,7 +215,8 @@ class Jobcreatemodal extends Component {
             placeholder="Company"
             name="company"
             value={this.state.company}
-            onChange={this.handleChange}/>
+            onChange={this.handleChange}
+            required="true"/>
             <select name="jobSource" value={this.state.jobSource} onChange={this.handleChange}>
               <option value="">Source of Job</option>
               <option value="Job Board">Job Board</option>
@@ -242,10 +249,12 @@ class Jobcreatemodal extends Component {
             placeholder="Position"
             name="position"
             value={this.state.position}
-            onChange={this.handleChange} />
+            onChange={this.handleChange}
+            required="true"/>
             <button onClick={this.handleSubmit}>
               Add Job
             </button>
+            <div id="jobCreateWarning"></div>
           </div>
           <button className="openModal" onClick={this.openModal}>
             Add Job &#10010;

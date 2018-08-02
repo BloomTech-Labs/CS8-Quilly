@@ -77,6 +77,7 @@ class Jobeditmodal extends Component {
     })
     .catch(error => {
       console.log(error);
+      document.getElementById("jobEditWarning").innerHTML = error.response.data.error;
     });
 
     return newLists;
@@ -94,6 +95,10 @@ class Jobeditmodal extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+    if (this.state.position === "" || this.state.company === "") {
+      document.getElementById("jobEditWarning").innerHTML = "Company name and position are required fields";
+      return;
+    }
     const {
       company,
       position,
@@ -277,6 +282,7 @@ class Jobeditmodal extends Component {
             <button onClick={this.handleSubmit}>
               Update Application Info
             </button>
+            <div id="jobEditWarning"></div>
           </div>
         </Modal>
       </div>

@@ -39,9 +39,11 @@ class Accountlogin extends Component {
       })
       .then(function(response) {
         window.location.pathname = '/jobs';
+        console.log('response', response);
       })
       .catch(function(error) {
-        console.error(error);
+        document.getElementById("loginWarning").innerHTML = error.response.data.error;
+        console.log('error', error.response);
       });
 
     event.preventDefault();
@@ -98,6 +100,8 @@ class Accountlogin extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
+              <div id="loginWarning" ></div>
+              
 
               <input type="submit" value="Submit" className="btn" />
             </form>

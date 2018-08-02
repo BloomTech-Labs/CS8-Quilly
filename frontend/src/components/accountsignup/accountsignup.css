@@ -70,3 +70,11 @@
 .signupmodal .btn:hover {
   cursor: pointer;
 }
+
+#signupWarning {
+  color: lightcoral;
+  width: 100%;
+  display: flex;
+  justify-content:center;
+  margin-bottom: -5%;
+}

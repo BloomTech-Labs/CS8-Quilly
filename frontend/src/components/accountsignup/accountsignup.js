@@ -5,25 +5,6 @@ import axios from 'axios';
 import config from '../../config/config';
 import './accountsignup.css';
 
-let fakeServerData = {
-  users: [
-    {
-      username: 'aa',
-      password: '123',
-      email: 'aa@aa.com',
-      firstname: 'aa',
-      lastname: 'aa'
-    },
-    {
-      username: 'bb',
-      password: '123',
-      email: 'bb@bb.com',
-      firstname: 'bb',
-      lastname: 'bb'
-    }
-  ]
-};
-
 class Accountsignup extends Component {
   constructor() {
     super();
@@ -45,7 +26,7 @@ class Accountsignup extends Component {
   }
 
   componentWillMount() {
-    this.setState({ serverData: fakeServerData });
+    //this.setState({ serverData: fakeServerData });
   }
 
   handleChange(event) {
@@ -83,7 +64,8 @@ class Accountsignup extends Component {
         });
       })
       .catch(function(error) {
-        console.log(`HANDLE SUBMIT ERROR: ${error}!`);
+        console.log(error);
+        document.getElementById("signupWarning").innerHTML = error.response.data.error;
       });
 
     event.preventDefault();
@@ -169,6 +151,7 @@ class Accountsignup extends Component {
                 value={this.state.lastname}
                 onChange={this.handleChange}
               />
+              <div id="signupWarning"></div>
               <input type="submit" value="Create New Account" className="btn" />
             </form>
           </div>
