@@ -62,11 +62,18 @@ class Jobeditmodal extends Component {
       //response is updated list of applications. They need sorted into lists and returned.
       const updatedApplications = response.data;
 
+      const listCategories = ['wishlist', 'applied', 'phone', 'on site', 'offer', 'rejected'];
+      listCategories.forEach(category => {
+        if (!newLists[category])
+          newLists[category] = [];
+      });
+
       updatedApplications.forEach(job => {
-        if (!newLists[job.category])
-          newLists[job.category] = [];
         newLists[job.category].push(job);
       });
+      
+
+      this.props.handleJobChange(newLists);
     })
     .catch(error => {
       console.log(error);
@@ -143,7 +150,6 @@ class Jobeditmodal extends Component {
     .put(`http://localhost:5000/user/applications/update/${this.state._id}`, temp)
     .then(response => {
       const newLists = this.updateLists();
-      this.props.handleJobChange(newLists);
       this.closeModal();
       
     })

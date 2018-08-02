@@ -55,7 +55,9 @@ class Joblistpage extends Component {
   }
 
   handleJobChange(lists) {
+    console.log('handleJobChange');
     this.setState({ lists: lists });
+    this.jobboard.current.forceUpdate();
   }
 
   openEditModal = (jobInfo) => {
