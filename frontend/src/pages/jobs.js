@@ -12,6 +12,7 @@ class Joblistpage extends Component {
   constructor(props) {
     super(props);
     this.editModal = React.createRef();
+    this.jobboard = React.createRef();
     this.state = {
       lists: {
         wishlist: [],
@@ -54,7 +55,9 @@ class Joblistpage extends Component {
   }
 
   handleJobChange(lists) {
+    console.log('handleJobChange');
     this.setState({ lists: lists });
+    this.jobboard.current.forceUpdate();
   }
 
   openEditModal = (jobInfo) => {
@@ -67,9 +70,9 @@ class Joblistpage extends Component {
         <Signout />
         <Breadcrumbs />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} />
+        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} ref={this.jobboard}/>
         <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
-        <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChane={this.handleJobChange} />
+        <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChange={this.handleJobChange} />
       </div>
     );
   }
