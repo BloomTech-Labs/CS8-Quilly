@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import logo from '../../img/Quilly Logo - White.svg';
 
 import './sidebar.css';
 
 class Sidebar extends Component {
-
   render() {
     return (
       <div className="Sidebar">
         {/* <Link to="/">Home</Link> */}
+        <Link to="/">
+          <img src={logo} id="sidebarLogo" alt="Home" />
+        </Link>
         <Link to="/jobs">Jobs</Link>
         <Link to="/meetups">Meetups</Link>
         <Link to="/contributions">Contributions</Link>

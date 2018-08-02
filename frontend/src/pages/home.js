@@ -4,7 +4,11 @@ import Accountsignup from '../components/accountsignup/accountsignup';
 import Background from '../img/background.jpg';
 import Logo from '../img/Quilly Full Logo - Black Border.svg';
 
-class Home extends Component {
+class Homepage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="homeApp">
@@ -13,17 +17,17 @@ class Home extends Component {
           <img src={Logo} id="logo" alt="logo" />
 
           <p>
-            We have a huge selection of products to help you on your job hunt!
+            Need help visualizing your job search?
           </p>
 
-          <p>Please view our product selection above to learn more.</p>
+          <p>Our tools will help you on your journey of landing your dream job.</p>
         </div>
         <br />
-        <Accountsignup />
-        <Accountlogin />
+        <Accountsignup {...this.props} />
+        <Accountlogin {...this.props} />
       </div>
     );
   }
 }
 
-export default Home;
+export default Homepage;
