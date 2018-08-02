@@ -67,7 +67,7 @@ class Joblistpage extends Component {
   render() {
     return (
       <div className="App">
-        <Signout />
+        <Signout {...this.props} />
         <Breadcrumbs />
         <Sidebar />
         <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} ref={this.jobboard}/>
