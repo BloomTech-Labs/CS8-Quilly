@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CustomCard from './jobcard/customcard.js';
+import CustomCard from './jobcard/customCard.js';
 import formatDate from './formatDate.js';
 
 // need to do `yarn add react-trello` to use the package.
