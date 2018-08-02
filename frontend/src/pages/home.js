@@ -17,10 +17,10 @@ class Homepage extends Component {
           <img src={Logo} id="logo" alt="logo" />
 
           <p>
-            We have a huge selection of products to help you on your job hunt!
+            Need help visualizing your job search?
           </p>
 
-          <p>Please view our product selection above to learn more.</p>
+          <p>Our tools will help you on your journey of landing your dream job.</p>
         </div>
         <br />
         <Accountsignup {...this.props} />

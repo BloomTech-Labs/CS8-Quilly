@@ -1,20 +1,18 @@
 .Sidebar {
-  height: 88%; /* Full-height: remove this if you want "auto" height */
-  width: 160px; /* Set the width of the sidebar */
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 190px; /* Set the width of the sidebar */
   position: absolute; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 0; /* Stay on top */
-  top: 65px; /* Stay at the top */
-  /* left: 30px; */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 10px;
   /* outline-style: solid; */
-  text-align: left;
+  text-align: center;
   background-color: #ffffff34;
 }
 
 /* The navigation menu links */
 .Sidebar a {
-  padding: 10px 10px 10px 25px;
+  padding: 20px;
   text-decoration: none;
   font-size: 20px;
   color: #ffffff45;
@@ -23,5 +21,19 @@
 
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
-  color: #ffffff;
+  color: white;
+  text-decoration: underline;
+}
+
+#sidebarLogo {
+  width: 45px;
+}
+
+@media screen and (max-height: 450px) {
+  .Sidebar {
+    padding-top: 15px;
+  }
+  .Sidebar a {
+    font-size: 18px;
+  }
 }
