@@ -6,7 +6,7 @@ import Signout from '../components/signout/signout'
 const Meetupspage = (props) => {
     return (
       <div className="App">
-        <Signout {...this.props} />
+        <Signout {...props} />
         <Sidebar />
         <Meetup />
       </div>

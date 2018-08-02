@@ -18,8 +18,8 @@ const Homepage = (props) => {
           <p>Our tools will help you on your journey of landing your dream job.</p>
         </div>
         <br />
-        <Accountsignup {...this.props} />
-        <Accountlogin {...this.props} />
+        <Accountsignup {...props} />
+        <Accountlogin {...props} />
       </div>
     );
 }
