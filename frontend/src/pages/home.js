@@ -4,7 +4,11 @@ import Accountsignup from '../components/accountsignup/accountsignup';
 import Background from '../img/background.jpg';
 import Logo from '../img/Quilly Full Logo - Black Border.svg';
 
-class Home extends Component {
+class Homepage extends Component {
+  constructor(props) {
+    super(props);
+  }
+
   render() {
     return (
       <div className="homeApp">
@@ -19,11 +23,11 @@ class Home extends Component {
           <p>Please view our product selection above to learn more.</p>
         </div>
         <br />
-        <Accountsignup />
-        <Accountlogin />
+        <Accountsignup {...this.props} />
+        <Accountlogin {...this.props} />
       </div>
     );
   }
 }
 
-export default Home;
+export default Homepage;
