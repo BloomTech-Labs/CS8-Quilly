@@ -76,7 +76,7 @@ class Accountsignup extends Component {
         })
         .then(function(response) {
           console.log(response);
-          window.location.pathname = '/jobs';
+          this.props.history.push('/jobs');
         })
         .catch(function(error) {
           console.log(error);
