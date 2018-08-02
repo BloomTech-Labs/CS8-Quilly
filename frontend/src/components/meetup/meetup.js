@@ -44,15 +44,20 @@ class Meetup extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
+
+    let serverPort = {
+      date: this.state.date,
+      activity: this.state.activity,
+      link: this.state.link,
+      notes: this.state.notes
+    };
+
     axios
-      .post(`${config.serverUrl}/user/meetups/add`, {
-        date: this.state.date,
-        activity: this.state.activity,
-        link: this.state.link,
-        notes: this.state.notes
-      })
-      .then(function (response) {
-        console.log(response);
+      .post(`${config.serverUrl}/user/meetups/add`, serverPort)
+      .then((res) => {
+        let temp = this.state.serverData;
+        temp.push(serverPort);
+        this.setState({ serverData: temp });
       })
       .catch(function (error) {
         console.log(error);
@@ -67,7 +72,6 @@ class Meetup extends Component {
           {this.state.serverData.map(function (meetup) {
             return (
               <div className="meetupsData">
-                {/* Need to fix format of date */}
                 <div className="date">{meetup.date.slice(0, 10)}</div>
                 <div className="activity">{meetup.activity}</div>
                 <div className="link">
