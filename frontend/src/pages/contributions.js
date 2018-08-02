@@ -5,10 +5,14 @@ import Contribution from '../components/contribution/contribution';
 import Signout from '../components/signout/signout'
 
 class Contributionspage extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   render() {
     return (
       <div className="App">
-        <Signout />
+        <Signout {...this.props} />
         <Sidebar />
         <Breadcrumbs />
         <Contribution />

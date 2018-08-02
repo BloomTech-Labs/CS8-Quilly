@@ -25,8 +25,8 @@ let fakeServerData = {
 };
 
 class Accountsignup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false,
@@ -74,11 +74,11 @@ class Accountsignup extends Component {
           username: this.state.username,
           password: this.state.password
         })
-        .then(function(response) {
-          console.log(response);
+        .then((response) => {
           this.props.history.push('/jobs');
+          console.log(response);
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.log(error);
         });
       })
