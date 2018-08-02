@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import Modal from 'react-modal';
-import axios from "axios";
+import axios from 'axios';
 
-import config from "../../config/config";
-import "./accountlogin.css";
+import config from '../../config/config';
+import './accountlogin.css';
 
 class Accountlogin extends Component {
   constructor() {
@@ -11,8 +11,8 @@ class Accountlogin extends Component {
 
     this.state = {
       modalIsOpen: false,
-      username: "",
-      password: ""
+      username: '',
+      password: ''
     };
 
     this.openModal = this.openModal.bind(this);
@@ -37,10 +37,10 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then(function (response) {
+      .then(function(response) {
         window.location.pathname = '/jobs';
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.error(error);
       });
 
@@ -64,7 +64,7 @@ class Accountlogin extends Component {
     return (
       <div className="Accountlogin">
         <button className="openLogin" onClick={this.openModal}>
-          <p>sign in</p>
+          <p>Login</p>
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -74,31 +74,31 @@ class Accountlogin extends Component {
           className="hello"
         >
           <div className="signinmodal">
-            <h2>signin</h2>
-            <form onSubmit={this.handleSubmit}>
-              <label>
-                <input
-                  placeholder="username"
-                  className="formInput"
-                  id="startFocus"
-                  type="username"
-                  required="true"
-                  name="username"
-                  value={this.state.username}
-                  onChange={this.handleChange}
-                />
-              </label>
-              <label>
-                <input
-                  placeholder="password"
-                  className="formInput"
-                  type="password"
-                  required="true"
-                  name="password"
-                  value={this.state.password}
-                  onChange={this.handleChange}
-                />
-              </label>
+            <h2 className="signinheader">Sign In</h2>
+            <form onSubmit={this.handleSubmit} className="inputform">
+              <h3 className="inputlable">Username:</h3>
+              <input
+                placeholder="username"
+                className="inputField"
+                id="startFocus"
+                type="username"
+                required="true"
+                name="username"
+                value={this.state.username}
+                onChange={this.handleChange}
+              />
+
+              <h3 className="inputlable">Password:</h3>
+              <input
+                placeholder="password"
+                className="inputField"
+                type="password"
+                required="true"
+                name="password"
+                value={this.state.password}
+                onChange={this.handleChange}
+              />
+
               <input type="submit" value="Submit" className="btn" />
             </form>
           </div>

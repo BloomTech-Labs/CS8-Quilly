@@ -2,9 +2,15 @@
   white-space: nowrap;
   margin-top: 65px;
   margin-left: 200px;
-  z-index: 0;
+  z-index: 2;
 }
 
 .cBXKgf {
-  background-color: rgba(256, 256, 256);
+  background: rgb(122, 125, 125);
+  background: linear-gradient(
+    45deg,
+    rgba(122, 125, 125, 1) 11%,
+    rgba(64, 121, 140, 0.8627297794117648) 62%,
+    rgba(255, 238, 219, 1) 100%
+  );
 }

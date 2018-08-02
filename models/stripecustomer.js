@@ -1,7 +1,7 @@
 const Stripe = require('stripe');
 const config = require('../config/config');
 
-module.exports = exports = function stripeCustomer(schema, options) {
+module.exports = exports = function stripeCustomer(schema) {
   stripe = Stripe(config.stripe.secret_key);
 
   schema.add({

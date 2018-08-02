@@ -88,9 +88,6 @@ router.post("/register", (req, res) => {
 // end point to log in to the app
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
-  console.log('username', username);
-  console.log('password', password);
   if (!username || !password)
     res.status(422).json({ error: "Username and password are required." });
   User.findOne({ username })
