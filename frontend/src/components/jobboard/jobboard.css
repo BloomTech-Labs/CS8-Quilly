@@ -5,6 +5,10 @@
   z-index: 2;
 }
 
+element.style {
+  border-bottom: 0px;
+}
+
 .cBXKgf {
   background: rgb(122, 125, 125);
   background: linear-gradient(
@@ -13,4 +17,16 @@
     rgba(64, 121, 140, 0.8627297794117648) 62%,
     rgba(255, 238, 219, 1) 100%
   );
+}
+
+/* big boards */
+.dJewwL {
+  background-color: hotpink;
+  border-radius: 1px;
+  margin: 1.5px;
+}
+
+/* small boards */
+.sc-dnqmqq {
+  background-color: #ffeedb;
 }
