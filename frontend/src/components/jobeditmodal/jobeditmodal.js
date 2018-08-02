@@ -43,7 +43,6 @@ class Jobeditmodal extends Component {
   }
 
   closeModal() {
-
     this.setState(defaultState);
   }
 
