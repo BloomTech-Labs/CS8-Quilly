@@ -23,7 +23,7 @@ const server = express();
 server.use(express.json());
 server.use(helmet());
 server.use(cors(config.corsOptions));
-server.options(config.corsOptions.origin, cors(config.corsOptions));
+server.options('*', cors(config.corsOptions));
 
 server.use(
   session({
