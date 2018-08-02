@@ -67,6 +67,7 @@ class Meetup extends Component {
           {this.state.serverData.map(function (meetup) {
             return (
               <div className="meetupsData">
+              {/* Need to fix format of date */}
                 <p className="date">{meetup.date}</p>
                 <p className="activity">{meetup.activity}</p>
                 <p className="link">
@@ -82,8 +83,8 @@ class Meetup extends Component {
           })}
         </div>
         {/* Form Component */}
-        <div>
-          <form onSubmit={this.handleSubmit} className="MeetupForm">
+        <div className="MeetupForm">
+          <form onSubmit={this.handleSubmit} className="FormSubmit">
             <input
               className="formDate"
               required="true"
