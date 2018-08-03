@@ -2,12 +2,28 @@
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 190px; /* Set the width of the sidebar */
   position: absolute; /* Fixed Sidebar (stay in place on scroll) */
-  z-index: 0; /* Stay on top */
+  z-index: 100; /* Stay on top */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 10px;
-  /* outline-style: solid; */
   text-align: center;
-  background-color: #ffffff34;
+  background-color: #00000085;
+  left: -165px;
+  transition: transform 0.5s ease;
+}
+
+.Sidebar:hover {
+  /*moves navbar to a viewable position*/
+  transform: translate(165px, 0);
+}
+
+.Sidebar p {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  float: right;
+  margin-right: 2px;
+  margin-top: 10px;
+  font-weight: bolder;
+  color: #ffffff;
 }
 
 /* The navigation menu links */
@@ -15,18 +31,26 @@
   padding: 20px;
   text-decoration: none;
   font-size: 20px;
-  color: #ffffff45;
+  color: #ffffff95;
   display: block;
 }
 
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
-  color: white;
+  color: #40798c;
   text-decoration: underline;
+  opacity: 1;
 }
 
 #sidebarLogo {
   width: 45px;
+  opacity: 0.55;
+  margin-left: 20px;
+}
+
+/*makes logo untransparent*/
+#sidebarLogo:hover {
+  opacity: 1;
 }
 
 @media screen and (max-height: 450px) {

@@ -8,6 +8,7 @@ class Sidebar extends Component {
   render() {
     return (
       <div className="Sidebar">
+        <p>Menu</p>
         {/* <Link to="/">Home</Link> */}
         <Link to="/">
           <img src={logo} id="sidebarLogo" alt="Home" />
