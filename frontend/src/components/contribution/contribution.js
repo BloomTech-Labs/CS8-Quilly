@@ -88,6 +88,7 @@ class Contribution extends Component {
         {/* Form Component */}
         <div className="ContributionForm">
           <form onSubmit={this.handleSubmit} className="FormSubmit">
+          <i class="far fa-calendar-alt"></i>
             <input
               className="formDate"
               required="true"
