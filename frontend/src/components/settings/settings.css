@@ -12,8 +12,8 @@
   padding-right: 10px;
 }
 
-.Settings input,
-label {
+.Settings input {
   margin: 7px;
   float: left;
+  width: 45%;
 }
