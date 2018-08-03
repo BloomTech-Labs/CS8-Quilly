@@ -10,6 +10,10 @@
   width: 150px;
 }
 
+.openModal:hover {
+  cursor: pointer;
+}
+
 .Jobtimeline {
   /* position: absolute;
   top: 40px;

@@ -1,6 +1,7 @@
+/*button on homescreen for register*/
 .openSignup {
   position: fixed;
-  top: 450px;
+  top: 500px;
   right: 30%;
   background-color: white;
   border: 2px solid #ffeedb;
@@ -8,6 +9,10 @@
   font-size: 18px;
   height: 60px;
   width: 150px;
+}
+
+.openSignup:hover {
+  cursor: pointer;
 }
 
 .signupmodal {
@@ -34,9 +39,10 @@
   width: 48%;
 }
 
+/*text boxes for signin and signup modals*/
 .inputform .inputField {
   width: 45%;
-  height: 18px;
+  height: 30px;
   align-self: center;
 }
 
@@ -76,6 +82,6 @@
   color: lightcoral;
   width: 100%;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   margin-bottom: -5%;
 }
