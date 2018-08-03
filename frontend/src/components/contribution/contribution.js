@@ -108,7 +108,7 @@ class Contribution extends Component {
             <input
               className="formLink"
               type="text"
-              placeholder="Link"
+              placeholder="Link &#x1f517;"
               required="true"
               name="link"
               value={this.state.link}

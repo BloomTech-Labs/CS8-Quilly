@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     });
 });
 
-/*router.post('/charge', (req, res) => {
+router.post('/charge', (req, res) => {
   // Create the customer
   // StripeCustomer.createCustomer((token) => {
   //   // Static plan
@@ -28,9 +28,9 @@ StripeCustomer.setPlan(plan, token, () => {
     console.log("Plan saved");
   });
   // });
-});*/
+});
 
-router.post('/charge', (req, res) => {
+/*router.post('/charge', (req, res) => {
   stripe.customers
     .create({
       // Need to send req.session.email from frontend - billing.js
@@ -57,6 +57,6 @@ router.post('/charge', (req, res) => {
     .catch(err => {
       console.log(err);
     });
-});
+});*/
 
 module.exports = router;
