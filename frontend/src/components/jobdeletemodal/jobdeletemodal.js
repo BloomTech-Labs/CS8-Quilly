@@ -13,20 +13,58 @@ class Jobdeletemodal extends Component {
         super(props);
 
         this.state = {
-            modalIsopen: false
+            modalIsopen: false,
+            jobId: ""
         }
     }
 
-    openModal = () => {
-        this.setState({ modalIsOpen: true });
+    openModal = (jobId) => {
+        this.setState({ modalIsOpen: true, jobId });
     }
     
     closeModal = () => {
         this.setState({ modalIsOpen: false });
     }
 
+    updateLists() {
+        const newLists = {};
+        axios
+        .get(`${config.serverUrl}/user/applications/`)
+        .then(response => {
+          //response is updated list of applications. They need sorted into lists and returned.
+          const updatedApplications = response.data;
+    
+          const listCategories = ['wishlist', 'applied', 'phone', 'on site', 'offer', 'rejected'];
+          listCategories.forEach(category => {
+            if (!newLists[category])
+              newLists[category] = [];
+          });
+    
+          updatedApplications.forEach(job => {
+            newLists[job.category].push(job);
+          });
+    
+    
+          this.props.handleJobChange(newLists);
+        })
+        .catch(error => {
+          console.log(error);
+          document.getElementById("jobEditWarning").innerHTML = error.response.data.error;
+        });
+    }
+
     handleSubmit = (event) => {
         event.preventDefault();
+        console.log(this.state.jobId);
+        axios
+        .delete(`${config.serverUrl}/user/applications/delete/${this.state.jobId}`)
+        .then(response => {
+            this.updateLists();
+            this.closeModal();
+        })
+        .catch(error => {
+            console.log(error.response.data.error);
+        });
     }
 
     render() {
