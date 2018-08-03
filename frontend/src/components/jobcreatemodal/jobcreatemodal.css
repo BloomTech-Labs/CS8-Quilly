@@ -83,6 +83,7 @@
 }
 
 #jobCreateWarning {
-  color: lightcoral;
+  color: red;
+  font-weight: bold;
   margin-top: 2%;
 }

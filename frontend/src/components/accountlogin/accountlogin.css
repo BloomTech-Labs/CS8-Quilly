@@ -73,7 +73,8 @@ h3 {
 }
 
 #loginWarning {
-  color: lightcoral;
+  color: red;
+  font-weight: bold;
   width: 100%;
   display: flex;
   justify-content: center;
