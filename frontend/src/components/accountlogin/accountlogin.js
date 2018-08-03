@@ -37,9 +37,10 @@ class Accountlogin extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then((response) => {
+      .then(response => {
         this.props.history.push('/jobs');
       })
+
       .catch((error) => {
         document.getElementById("loginWarning").innerHTML = error.response.data.error;
         console.error(error);

@@ -1,22 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Sidebar from '../components/sidebar/sidebar';
 import Billing from '../components/billing/billing';
 import Signout from '../components/signout/signout';
 
-class Billingpage extends Component {
-  constructor(props) {
-    super(props);
-  }
-  
-  render() {
+const Billingpage = (props) => {
     return (
       <div className="App">
-        <Signout {...this.props} />
+        <Signout {...props} />
         <Sidebar />
         <Billing />
       </div>
     );
-  }
-}
+};
 
 export default Billingpage;

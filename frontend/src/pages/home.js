@@ -1,15 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Accountlogin from '../components/accountlogin/accountlogin';
 import Accountsignup from '../components/accountsignup/accountsignup';
 import Background from '../img/background.jpg';
 import Logo from '../img/Quilly Full Logo - Black Border.svg';
 
-class Homepage extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
+const Homepage = (props) => {
     return (
       <div className="homeApp">
         <img src={Background} className="background" alt="background" />
@@ -23,11 +18,10 @@ class Homepage extends Component {
           <p>Our tools will help you on your journey of landing your dream job.</p>
         </div>
         <br />
-        <Accountsignup {...this.props} />
-        <Accountlogin {...this.props} />
+        <Accountsignup {...props} />
+        <Accountlogin {...props} />
       </div>
     );
-  }
 }
 
 export default Homepage;

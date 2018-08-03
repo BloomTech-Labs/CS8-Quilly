@@ -1,29 +1,68 @@
 .MeetupComponents {
   display: block;
-  margin: 65px 0 0 250px;
-  border: 3px solid black;
+  margin: 80px 0 0 250px;
   padding: 20px 20px;
   width: 70%;
   height: 50vh;
+  background-color: #fff6ed;
 }
 
+/* Data Input Styling */
 .meetupsData {
+  padding: 5px;
   display: inline-flex;
   flex-wrap: wrap;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: flex-start;
   width: 100%;
 }
 
-.meetupsData .p {
-  margin-right: 20px;
-}
-
-.MeetupForm {
-  display: flex;
-  justify-content: space-evenly;
-}
-
 input {
   margin-right: 15px;
+}
+
+.date {
+  text-align: center;
+  background-color: pink;
+  width: 20%;
+}
+
+.activity {
+  text-align: center;
+  background-color: aqua;
+  width: 30%;
+}
+
+.notes {
+  text-align: center;
+  background-color: blueviolet;
+  width: 40%;
+}
+
+.link {
+  
+  text-align: center;
+  background-color: blue;
+  width: 5%;
+}
+
+/* Input Box Styling */
+.MeetupForm {
+  margin-left: 10px;
+}
+
+.formDate {
+  margin-left: 10px;
+}
+
+.formActivity {
+  margin-left: 10px;
+}
+
+.formLink {
+  margin-left: 10px;
+}
+
+.formNotes {
+  margin-left: 10px;
 }

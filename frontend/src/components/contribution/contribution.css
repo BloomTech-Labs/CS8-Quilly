@@ -1,17 +1,23 @@
 .ContributionComponents {
     display: block;
-    margin: 65px 0 0 250px;
-    border: 3px solid black;
-    padding: 20px 20px;
-    width: 50%;
-    height: 50vh;
+  margin: 80px 0 0 250px;
+  padding: 20px 20px;
+  width: 70%;
+  height: 50vh;
+  background-color: #fff6ed;
 }
 
-.date, .title, .notes {
-    display: inline-block;
-    margin-right: 15px;
+.contributionsData {
+    padding: 5px;
+  display: inline-flex;
+  flex-wrap: wrap;
+  /* justify-content: space-around; */
+  align-items: flex-start;
+  width: 100%;
 }
 
-input {
-    margin-right: 15px;
-}
+.contribution {
+    text-align: center;
+    background-color: aqua;
+    width: 30%;
+  }

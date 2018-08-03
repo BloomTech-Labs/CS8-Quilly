@@ -2,7 +2,8 @@ import React from 'react';
 import EditButton from './editButton';
 import DeleteButton from './deleteButton';
 import Jobeditmodal from '../../jobeditmodal/jobeditmodal';
-const CustomCard = props => {
+
+const CustomCard = (props) => {
   return (
     <div style={{ id: props.id }}>
       <header
@@ -36,7 +37,7 @@ const CustomCard = props => {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default CustomCard;
