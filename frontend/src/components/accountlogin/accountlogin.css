@@ -5,9 +5,10 @@
   text-decoration: none;
 }
 
+/*button on homepage for login*/
 .openLogin {
   position: fixed;
-  top: 450px;
+  top: 500px;
   left: 30%;
   background-color: white;
   border: 2px solid #ffeedb;
@@ -15,6 +16,9 @@
   font-size: 18px;
   height: 60px;
   width: 150px;
+}
+.openLogin:hover {
+  cursor: pointer;
 }
 
 .openLogin p {
@@ -42,12 +46,6 @@ h3 {
 
 .inputform .inputlable {
   width: 48%;
-}
-
-.inputform .inputField {
-  width: 45%;
-  height: 10px;
-  align-self: center;
 }
 
 .inputform {
@@ -78,6 +76,6 @@ h3 {
   color: lightcoral;
   width: 100%;
   display: flex;
-  justify-content:center;
+  justify-content: center;
   margin-bottom: -5%;
 }

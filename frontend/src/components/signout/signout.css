@@ -10,6 +10,10 @@
   width: 140px;
 }
 
+.signoutBtn:hover {
+  cursor: pointer;
+}
+
 .Accountlogout a {
   display: inline-flex;
   font-size: 15px;
