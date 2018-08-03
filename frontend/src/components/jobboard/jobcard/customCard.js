@@ -22,7 +22,7 @@ const CustomCard = (props) => {
         <div className="buttonContainer" style={{ paddingTop: 3, paddingRight: 3 }}>
           <EditButton jobInfo={props.jobInfo} openEditModal={props.openEditModal}/>
           {/* <Jobeditmodal jobInfo={props.jobInfo}/> */}
-          <DeleteButton />
+          <DeleteButton jobId={props.jobInfo._id} openDeleteModal={props.openDeleteModal}/>
         </div>
       </header>
       <div style={{ fontSize: 14 }}>
