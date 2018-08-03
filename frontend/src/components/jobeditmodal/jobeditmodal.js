@@ -81,7 +81,7 @@ class Jobeditmodal extends Component {
       document.getElementById("jobEditWarning").innerHTML = error.response.data.error;
     });
 
-    return newLists;
+    //return newLists;
     // This will have to be reworked to handle user entered lists
     // if (newApplication.category === 'wishlist')
     //   lists["wishlist"].push(newApplication);
@@ -155,7 +155,7 @@ class Jobeditmodal extends Component {
     axios
     .put(`${config.serverUrl}/user/applications/update/${this.state._id}`, temp)
     .then(response => {
-      const newLists = this.updateLists();
+      this.updateLists();
       this.closeModal();
 
     })
@@ -167,7 +167,7 @@ class Jobeditmodal extends Component {
   render() {
     return (
       <div>
-        <EditButton openModal={this.openModal} />
+        {/* <EditButton openModal={this.openModal} /> */}
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
