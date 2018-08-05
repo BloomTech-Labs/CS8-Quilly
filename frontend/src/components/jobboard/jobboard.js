@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import CustomCard from './jobcard/customCard.js';
 import formatDate from './formatDate.js';
+import axios from 'axios';
+import config from '../../config/config';
 
 // need to do `yarn add react-trello` to use the package.
 import Board from 'react-trello';
@@ -65,7 +67,7 @@ class JobBoard extends Component {
     // create lanes (aka columns)
     for (let i = 0; i < listCategories.length; i++) {
       data.lanes.push({
-        id: `lane${i + 1}`,
+        id: listCategories[i],
         title: listTitles[i],
         label: listLabels[i],
         cards: listCards[listCategories[i]]
@@ -105,6 +107,29 @@ class JobBoard extends Component {
     else return null;
   }
 
+  handleListUpdates = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
+
+    const lists = this.state.lists;
+
+    if (targetLaneId !== sourceLaneId) {
+      const applicationId = cardDetails.jobInfo._id;
+      const job = Object.assign({}, ...cardDetails.jobInfo, { category: `${targetLaneId}` });
+
+      axios
+        .put(`${config.serverUrl}/user/applications/update/${applicationId}`, job)
+        .then((response) => {
+          console.log(response);
+          let oldList = `${sourceLaneId}`;
+          let newList = `${targetLaneId}`;
+
+          lists[oldList] = lists[oldList].filter(app => app !== job);
+          lists[newList].push(job);
+          this.handleJobChange(lists);
+        })
+        .catch(error => error.console(error));
+    }
+  }
+
   render() {
     return (
       <Board
@@ -113,6 +138,7 @@ class JobBoard extends Component {
         cardDragClass="draggingCard"
         draggable
         laneDraggable={false}
+        handleDragEnd={this.handleListUpdates}
         newCardTemplate={<Jobcreatemodal />}
         >
         <CustomCard cards={this.state.data.cards} openEditModal={this.props.openEditModal} openDeleteModal={this.props.openDeleteModal} />

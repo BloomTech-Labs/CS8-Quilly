@@ -26,9 +26,14 @@ class Joblistpage extends Component {
     };
 
     this.handleJobChange = this.handleJobChange.bind(this);
+    this.getState = this.getState.bind(this);
   }
 
   componentDidMount() {
+    this.getState()
+  }
+
+  getState() {
     const lists = {
       wishlist: [],
       applied: [],
@@ -37,11 +42,10 @@ class Joblistpage extends Component {
       offer: [],
       rejected: []
     };
-    console.log('Fetching inital data from server');
+
     axios
       .get(`${config.serverUrl}/user`)
       .then(user => {
-        console.log('fetching data from server');
         let applications = user.data.applications;
         applications.forEach(application => {
           let category = application.category;
