@@ -1,8 +1,10 @@
 const Stripe = require('stripe');
 const config = require('../config/config');
 
-module.exports = exports = function stripeCustomer(schema) {
-  stripe = Stripe(config.stripe.secret_key);
+module.exports = exports = function stripeCustomer(schema, options) {
+  //stripe = Stripe(config.stripe.secret_key);
+  console.log(options);
+  stripe = Stripe(options.apiKey);
 
   schema.add({
     stripe: {
@@ -27,6 +29,15 @@ module.exports = exports = function stripeCustomer(schema) {
 
   schema.statics.getPlans = () => {
     return options.planData;
+  };
+
+  schema.methods.getCustomer = () => {
+    stripe.customers.retrieve(
+      "cus_DMLPyphhuxEWaK",
+      function(err, customer) {
+        // asynchronously called
+      }
+    );  
   };
 
   schema.methods.createCustomer = cb => {
@@ -60,23 +71,27 @@ module.exports = exports = function stripeCustomer(schema) {
         : customer.sources.data[0];
 
       user.stripe.last4 = card.last4;
-      user.save(err => {
-        if (err) return cb(err);
-        return cb(null);
-      });
+      //console.log("PRINTING USER:\n", user);
+      // user.save(function(err) {
+      //   if (err) return cb(err);
+      //   return cb(null);
+      // });
+      cb(null);
     };
 
     if (user.stripe.customerId) {
+      console.log("1");
       stripe.customers.update(
         user.stripe.customerId,
         { card: stripe_token },
         cardHandler
       );
     } else {
+      console.log("2");
       stripe.customers.create(
         {
           email: user.email,
-          card: stripe_token
+          source: stripe_token
         },
         cardHandler
       );

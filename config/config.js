@@ -8,8 +8,9 @@ module.exports = {
     optionsSuccessStatus: 200
   },
   stripe: {
-    secretKey:
-      process.env.STRIPE_SECRET_KEY || 'sk_test_QixOiUfMKS32WljW9ThkIi1e',
+    apiKey: process.env.STRIPE_KEY || 'sk_test_QixOiUfMKS32WljW9ThkIi1e',
+    stripePubKey:
+      process.env.STRIPE_PUB_KEY  || 'pk_test_K1tJV1QhjRPnqQFwDFxe6vZd',
     defaultPlan: 'default',
     plans: ['default'],
     planData: {

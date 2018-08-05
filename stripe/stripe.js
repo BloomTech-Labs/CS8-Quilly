@@ -18,16 +18,28 @@ router.get('/', (req, res) => {
 });
 
 router.post('/charge', (req, res) => {
+  console.log("POST /charge");
+  //console.log(req);
+   //let plan = 'plan_DIBFYLHH0MvZx3';
+  let tok = req.body.data;
   // Create the customer
-  // StripeCustomer.createCustomer((token) => {
-  //   // Static plan
-  //   let plan = 'plan_DIBFYLHH0MvZx3';
-  //   // Assuming that the createCustomer returns a token that reporesents the customer id
-  //   // We pass that token and plan to setPlan to save the plan
-StripeCustomer.setPlan(plan, token, () => {
-    console.log("Plan saved");
+  User.findById(req.session.userId, (err, user) => {
+    console.log("Findbyid");
+    if (err) {
+      console.log("Error in /charge findbyid");
+    };
+
+    console.log(user);
+
+    user.setCard(tok, (err) => {
+      console.log("Setting card");
+      if (err) {
+        console.log("Error in /charge setcard:\n" + err);
+      };
+      console.log(user);
+      res.status(200).send(user);
+    });
   });
-  // });
 });
 
 /*router.post('/charge', (req, res) => {
