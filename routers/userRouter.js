@@ -41,13 +41,20 @@ router.post("/register", (req, res) => {
       .json({ error: "All required fields must be filled with valid data" });
   }
 
-  User.findOne({ username })
+  User.findOne({ username: username })
     .then(response => {
+      console.log(response);
       if (!response) {
         const user = new User(req.body);
+        console.log(user);
         user
-          .save()
+          .save(err => {
+            if(err) console.log(err);
+
+            console.log("saving");
+          })
           .then(newUser => {
+            console.log("newuser");
             const {
               username,
               email,
@@ -67,15 +74,18 @@ router.post("/register", (req, res) => {
             res.status(201).json(response);
           })
           .catch(err => {
-            if (err.code === 11000)
+            console.log(err);
+            if (err.code === 11000) {
+              
               // 11000 is the mongo error code for a duplicate of a unique field
               res.status(422).json({
                 error:
                   "New user could not be created. A unqique email address is required."
               });
-            else
+            } else {
               res.status(500).json({ error: "New user could not be created. Try again later." });
-          });
+            }
+            });
       } else {
         res.status(422).json({ error: "Username not available. Choose a different username" });
       }
