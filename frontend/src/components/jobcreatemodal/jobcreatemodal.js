@@ -4,7 +4,6 @@ import axios from 'axios';
 import config from '../../config/config';
 
 import './jobcreatemodal.css';
-import { runInThisContext } from 'vm';
 
 Modal.setAppElement(document.getElementById('root'));
 
