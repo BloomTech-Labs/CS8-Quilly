@@ -1,0 +1,28 @@
+.jobDeleteModal {
+  padding: 5% 10%;
+  margin: 5% auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: #7a7d7d;
+  border-radius: 15px;
+  width: 350px;
+  max-width: 500px;
+}
+
+.jobDeleteModal h1 {
+  color: #ffeedb;
+}
+
+.jobDeleteModal .deleteButton {
+  border: 2px solid #ffeedb;
+  border-radius: 20px;
+  background: #40798c;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
+  height: 32px;
+  margin: 40px auto 0;
+  font-size: 17px;
+  float: right;
+  color: #ffeedb;
+}
