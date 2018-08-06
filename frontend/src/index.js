@@ -9,6 +9,7 @@ import Meetupspage from './pages/meetups';
 import Contributionspage from './pages/contributions';
 import Billingpage from './pages/billing';
 import Settingspage from './pages/settings';
+import Resumepage from './pages/resumes';
 import { StripeProvider } from 'react-stripe-elements';
 import config from './config/config';
 import './index.css';
@@ -26,6 +27,7 @@ ReactDOM.render(
       <Route path="/billing" component={Billingpage} />
       </StripeProvider>
       <Route path="/settings" component={Settingspage} />
+      <Route path="/resumes" component={Resumepage} />
     </div>
   </Router>,
 

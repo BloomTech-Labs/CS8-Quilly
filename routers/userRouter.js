@@ -7,6 +7,7 @@ const meetupRouter = require("./meetupsRouter");
 const billingRouter = require("../stripe/stripe")
 
 const User = require("../models/userModel");
+const fs = require('fs');
 
 // authenticate that the user is signed in
 function authenticate(req, res, next) {
@@ -152,6 +153,30 @@ router.put("/update", authenticate, (req, res) => {
       res.status(500).json({ error: "User information could not be updated" });
     });
 });
+
+router.post("/addResume", authenticate, (req, res) => {
+  const { userId } = req.session;
+  User.findById(userId)
+  .then(user => {
+      console.log(req.body);
+      fs.readFile(req.body.resume, (error, data) => {
+      console.log('in the readfile');
+     
+      user.resume.data = data;
+      user.resume.contentType = req.body.resume.split('.').pop();
+      user.save()
+      .then(response => {
+        res.status(201).send(response);
+      })
+      .catch(error => {
+        res.status(500).send(error);
+      })
+    })
+  })
+  .catch(error => {
+    res.status(500).send(error);
+  })
+})
 
 router.use("/applications", authenticate, applicationRouter);
 router.use("/contributions", authenticate, contributionRouter);
