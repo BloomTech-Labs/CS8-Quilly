@@ -2,6 +2,7 @@ var Stripe = require('stripe'),
 stripe;
 
 module.exports = exports = function stripeCustomer(schema, options) {
+  console.log("APIKEY", options.apiKey);
   stripe = Stripe(options.apiKey);
 
   schema.add({
@@ -67,7 +68,6 @@ module.exports = exports = function stripeCustomer(schema, options) {
         if (err) return cb(err);
         return cb(null);
       });
-      cb(null);
     };
 
     if (user.stripe.customerId) {
