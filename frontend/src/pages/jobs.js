@@ -67,7 +67,7 @@ class Joblistpage extends Component {
 
   openDeleteModal = jobId => {
     this.deleteModal.current.openModal(jobId);
-  }
+  };
 
   render() {
     return (
