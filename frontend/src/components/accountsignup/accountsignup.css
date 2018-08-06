@@ -44,6 +44,7 @@
   width: 45%;
   height: 30px;
   align-self: center;
+  font-size: 18px;
 }
 
 .inputform .btn:hover {
@@ -79,7 +80,8 @@
 }
 
 #signupWarning {
-  color: lightcoral;
+  color: red;
+  font-weight: bold;
   width: 100%;
   display: flex;
   justify-content: center;

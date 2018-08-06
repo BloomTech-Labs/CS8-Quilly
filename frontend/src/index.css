@@ -26,12 +26,12 @@ body {
 
 .homeDescription {
   /*that big transparent box on home*/
-  background: #ffffff80;
+  background: #ffffff90;
   position: fixed;
-  top: 20px;
-  right: 20px;
-  left: 20px;
-  bottom: 20px;
+  top: 40px;
+  right: 40px;
+  left: 40px;
+  bottom: 40px;
   border-radius: 40px;
   text-align: center;
 }

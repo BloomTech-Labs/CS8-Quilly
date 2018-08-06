@@ -3,6 +3,7 @@ import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
 import Jobeditmodal from '../components/jobeditmodal/jobeditmodal';
+import Jobdeletemodal from '../components/jobdeletemodal/jobdeletemodal'
 import Signout from '../components/signout/signout';
 import config from '../config/config';
 import axios from 'axios';
@@ -11,6 +12,7 @@ class Joblistpage extends Component {
   constructor(props) {
     super(props);
     this.editModal = React.createRef();
+    this.deleteModal = React.createRef();
     this.jobboard = React.createRef();
     this.state = {
       lists: {
@@ -63,16 +65,20 @@ class Joblistpage extends Component {
     this.editModal.current.openModal(jobInfo);
   };
 
+  openDeleteModal = jobId => {
+    this.deleteModal.current.openModal(jobId);
+  }
+
   render() {
     return (
       <div className="App">
 
         <Signout {...this.props} />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} ref={this.jobboard}/>
+        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} openDeleteModal={this.openDeleteModal} ref={this.jobboard}/>
         <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
         <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChange={this.handleJobChange} />
-
+        <Jobdeletemodal ref={this.deleteModal} handleJobChange={this.handleJobChange} />
       </div>
     );
   }
