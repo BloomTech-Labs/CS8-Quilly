@@ -9,7 +9,7 @@ module.exports = {
   },
   stripe: {
     apiKey: process.env.STRIPE_KEY || 'sk_test_QixOiUfMKS32WljW9ThkIi1e',
-    stripePubKey:
+    publicKey:
       process.env.STRIPE_PUB_KEY  || 'pk_test_K1tJV1QhjRPnqQFwDFxe6vZd',
     defaultPlan: 'default',
     plans: ['default'],
