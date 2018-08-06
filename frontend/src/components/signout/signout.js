@@ -1,40 +1,36 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import config from '../../config/config';
-import "./signout.css";
+import './signout.css';
 
 class Accountlogout extends Component {
-
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
 
   handleSubmit(event) {
     event.preventDefault();
     axios
       .get(`${config.serverUrl}/user/logout`)
-      .then(function (response) {
+      .then((response) => {
         console.log(`This is the LOGOUT RESPONSE: `, response);
-        window.location.pathname = '/home';
+
+        this.props.history.replace('/');
+
       })
-      .catch(function (error) {
+      .catch((error) => {
         console.log(`HANDLE SUBMIT ERROR: ${error}!`);
       });
   }
-
-
 
   render() {
     return (
       <div className="Accountlogout">
         <form onSubmit={this.handleSubmit}>
-          <input type="submit" value="Submit" />
-          <label>sign out</label>
+          <input type="submit" value="Signout" className="signoutBtn" />
         </form>
-
       </div>
     );
   }

@@ -11,7 +11,6 @@ router.get("/", (req, res) => {
   User.findById(userId)
     .populate({ path: "meetups" })
     .then(user => {
-      console.log("hello this request was made!");
       res.status(200).send(user.meetups);
     })
     .catch(error => {

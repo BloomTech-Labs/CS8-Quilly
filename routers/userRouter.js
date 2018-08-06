@@ -41,7 +41,7 @@ router.post("/register", (req, res) => {
       .json({ error: "All required fields must be filled with valid data" });
   }
 
-  User.findOne({ username })
+  User.findOne({ username: username })
     .then(response => {
       if (!response) {
         const user = new User(req.body);
@@ -67,30 +67,28 @@ router.post("/register", (req, res) => {
             res.status(201).json(response);
           })
           .catch(err => {
-            if (err.code === 11000)
+            if (err.code === 11000) {
               // 11000 is the mongo error code for a duplicate of a unique field
               res.status(422).json({
                 error:
                   "New user could not be created. A unqique email address is required."
               });
-            else
-              res.status(500).json({ error: "New user could not be created" });
-          });
+            } else {
+              res.status(500).json({ error: "New user could not be created. Try again later." });
+            }
+            });
       } else {
-        res.status(422).json({ error: "User already exists" });
+        res.status(422).json({ error: "Username not available. Choose a different username" });
       }
     })
     .catch(err => {
-      res.status(500).json({ error: "New user could not be created" });
+      res.status(500).json({ error: "New user could not be created. Try again later" });
     });
 });
 
 // end point to log in to the app
 router.post("/login", (req, res) => {
   const { username, password } = req.body;
-  console.log(req.body);
-  console.log('username', username);
-  console.log('password', password);
   if (!username || !password)
     res.status(422).json({ error: "Username and password are required." });
   User.findOne({ username })
@@ -100,23 +98,23 @@ router.post("/login", (req, res) => {
           .isPasswordValid(password)
           .then(result => {
             if (result) {
-              req.session.email = email;
-              req.session.username = username;
+              req.session.email = user.email;
+              req.session.username = user.username;
               req.session.userId = user._id;
               res.status(200).json({ message: "Login successful" });
             } else {
-              res.status(422).json({ error: "Invalid credentials" });
+              res.status(422).json({ error: "Invalid username or password" });
             }
           })
           .catch(err => {
-            res.status(500).json({ error: "Error in user validation" });
+            res.status(500).json({ error: "Server error. Try again" });
           });
       } else {
-        res.status(422).json({ error: "User not found" });
+        res.status(422).json({ error: "Invalid username or password" });
       }
     })
     .catch(err => {
-      res.status(500).json({ error: "Database error" });
+      res.status(500).json({ error: "Server error. Try again later" });
     });
 });
 

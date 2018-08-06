@@ -1,8 +1,8 @@
-import React, { Component } from "react";
-import axios from "axios";
+import React, { Component } from 'react';
+import axios from 'axios';
 
-import "./contribution.css";
-import config from "../../config/config";
+import './contribution.css';
+import config from '../../config/config';
 
 class Contribution extends Component {
   constructor() {
@@ -10,10 +10,10 @@ class Contribution extends Component {
 
     this.state = {
       serverData: [],
-      date: "",
-      contribution: "",
-      link: "",
-      notes: ""
+      date: '',
+      contribution: '',
+      link: '',
+      notes: ''
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -26,7 +26,7 @@ class Contribution extends Component {
       .then(response => {
         this.setState({ serverData: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
@@ -52,14 +52,12 @@ class Contribution extends Component {
     axios
       .post(`${config.serverUrl}/user/contributions/add`, serverPort)
       .then(res => {
-        console.log(`RES.DATA: ${res.data}`);
-        console.log(`SERVERPORT: ${serverPort}`);
-        console.log(`STATE: ${this.state}`);
+        console.log(res);
         let temp = this.state.serverData;
         temp.push(serverPort);
         this.setState({ serverData: temp });
       })
-      .catch(function(error) {
+      .catch((error) => {
         console.log(error);
       });
   }
@@ -69,13 +67,17 @@ class Contribution extends Component {
       <div className="ContributionComponents">
         <div className="contributions">
           {/* Displaying over user's contributions -- will display nothing if no input given */}
-          {this.state.serverData.map(function(contribution) {
+          {this.state.serverData.map(function (contribution) {
             return (
-              <div>
-                <div className="date">{contribution.date}</div>
+              <div className="contributionsData">
+                <div className="date">{contribution.date.slice(0, 10)}</div>
                 <div className="contribution">{contribution.contribution}</div>
                 <div className="link">
-                  <a href={contribution.link}>&#x2661;</a>
+                  <a href={contribution.link}>
+                    <span role="img" aria-label="link emoji">
+                      &#x1f517;
+                    </span>
+                  </a>
                 </div>
                 <div className="notes">{contribution.notes}</div>
               </div>
@@ -85,7 +87,8 @@ class Contribution extends Component {
 
         {/* Form Component */}
         <div className="ContributionForm">
-          <form onSubmit={this.handleSubmit}>
+          <form onSubmit={this.handleSubmit} className="FormSubmit">
+          <i class="far fa-calendar-alt"></i>
             <input
               className="formDate"
               required="true"
@@ -106,14 +109,14 @@ class Contribution extends Component {
             <input
               className="formLink"
               type="text"
-              placeholder="Link"
+              placeholder="Link &#x1f517;"
               required="true"
               name="link"
               value={this.state.link}
               onChange={this.handleChange}
             />
             <input
-              className="Notes"
+              className="formNotes"
               type="text"
               placeholder="Notes"
               name="notes"

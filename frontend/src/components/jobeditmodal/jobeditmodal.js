@@ -3,8 +3,9 @@ import Modal from 'react-modal';
 import axios from 'axios';
 import config from '../../config/config';
 
-import './jobcreatemodal.css';
-import { runInThisContext } from 'vm';
+import './jobeditmodal.css';
+
+import EditButton from '../jobboard/jobcard/editButton';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -13,7 +14,7 @@ const defaultState = {
   company: "",
   position: "",
   submitted: false,
-  onSiteInterview: false,
+  onsiteInterview: false,
   recievedResponse: false,
   whiteboard: false,
   phoneInterview: false,
@@ -26,7 +27,7 @@ const defaultState = {
   pointOfContact: "",
 };
 
-class Jobcreatemodal extends Component {
+class Jobeditmodal extends Component {
   constructor(props) {
     super(props);
 
@@ -37,12 +38,11 @@ class Jobcreatemodal extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  openModal() {
-    this.setState({ modalIsOpen: true });
+  openModal(jobInfo) {
+    this.setState({ modalIsOpen: true, ...jobInfo });
   }
 
   closeModal() {
-
     this.setState(defaultState);
   }
 
@@ -54,53 +54,84 @@ class Jobcreatemodal extends Component {
     });
   }
 
-  addToLists(newApplication) {
-    let lists = this.props.jobs;
+  updateLists() {
+    const newLists = {};
+    axios
+    .get(`${config.serverUrl}/user/applications/`)
+    .then(response => {
+      //response is updated list of applications. They need sorted into lists and returned.
+      const updatedApplications = response.data;
 
+      const listCategories = ['wishlist', 'applied', 'phone', 'on site', 'offer', 'rejected'];
+      listCategories.forEach(category => {
+        if (!newLists[category])
+          newLists[category] = [];
+      });
+
+      updatedApplications.forEach(job => {
+        newLists[job.category].push(job);
+      });
+
+
+      this.props.handleJobChange(newLists);
+    })
+    .catch(error => {
+      console.log(error);
+      document.getElementById("jobEditWarning").innerHTML = error.response.data.error;
+    });
+
+    return newLists;
     // This will have to be reworked to handle user entered lists
-    if (newApplication.category === 'wishlist')
-      lists["wishlist"].push(newApplication);
-    else if (newApplication.category === 'on site')
-      lists["on site"].push(newApplication);
-    else if (newApplication.category === 'phone')
-      lists["phone"].push(newApplication);
-    else if (newApplication.category === 'applied')
-      lists["applied"].push(newApplication);
-    return lists;
+    // if (newApplication.category === 'wishlist')
+    //   lists["wishlist"].push(newApplication);
+    // else if (newApplication.category === 'onSiteInterview')
+    //   lists["on site"].push(newApplication);
+    // else if (newApplication.category === 'phoneInterview')
+    //   lists["phone"].push(newApplication);
+    // else if (newApplication.category === 'submitted')
+    //   lists["applied"].push(newApplication);
+    // return lists;
   }
 
   handleSubmit(event) {
     event.preventDefault();
-
     if (this.state.position === "" || this.state.company === "") {
-      document.getElementById("jobCreateWarning").innerHTML = "Company name and position are required fields";
+      document.getElementById("jobEditWarning").innerHTML = "Company name and position are required fields";
       return;
     }
     const {
       company,
       position,
       submitted,
-      onSiteInterview,
+      onsiteInterview,
       recievedResponse,
       whiteboard,
       phoneInterview,
       codeTest,
+      rejection,
+      offer,
       open,
       notes,
       jobSource,
       linkToJobPost,
       pointOfContact
     } = this.state;
-    const onsiteInterview = this.state.onSiteInterview;
+    //const onsiteInterview = this.state.onSiteInterview;
 
     // set status based on checkboxes
     let category = this.state.category;
-    if (onSiteInterview)
+    if (rejection)
+      category = 'rejected';
+    else if (offer)
+      category = 'offer';
+    else if (onsiteInterview)
       category = 'on site';
     else if (phoneInterview)
       category = 'phone';
     else if (submitted)
       category = 'applied';
+    else
+      category = 'wishlist';
 
     const temp = {
       company,
@@ -111,6 +142,8 @@ class Jobcreatemodal extends Component {
       whiteboard,
       phoneInterview,
       codeTest,
+      rejection,
+      offer,
       open,
       category,
       notes,
@@ -119,31 +152,27 @@ class Jobcreatemodal extends Component {
       pointOfContact,
     }
     axios
-    .post(`${config.serverUrl}/user/applications/add`, temp)
+    .put(`${config.serverUrl}/user/applications/update/${this.state._id}`, temp)
     .then(response => {
-      const newLists = this.addToLists(response.data.applications.slice(-1)[0]);
-      this.props.handleJobChange(newLists);
+      const newLists = this.updateLists();
       this.closeModal();
 
     })
     .catch(error => {
-      document.getElementById("jobCreateWarning").innerHTML = error.response.data.error;
       console.log(error);
     });
-  }
+   }
 
   render() {
     return (
       <div>
-        <button className="openModal" onClick={this.openModal}>
-          Add Job &#10010;
-        </button>
+        <EditButton openModal={this.openModal} />
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
           contentLabel="Example Modal"
           overlayClassName="Overlay"
-          className="hello"
+          className="jobeditmodal"
         >
           <div className="Jobtimeline">
             <h2>Job Timeline</h2>
@@ -161,8 +190,8 @@ class Jobcreatemodal extends Component {
                 <label>
                   <input
                   type="checkbox"
-                  name="onSiteInterview"
-                  checked={this.state.onSiteInterview}
+                  name="onsiteInterview"
+                  checked={this.state.onsiteInterview}
                   onChange={this.handleChange} />
                   On-Site Interview
                 </label>
@@ -172,7 +201,7 @@ class Jobcreatemodal extends Component {
                   type="checkbox"
                   name="recievedResponse"
                   checked={this.state.recievedResponse}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}/>
                   Received Response
                 </label>
                 <label>
@@ -180,7 +209,7 @@ class Jobcreatemodal extends Component {
                   type="checkbox"
                   name="whiteboard"
                   checked={this.state.whiteboard}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}/>
                   Whiteboarding
                 </label>
                 <br />
@@ -189,7 +218,7 @@ class Jobcreatemodal extends Component {
                   type="checkbox"
                   name="phoneInterview"
                   checked={this.state.phoneInterview}
-                  onChange={this.handleChange} />
+                  onChange={this.handleChange}/>
                   Phone Interview
                 </label>
                 <label>
@@ -206,7 +235,7 @@ class Jobcreatemodal extends Component {
                 name="notes"
                 value={this.state.notes}
                 onChange={this.handleChange} />
-              </form>
+                </form>
             </div>
           </div>
 
@@ -216,8 +245,7 @@ class Jobcreatemodal extends Component {
             placeholder="Company"
             name="company"
             value={this.state.company}
-            onChange={this.handleChange}
-            required="true"/>
+            onChange={this.handleChange}/>
             <select name="jobSource" value={this.state.jobSource} onChange={this.handleChange}>
               <option value="">Source of Job</option>
               <option value="Job Board">Job Board</option>
@@ -250,20 +278,16 @@ class Jobcreatemodal extends Component {
             placeholder="Position"
             name="position"
             value={this.state.position}
-            onChange={this.handleChange}
-            required="true"/>
+            onChange={this.handleChange} />
             <button onClick={this.handleSubmit}>
-              Add Job
+              Update Application Info
             </button>
-            <div id="jobCreateWarning"></div>
+            <div id="jobEditWarning"></div>
           </div>
-          <button className="openModal" onClick={this.openModal}>
-            Add Job &#10010;
-          </button>
         </Modal>
       </div>
     );
   }
 }
 
-export default Jobcreatemodal;
+export default Jobeditmodal;

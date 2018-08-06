@@ -1,40 +1,21 @@
-import React, { Component } from "react";
-import Modal from "react-modal";
-import axios from "axios";
+import React, { Component } from 'react';
+import Modal from 'react-modal';
+import axios from 'axios';
 
-import config from "../../config/config"
-import "./accountsignup.css";
-
-let fakeServerData = {
-  users: [
-    {
-      username: "aa",
-      password: "123",
-      email: "aa@aa.com",
-      firstname: "aa",
-      lastname: "aa"
-    },
-    {
-      username: "bb",
-      password: "123",
-      email: "bb@bb.com",
-      firstname: "bb",
-      lastname: "bb"
-    }
-  ]
-};
+import config from '../../config/config';
+import './accountsignup.css';
 
 class Accountsignup extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       modalIsOpen: false,
-      username: "",
-      password: "",
-      email: "",
-      firstname: "",
-      lastname: ""
+      username: '',
+      password: '',
+      email: '',
+      firstname: '',
+      lastname: ''
     };
 
     this.openModal = this.openModal.bind(this);
@@ -45,7 +26,7 @@ class Accountsignup extends Component {
   }
 
   componentWillMount() {
-    this.setState({ serverData: fakeServerData });
+    //this.setState({ serverData: fakeServerData });
   }
 
   handleChange(event) {
@@ -74,17 +55,17 @@ class Accountsignup extends Component {
           username: this.state.username,
           password: this.state.password
         })
-        .then(function(response) {
+        .then((response) => {
+          this.props.history.push('/jobs');
           console.log(response);
-          window.location.pathname = '/jobs';
         })
-        .catch(function(error) {
+        .catch((error) => {
           console.log(error);
         });
-
       })
       .catch(function(error) {
-        console.log(`HANDLE SUBMIT ERROR: ${error}!`);
+        console.log(error);
+        document.getElementById("signupWarning").innerHTML = error.response.data.error;
       });
 
     event.preventDefault();
@@ -106,8 +87,8 @@ class Accountsignup extends Component {
   render() {
     return (
       <div className="Accountsignup">
-        <button className="openModal" onClick={this.openModal}>
-          Sign Up
+        <button className="openSignup" onClick={this.openModal}>
+          Register
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -117,10 +98,9 @@ class Accountsignup extends Component {
           className="hello"
         >
           <div className="signupmodal">
-            <h2 className="signupHeader">Sign Up</h2>
+            <h2 className="signupHeader">Register</h2>
             <form onSubmit={this.handleSubmit} className="inputform">
-              <h3 className="inputlable
-              ">Username:</h3>
+              <h3 className="inputlable">Username:</h3>
               <input
                 placeholder="username"
                 className="inputField"
@@ -131,8 +111,7 @@ class Accountsignup extends Component {
                 onChange={this.handleChange}
                 id="startFocus"
               />
-              <h3 className="inputlable
-              ">Password:</h3>
+              <h3 className="inputlable"> Password:</h3>
               <input
                 placeholder="password"
                 className="inputField"
@@ -142,8 +121,7 @@ class Accountsignup extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <h3 className="inputlable
-              ">E-mail:</h3>
+              <h3 className="inputlable">E-mail:</h3>
               <input
                 placeholder="email"
                 className="inputField"
@@ -153,8 +131,7 @@ class Accountsignup extends Component {
                 value={this.state.email}
                 onChange={this.handleChange}
               />
-              <h3 className="inputlable
-              ">First Name:</h3>
+              <h3 className="inputlable"> First Name:</h3>
               <input
                 placeholder="firstname"
                 className="inputField"
@@ -164,8 +141,7 @@ class Accountsignup extends Component {
                 value={this.state.firstname}
                 onChange={this.handleChange}
               />
-              <h3 className="inputlable
-              ">Last Name:</h3>
+              <h3 className="inputlable"> Last Name:</h3>
               <input
                 placeholder="lastname"
                 className="inputField"
@@ -175,7 +151,8 @@ class Accountsignup extends Component {
                 value={this.state.lastname}
                 onChange={this.handleChange}
               />
-              <input className="btn" type="submit" value="Create New Account" />
+              <div id="signupWarning"></div>
+              <input type="submit" value="Create New Account" className="btn" />
             </form>
           </div>
         </Modal>

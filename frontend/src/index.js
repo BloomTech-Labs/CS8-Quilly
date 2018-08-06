@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, Route } from 'react-router-dom';
+import history from './history';
 
 import Homepage from './pages/home.js';
 import Joblistpage from './pages/jobs';
@@ -15,7 +16,7 @@ import './index.css';
 const stripeKey = config.stripe.publicKey;
 
 ReactDOM.render(
-  <Router>
+  <Router history={history}>
     <div>
       <Route exact path="/" component={Homepage} />
       <Route path="/jobs" component={Joblistpage} />

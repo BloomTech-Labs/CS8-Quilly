@@ -1,51 +1,87 @@
+/*button on homescreen for register*/
+.openSignup {
+  position: fixed;
+  top: 500px;
+  right: 30%;
+  background-color: white;
+  border: 2px solid #ffeedb;
+  border-radius: 15px;
+  font-size: 18px;
+  height: 60px;
+  width: 150px;
+}
+
+.openSignup:hover {
+  cursor: pointer;
+}
+
 .signupmodal {
-    padding: 5% 10%;
-    margin: 5% auto;
-    display: flex;
-    flex-wrap: wrap;
-    background: white;
-    border-radius: 15px;
-    max-width: 500px;
+  padding: 5% 10%;
+  margin: 5% auto;
+  display: flex;
+  flex-wrap: wrap;
+  background: #7a7d7d;
+  border-radius: 15px;
+  max-width: 500px;
 }
 
 .ReactModal__Content--after-open {
-    max-width: 500px;
-    border-radius: 15px;
-    margin: 5% auto;
+  max-width: 500px;
+  border-radius: 15px;
+  margin: 5% auto;
 }
 
 .Modal {
-    margin: auto;
+  margin: auto;
 }
 
 .inputform .inputlable {
-    width: 48%
+  width: 48%;
 }
 
+/*text boxes for signin and signup modals*/
 .inputform .inputField {
-    width: 45%;
-    height: 18px;
-    align-self: center;
-}
-
-.inputform .btn {
-    outline: thick ridge black;
-    background: white;
-    width: 275px;
-    height: 42px;
-    margin: 40px auto 0;
-    font-size: 20px;
+  width: 45%;
+  height: 30px;
+  align-self: center;
 }
 
 .inputform .btn:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .signupHeader {
-    width: 100%
+  width: 100%;
+  color: #ffeedb;
 }
 
 .inputform {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.signupmodal .btn {
+  border: 2px solid #ffeedb;
+  border-radius: 20px;
+  background: #40798c;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: auto;
+  height: 32px;
+  margin: 40px auto 0;
+  font-size: 17px;
+  float: right;
+  color: #ffeedb;
+}
+
+.signupmodal .btn:hover {
+  cursor: pointer;
+}
+
+#signupWarning {
+  color: lightcoral;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: -5%;
 }

@@ -1,25 +1,27 @@
-import React, { Component } from "react";
-import Accountlogin from "../components/accountlogin/accountlogin";
-import Coverflow from "../components/coverflow/coverflow";
-import Accountsignup from "../components/accountsignup/accountsignup";
+import React from 'react';
+import Accountlogin from '../components/accountlogin/accountlogin';
+import Accountsignup from '../components/accountsignup/accountsignup';
+import Background from '../img/background(3).jpg';
+import Logo from '../img/Quilly Full Logo - Black Border.svg';
 
-class Home extends Component {
-  render() {
-    return (
-      <div className="Homeapp">
-        <Accountsignup />
-        <Accountlogin />
-        <div className="Coverflow">
-          <Coverflow />
-        </div>
-        <p className="description">We have a huge selection of products to help you on your job hunt!</p>
-        <p>Please view our product selection above to learn more.</p>
-        <div>
-          <button className="button">Buy Now</button>
-        </div>
+const Homepage = props => {
+  return (
+    <div className="homeApp">
+      <img src={Background} className="background" alt="background" />
+      <div className="homeDescription">
+        <img src={Logo} id="logo" alt="logo" />
+
+        <p>Need help visualizing your job search?</p>
+
+        <p>
+          Our tools will help you on your journey of landing your dream job.
+        </p>
       </div>
-    );
-  }
-}
+      <br />
+      <Accountsignup {...props} />
+      <Accountlogin {...props} />
+    </div>
+  );
+};
 
-export default Home;
+export default Homepage;

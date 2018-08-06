@@ -1,7 +1,8 @@
 module.exports = {
-  port: process.env.PORT || 3000,
-  serverUrl: process.env.SERVERURL || "http://localhost:5000",
+  port: 3000,
+  serverUrl: process.env.NODE_ENV === "production" ? "https://mighty-hollows-20066.herokuapp.com" : "http://localhost:5000",
   stripe: {
-    publicKey: process.env.STRIPE_PUBLIC_KEY || "pk_test_K1tJV1QhjRPnqQFwDFxe6vZd",
+    apiKey: process.env.STRIPE_KEY || '', // Secret Key
+    publicKey: process.env.NODE_ENV === "production" ? "" : "pk_test_K1tJV1QhjRPnqQFwDFxe6vZd",
   },
 };
