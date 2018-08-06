@@ -67,6 +67,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
         if (err) return cb(err);
         return cb(null);
       });
+      cb(null);
     };
 
     if (user.stripe.customerId) {
