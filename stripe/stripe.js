@@ -20,17 +20,13 @@ router.get('/', (req, res) => {
 router.post('/charge', (req, res) => {
   console.log("POST /charge");
   //console.log(req);
-   //let plan = 'plan_DIBFYLHH0MvZx3';
+  //  let plan = 'plan_DIBFYLHH0MvZx3';
   let tok = req.body.data;
   // Create the customer
   User.findById(req.session.userId, (err, user) => {
-    console.log("Findbyid");
     if (err) {
       console.log("Error in /charge findbyid");
     };
-
-    console.log(user);
-
     user.setCard(tok, (err) => {
       console.log("Setting card");
       if (err) {

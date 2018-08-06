@@ -152,7 +152,7 @@ class Accountsignup extends Component {
                 onChange={this.handleChange}
               />
               <div id="signupWarning"></div>
-              <input type="submit" value="Create New Account" className="btn" />
+              <input type="submit" value="Create New Account" className="btn"></input>
             </form>
           </div>
         </Modal>

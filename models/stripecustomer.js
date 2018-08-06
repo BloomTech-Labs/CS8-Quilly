@@ -2,8 +2,6 @@ var Stripe = require('stripe'),
 stripe;
 
 module.exports = exports = function stripeCustomer(schema, options) {
-  //stripe = Stripe(config.stripe.secret_key);
-  console.log(options);
   stripe = Stripe(options.apiKey);
 
   schema.add({
@@ -19,7 +17,6 @@ module.exports = exports = function stripeCustomer(schema, options) {
   });
 
   schema.pre('save', function (next) {
-    console.log("1");
     let user = this;
     console.log(user.isNew);
     console.log(user.stripe);
@@ -36,7 +33,6 @@ module.exports = exports = function stripeCustomer(schema, options) {
   };
 
   schema.methods.createCustomer = function(cb) {
-    console.log("2");
     let user = this;
 
     stripe.customers.create({
@@ -71,18 +67,15 @@ module.exports = exports = function stripeCustomer(schema, options) {
         if (err) return cb(err);
         return cb(null);
       });
-      cb(null);
     };
 
     if (user.stripe.customerId) {
-      console.log("1");
       stripe.customers.update(
         user.stripe.customerId,
         { card: stripe_token },
         cardHandler
       );
     } else {
-      console.log("2");
       stripe.customers.create(
         {
           email: user.email,
