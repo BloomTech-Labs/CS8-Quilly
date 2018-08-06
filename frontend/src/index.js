@@ -23,7 +23,7 @@ ReactDOM.render(
       <Route path="/meetups" component={Meetupspage} />
       <Route path="/contributions" component={Contributionspage} />
       <StripeProvider apiKey={stripeKey}>
-      <Route path="/billing" component={Billingpage} />
+        <Route path="/billing" component={Billingpage} />
       </StripeProvider>
       <Route path="/settings" component={Settingspage} />
     </div>

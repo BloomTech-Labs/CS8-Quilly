@@ -41,7 +41,7 @@ router.post("/register", (req, res) => {
       .json({ error: "All required fields must be filled with valid data" });
   }
 
-  User.findOne({ username })
+  User.findOne({ username: username })
     .then(response => {
       if (!response) {
         const user = new User(req.body);

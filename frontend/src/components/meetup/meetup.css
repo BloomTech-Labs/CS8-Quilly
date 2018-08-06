@@ -46,6 +46,11 @@ input {
 }
 
 /* Input Box Styling */
+.FormSubmit {
+  position: fixed;
+  top: 570px;
+}
+
 .MeetupForm {
   margin-left: 10px;
 }
