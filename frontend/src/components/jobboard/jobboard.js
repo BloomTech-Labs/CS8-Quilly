@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
 import CustomCard from './jobcard/customCard.js';
 import formatDate from './formatDate.js';
+import toggleBooleans from './toggleBooleans.js';
 import axios from 'axios';
 import config from '../../config/config';
 
@@ -10,12 +11,9 @@ import Board from 'react-trello';
 import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
 import './jobboard.css';
 
-class JobBoard extends Component {
-  constructor(props) {
-    super(props)
-  }
+const JobBoard = (props) => {
 
-  generateData = (jobsData) => {
+  const generateData = (jobsData) => {
     const data = {};
     data.lanes = [];
     let cardIndex = 0;
@@ -65,45 +63,41 @@ class JobBoard extends Component {
     return data;
   };
 
-  handleListUpdates = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
+  const handleListUpdates = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
 
-    const lists = this.props.jobs;
+    const lists = props.jobs;
+    const oldList = `${sourceLaneId}`;
+    const newList = `${targetLaneId}`;
 
     if (targetLaneId !== sourceLaneId) {
       const applicationId = cardDetails.jobInfo._id;
       const oldJob = cardDetails.jobInfo;
-      const newJob = Object.assign({}, oldJob, { category: `${targetLaneId}` });
+      const newJob = Object.assign({}, oldJob, { category: `${targetLaneId}` }, toggleBooleans(newList));
 
       axios
         .put(`${config.serverUrl}/user/applications/update/${applicationId}`, newJob)
         .then((response) => {
-          console.log(response);
-          let oldList = `${sourceLaneId}`;
-          let newList = `${targetLaneId}`;
-
           lists[oldList] = lists[oldList].filter(app => app !== oldJob);
           lists[newList].push(newJob);
-          this.props.handleJobChange(lists);
+          props.handleJobChange(lists);
         })
         .catch(error => error.console(error));
     }
   }
 
-  render() {
     return (
       <Board
-        data={this.generateData(this.props.jobs)}
+        data={generateData(props.jobs)}
         customCardLayout
         cardDragClass="draggingCard"
         draggable
         laneDraggable={false}
-        handleDragEnd={this.handleListUpdates}
+        handleDragEnd={handleListUpdates}
         newCardTemplate={<Jobcreatemodal />}
         >
-        <CustomCard openEditModal={this.props.openEditModal} openDeleteModal={this.props.openDeleteModal} />
+        <CustomCard openEditModal={props.openEditModal} openDeleteModal={props.openDeleteModal} />
       </Board>
     );
   }
-}
 
 export default JobBoard;

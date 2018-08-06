@@ -5,8 +5,6 @@ import config from '../../config/config';
 
 import './jobeditmodal.css';
 
-import EditButton from '../jobboard/jobcard/editButton';
-
 Modal.setAppElement(document.getElementById('root'));
 
 const defaultState = {
@@ -15,7 +13,7 @@ const defaultState = {
   position: "",
   submitted: false,
   onsiteInterview: false,
-  recievedResponse: false,
+  receivedResponse: false,
   whiteboard: false,
   phoneInterview: false,
   codeTest: false,
@@ -104,7 +102,7 @@ class Jobeditmodal extends Component {
       position,
       submitted,
       onsiteInterview,
-      recievedResponse,
+      receivedResponse,
       whiteboard,
       phoneInterview,
       codeTest,
@@ -138,7 +136,7 @@ class Jobeditmodal extends Component {
       position,
       submitted,
       onsiteInterview,
-      recievedResponse,
+      receivedResponse,
       whiteboard,
       phoneInterview,
       codeTest,
@@ -166,7 +164,6 @@ class Jobeditmodal extends Component {
   render() {
     return (
       <div>
-        {/* <EditButton openModal={this.openModal} /> */}
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
@@ -199,8 +196,8 @@ class Jobeditmodal extends Component {
                 <label>
                   <input
                   type="checkbox"
-                  name="recievedResponse"
-                  checked={this.state.recievedResponse}
+                  name="receivedResponse"
+                  checked={this.state.receivedResponse}
                   onChange={this.handleChange}/>
                   Received Response
                 </label>
