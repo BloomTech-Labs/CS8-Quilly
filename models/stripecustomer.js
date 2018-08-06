@@ -1,7 +1,7 @@
 let Stripe = require('stripe'), stripe;
 
 module.exports = exports = function stripeCustomer(schema, options) {
-  stripe = Stripe(options.secretKey);
+  stripe = Stripe(options.publicKey);
 
   schema.add({
     stripe: {
