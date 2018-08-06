@@ -26,14 +26,9 @@ class Joblistpage extends Component {
     };
 
     this.handleJobChange = this.handleJobChange.bind(this);
-    this.getState = this.getState.bind(this);
   }
 
   componentDidMount() {
-    this.getState()
-  }
-
-  getState() {
     const lists = {
       wishlist: [],
       applied: [],
@@ -54,15 +49,13 @@ class Joblistpage extends Component {
           }
           lists[category].push(application);
         });
+        this.setState({ lists: lists })
       })
-      .then(() => this.setState({ lists: lists }))
-      .catch(err => console.error(err));
+      .catch(error => console.error(error));
   }
 
   handleJobChange(lists) {
-    console.log('handleJobChange');
     this.setState({ lists: lists });
-    this.jobboard.current.forceUpdate();
   }
 
   openEditModal = jobInfo => {
@@ -76,7 +69,6 @@ class Joblistpage extends Component {
   render() {
     return (
       <div className="App">
-
         <Signout {...this.props} />
         <Sidebar />
         <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} openDeleteModal={this.openDeleteModal} ref={this.jobboard}/>

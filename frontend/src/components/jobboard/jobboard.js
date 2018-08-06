@@ -13,18 +13,6 @@ import './jobboard.css';
 class JobBoard extends Component {
   constructor(props) {
     super(props)
-    this.state = {
-      data: {
-        lanes: [
-          {
-            id: 'lane1',
-            title: 'title',
-            label: 'test'
-          }
-        ]
-      },
-      lists: this.props.jobs,
-    };
   }
 
   generateData = (jobsData) => {
@@ -77,54 +65,25 @@ class JobBoard extends Component {
     return data;
   };
 
-  componentDidMount() {
-    const data = this.generateData(this.props.jobs);
-    this.setState({ data: data });
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-    console.log('componentDidUpdate');
-    if (prevState.lists !== this.state.lists) {
-      console.log('in if');
-      this.setState({ lists: this.state.lists });
-      const data = this.generateData(this.props.jobs);
-      this.setState({ data: data });
-    }
-  }
-
-  forceUpdate = () => {
-    console.log('forced update');
-    const data = this.generateData(this.props.jobs);
-      this.setState({ data: data });
-  }
-
-  static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('getDerivedStateFromProps');
-    if (nextProps.jobs !== prevState.lists) {
-      console.log('in if in der')
-      return { lists: nextProps.jobs };
-    }
-    else return null;
-  }
-
   handleListUpdates = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
 
-    const lists = this.state.lists;
+    const lists = this.props.jobs;
 
     if (targetLaneId !== sourceLaneId) {
       const applicationId = cardDetails.jobInfo._id;
-      const job = Object.assign({}, ...cardDetails.jobInfo, { category: `${targetLaneId}` });
+      const oldJob = cardDetails.jobInfo;
+      const newJob = Object.assign({}, oldJob, { category: `${targetLaneId}` });
 
       axios
-        .put(`${config.serverUrl}/user/applications/update/${applicationId}`, job)
+        .put(`${config.serverUrl}/user/applications/update/${applicationId}`, newJob)
         .then((response) => {
           console.log(response);
           let oldList = `${sourceLaneId}`;
           let newList = `${targetLaneId}`;
 
-          lists[oldList] = lists[oldList].filter(app => app !== job);
-          lists[newList].push(job);
-          this.handleJobChange(lists);
+          lists[oldList] = lists[oldList].filter(app => app !== oldJob);
+          lists[newList].push(newJob);
+          this.props.handleJobChange(lists);
         })
         .catch(error => error.console(error));
     }
@@ -133,7 +92,7 @@ class JobBoard extends Component {
   render() {
     return (
       <Board
-        data={this.state.data}
+        data={this.generateData(this.props.jobs)}
         customCardLayout
         cardDragClass="draggingCard"
         draggable
@@ -141,7 +100,7 @@ class JobBoard extends Component {
         handleDragEnd={this.handleListUpdates}
         newCardTemplate={<Jobcreatemodal />}
         >
-        <CustomCard cards={this.state.data.cards} openEditModal={this.props.openEditModal} openDeleteModal={this.props.openDeleteModal} />
+        <CustomCard openEditModal={this.props.openEditModal} openDeleteModal={this.props.openDeleteModal} />
       </Board>
     );
   }
