@@ -1,8 +1,6 @@
-var Stripe = require('stripe'),
-stripe;
+let Stripe = require('stripe'), stripe;
 
 module.exports = exports = function stripeCustomer(schema, options) {
-  console.log("APIKEY", options.apiKey);
   stripe = Stripe(options.apiKey);
 
   schema.add({
