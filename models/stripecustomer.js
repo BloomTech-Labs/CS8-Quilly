@@ -18,7 +18,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
     }
   });
 
-  schema.pre('save', next => {
+  schema.pre('save', function (next) {
     console.log("1");
     let user = this;
     console.log(user.isNew);
@@ -35,12 +35,11 @@ module.exports = exports = function stripeCustomer(schema, options) {
     return options.planData;
   };
 
-  schema.methods.createCustomer = cb => {
+  schema.methods.createCustomer = function(cb) {
     console.log("2");
     let user = this;
 
-    stripe.customers.create(
-      {
+    stripe.customers.create({
         email: user.email
       },
       (err, customer) => {
@@ -52,7 +51,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
     );
   };
 
-  schema.methods.setCard = (stripe_token, cb) => {
+  schema.methods.setCard = function(stripe_token, cb) {
     let user = this;
 
     const cardHandler = (err, customer) => {
@@ -67,11 +66,11 @@ module.exports = exports = function stripeCustomer(schema, options) {
         : customer.sources.data[0];
 
       user.stripe.last4 = card.last4;
-      //console.log("PRINTING USER:\n", user);
-      // user.save((err) => {
-      //   if (err) return cb(err);
-      //   return cb(null);
-      // });
+      console.log("PRINTING USER:\n", user);
+      user.save((err) => {
+        if (err) return cb(err);
+        return cb(null);
+      });
       cb(null);
     };
 
@@ -94,7 +93,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
     }
   };
 
-  schema.methods.setPlan = (plan, stripe_token, cb) => {
+  schema.methods.setPlan = function(plan, stripe_token, cb) {
     let user = this,
       customerData = {
         plan: plan
@@ -139,7 +138,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
     }
   };
 
-  schema.methods.updateStripeEmail = cb => {
+  schema.methods.updateStripeEmail = function(cb) {
     let user = this;
 
     if (!user.stripe.customerId) return cb();
@@ -153,7 +152,7 @@ module.exports = exports = function stripeCustomer(schema, options) {
     );
   };
 
-  schema.methods.cancelStripe = cb => {
+  schema.methods.cancelStripe = function(cb) {
     let user = this;
 
     if (user.stripe.customerId) {

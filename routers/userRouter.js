@@ -43,18 +43,11 @@ router.post("/register", (req, res) => {
 
   User.findOne({ username: username })
     .then(response => {
-      console.log(response);
       if (!response) {
         const user = new User(req.body);
-        console.log(user);
         user
-          .save(err => {
-            if(err) console.log(err);
-
-            console.log("saving");
-          })
+          .save()
           .then(newUser => {
-            console.log("newuser");
             const {
               username,
               email,
@@ -74,9 +67,7 @@ router.post("/register", (req, res) => {
             res.status(201).json(response);
           })
           .catch(err => {
-            console.log(err);
             if (err.code === 11000) {
-              
               // 11000 is the mongo error code for a duplicate of a unique field
               res.status(422).json({
                 error:
