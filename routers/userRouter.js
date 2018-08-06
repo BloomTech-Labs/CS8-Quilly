@@ -67,16 +67,15 @@ router.post("/register", (req, res) => {
             res.status(201).json(response);
           })
           .catch(err => {
-            if (err.code === 11000) {
+            if (err.code === 11000)
               // 11000 is the mongo error code for a duplicate of a unique field
               res.status(422).json({
                 error:
                   "New user could not be created. A unqique email address is required."
               });
-            } else {
+            else
               res.status(500).json({ error: "New user could not be created. Try again later." });
-            }
-            });
+          });
       } else {
         res.status(422).json({ error: "Username not available. Choose a different username" });
       }
