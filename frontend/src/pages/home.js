@@ -4,7 +4,7 @@ import Accountsignup from '../components/accountsignup/accountsignup';
 import Background from '../img/background(6).jpg';
 import Logo from '../img/Quilly Full Logo - Black Border.svg';
 
-const Homepage = props => {
+const Homepage = (props) => {
   return (
     <div className="homeApp">
       <img src={Background} className="background" alt="background" />

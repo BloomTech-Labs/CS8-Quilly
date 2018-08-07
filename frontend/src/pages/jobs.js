@@ -71,7 +71,7 @@ class Joblistpage extends Component {
       <div className="App">
         <Signout {...this.props} />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} openDeleteModal={this.openDeleteModal} ref={this.jobboard}/>
+        <Jobboard {...this.props} jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} openDeleteModal={this.openDeleteModal} ref={this.jobboard}/>
         <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
         <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChange={this.handleJobChange} />
         <Jobdeletemodal ref={this.deleteModal} handleJobChange={this.handleJobChange} />

@@ -90,7 +90,7 @@ class Meetup extends Component {
         {/* Form Component */}
         <div className="MeetupForm">
           <form onSubmit={this.handleSubmit} className="FormSubmit">
-          <i class="far fa-calendar-alt"></i>
+          <i className="far fa-calendar-alt"></i>
             <input
               className="formDate"
               required="true"

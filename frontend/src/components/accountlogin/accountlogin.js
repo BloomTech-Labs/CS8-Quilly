@@ -35,6 +35,7 @@ class Accountlogin extends Component {
         password: this.state.password
       }, { withCredentials: true })
       .then(response => {
+        this.props.handleLogin();
         this.props.history.push('/jobs');
       })
 
