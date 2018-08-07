@@ -73,6 +73,7 @@ class Joblistpage extends Component {
         <Sidebar />
         <h1>Jobs</h1>
         <Jobboard
+          {...this.props}
           jobs={this.state.lists}
           handleJobChange={this.handleJobChange}
           openEditModal={this.openEditModal}

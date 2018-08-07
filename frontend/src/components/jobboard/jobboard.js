@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import CustomCard from './jobcard/customCard.js';
 import formatDate from './formatDate.js';
 import toggleBooleans from './toggleBooleans.js';
@@ -11,9 +11,14 @@ import Board from 'react-trello';
 import Jobcreatemodal from '../jobcreatemodal/jobcreatemodal';
 import './jobboard.css';
 
-const JobBoard = (props) => {
+class JobBoard extends Component {
+  constructor(props) {
+    super(props);
+    this.generateData = this.generateData.bind(this);
+    this.handleListUpdates = this.handleListUpdates.bind(this);
+  }
 
-  const generateData = (jobsData) => {
+  generateData(jobsData) {
     const data = {};
     data.lanes = [];
     let cardIndex = 0;
@@ -63,9 +68,9 @@ const JobBoard = (props) => {
     return data;
   };
 
-  const handleListUpdates = (cardId, sourceLaneId, targetLaneId, position, cardDetails) => {
+  handleListUpdates(cardId, sourceLaneId, targetLaneId, position, cardDetails) {
 
-    const lists = props.jobs;
+    const lists = this.props.jobs;
     const oldList = `${sourceLaneId}`;
     const newList = `${targetLaneId}`;
 
@@ -79,25 +84,27 @@ const JobBoard = (props) => {
         .then((response) => {
           lists[oldList] = lists[oldList].filter(app => app !== oldJob);
           lists[newList].push(newJob);
-          props.handleJobChange(lists);
+          this.props.handleJobChange(lists);
         })
         .catch(error => error.console(error));
     }
   }
 
+  render() {
     return (
       <Board
-        data={generateData(props.jobs)}
+        data={this.generateData(this.props.jobs)}
         customCardLayout
         cardDragClass="draggingCard"
         draggable
         laneDraggable={false}
-        handleDragEnd={handleListUpdates}
+        handleDragEnd={this.handleListUpdates}
         newCardTemplate={<Jobcreatemodal />}
         >
-        <CustomCard openEditModal={props.openEditModal} openDeleteModal={props.openDeleteModal} />
+        <CustomCard openEditModal={this.props.openEditModal} openDeleteModal={this.props.openDeleteModal} />
       </Board>
     );
   }
+}
 
 export default JobBoard;

@@ -5,8 +5,8 @@ import './contribution.css';
 import config from '../../config/config';
 
 class Contribution extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       serverData: [],
@@ -88,7 +88,7 @@ class Contribution extends Component {
         {/* Form Component */}
         <div className="ContributionForm">
           <form onSubmit={this.handleSubmit} className="FormSubmit">
-          <i class="far fa-calendar-alt"></i>
+          <i className="far fa-calendar-alt"></i>
             <input
               className="formDate"
               required="true"
