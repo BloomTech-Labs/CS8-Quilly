@@ -26,17 +26,14 @@ class Accountlogin extends Component {
     this.setState({
       [name]: value
     });
-
-    console.log(`THIS IS THE STATE: ${this.state.username}`);
   }
 
   handleSubmit(event) {
-    // console.log({username:this.state.username, password:this.state.password});
     axios
       .post(`${config.serverUrl}/user/login`, {
         username: this.state.username,
         password: this.state.password
-      })
+      }, { withCredentials: true })
       .then(response => {
         this.props.history.push('/jobs');
       })
@@ -101,7 +98,7 @@ class Accountlogin extends Component {
                 onChange={this.handleChange}
               />
               <div id="loginWarning" ></div>
-              
+
 
               <input type="submit" value="Submit" className="btn" />
             </form>
