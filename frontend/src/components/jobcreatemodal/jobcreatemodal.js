@@ -251,7 +251,7 @@ class Jobcreatemodal extends Component {
             value={this.state.position}
             onChange={this.handleChange}
             required="true"/>
-            <button onClick={this.handleSubmit}>
+            <button onClick={this.handleSubmit} className="addJob">
               Add Job
             </button>
             <div id="jobCreateWarning"></div>
