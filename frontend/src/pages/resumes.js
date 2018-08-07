@@ -3,6 +3,8 @@ import Sidebar from '../components/sidebar/sidebar';
 import Signout from '../components/signout/signout';
 import config from '../config/config';
 import axios from 'axios';
+import { fstat } from 'fs';
+import fs from 'fs';
 
 class Resumespage extends Component {
     constructor(){
@@ -35,12 +37,12 @@ class Resumespage extends Component {
     componentDidMount() {
         axios.get(`${config.serverUrl}/user/getResumes`)
         .then(resumes => {
-            console.log(resumes.data[0].data);
+            console.log(resumes);
             //this.setState({resumes});
             
         })
         .catch(error => {
-            console.log(error.response);
+            console.log('error',error);
         });
     };
 
@@ -53,6 +55,7 @@ class Resumespage extends Component {
                     <input type="text" placeholder="Resume Name" name="resumeName"/>
                     <button type="submit" onClick={this.handleSubmit}>Add Resume</button>
                 </form>
+                <embed src="fileName.pdf" width="100px" height="200px" />
             </div>
         )
     }
