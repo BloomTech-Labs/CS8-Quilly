@@ -38,9 +38,9 @@ const userSchema = new mongoose.Schema(
     meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
     contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
     resume: [{
-      name: String,
-      data: Buffer
-    }],
+      data: Buffer,
+      name: String
+    }]
   },
   {
     timestamps: true

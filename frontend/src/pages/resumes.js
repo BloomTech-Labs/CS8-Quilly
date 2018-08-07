@@ -12,7 +12,6 @@ class Resumespage extends Component {
             resumes: [],
             resume: ""
         }
-        let filesInput;
     }
 
     handleSubmit = (event) => {
@@ -36,7 +35,9 @@ class Resumespage extends Component {
     componentDidMount() {
         axios.get(`${config.serverUrl}/user/getResumes`)
         .then(resumes => {
-            this.setState({resumes});
+            console.log(resumes.data[0].data);
+            //this.setState({resumes});
+            
         })
         .catch(error => {
             console.log(error.response);
@@ -45,7 +46,6 @@ class Resumespage extends Component {
 
 
     render() {
-        console.log(this.state.resumes.data);
         return (
             <div>
                 <form id="myForm">

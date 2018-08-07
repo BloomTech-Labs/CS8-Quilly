@@ -160,21 +160,25 @@ router.post("/addResume", authenticate, upload.single('file'), (req, res) => {
   const { userId } = req.session;
   User.findById(userId)
   .then(user => {
-      console.log(req.file);
+      console.log(req.file.buffer);
       console.log(req.body);
-      // fs.readFile(file.resume.path, (error, data) => {
-      // console.log('in the readfile');
-      user.resume.push({ name: req.body.resumeName, data: req.file.buffer });
-      // user.resume.title = req.body.resumeName;
-      // user.resume.data = req.file.buffer;
+      fs.readFile(req.file.path, (error, data) => {
+        if (error)
+          console.log(error);
+        //user.resume.data = data;
+        //user.resume.name = req.body.resumeName;
       
-      user.save()
-      .then(response => {
-        res.status(201).send(response);
+        user.resume.push({ name: req.body.resumeName, data: data });
+      // user.resume.title = req.body.resumeName;
+      
+        user.save()
+        .then(response => {
+          res.status(201).send(response);
+        })
+        .catch(error => {
+          res.status(500).send(error);
+        });
       })
-      .catch(error => {
-        res.status(500).send(error);
-      });
   })
   .catch(error => {
     res.status(500).send(error);
@@ -183,7 +187,6 @@ router.post("/addResume", authenticate, upload.single('file'), (req, res) => {
 
 router.get('/getResumes', authenticate, (req, res) => {
   User.findById(req.session.userId)
-  .populate({path: 'resume' })
   .then(user => {
     res.send(user.resume);
   })
