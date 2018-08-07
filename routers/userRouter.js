@@ -8,6 +8,8 @@ const billingRouter = require("../stripe/stripe")
 
 const User = require("../models/userModel");
 const fs = require('fs');
+const multer = require('multer');
+const upload = multer({dest: 'uploads/' });
 
 // authenticate that the user is signed in
 function authenticate(req, res, next) {
@@ -154,29 +156,41 @@ router.put("/update", authenticate, (req, res) => {
     });
 });
 
-router.post("/addResume", authenticate, (req, res) => {
+router.post("/addResume", authenticate, upload.single('file'), (req, res) => {
   const { userId } = req.session;
   User.findById(userId)
   .then(user => {
+      console.log(req.file);
       console.log(req.body);
-      fs.readFile(req.body.resume, (error, data) => {
-      console.log('in the readfile');
-     
-      user.resume.data = data;
-      user.resume.contentType = req.body.resume.split('.').pop();
+      // fs.readFile(file.resume.path, (error, data) => {
+      // console.log('in the readfile');
+      user.resume.push({ name: req.body.resumeName, data: req.file.buffer });
+      // user.resume.title = req.body.resumeName;
+      // user.resume.data = req.file.buffer;
+      
       user.save()
       .then(response => {
         res.status(201).send(response);
       })
       .catch(error => {
         res.status(500).send(error);
-      })
-    })
+      });
   })
   .catch(error => {
     res.status(500).send(error);
+  });
+});
+
+router.get('/getResumes', authenticate, (req, res) => {
+  User.findById(req.session.userId)
+  .populate({path: 'resume' })
+  .then(user => {
+    res.send(user.resume);
   })
-})
+  .catch(error => {
+    res.send(error);
+  });
+});
 
 router.use("/applications", authenticate, applicationRouter);
 router.use("/contributions", authenticate, contributionRouter);

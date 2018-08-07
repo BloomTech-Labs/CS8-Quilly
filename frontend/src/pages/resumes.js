@@ -18,13 +18,12 @@ class Resumespage extends Component {
     handleSubmit = (event) => {
         event.preventDefault();
         const myForm = document.getElementById('myForm');
-        console.log(myForm.file);
 
-        const formData = new FormData();
-        const resume = myForm.file.files[0];
-        const resumeBlob = new Blob([resume], {type: "application/pdf"});
-        formData.append("resume", resumeBlob, resume.name);
-        console.log(formData.getAll("resume"));
+        const formData = new FormData(myForm);
+        //const resume = myForm.file.files[0];
+        //const resumeBlob = new Blob([resume], {type: "application/pdf"});
+        //formData.append("resume", resume);
+        //console.log(formData.getAll("resume"));
         axios.post(`${config.serverUrl}/user/addResume`, formData)
         .then(response => {
             console.log(response);
@@ -34,12 +33,24 @@ class Resumespage extends Component {
         });
     };
 
+    componentDidMount() {
+        axios.get(`${config.serverUrl}/user/getResumes`)
+        .then(resumes => {
+            this.setState({resumes});
+        })
+        .catch(error => {
+            console.log(error.response);
+        });
+    };
+
 
     render() {
+        console.log(this.state.resumes.data);
         return (
             <div>
                 <form id="myForm">
                     <input type="file" /*ref={(input) => {this.filesInput = input}}*/ name="file" />
+                    <input type="text" placeholder="Resume Name" name="resumeName"/>
                     <button type="submit" onClick={this.handleSubmit}>Add Resume</button>
                 </form>
             </div>
