@@ -3,7 +3,7 @@ import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
 import Jobeditmodal from '../components/jobeditmodal/jobeditmodal';
-import Jobdeletemodal from '../components/jobdeletemodal/jobdeletemodal'
+import Jobdeletemodal from '../components/jobdeletemodal/jobdeletemodal';
 import Signout from '../components/signout/signout';
 import config from '../config/config';
 import axios from 'axios';
@@ -49,7 +49,7 @@ class Joblistpage extends Component {
           }
           lists[category].push(application);
         });
-        this.setState({ lists: lists })
+        this.setState({ lists: lists });
       })
       .catch(error => console.error(error));
   }
@@ -64,17 +64,34 @@ class Joblistpage extends Component {
 
   openDeleteModal = jobId => {
     this.deleteModal.current.openModal(jobId);
-  }
+  };
 
   render() {
     return (
       <div className="App">
         <Signout {...this.props} />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} openDeleteModal={this.openDeleteModal} ref={this.jobboard}/>
-        <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
-        <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChange={this.handleJobChange} />
-        <Jobdeletemodal ref={this.deleteModal} handleJobChange={this.handleJobChange} />
+        <h1>Jobs</h1>
+        <Jobboard
+          jobs={this.state.lists}
+          handleJobChange={this.handleJobChange}
+          openEditModal={this.openEditModal}
+          openDeleteModal={this.openDeleteModal}
+          ref={this.jobboard}
+        />
+        <Jobcreatemodal
+          jobs={this.state.lists}
+          handleJobChange={this.handleJobChange}
+        />
+        <Jobeditmodal
+          ref={this.editModal}
+          jobs={this.state.lists}
+          handleJobChange={this.handleJobChange}
+        />
+        <Jobdeletemodal
+          ref={this.deleteModal}
+          handleJobChange={this.handleJobChange}
+        />
       </div>
     );
   }

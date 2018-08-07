@@ -1,10 +1,13 @@
 .MeetupComponents {
   display: block;
-  margin: 80px 0 0 210px;
+  margin: 65px 0 0 210px;
   padding: 20px 20px;
   width: 70%;
   height: 50vh;
   background-color: #fff6ed;
+  border: 3px solid #7a7d7d;
+  border-radius: 10px;
+  padding-bottom: 35px;
 }
 
 /* Data Input Styling */
@@ -23,25 +26,21 @@ input {
 
 .date {
   text-align: center;
-  background-color: pink;
   width: 20%;
 }
 
 .activity {
   text-align: center;
-  background-color: aqua;
   width: 30%;
 }
 
 .notes {
   text-align: center;
-  background-color: blueviolet;
   width: 40%;
 }
 
 .link {
   text-align: center;
-  background-color: blue;
   width: 5%;
 }
 

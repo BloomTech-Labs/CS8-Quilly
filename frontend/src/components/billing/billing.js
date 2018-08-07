@@ -5,11 +5,9 @@ import CheckoutForm from './checkoutform';
 import './billing.css';
 
 class Billing extends Component {
-
   render() {
     return (
       <div className="Billing">
-        <h2>Billing</h2>
         <div className="Paymentinfo">
           <br />
           <h4>Payment Info</h4>
