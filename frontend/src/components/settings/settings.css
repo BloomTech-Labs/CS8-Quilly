@@ -1,8 +1,12 @@
 .Settings {
-  margin-top: 65px;
+  width: 50%;
+  height: auto;
+  border: 1px solid #000;
+  border-radius: 10px;
+  padding: 30px;
+  background-color: #fff6ed;
   margin-left: 210px;
-  width: 500px;
-  display: flex;
+  margin-top: 65px;
 }
 
 .Settings label {
