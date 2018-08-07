@@ -40,6 +40,9 @@ class App extends Component {
   }
 
   render() {
+    if (this.state.isAuthenticated === true) {
+      this.props.history.push('/jobs');
+    }
     return (
       <Router {...this.props}>
         <div>
