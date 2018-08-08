@@ -3,7 +3,7 @@ import Sidebar from '../components/sidebar/sidebar';
 import Meetup from '../components/meetup/meetup';
 import Signout from '../components/signout/signout';
 
-const Meetupspage = props => {
+const Meetupspage = (props) => {
   return (
     <div className="App">
       <Signout {...props} />
