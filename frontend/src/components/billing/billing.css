@@ -20,8 +20,8 @@ h4 {
   border-radius: 10px;
   padding: 30px;
   /* background-color: #fff6ed; */
-  background-color: white;
-  opacity: 0.6;
+  color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(255, 255, 255, 0.6);
 }
 
 .Paymentinfo input {
