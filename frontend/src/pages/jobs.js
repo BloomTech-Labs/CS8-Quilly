@@ -71,7 +71,7 @@ class Joblistpage extends Component {
       <div className="App">
         <Signout {...this.props} />
         <Sidebar />
-        <h1>Jobs</h1>
+        <h1 className="pageHeader">Jobs</h1>
         <Jobboard
           {...this.props}
           jobs={this.state.lists}

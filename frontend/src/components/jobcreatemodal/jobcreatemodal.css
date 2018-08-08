@@ -1,17 +1,22 @@
 .openModal {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: white;
-  border: 2px solid #ffeedb;
-  border-radius: 15px;
+  bottom: -10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: #0006 solid 1px;
+  /* border: 2px solid #ffeedb; */
+  border-radius: 5px;
   font-size: 18px;
   height: 60px;
   width: 150px;
+  transition: transform 0.2s ease;
 }
 
 .openModal:hover {
   cursor: pointer;
+  background-color: #ffeedb;
+  /* background-color: #99d9d6; */
+  transform: translate(0, -8px);
 }
 
 .Jobtimeline {
@@ -19,8 +24,11 @@
   padding: 5% 10%;
   display: flex;
   flex-wrap: wrap;
-  background: #7a7d7d;
+  background-color: rgba(93, 152, 198, 0.6);
+  border: 2px dashed rgb(147, 164, 165);
+  /* background: #7a7d7d; */
   border-radius: 15px;
+  text-shadow: 1px 1px 1px #0b3b4b;
   max-width: 500px;
 }
 
@@ -28,7 +36,11 @@
   margin: 7px;
   float: left;
   width: 46%;
-  color: #ffeedb;
+  color: white;
+  /* rgba(0, 0, 0, 0.8); */
+  /* color: #ffeedb; */
+  font-weight: 500;
+  text-shadow: 1px 1px 2px #0b3b4b;
 }
 
 .Jobinformation {
@@ -36,8 +48,11 @@
   margin: 5% auto;
   display: inline-block;
   flex-wrap: wrap;
-  background: #7a7d7d;
+  /* background: #7a7d7d; */
+  background-color: rgba(93, 152, 198, 0.6);
+  border: 2px dashed rgb(147, 164, 165);
   border-radius: 15px;
+  text-shadow: 1px 1px 1px #0b3b4b;
   width: 400px;
   max-width: 500px;
 }
@@ -50,6 +65,7 @@ select {
 
 h2 {
   width: 100%;
+  /* color: white; */
   color: #ffeedb;
 }
 
@@ -76,9 +92,17 @@ h2 {
   position: fixed;
   margin-top: 15px;
   background-color: white;
-  border: 2px solid #ffeedb;
-  border-radius: 15px;
+  /* border: 2px solid #ffeedb; */
+  border: #0006 solid 1px;
+  border-radius: 5px;
   font-size: 18px;
-  height: 30px;
+  height: 40px;
   width: 140px;
+  box-shadow: 3px 3px 5px #063250;
+  /* #174b70; */
+}
+
+.addJob:hover {
+  cursor: pointer;
+  background-color: #ffeedb;
 }

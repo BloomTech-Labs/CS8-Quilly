@@ -18,8 +18,10 @@ const Homepage = (props) => {
         </p>
       </div>
       <br />
-      <Accountsignup {...props} />
-      <Accountlogin {...props} />
+      <div className="frontPageButtonContainer">
+        <Accountsignup {...props} />
+        <Accountlogin {...props} />
+      </div>
     </div>
   );
 };

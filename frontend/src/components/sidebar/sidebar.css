@@ -37,7 +37,11 @@
 
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
-  color: #40798c;
+  /* color: #40798c; */
+  /* color: #226aa0; */
+  color: #fff0d2;
+  /* color: white; */
+  /* color: #c2e2f8; */
   text-decoration: underline;
   opacity: 1;
 }

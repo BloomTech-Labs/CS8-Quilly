@@ -1,3 +1,10 @@
+@font-face {
+  font-family: Ubuntu;
+  src: url('/assets/Ubuntu-R.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -17,16 +24,18 @@ body {
   object-fit: cover;
   filter: brightness(55%);
 }
+
 #logo {
   margin-top: 150px;
   height: 200px;
   width: auto;
-  opacity: 0.7;
+  opacity: 0.8;
 }
 
 .homeDescription {
   /*that big transparent box on home*/
-  background: #ffffff90;
+  /* background: #ffffff90; */
+  background-color: rgb(255, 255, 255, 0.1);
   position: fixed;
   top: 40px;
   right: 40px;
@@ -36,10 +45,23 @@ body {
   text-align: center;
 }
 
+.frontPageButtonContainer {
+  position: absolute;
+  top: 550px;
+  left: 36%;
+  margin: auto;
+  width: 500px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .homeDescription p {
   opacity: 1;
   font-size: 20px;
   font-weight: 900;
+  /* color: #3f3b3b; */
+  color: lightgray;
+  text-shadow: 1px 1px 1px black;
 }
 
 /*background for the logged in pages*/
@@ -54,17 +76,42 @@ body {
   z-index: -100;
   object-fit: cover;
   background: rgb(122, 125, 125);
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
     rgba(64, 121, 140, 0.8627297794117648) 62%,
     rgba(255, 238, 219, 1) 100%
+  ); */
+  /* background: linear-gradient(
+    45deg,
+    rgba(122, 125, 125, 1) 11%,
+    rgba(64, 121, 140, 0.8627297794117648) 62%,
+    rgb(255, 255, 255) 100%
+  ); */
+  /* background: linear-gradient(
+    45deg,
+    rgba(122, 125, 125, 1) 11%,
+    rgba(64, 121, 140, 0.8627297794117648) 62%,
+    rgb(176, 189, 199) 100%
+  ); */
+  background: linear-gradient(
+    45deg,
+    rgba(122, 125, 125, 1) 11%,
+    rgba(17, 95, 152, 0.9) 62%,
+    rgb(255, 255, 255) 100%
   );
 }
 
-h1 {
+.homeApp {
+  min-height: 100vh;
+}
+
+.pageHeader {
   margin-left: 210px;
-  color: #ffeedb;
+  width: 250px;
+  /* color: #ffeedb; */
+  color: white;
+  opacity: 0.8;
 }
 
 /* ipad */

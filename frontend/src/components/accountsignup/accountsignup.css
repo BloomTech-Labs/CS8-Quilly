@@ -1,18 +1,18 @@
 /*button on homescreen for register*/
 .openSignup {
-  position: fixed;
-  top: 500px;
-  right: 30%;
   background-color: white;
-  border: 2px solid #ffeedb;
-  border-radius: 15px;
+  /* border: 2px solid #ffeedb; */
+  border: #0006 solid 1px;
+  border-radius: 5px;
   font-size: 18px;
   height: 60px;
   width: 150px;
+  margin: 10px;
 }
 
 .openSignup:hover {
   cursor: pointer;
+  background-color: #ffeedb;
 }
 
 .signupmodal {
@@ -20,8 +20,11 @@
   margin: 5% auto;
   display: flex;
   flex-wrap: wrap;
-  background: #7a7d7d;
+  /* background: #7a7d7d; */
   border-radius: 15px;
+  background-color: rgba(93, 152, 198, 0.6);
+  border: 2px dashed rgb(147, 164, 165);
+  text-shadow: 1px 1px 1px #0b3b4b;
   max-width: 500px;
 }
 
@@ -62,21 +65,27 @@
 }
 
 .signupmodal .btn {
-  border: 2px solid #ffeedb;
-  border-radius: 20px;
-  background: #40798c;
+  /* border: 2px solid #ffeedb;
+  background: #40798c; */
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  background-color: white;
+  height: 40px;
+  width: auto;
+  box-shadow: 3px 3px 5px #063250;
   padding-left: 20px;
   padding-right: 20px;
-  width: auto;
-  height: 32px;
+  /* width: auto;
+  height: 32px; */
   margin: 40px auto 0;
-  font-size: 17px;
+  font-size: 18px;
   float: right;
-  color: #ffeedb;
+  /* color: #ffeedb; */
 }
 
 .signupmodal .btn:hover {
   cursor: pointer;
+  background-color: #ffeedb;
 }
 
 #signupWarning {
