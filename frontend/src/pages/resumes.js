@@ -5,6 +5,7 @@ import config from '../config/config';
 import axios from 'axios';
 import { fstat } from 'fs';
 import fs from 'fs';
+import { Document, Page } from 'react-pdf';
 
 class Resumespage extends Component {
     constructor(){
@@ -38,11 +39,12 @@ class Resumespage extends Component {
         axios.get(`${config.serverUrl}/user/getResumes`)
         .then(resumes => {
             console.log(resumes);
-            //this.setState({resumes});
+            this.setState({ file: resumes.data });
+            console.log(this.state.file);
             
         })
         .catch(error => {
-            console.log('error',error);
+            console.log('error',error.response);
         });
     };
 
@@ -55,7 +57,11 @@ class Resumespage extends Component {
                     <input type="text" placeholder="Resume Name" name="resumeName"/>
                     <button type="submit" onClick={this.handleSubmit}>Add Resume</button>
                 </form>
-                <embed src="fileName.pdf" width="100px" height="200px" />
+                {/* <embed src={this.state.file} width="100px" height="200px" /> */}
+                <Document
+                    file={this.state.file}>
+                    <Page pageNumber='1' />
+                </Document>
             </div>
         )
     }
