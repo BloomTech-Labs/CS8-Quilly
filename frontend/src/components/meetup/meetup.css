@@ -9,8 +9,9 @@
   color: rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0.6);
   /* border: 3px solid #7a7d7d; */
-  border: 2px dashed rgb(147, 164, 165);
+  border:1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
+  padding-top: 95px;
 }
 
 /* Data Input Styling */
@@ -50,8 +51,12 @@ input {
 /* Input Box Styling */
 .FormSubmit {
   position: fixed;
-  top: 152px;
-  left: 20%
+  top: 165px;
+  left: 23%
+}
+
+.meetups {
+  margin-left: 13%;
 }
 
 .MeetupForm {
