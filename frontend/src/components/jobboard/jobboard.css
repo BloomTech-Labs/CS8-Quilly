@@ -1,4 +1,5 @@
 .smooth-dnd-container.horizontal {
+  font-family: Ubuntu;
   white-space: nowrap;
   margin-top: 65px;
   margin-left: 70px;
@@ -34,6 +35,7 @@
 /* small boards */
 .sc-dnqmqq {
   background-color: #dbdbdb;
+  border: #0006 solid 1px;
 }
 
 .sc-dnqmqq:hover {
