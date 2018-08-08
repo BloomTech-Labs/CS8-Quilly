@@ -63,9 +63,7 @@ class Accountlogin extends Component {
   render() {
     return (
       <div className="Accountlogin">
-        <button className="openLogin" onClick={this.openModal}>
-          <div>Login</div>
-        </button>
+        <button className="openLogin" onClick={this.openModal}>Login</button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}

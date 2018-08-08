@@ -18,8 +18,9 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
+  width: 100vw;
   z-index: -50;
   object-fit: cover;
   filter: brightness(55%);
@@ -27,9 +28,8 @@ body {
 
 #logo {
   margin-top: 150px;
-  height: 200px;
+  height: 225px;
   width: auto;
-  opacity: 0.8;
 }
 
 .homeDescription {
@@ -47,8 +47,8 @@ body {
 
 .frontPageButtonContainer {
   position: absolute;
-  top: 550px;
-  left: 36%;
+  top: 560px;
+  left: 37%;
   margin: auto;
   width: 500px;
   display: flex;
@@ -57,10 +57,10 @@ body {
 
 .homeDescription p {
   opacity: 1;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: 900;
   /* color: #3f3b3b; */
-  color: lightgray;
+  color: #dddbdb;
   text-shadow: 1px 1px 1px black;
 }
 
@@ -71,7 +71,6 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
-  width: 100vw;
   height: 100vh;
   z-index: -100;
   object-fit: cover;
@@ -122,6 +121,19 @@ body {
   .Sidebar a {
     font-size: 18px;
   }
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: auto;
+    z-index: -50;
+    object-fit: cover;
+    filter: brightness(55%);
+  }
 }
 
 /* iphone */
@@ -159,5 +171,18 @@ body {
   }
   .signupmodal {
     width: 70%;
+  }
+
+  .background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    width: auto;
+    z-index: -50;
+    object-fit: cover;
+    filter: brightness(55%);
   }
 }

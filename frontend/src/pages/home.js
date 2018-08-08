@@ -1,8 +1,8 @@
 import React from 'react';
 import Accountlogin from '../components/accountlogin/accountlogin';
 import Accountsignup from '../components/accountsignup/accountsignup';
-import Background from '../img/background(6).jpg';
-import Logo from '../img/Quilly Full Logo - Black Border.svg';
+import Background from '../img/1background.jpg';
+import Logo from '../img/Quilly Full Logo - Blue Text.svg';
 
 const Homepage = (props) => {
   return (
