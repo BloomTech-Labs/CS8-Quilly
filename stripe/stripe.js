@@ -19,8 +19,6 @@ router.get('/', (req, res) => {
 
 router.post('/charge', (req, res) => {
   console.log("POST /charge");
-  //console.log(req);
-  //  let plan = 'plan_DIBFYLHH0MvZx3';
   let tok = req.body.data;
   // Create the customer
   User.findById(req.session.userId, (err, user) => {

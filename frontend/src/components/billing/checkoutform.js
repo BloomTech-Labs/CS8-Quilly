@@ -17,6 +17,7 @@ class CheckoutForm extends Component {
     this.props.stripe
       .createToken({ name: 'Name' }) // add name/address fields, see here for details: https://stripe.com/docs/stripe-js/reference#stripe-create-token
       .then(result => {
+        console.log(result);
         if (result.token) {
           // edit here after backend is finished
           axios
