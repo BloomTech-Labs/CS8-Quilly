@@ -19,8 +19,8 @@ body {
   right: 0;
   bottom: 0;
   /* width: 100vw; */
-  height: 100vh;
   width: 100vw;
+  height: 100vh;
   z-index: -50;
   object-fit: cover;
   filter: brightness(55%);
@@ -35,20 +35,20 @@ body {
 .homeDescription {
   /*that big transparent box on home*/
   /* background: #ffffff90; */
-  background-color: rgb(255, 255, 255, 0.1);
+  background-color: rgb(255, 255, 255, 0.25);
   position: fixed;
   top: 40px;
   right: 40px;
   left: 40px;
   bottom: 40px;
-  border-radius: 40px;
+  border-radius: 5px;
   text-align: center;
 }
 
 .frontPageButtonContainer {
-  position: absolute;
-  top: 560px;
-  left: 37%;
+  text-align: center;
+  position: sticky;
+  top: 558px;
   margin: auto;
   width: 500px;
   display: flex;
@@ -59,8 +59,7 @@ body {
   opacity: 1;
   font-size: 23px;
   font-weight: 900;
-  /* color: #3f3b3b; */
-  color: #dddbdb;
+  color: #f9f9f9;
   text-shadow: 1px 1px 1px black;
 }
 
