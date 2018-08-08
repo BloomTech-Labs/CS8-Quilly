@@ -31,6 +31,11 @@ class App extends Component {
           this.setState({ isAuthenticated: true });
         }
       })
+      .then(() => {
+        if (this.state.isAuthenticated === true) {
+          this.props.history.push('/jobs');
+        }
+      })
       .catch(error => {
       });
   }
@@ -40,9 +45,6 @@ class App extends Component {
   }
 
   render() {
-    if (this.state.isAuthenticated === true) {
-      this.props.history.push('/jobs');
-    }
     return (
       <Router {...this.props}>
         <div>

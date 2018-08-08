@@ -16,7 +16,7 @@ const CustomCard = (props) => {
           color: props.cardColor
         }}>
         <div style={{ fontSize: 14, color: '#4C4C4C', fontWeight: 'bold', margin: 9 }}>{props.title}</div>
-        <div style={{ fontSize: 14, fontWeight: 'bold' }}>{props.name}</div>
+        <div style={{ fontSize: 16, fontWeight: 'bold' }}>{props.name}</div>
         <div style={{ fontSize: 11 }}>{props.dueOn}</div>
         <div className="buttonContainer" style={{ paddingTop: 3, paddingRight: 3 }}>
           <EditButton jobInfo={props.jobInfo} openEditModal={props.openEditModal}/>
