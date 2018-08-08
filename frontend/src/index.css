@@ -46,9 +46,9 @@ body {
 }
 
 .frontPageButtonContainer {
-  position: absolute;
-  top: 550px;
-  left: 36%;
+  text-align: center;
+  position: sticky;
+  top: 558px;
   margin: auto;
   width: 500px;
   display: flex;
