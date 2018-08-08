@@ -16,7 +16,8 @@
 
 .signoutBtn:hover {
   cursor: pointer;
-  background-color: #99d9d6;
+  /* background-color: #99d9d6; */
+  background-color: #ffeedb;
   transform: translate(-18px, 0);
 }
 

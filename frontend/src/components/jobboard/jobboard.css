@@ -17,10 +17,16 @@
     rgba(64, 121, 140, 0.8627297794117648) 62%,
     rgba(255, 238, 219, 1) 100%
   ); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
     rgba(64, 121, 140, 0.8627297794117648) 62%,
+    rgb(176, 189, 199) 100%
+  ); */
+  background: linear-gradient(
+    45deg,
+    rgba(122, 125, 125, 1) 11%,
+    rgba(31, 106, 161, 0.9) 62%,
     rgb(176, 189, 199) 100%
   );
 }
@@ -48,5 +54,8 @@
 }
 
 .sc-dnqmqq:hover {
-  background-color: #a6dbd7;
+  /* background-color: #a6dbd7; */
+  /* background-color: #bbd8ec; */
+  /* background-color: #c2e2f8; */
+  background-color: #fff0d2;
 }

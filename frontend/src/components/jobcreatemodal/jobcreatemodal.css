@@ -14,7 +14,8 @@
 
 .openModal:hover {
   cursor: pointer;
-  background-color: #99d9d6;
+  background-color: #ffeedb;
+  /* background-color: #99d9d6; */
   transform: translate(0, -8px);
 }
 
@@ -27,6 +28,7 @@
   border: 2px dashed rgb(147, 164, 165);
   /* background: #7a7d7d; */
   border-radius: 15px;
+  text-shadow: 1px 1px 1px #0b3b4b;
   max-width: 500px;
 }
 
@@ -37,6 +39,8 @@
   color: white;
   /* rgba(0, 0, 0, 0.8); */
   /* color: #ffeedb; */
+  font-weight: 500;
+  text-shadow: 1px 1px 2px #0b3b4b;
 }
 
 .Jobinformation {
@@ -48,6 +52,7 @@
   background-color: rgba(93, 152, 198, 0.6);
   border: 2px dashed rgb(147, 164, 165);
   border-radius: 15px;
+  text-shadow: 1px 1px 1px #0b3b4b;
   width: 400px;
   max-width: 500px;
 }
