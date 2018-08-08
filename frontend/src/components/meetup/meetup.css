@@ -1,7 +1,6 @@
 .MeetupComponents {
   display: block;
   margin: 65px 0 0 210px;
-  padding: 20px 20px;
   width: 70%;
   height: 50vh;
   /* background-color: #fff6ed; */
@@ -11,11 +10,12 @@
   border: 2px dashed rgb(147, 164, 165);
   border-radius: 10px;
   padding-bottom: 35px;
+  padding-top: 70px;
 }
 
 /* Data Input Styling */
 .meetupsData {
-  padding: 5px;
+  margin-top: 5px;
   display: inline-flex;
   flex-wrap: wrap;
   /* justify-content: space-around; */
@@ -50,7 +50,8 @@ input {
 /* Input Box Styling */
 .FormSubmit {
   position: fixed;
-  top: 570px;
+  top: 152px;
+  left: 20%
 }
 
 .MeetupForm {
