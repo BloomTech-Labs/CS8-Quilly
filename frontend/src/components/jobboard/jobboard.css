@@ -21,7 +21,8 @@
 
 /* big boards */
 .dJewwL {
-  background-color: #fff6ed;
+  /* background-color: #fff6ed; */
+  background-color: #efefefad;
   border-radius: 1px;
   margin: 1px;
 }
@@ -34,7 +35,9 @@
 
 /* small boards */
 .sc-dnqmqq {
-  background-color: #dbdbdb;
+  /* background-color: #dbdbdb; */  /* original gray */
+  /* background-color: #fdf7e8;  /* gold color */
+  background-color: white;
   border: #0006 solid 1px;
 }
 
