@@ -2,10 +2,14 @@
   padding: 5% 10%;
   margin: 5% auto;
   display: flex;
-  flex-wrap: wrap;
-  background: #7a7d7d;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(93, 152, 198, 0.6);
+  border: 2px dashed rgb(147, 164, 165);
+  /* background: #7a7d7d; */
   border-radius: 15px;
   width: 350px;
+  height: 250px;
   max-width: 500px;
 }
 
@@ -14,15 +18,24 @@
 }
 
 .jobDeleteModal .deleteButton {
-  border: 2px solid #ffeedb;
-  border-radius: 20px;
-  background: #40798c;
+  /* border: 2px solid #ffeedb; */
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  /* background-color: #40798c; */
+  background-color: white;
   padding-left: 20px;
   padding-right: 20px;
   width: auto;
   height: 32px;
-  margin: 40px auto 0;
+  margin: 70px 25px;
   font-size: 17px;
-  float: right;
-  color: #ffeedb;
+  /* float: right; */
+  /* color: #ffeedb; */
+  box-shadow: 3px 3px 5px #063250;
+}
+
+.jobDeleteModal .deleteButton:hover {
+  cursor: pointer;
+  background-color: #ffeedb;
+  color: black;
 }

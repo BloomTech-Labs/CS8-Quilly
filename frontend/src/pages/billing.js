@@ -8,7 +8,7 @@ const Billingpage = (props) => {
     <div className="App">
       <Signout {...props} />
       <Sidebar />
-      <h1>Billing</h1>
+      <h1 className="pageHeader">Billing</h1>
       <Billing />
     </div>
   );

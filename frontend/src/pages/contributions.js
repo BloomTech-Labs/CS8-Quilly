@@ -8,7 +8,7 @@ const Contributionspage = (props) => {
     <div className="App">
       <Signout {...props} />
       <Sidebar />
-      <h1>Contributions</h1>
+      <h1 className="pageHeader">Contributions</h1>
       <Contribution />
     </div>
   );

@@ -81,7 +81,7 @@ body {
   ); */
 }
 
-h1 {
+.pageHeader {
   margin-left: 210px;
   width: 250px;
   /* color: #ffeedb; */

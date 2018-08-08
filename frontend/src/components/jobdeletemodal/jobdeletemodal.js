@@ -85,12 +85,14 @@ class Jobdeletemodal extends Component {
           className="jobDeleteModal"
         >
           <h1>Are you sure you want to delete this application?</h1>
-          <button onClick={this.handleSubmit} className="deleteButton">
-            Yes
-          </button>
-          <button onClick={this.closeModal} className="deleteButton">
-            No
-          </button>
+          <div className="buttonContainer">
+            <button onClick={this.handleSubmit} className="deleteButton">
+              Yes
+              </button>
+              <button onClick={this.closeModal} className="deleteButton">
+              No
+              </button>
+          </div>
         </Modal>
       </div>
     );

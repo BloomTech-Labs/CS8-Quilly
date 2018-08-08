@@ -8,7 +8,7 @@ const Settingspage = (props) => {
     <div className="App">
       <Signout {...props} />
       <Sidebar />
-      <h1>Settings</h1>
+      <h1 className="pageHeader">Settings</h1>
       <Settings />
     </div>
   );

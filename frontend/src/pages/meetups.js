@@ -8,7 +8,7 @@ const Meetupspage = (props) => {
     <div className="App">
       <Signout {...props} />
       <Sidebar />
-      <h1>Meetups</h1>
+      <h1 className="pageHeader">Meetups</h1>
       <Meetup />
     </div>
   );
