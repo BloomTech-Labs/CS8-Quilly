@@ -7,7 +7,7 @@ const DeleteButton = (props) => {
 
   const handleClick = () => {
     props.openDeleteModal(props.jobId);
-  ;}
+  };
 
   return (
     <Fragment>
