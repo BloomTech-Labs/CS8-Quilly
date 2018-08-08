@@ -12,7 +12,7 @@
 
 /* Data Input Styling */
 .meetupsData {
-  padding: 5px;
+  padding-top: 50px;
   display: inline-flex;
   flex-wrap: wrap;
   /* justify-content: space-around; */
@@ -47,7 +47,8 @@ input {
 /* Input Box Styling */
 .FormSubmit {
   position: fixed;
-  top: 570px;
+  top: 152px;
+  left: 20%
 }
 
 .MeetupForm {
