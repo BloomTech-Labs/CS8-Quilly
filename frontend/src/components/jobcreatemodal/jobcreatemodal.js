@@ -201,6 +201,7 @@ class Jobcreatemodal extends Component {
                 </label>
                 <br />
                 <input
+                class="Notes"
                 placeholder="Notes"
                 name="notes"
                 value={this.state.notes}

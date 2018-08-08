@@ -50,7 +50,7 @@
   /* background-color: #dbdbdb; */  /* original gray */
   /* background-color: #fdf7e8;  /* gold color */
   background-color: white;
-  border: rgba(0, 0, 0, 0.25) solid 1px;
+  border:1px solid rgba(0, 0, 0, 0.25);
 }
 
 .sc-dnqmqq:hover {
