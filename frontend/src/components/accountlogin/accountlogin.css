@@ -32,7 +32,7 @@
   flex-wrap: wrap;
   /* background: #7a7d7d; */
   border-radius: 15px;
-  background-color: rgba(93, 152, 198, 0.6);
+  background-color: rgba(49, 98, 136, .90);
   border: 2px dashed rgb(147, 164, 165);
   text-shadow: 1px 1px 1px #0b3b4b;
 }

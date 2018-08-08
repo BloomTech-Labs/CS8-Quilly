@@ -3,14 +3,14 @@
   margin: 65px 0 0 210px;
   width: 70%;
   height: 50vh;
+  max-height: 400px;
+  min-height: 390px;
   /* background-color: #fff6ed; */
   color: rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0.6);
   /* border: 3px solid #7a7d7d; */
   border: 2px dashed rgb(147, 164, 165);
   border-radius: 10px;
-  padding-bottom: 35px;
-  padding-top: 70px;
 }
 
 .contributionsData {
