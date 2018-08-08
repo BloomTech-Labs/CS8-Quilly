@@ -24,7 +24,8 @@
   padding: 5% 10%;
   display: flex;
   flex-wrap: wrap;
-  background-color: rgba(93, 152, 198, 0.6);
+  background-color: rgba(49, 98, 136, .90);
+  /* background-color: #316288; */
   border: 2px dashed rgb(147, 164, 165);
   /* background: #7a7d7d; */
   border-radius: 15px;
@@ -49,7 +50,7 @@
   display: inline-block;
   flex-wrap: wrap;
   /* background: #7a7d7d; */
-  background-color: rgba(93, 152, 198, 0.6);
+  background-color: rgba(49, 98, 136, .90);
   border: 2px dashed rgb(147, 164, 165);
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
