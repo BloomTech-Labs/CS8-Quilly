@@ -21,12 +21,12 @@
 
 .Jobtimeline {
   margin-top: -20px;
-  padding: 5% 10%;
+  padding: 5% 10% 14% 10%;
   display: flex;
   flex-wrap: wrap;
   background-color: rgba(49, 98, 136, .90);
   /* background-color: #316288; */
-  border: 2px dashed rgb(147, 164, 165);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   /* background: #7a7d7d; */
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
@@ -45,13 +45,13 @@
 }
 
 .Jobinformation {
-  padding: 5% 10%;
+  padding: 10% 10% 10% 10%;
   margin: 5% auto;
   display: inline-block;
   flex-wrap: wrap;
   /* background: #7a7d7d; */
   background-color: rgba(49, 98, 136, .90);
-  border: 2px dashed rgb(147, 164, 165);
+  border:1px solid rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
   width: 400px;
@@ -65,8 +65,8 @@ select {
 }
 
 h2 {
+  text-align: center;
   width: 100%;
-  /* color: white; */
   color: #ffeedb;
 }
 
@@ -106,4 +106,9 @@ h2 {
 .addJob:hover {
   cursor: pointer;
   background-color: #ffeedb;
+}
+
+input.Notes {
+  margin-top: 10px;
+  margin-left: 10px;
 }

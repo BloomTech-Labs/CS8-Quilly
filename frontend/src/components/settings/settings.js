@@ -5,7 +5,7 @@ class Settings extends Component {
   render() {
     return (
       <div className="Settings">
-        <form>
+        <form class="settingsForm">
           <label>E-Mail:</label>
           <input type="text" name="E-Mail" className="settingsInput" />
           <br />

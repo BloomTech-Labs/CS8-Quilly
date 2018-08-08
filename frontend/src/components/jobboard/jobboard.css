@@ -1,5 +1,5 @@
 .smooth-dnd-container.horizontal {
-  font-family: Ubuntu;
+  /* font-family: Ubuntu; */
   white-space: nowrap;
   margin-top: 65px;
   margin-left: 70px;
@@ -50,12 +50,17 @@
   /* background-color: #dbdbdb; */  /* original gray */
   /* background-color: #fdf7e8;  /* gold color */
   background-color: white;
-  border: #0006 solid 1px;
+  border:1px solid rgba(0, 0, 0, 0.25);
 }
 
 .sc-dnqmqq:hover {
   /* background-color: #a6dbd7; */
   /* background-color: #bbd8ec; */
   /* background-color: #c2e2f8; */
-  background-color: #fff0d2;
+  background-color: #fff7e8;
+}
+
+/* Job board Header */
+.sc-bZQynM {
+  padding-bottom: 10px;
 }
