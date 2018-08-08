@@ -7,7 +7,6 @@ const CustomCard = (props) => {
     <div style={{ id: props.id }}>
       <header
         style={{
-          borderBottom: '1px solid #eee',
           paddingBottom: 6,
           marginBottom: 10,
           display: 'flex',
