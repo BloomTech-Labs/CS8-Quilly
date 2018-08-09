@@ -100,9 +100,8 @@ class Accountsignup extends Component {
           <div className="signupmodal">
             <h2 className="signupHeader">Register</h2>
             <form onSubmit={this.handleSubmit} className="inputform">
-              <h3 className="inputlable">Username:</h3>
               <input
-                placeholder="username"
+                placeholder="Username"
                 className="inputField"
                 type="text"
                 required="true"
@@ -111,9 +110,8 @@ class Accountsignup extends Component {
                 onChange={this.handleChange}
                 id="startFocus"
               />
-              <h3 className="inputlable"> Password:</h3>
               <input
-                placeholder="password"
+                placeholder="Password"
                 className="inputField"
                 type="password"
                 required="true"
@@ -121,9 +119,8 @@ class Accountsignup extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <h3 className="inputlable">E-mail:</h3>
               <input
-                placeholder="email"
+                placeholder="Email"
                 className="inputField"
                 type="email"
                 required="true"
@@ -131,9 +128,8 @@ class Accountsignup extends Component {
                 value={this.state.email}
                 onChange={this.handleChange}
               />
-              <h3 className="inputlable"> First Name:</h3>
               <input
-                placeholder="firstname"
+                placeholder="Firstname"
                 className="inputField"
                 type="text"
                 required="true"
@@ -141,9 +137,8 @@ class Accountsignup extends Component {
                 value={this.state.firstname}
                 onChange={this.handleChange}
               />
-              <h3 className="inputlable"> Last Name:</h3>
               <input
-                placeholder="lastname"
+                placeholder="Lastname"
                 className="inputField"
                 type="text"
                 required="true"

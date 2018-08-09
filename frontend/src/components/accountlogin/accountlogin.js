@@ -86,9 +86,8 @@ class Accountlogin extends Component {
           <div className="signinmodal">
             <h2 className="signinheader">Sign In</h2>
             <form onSubmit={this.handleSubmit} className="inputform">
-              <h3 className="inputlable">Username:</h3>
               <input
-                placeholder="username"
+                placeholder="Username"
                 className="inputField"
                 id="startFocus"
                 type="username"
@@ -97,10 +96,8 @@ class Accountlogin extends Component {
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-
-              <h3 className="inputlable">Password:</h3>
               <input
-                placeholder="password"
+                placeholder="Password"
                 className="inputField"
                 type="password"
                 required="true"

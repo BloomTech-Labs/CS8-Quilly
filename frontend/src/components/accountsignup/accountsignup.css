@@ -2,7 +2,7 @@
 .openSignup {
   background-color: white;
   /* border: 2px solid #ffeedb; */
-  border: #0006 solid 1px;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
   border-radius: 5px;
   font-size: 18px;
   height: 50px;
@@ -45,11 +45,11 @@
 
 /*text boxes for signin and signup modals*/
 .inputform .inputField {
-  width: 45%;
-  height: 25px;
+  margin: 10px auto;
+  width: 60%;
   border-radius: 2px;
-  align-self: center;
   font-size: 18px;
+  padding: 5px;
 }
 
 .inputform .btn:hover {

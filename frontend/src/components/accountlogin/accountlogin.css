@@ -7,8 +7,11 @@
 
 /*button on homepage for login*/
 .openLogin {
-  background-color: white;
-  border: #0006 solid 1px;
+
+  background-color: #ffeedb;
+  /* border: 2px solid #ffeedb; */
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+
   border-radius: 5px;
   font-size: 18px;
   height: 50px;
@@ -17,7 +20,7 @@
 }
 .openLogin:hover {
   cursor: pointer;
-  background-color: #ffeedb;
+  background-color: #e7d8c7;
 }
 
 .signinmodal {
@@ -37,8 +40,7 @@
   margin: 5% auto;
 }
 
-.signinmodal h2,
-h3 {
+.signinmodal h2 {
   color: #ffeedb;
 }
 
@@ -50,6 +52,7 @@ h3 {
 .inputform {
   display: flex;
   flex-wrap: wrap;
+  margin: 10px 10px;
 }
 
 .signinheader {
