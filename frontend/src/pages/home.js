@@ -16,11 +16,10 @@ const Homepage = (props) => {
         <p>
           Our tools will help you on your journey of landing your dream job.
         </p>
-      </div>
-      <br />
-      <div className="frontPageButtonContainer">
-        <Accountsignup {...props} />
-        <Accountlogin {...props} />
+        <div className="frontPageButtonContainer">
+          <Accountlogin {...props} />
+          <Accountsignup {...props} />
+        </div>
       </div>
     </div>
   );

@@ -24,7 +24,7 @@
   padding: 5% 10% 14% 10%;
   display: flex;
   flex-wrap: wrap;
-  background-color: rgba(49, 98, 136, .90);
+  background-color: rgba(49, 98, 136, 1);
   /* background-color: #316288; */
   border: 1px solid rgba(0, 0, 0, 0.25);
   /* background: #7a7d7d; */
@@ -50,7 +50,7 @@
   display: inline-block;
   flex-wrap: wrap;
   /* background: #7a7d7d; */
-  background-color: rgba(49, 98, 136, .90);
+  background-color: rgba(49, 98, 136, 1);
   border:1px solid rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
