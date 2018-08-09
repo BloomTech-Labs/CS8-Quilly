@@ -28,10 +28,10 @@
 
 /* small boards */
 .sc-dnqmqq {
-  /* background-color: #dbdbdb; */  /* original gray */
+  /* background-color: #dbdbdb; */ /* original gray */
   /* background-color: #fdf7e8;  /* gold color */
   background-color: white;
-  border:1px solid rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(0, 0, 0, 0.25) !important;
 }
 
 .sc-dnqmqq:hover {
@@ -44,4 +44,8 @@
 /* Job board Header */
 .sc-bZQynM {
   padding-bottom: 10px;
+}
+
+.sc-bdVaJa {
+  background: none;
 }
