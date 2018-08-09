@@ -10,12 +10,7 @@
 }
 
 .cBXKgf {
-  background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(31, 106, 161, 0.9) 62%,
-    rgb(176, 189, 199) 100%
-  );
+  background: none !important;
 }
 
 /* big boards */
