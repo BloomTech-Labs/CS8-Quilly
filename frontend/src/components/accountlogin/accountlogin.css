@@ -43,8 +43,7 @@
   margin: 5% auto;
 }
 
-.signinmodal h2,
-h3 {
+.signinmodal h2 {
   color: #ffeedb;
 }
 
@@ -56,6 +55,7 @@ h3 {
 .inputform {
   display: flex;
   flex-wrap: wrap;
+  margin: 10px 10px;
 }
 
 .signinheader {

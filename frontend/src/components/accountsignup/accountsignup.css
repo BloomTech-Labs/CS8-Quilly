@@ -45,11 +45,11 @@
 
 /*text boxes for signin and signup modals*/
 .inputform .inputField {
-  width: 45%;
-  height: 25px;
+  margin: 10px auto;
+  width: 60%;
   border-radius: 2px;
-  align-self: center;
   font-size: 18px;
+  padding: 5px;
 }
 
 .inputform .btn:hover {
