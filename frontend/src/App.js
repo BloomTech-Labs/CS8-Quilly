@@ -12,7 +12,6 @@ import Settingspage from './pages/settings';
 import { StripeProvider } from 'react-stripe-elements';
 import PrivateRoute from './privateRoute.js';
 import config from './config/config';
-import Introductionspage from './pages/introductions';
 
 const stripeKey = config.stripe.publicKey;
 

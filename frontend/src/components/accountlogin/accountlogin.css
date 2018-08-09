@@ -7,9 +7,9 @@
 
 /*button on homepage for login*/
 .openLogin {
-  background-color: white;
+  background-color: #ffeedb;
   /* border: 2px solid #ffeedb; */
-  border: #0006 solid 1px;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
   border-radius: 5px;
   font-size: 18px;
   height: 50px;
@@ -18,7 +18,7 @@
 }
 .openLogin:hover {
   cursor: pointer;
-  background-color: #ffeedb;
+  background-color: #e7d8c7;
 }
 
 /* .openLogin p {

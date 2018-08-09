@@ -1,6 +1,6 @@
 import React from 'react';
 import Sidebar from '../components/sidebar/sidebar';
-import Introductions from '../components/introduction/intro';
+import Introductions from '../components/introduction/introduction.js';
 
 const Introductionspage = () => {
     return (

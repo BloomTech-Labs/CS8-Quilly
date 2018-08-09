@@ -23,26 +23,29 @@ body {
   height: 100vh;
   z-index: -50;
   object-fit: cover;
-  filter: brightness(55%);
+  /* filter: brightness(95%); */
 }
 
 #logo {
+  display: block;
   margin-top: 150px;
   height: 225px;
-  width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
 }
 
+/*Transparent box on home*/
 .homeDescription {
-  /*that big transparent box on home*/
-  /* background: #ffffff90; */
-  background-color: rgb(255, 255, 255, 0.2);
-  position: fixed;
-  top: 40px;
-  right: 40px;
-  left: 40px;
-  bottom: 40px;
-  border-radius: 5px;
+  background-color: rgb(255, 255, 255, 0.9);
+  margin-left: auto;
+  margin-right: auto;
+  width: 45%;
   text-align: center;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-top: 1%;
+  border-radius: 5px;
 }
 
 .frontPageButtonContainer {
@@ -59,8 +62,8 @@ body {
   opacity: 1;
   font-size: 23px;
   font-weight: 900;
-  color: #f9f9f9;
-  text-shadow: 1px 1px 1px black;
+  color: #1a245d;
+  text-shadow: 1px 1px 1px rgba(122, 125, 125);
 }
 
 /*background for the logged in pages*/
@@ -74,24 +77,6 @@ body {
   z-index: -100;
   object-fit: cover;
   background: rgb(122, 125, 125);
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgba(255, 238, 219, 1) 100%
-  ); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgb(255, 255, 255) 100%
-  ); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgb(176, 189, 199) 100%
-  ); */
   background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
@@ -101,7 +86,7 @@ body {
 }
 
 .homeApp {
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 .pageHeader {

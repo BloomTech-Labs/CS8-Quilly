@@ -2,7 +2,7 @@
 .openSignup {
   background-color: white;
   /* border: 2px solid #ffeedb; */
-  border: #0006 solid 1px;
+  border: rgba(0, 0, 0, 0.2) solid 1px;
   border-radius: 5px;
   font-size: 18px;
   height: 50px;
