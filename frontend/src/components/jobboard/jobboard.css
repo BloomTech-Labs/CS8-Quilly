@@ -10,26 +10,12 @@
 }
 
 .cBXKgf {
-  background: none;
-  /* background-color:rgba(255,255,255,0); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgba(255, 238, 219, 1) 100%
-  ); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgb(176, 189, 199) 100%
-  ); */
-  /* background: linear-gradient(
+  background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
     rgba(31, 106, 161, 0.9) 62%,
     rgb(176, 189, 199) 100%
-  ); */
+  );
 }
 
 /* big boards */
@@ -47,10 +33,10 @@
 
 /* small boards */
 .sc-dnqmqq {
-  /* background-color: #dbdbdb; */  /* original gray */
+  /* background-color: #dbdbdb; */ /* original gray */
   /* background-color: #fdf7e8;  /* gold color */
   background-color: white;
-  border:1px solid rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(0, 0, 0, 0.25) !important;
 }
 
 .sc-dnqmqq:hover {
@@ -63,4 +49,8 @@
 /* Job board Header */
 .sc-bZQynM {
   padding-bottom: 10px;
+}
+
+.sc-bdVaJa {
+  background: none;
 }
