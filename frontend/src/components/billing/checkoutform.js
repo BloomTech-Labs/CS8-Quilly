@@ -37,7 +37,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    if (this.state.purchaseCompleted) return <p>Purchase Completed</p>;
+    if (this.state.purchaseCompleted) return <p id="purchaseCompleteMsg">Purchase Completed <br/> Thank You! &#9786;</p>;
     return (
       <div className="checkout">
         <p>
@@ -45,7 +45,7 @@ class CheckoutForm extends Component {
           $4.99/mo!
         </p>
         <CardElement />
-        <button onClick={this.submit}>Buy Now</button>
+        <button class="checkoutBtn" onClick={this.submit}>Buy Now</button>
       </div>
     );
   }
