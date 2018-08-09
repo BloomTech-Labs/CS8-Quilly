@@ -32,9 +32,7 @@ body {
 
 .homeDescription {
   /*that big transparent box on home*/
-  /* background: #ffffff90; */
   background-color: rgb(255, 255, 255, 0.2);
-  /* position: fixed; */
   margin: 40px;
   border-radius: 5px;
   text-align: center;
@@ -43,8 +41,6 @@ body {
 
 .frontPageButtonContainer {
   text-align: center;
-  /* position: sticky; */
-  /* top: 558px; */
   margin: auto;
   max-width: 500px;
   display: flex;
@@ -66,25 +62,6 @@ body {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  background: rgb(122, 125, 125);
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgba(255, 238, 219, 1) 100%
-  ); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgb(255, 255, 255) 100%
-  ); */
-  /* background: linear-gradient(
-    45deg,
-    rgba(122, 125, 125, 1) 11%,
-    rgba(64, 121, 140, 0.8627297794117648) 62%,
-    rgb(176, 189, 199) 100%
-  ); */
   background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
@@ -101,7 +78,6 @@ body {
 .pageHeader {
   margin-left: 210px;
   width: 250px;
-  /* color: #ffeedb; */
   color: white;
   opacity: 0.8;
 }
@@ -134,10 +110,6 @@ body {
     font-size: 18px;
     padding-left: 20px;
     padding-right: 20px;
-  }
-
-  .frontPageButtonContainer {
-
   }
 
   .openSignup {
