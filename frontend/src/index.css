@@ -1,10 +1,3 @@
-@font-face {
-  font-family: Ubuntu;
-  src: url('/assets/Ubuntu-R.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -13,15 +6,19 @@ body {
 
 /* homescreen */
 .background {
+  max-height: 100vh;
+  background-attachment: fixed;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
   /* width: 100vw; */
+  min-width: 400px;
+  min-height: 400px;
   width: 100vw;
   height: 100vh;
-  z-index: -50;
+  z-index: -1;
   object-fit: cover;
   /* filter: brightness(95%); */
 }
@@ -50,10 +47,8 @@ body {
 
 .frontPageButtonContainer {
   text-align: center;
-  position: sticky;
-  top: 558px;
   margin: auto;
-  width: 500px;
+  max-width: 500px;
   display: flex;
   justify-content: space-around;
 }
@@ -68,13 +63,10 @@ body {
 
 /*background for the logged in pages*/
 .App {
+  max-height: 100vh;
   position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100vh;
-  z-index: -100;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   background: rgb(122, 125, 125);
   background: linear-gradient(
@@ -87,12 +79,12 @@ body {
 
 .homeApp {
   max-height: 100vh;
+  min-height: 100vh;
 }
 
 .pageHeader {
   margin-left: 210px;
   width: 250px;
-  /* color: #ffeedb; */
   color: white;
   opacity: 0.8;
 }
@@ -120,14 +112,32 @@ body {
   }
 }
 
-/* iphone */
-@media only screen and (max-width: 400px) {
-  #logo {
-    margin-top: 10px;
-  }
+@media only screen and (max-width: 700px) {
   .homeDescription p {
+    font-size: 18px;
     padding-left: 20px;
     padding-right: 20px;
+  }
+
+  .openSignup {
+    max-width: 150px;
+  }
+
+  .openLogin {
+    max-width: 150px;
+  }
+}
+
+/* iphone */
+@media only screen and (max-width: 500px) {
+  #logo {
+    margin-top: 10px;
+    min-width: 150px;
+  }
+
+  .frontPageButtonContainer {
+    display: flex;
+    flex-direction: column;
   }
 
   .openSignup {
@@ -141,10 +151,12 @@ body {
 
   /*login and signup buttons*/
   .openSignup {
+    max-width: 150px;
     top: 340px;
     left: 30%;
   }
   .openLogin {
+    max-width: 150px;
     top: 430px;
     left: 30%;
   }
