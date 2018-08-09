@@ -10,7 +10,8 @@
 }
 
 .cBXKgf {
-  background: rgb(122, 125, 125);
+  background: none;
+  /* background-color:rgba(255,255,255,0); */
   /* background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
@@ -23,12 +24,12 @@
     rgba(64, 121, 140, 0.8627297794117648) 62%,
     rgb(176, 189, 199) 100%
   ); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     45deg,
     rgba(122, 125, 125, 1) 11%,
     rgba(31, 106, 161, 0.9) 62%,
     rgb(176, 189, 199) 100%
-  );
+  ); */
 }
 
 /* big boards */

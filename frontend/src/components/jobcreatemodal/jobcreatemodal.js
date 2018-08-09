@@ -37,11 +37,14 @@ class Jobcreatemodal extends Component {
   }
 
   openModal() {
-    this.setState({ modalIsOpen: true });
+    if (this.state.modalIsOpen === true) {
+      this.closeModal();
+    } else {
+      this.setState({ modalIsOpen: true });
+    }
   }
 
   closeModal() {
-
     this.setState(defaultState);
   }
 
