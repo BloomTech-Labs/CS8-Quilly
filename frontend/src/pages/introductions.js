@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from '../components/sidebar/sidebar';
 import Introductions from '../components/introduction/intro';
 
-const Introductionspage = (props) => {
+const Introductionspage = () => {
     return (
         <div className="App">
             <Sidebar />
@@ -11,3 +11,5 @@ const Introductionspage = (props) => {
         </div>
     );
 }
+
+export default Introductionspage;

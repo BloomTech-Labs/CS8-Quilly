@@ -3,6 +3,7 @@ import { Router, Route } from 'react-router-dom';
 import axios from 'axios';
 
 import Homepage from './pages/home.js';
+import Introductionspage from './pages/introductions';
 import Joblistpage from './pages/jobs';
 import Meetupspage from './pages/meetups';
 import Contributionspage from './pages/contributions';
@@ -11,6 +12,7 @@ import Settingspage from './pages/settings';
 import { StripeProvider } from 'react-stripe-elements';
 import PrivateRoute from './privateRoute.js';
 import config from './config/config';
+import Introductionspage from './pages/introductions';
 
 const stripeKey = config.stripe.publicKey;
 
@@ -49,6 +51,7 @@ class App extends Component {
       <Router {...this.props}>
         <div>
           <Route exact path="/" render={(props) => <Homepage handleLogin={this.handleLogin} {...this.props} /> } />
+          <PrivateRoute path="/introductions" component={Introductionspage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
           <PrivateRoute path="/jobs" component={Joblistpage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
           <PrivateRoute path="/meetups" component={Meetupspage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
           <PrivateRoute path="/contributions" component={Contributionspage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
