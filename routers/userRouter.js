@@ -169,30 +169,31 @@ router.post("/addResume", authenticate, upload.single('file'), (req, res) => {
   cloudinary.v2.uploader.upload(req.file.path, { resource_type :'auto' }, (error, result) => {
     if (error){
       res.status(500).send(error); 
+      return;
     }
-    else
-      User.findById(userId)
-      .then((user)=> {
-        if (user.resumes.length > 6)
-          res.status(400).send({error: 'Max number of resumes exceeded'})
-        else
-          newResume = {
-            file_url: result.secure_url,
-            name: req.body.resumeName,
-            thumb_url: cloudinary.image(result.public_id + ".png", { width: 126, crop: "scale" })
-          }
-          user.resumes.push(newResume);
-          user.save()
-          .then((response) => {
-            res.status(201).send(result);
-          })
-          .catch((error) => {
-            res.status(500).send(error);
-          });
-      })
-      .catch((error) => {
-        res.status(500).send(error);
-      })
+    fs.unlinkSync(req.file.path);
+    User.findById(userId)
+    .then((user)=> {
+      if (user.resumes.length > 4)
+        res.status(400).send({error: 'Max number of resumes exceeded'})
+      else
+        newResume = {
+          file_url: result.secure_url,
+          name: req.body.resumeName,
+          thumb_url: cloudinary.image(result.public_id + ".png", { width: 126, crop: "scale" })
+        }
+        user.resumes.push(newResume);
+        user.save()
+        .then((response) => {
+          res.status(201).send(result);
+        })
+        .catch((error) => {
+          res.status(500).send(error);
+        });
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    })
   });
 });
 

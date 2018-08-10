@@ -1,0 +1,25 @@
+.resumeBox {
+    
+    margin-top: 50px;
+
+}
+
+.resumeForm {
+    margin-top: 40px;
+    margin-left: 17%;
+    display: inline-block;
+
+}
+.resumes {
+    margin-left: 17%;
+    margin-top:30px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.resumeCard {
+    display: flex;
+}
+.resumeName {
+    width: 400px;
+}
