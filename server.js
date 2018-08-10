@@ -9,12 +9,20 @@ const MongoStore = require("connect-mongo")(session);
 
 const userRouter = require("./routers/userRouter");
 
+//GridFs related dependencies
+const multer = require('multer');
+
+
+let gfs;
+
 mongoose
   .connect(
     config.db,
     { useNewUrlParser: true }
   )
-  .then(() => console.log("Connected to DB"))
+  .then(() => {
+    console.log("Connected to DB");
+  })
   .catch(() => console.error("Failed to connect to DB"));
 
 const server = express();
@@ -40,6 +48,7 @@ server.use(
     })
   })
 );
+
 
 server.get("/", (req, res) => {
   res.json({ api: "running" });

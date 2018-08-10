@@ -15,7 +15,7 @@ body {
   bottom: 0;
   /* width: 100vw; */
   min-width: 400px;
-  min-height: 400px;
+  min-height: 100vh;
   width: 100vw;
   height: 100vh;
   z-index: -1;
@@ -34,15 +34,18 @@ body {
 
 /*Transparent box on home*/
 .homeDescription {
-  background-color: rgb(255, 255, 255, 0.9);
+  min-width: 200px;
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
   width: 45%;
   text-align: center;
   padding-top: 20px;
   padding-bottom: 40px;
-  margin-top: 1%;
+  margin-top: 2%;
+  margin-bottom: 2%;
   border-radius: 5px;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
 }
 
 .frontPageButtonContainer {
@@ -54,11 +57,11 @@ body {
 }
 
 .homeDescription p {
-  opacity: 1;
-  font-size: 23px;
-  font-weight: 900;
-  color: #1a245d;
-  text-shadow: 1px 1px 1px rgba(122, 125, 125);
+  margin-left: 10px;
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: 400;
+  /* color: #1a245d; */
 }
 
 /*background for the logged in pages*/
@@ -108,11 +111,16 @@ body {
     width: auto;
     z-index: -50;
     object-fit: cover;
-    filter: brightness(55%);
+    /* filter: brightness(55%); */
   }
 }
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 950px) {
+  .frontPageButtonContainer {
+    display: flex;
+    flex-direction: column;
+  }
+
   .homeDescription p {
     font-size: 18px;
     padding-left: 20px;
@@ -132,12 +140,7 @@ body {
 @media only screen and (max-width: 500px) {
   #logo {
     margin-top: 10px;
-    min-width: 150px;
-  }
-
-  .frontPageButtonContainer {
-    display: flex;
-    flex-direction: column;
+    min-width: 230px;
   }
 
   .openSignup {
@@ -169,7 +172,12 @@ body {
     width: 70%;
   }
 
+  .homeDescription {
+    margin-bottom: 60px;
+  }
+
   .background {
+    min-height: 100vh;
     position: fixed;
     top: 0;
     left: 0;
@@ -177,8 +185,8 @@ body {
     bottom: 0;
     height: 100vh;
     width: auto;
-    z-index: -50;
+    /* z-index: -50; */
     object-fit: cover;
-    filter: brightness(55%);
+    /* filter: brightness(55%); */
   }
 }

@@ -7,6 +7,17 @@ const meetupRouter = require("./meetupsRouter");
 const billingRouter = require("../stripe/stripe")
 
 const User = require("../models/userModel");
+const fs = require('fs');
+const multer = require('multer');
+const upload = multer({dest:'uploads/'});
+const cloudinary = require('cloudinary');
+const config = require('../config/config');
+
+cloudinary.config({
+  cloud_name: 'dcivns0it',
+  api_key: '623223516531755',
+  api_secret: process.env.CLOUDINARY_SECRET || config.CLOUDINARY_SECRET
+})
 
 // authenticate that the user is signed in
 function authenticate(req, res, next) {
@@ -151,6 +162,51 @@ router.put("/update", authenticate, (req, res) => {
     .catch(error => {
       res.status(500).json({ error: "User information could not be updated" });
     });
+});
+
+router.post("/addResume", authenticate, upload.single('file'), (req, res) => {
+  const { userId } = req.session;
+  
+  cloudinary.v2.uploader.upload(req.file.path, { resource_type :'auto' }, (error, result) => {
+    if (error){
+      res.status(500).send(error); 
+      return;
+    }
+    fs.unlinkSync(req.file.path);
+    User.findById(userId)
+    .then((user)=> {
+      if (user.resumes.length > 4)
+        res.status(400).send({error: 'Max number of resumes exceeded'})
+      else
+        newResume = {
+          file_url: result.secure_url,
+          name: req.body.resumeName,
+          thumb_url: cloudinary.image(result.public_id + ".png", { width: 126, crop: "scale" })
+        }
+        user.resumes.push(newResume);
+        user.save()
+        .then((response) => {
+          res.status(201).send(result);
+        })
+        .catch((error) => {
+          res.status(500).send(error);
+        });
+    })
+    .catch((error) => {
+      res.status(500).send(error);
+    })
+  });
+});
+
+router.get('/getResumes', authenticate, (req, res) => {
+  const { userId } = req.session;
+  User.findById(userId)
+  .then(user => {
+    res.status(200).send(user.resumes);
+  })
+  .catch(error => {
+    res.status(500).send({ error: 'User could not be found' });
+  });
 });
 
 router.use("/applications", authenticate, applicationRouter);

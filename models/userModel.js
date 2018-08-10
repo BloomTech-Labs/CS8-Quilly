@@ -36,7 +36,12 @@ const userSchema = new mongoose.Schema(
     },
     applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
     meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
-    contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }]
+    contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
+    resumes: [{
+      file_url: String,
+      name: String,
+      thumb_url: String
+    }]
   },
   {
     timestamps: true
