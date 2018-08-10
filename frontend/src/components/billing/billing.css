@@ -3,26 +3,32 @@ button {
 }
 
 h4 {
-  font-size: 20px;
-  margin: 0px;
-  text-align: center;
+  font-size: 32px;
+    margin: 5px 0 32px 0;
+    text-align: center;
 }
 
 .Billing {
-  margin-left: 210px;
   margin-top: 65px;
+  margin-left: 210px;
   display: flex;
 }
 
 .Paymentinfo {
   width: 20%;
-    height: 520px;
+    height: 375px;
     border: 1px solid rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 30px;
     color: rgba(0, 0, 0, 0.8);
     background-color: rgba(255, 255, 255, 0.6);
-    margin-left: 10%;
+    
+}
+
+.Paymentinfo:hover {
+  -webkit-box-shadow: 0px 0px 38px -3px rgba(0, 0, 0, 1);
+  -moz-box-shadow: 0px 0px 38px -3px rgba(0, 0, 0, 1);
+  box-shadow: 0px 0px 38px -3px rgba(0, 0, 0, 1);
 }
 
 .Paymentinfo input {
@@ -45,24 +51,80 @@ h1.Paymentinfo {
 }
 
 .checkout p {
-  padding: 10px 0;
+  padding: 41px 0 16px 0;
+  font-size: 18px;
+  text-align: center;
+  font-weight: bold;
 }
 
 .checkoutBtn {
-  margin-top: 25px;
+  font-family: inherit;
+  font-size: 17px;
+  margin-top: 33px;
+  margin-left: 25%;
+  font-weight: bold;
+  height: 40px;
+  width: 50%;
+  border-radius: 5px;
+  background: white;
+  border: #0006 solid 1px;
+  box-shadow: 3px 3px 5px #063250;
+}
+
+.checkoutBtn:hover {
+  background: #ffeedb;
+  cursor: pointer;
 }
 
 #purchaseCompleteMsg {
   font-size: 35px;
+  font-weight: bold;
+  margin-top: 90px;
+  text-align: center;
 }
 
+/* Plan Details Section */
 .PlanDetails {
+  display: block;
   width: 20%;
   height: auto;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 30px;
-  color: rgba(0, 0, 0, 0.8);
-  background-color: rgba(255, 255, 255, 0.6);
-  margin-left: 10%;
+  color:white;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-left: 70px;
+}
+
+.billingImg {
+  float: right;
+  height: 90px;
+  width: auto;
+  z-index: 100;
+  margin-top: -18px;
+  margin-right: -10px;
+}
+
+.PlanDetails p {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+}
+
+.pricing {
+  display: flex;
+  text-align: center;
+}
+
+.pricing h3 {
+  margin: 0 0 0 27%;
+  font-size: 50px;
+}
+.pricing h5 {
+  /* margin-top: 90px; */
+  font-size: 15px;
+}
+
+#basicTitle {
+  margin-left: 79px;
 }

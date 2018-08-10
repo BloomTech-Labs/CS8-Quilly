@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Elements } from 'react-stripe-elements';
 import CheckoutForm from './checkoutform';
+import BillingLogo from '../../img/Billing.svg';
 
 import './billing.css';
 
@@ -16,15 +17,14 @@ class Billing extends Component {
         </div>
 
         <div className="PlanDetails">
-          <h4>Basic Plan</h4>
-          <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-            Ut enim ad minim veniam, quis nostrud exercitation 
-            ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-            Duis aute irure dolor in reprehenderit in voluptate velit 
-            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-            cupidatat non proident, sunt in culpa qui officia deserunt mollit
-            anim id est laborum."</p>
+          <img src={BillingLogo} className="billingImg" alt="billingImg"/>
+          <h4 id="basicTitle">Basic Plan</h4>
+          <p>Support the developers!</p>
+          <p>We recommend getting started with Basic plan for $4.99 per month!</p>
+          <div className="pricing">
+            <h3>$4.99</h3><h5>/ mo</h5>
+          </div>
+          <p>This plan gives you access to all features that Quilly.io has to offer.</p>
         </div>
       </div>
     );
