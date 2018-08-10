@@ -9,7 +9,14 @@ const billingRouter = require("../stripe/stripe")
 const User = require("../models/userModel");
 const fs = require('fs');
 const multer = require('multer');
-const upload = multer({dest: 'uploads/' });
+const upload = multer({dest:'uploads/'});
+const cloudinary = require('cloudinary');
+
+cloudinary.config({
+  cloud_name: 'dcivns0it',
+  api_key: '236291457259165',
+  api_secret: 'RGoAeWBwowzC8H3t-0trykhr48k'
+})
 
 // authenticate that the user is signed in
 function authenticate(req, res, next) {
@@ -158,96 +165,45 @@ router.put("/update", authenticate, (req, res) => {
 
 router.post("/addResume", authenticate, upload.single('file'), (req, res) => {
   const { userId } = req.session;
-  User.findById(userId)
-  .then(user => {
-      console.log(req.file.buffer);
-      console.log(req.body);
-      fs.readFile(req.file.path, (error, data) => {
-        if (error)
-          console.log(error);
-      
-        user.resume.push({ name: req.body.resumeName, data: data });
-      
-        user.save()
-        .then(response => {
-          res.status(201).send(response);
-        })
-        .catch(error => {
-          res.status(500).send(error);
-        });
+  
+  cloudinary.v2.uploader.upload(req.file.path, { resource_type :'auto' }, (error, result) => {
+    if (error){
+      res.status(500).send(error); 
+    }
+    else
+      User.findById(userId)
+      .then((user)=> {
+        if (user.resumes.length > 6)
+          res.status(400).send({error: 'Max number of resumes exceeded'})
+        else
+          newResume = {
+            file_url: result.secure_url,
+            name: req.body.resumeName,
+            thumb_url: cloudinary.image(result.public_id + ".png", { width: 126, crop: "scale" })
+          }
+          user.resumes.push(newResume);
+          user.save()
+          .then((response) => {
+            res.status(201).send(result);
+          })
+          .catch((error) => {
+            res.status(500).send(error);
+          });
       })
-  })
-  .catch(error => {
-    res.status(500).send(error);
+      .catch((error) => {
+        res.status(500).send(error);
+      })
   });
 });
 
 router.get('/getResumes', authenticate, (req, res) => {
-  User.findById(req.session.userId)
+  const { userId } = req.session;
+  User.findById(userId)
   .then(user => {
-    fs.writeFile('./uploads/someFile.pdf', user.resume[0].data, () => {
-      let file = fs.createReadStream('./uploads/someFile.pdf');
-      let stat = fs.stat('./uploads/someFile.pdf', (err, s) => {
-
-      // var stream = fs.readStream('./uploads');
-      // var filename = "someFile.pdf"; 
-      // Be careful of special characters
-    
-      //filename = encodeURIComponent(filename);
-      // Ideally this should strip them
-    
-      // res.setHeader('Content-disposition', 'attachment; filename=someFile.pdf');
-      // res.setHeader('Content-type', 'application/pdf');
-      // res.header({
-      //   'Content-Length': s.size,
-      //   'Content-Type': 'application/pdf',
-      //   'Content-Disposition': 'attachment; filename=file.pdf'
-      // });
-      res.header({
-        'Content-Length': s.size,
-        'Content-Type': 'application/pdf',
-        'Content-Disposition': 'attachment; filename=file.pdf'
-      });
-     
-      file.pipe(res);
-      
-      // res.header({
-      //   'Content-Length': s.size,
-      //   'Content-Type': 'application/pdf',
-      //   'Content-Disposition': 'attachment; filename=file.pdf'
-      // });
-      // res.setHeader('Content-Length', s.size);
-      // res.setHeader('Content-Type', 'application/pdf');
-      // res.setHeader('Content-Disposition', 'attachment; filename=file.pdf');
-      // file.pipe(res.set({
-      //   'Content-Length': s.size,
-      //   'Content-Type': 'application/pdf',
-      //   'Content-Disposition': 'attachment; filename=file.pdf'
-      // }))
-      // fs.readFile('./uploads/someFile.pdf' , function (err,data){
-     
-      //   res.send(data);
-      })
-    });
-      
-    // });
-    
-    //res.setContentType("application/pdf");
-    //res.send(someFile.pdf);
-    //fs.createReadStream('./someFile.pdf').pipe(res.setContentType("application/pdf"));
-    // res.download('someFile.pdf');
-    // fs.writeFile('someFile.pdf', user.resume[0].data, (error) => {
-    //   if (error)
-    //     console.log(error);
-    //   console.log('Filewritten successfully');
-    // })
-    //const response = { name: user.resume[0].name, file: someFile.pdf }
-    // response.setContentType("application/pdf");
-    // res.send(user.resume[0].data);
+    res.status(200).send(user.resumes);
   })
   .catch(error => {
-    console.log(error);
-    res.send(error);
+    res.status(500).send({ error: 'User could not be found' });
   });
 });
 

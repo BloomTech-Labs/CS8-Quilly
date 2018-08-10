@@ -13,7 +13,6 @@ class Resumespage extends Component {
 
         this.state = {
             resumes: [],
-            resume: ""
         }
     }
 
@@ -22,10 +21,7 @@ class Resumespage extends Component {
         const myForm = document.getElementById('myForm');
 
         const formData = new FormData(myForm);
-        //const resume = myForm.file.files[0];
-        //const resumeBlob = new Blob([resume], {type: "application/pdf"});
-        //formData.append("resume", resume);
-        //console.log(formData.getAll("resume"));
+
         axios.post(`${config.serverUrl}/user/addResume`, formData)
         .then(response => {
             console.log(response);
@@ -38,9 +34,8 @@ class Resumespage extends Component {
     componentDidMount() {
         axios.get(`${config.serverUrl}/user/getResumes`)
         .then(resumes => {
-            console.log(resumes);
-            this.setState({ file: resumes.data });
-            console.log(this.state.file);
+            this.setState({ resumes: resumes.data });
+            console.log(this.state.resumes);
             
         })
         .catch(error => {
@@ -57,11 +52,17 @@ class Resumespage extends Component {
                     <input type="text" placeholder="Resume Name" name="resumeName"/>
                     <button type="submit" onClick={this.handleSubmit}>Add Resume</button>
                 </form>
-                {/* <embed src={this.state.file} width="100px" height="200px" /> */}
-                <Document
-                    file={this.state.file}>
-                    <Page pageNumber='1' />
-                </Document>
+                <div>
+                    {this.state.resumes.map(resume => {
+                        return(
+                            <div>
+                                <div>{resume.name}</div>
+                                <a href={resume.file_url} dangerouslySetInnerHTML={{__html:resume.thumb_url}}></a>
+                                
+                            </div>
+                        )
+                    })}
+                </div>
             </div>
         )
     }

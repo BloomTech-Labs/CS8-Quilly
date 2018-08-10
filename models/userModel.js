@@ -37,9 +37,10 @@ const userSchema = new mongoose.Schema(
     applications: [{ type: Schema.Types.ObjectId, ref: 'Application' }],
     meetups: [{ type: Schema.Types.ObjectId, ref: 'Meetup' }],
     contributions: [{ type: Schema.Types.ObjectId, ref: 'Contribution' }],
-    resume: [{
-      data: Buffer,
-      name: String
+    resumes: [{
+      file_url: String,
+      name: String,
+      thumb_url: String
     }]
   },
   {

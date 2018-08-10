@@ -11,8 +11,7 @@ const userRouter = require("./routers/userRouter");
 
 //GridFs related dependencies
 const multer = require('multer');
-const GridFsStorage = require('multer-gridfs-storage');
-const Grid = require('gridfs-stream'); 
+
 
 let gfs;
 
@@ -21,9 +20,8 @@ mongoose
     config.db,
     { useNewUrlParser: true }
   )
-  .then((db) => {
+  .then(() => {
     console.log("Connected to DB");
-    //gfs = Grid(db, mongoose.mongo);
   })
   .catch(() => console.error("Failed to connect to DB"));
 
@@ -51,9 +49,7 @@ server.use(
   })
 );
 
-// const storage = new GridFsStorage({
 
-// })
 server.get("/", (req, res) => {
   res.json({ api: "running" });
 });
