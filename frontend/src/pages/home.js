@@ -16,7 +16,7 @@ const Homepage = (props) => {
         <Accountsignup {...props} />
         <Accountlogin {...props} />
       </div>
-      </div>      
+      </div>
     </div>
   );
 };
