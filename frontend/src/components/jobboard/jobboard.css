@@ -29,7 +29,7 @@
 /* small boards */
 .sc-dnqmqq {
   background-color: white;
-  border:1px solid rgba(0, 0, 0, 0.25) !important;
+  border: 1px solid rgba(0, 0, 0, 0.25) !important;
 }
 
 .sc-dnqmqq:hover {
@@ -39,4 +39,8 @@
 /* Job board Header */
 .sc-bZQynM {
   padding-bottom: 10px;
+}
+
+.sc-bdVaJa {
+  background: none;
 }

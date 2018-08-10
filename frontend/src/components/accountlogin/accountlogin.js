@@ -30,17 +30,22 @@ class Accountlogin extends Component {
 
   handleSubmit(event) {
     axios
-      .post(`${config.serverUrl}/user/login`, {
-        username: this.state.username,
-        password: this.state.password
-      }, { withCredentials: true })
+      .post(
+        `${config.serverUrl}/user/login`,
+        {
+          username: this.state.username,
+          password: this.state.password
+        },
+        { withCredentials: true }
+      )
       .then(response => {
         this.props.handleLogin();
         this.props.history.push('/jobs');
       })
 
-      .catch((error) => {
-        document.getElementById("loginWarning").innerHTML = error.response.data.error;
+      .catch(error => {
+        document.getElementById('loginWarning').innerHTML =
+          error.response.data.error;
         console.error(error);
       });
 
@@ -60,10 +65,18 @@ class Accountlogin extends Component {
     document.getElementById('startFocus').focus();
   }
 
+  changeText() {
+    document.getElementById('btn').value = 'Logging In';
+    document.getElementById('btn').style = 'background-color: #c6c6c650';
+    window.setTimeout('this.disabled=true', 0);
+  }
+
   render() {
     return (
       <div className="Accountlogin">
-        <button className="openLogin" onClick={this.openModal}>Login</button>
+        <button className="openLogin" onClick={this.openModal}>
+          Login
+        </button>
         <Modal
           isOpen={this.state.modalIsOpen}
           onRequestClose={this.closeModal}
@@ -93,9 +106,13 @@ class Accountlogin extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <div id="loginWarning" ></div>
-
-              <input type="submit" value="Submit" className="btn" />
+              <div id="loginWarning" />
+              <input
+                type="submit"
+                value="Submit"
+                id="btn"
+                onClick={this.changeText}
+              />
             </form>
           </div>
         </Modal>
