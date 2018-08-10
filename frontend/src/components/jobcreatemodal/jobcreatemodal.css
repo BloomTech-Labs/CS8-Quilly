@@ -1,26 +1,35 @@
 .openModal {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background-color: white;
-  border: 2px solid #ffeedb;
-  border-radius: 15px;
+  bottom: -10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: #0006 solid 1px;
+  /* border: 2px solid #ffeedb; */
+  border-radius: 5px;
   font-size: 18px;
   height: 60px;
   width: 150px;
+  transition: transform 0.2s ease;
 }
 
 .openModal:hover {
   cursor: pointer;
+  background-color: #ffeedb;
+  /* background-color: #99d9d6; */
+  transform: translate(0, -8px);
 }
 
 .Jobtimeline {
-  padding: 5% 10%;
-  margin: 5% auto;
+  margin-top: -20px;
+  padding: 5% 10% 14% 10%;
   display: flex;
   flex-wrap: wrap;
-  background: #7a7d7d;
+  background-color: rgba(49, 98, 136, 1);
+  /* background-color: #316288; */
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  /* background: #7a7d7d; */
   border-radius: 15px;
+  text-shadow: 1px 1px 1px #0b3b4b;
   max-width: 500px;
 }
 
@@ -28,16 +37,23 @@
   margin: 7px;
   float: left;
   width: 46%;
-  color: #ffeedb;
+  color: white;
+  /* rgba(0, 0, 0, 0.8); */
+  /* color: #ffeedb; */
+  font-weight: 500;
+  text-shadow: 1px 1px 2px #0b3b4b;
 }
 
 .Jobinformation {
-  padding: 5% 10%;
+  padding: 10% 10% 10% 10%;
   margin: 5% auto;
   display: inline-block;
   flex-wrap: wrap;
-  background: #7a7d7d;
+  /* background: #7a7d7d; */
+  background-color: rgba(49, 98, 136, 1);
+  border:1px solid rgba(0, 0, 0, 0.25);
   border-radius: 15px;
+  text-shadow: 1px 1px 1px #0b3b4b;
   width: 400px;
   max-width: 500px;
 }
@@ -49,6 +65,7 @@ select {
 }
 
 h2 {
+  text-align: center;
   width: 100%;
   color: #ffeedb;
 }
@@ -70,4 +87,28 @@ h2 {
   color: red;
   font-weight: bold;
   margin-top: 2%;
+}
+
+.addJob {
+  position: fixed;
+  margin-top: 15px;
+  background-color: white;
+  /* border: 2px solid #ffeedb; */
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  font-size: 18px;
+  height: 40px;
+  width: 140px;
+  box-shadow: 3px 3px 5px #063250;
+  /* #174b70; */
+}
+
+.addJob:hover {
+  cursor: pointer;
+  background-color: #ffeedb;
+}
+
+input.Notes {
+  margin-top: 10px;
+  margin-left: 10px;
 }

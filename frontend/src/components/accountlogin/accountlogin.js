@@ -26,23 +26,26 @@ class Accountlogin extends Component {
     this.setState({
       [name]: value
     });
-
-    console.log(`THIS IS THE STATE: ${this.state.username}`);
   }
 
   handleSubmit(event) {
-    // console.log({username:this.state.username, password:this.state.password});
     axios
-      .post(`${config.serverUrl}/user/login`, {
-        username: this.state.username,
-        password: this.state.password
-      })
+      .post(
+        `${config.serverUrl}/user/login`,
+        {
+          username: this.state.username,
+          password: this.state.password
+        },
+        { withCredentials: true }
+      )
       .then(response => {
+        this.props.handleLogin();
         this.props.history.push('/jobs');
       })
 
-      .catch((error) => {
-        document.getElementById("loginWarning").innerHTML = error.response.data.error;
+      .catch(error => {
+        document.getElementById('loginWarning').innerHTML =
+          error.response.data.error;
         console.error(error);
       });
 
@@ -62,11 +65,18 @@ class Accountlogin extends Component {
     document.getElementById('startFocus').focus();
   }
 
+  changeText() {
+    document.getElementById('btn').value = 'Logging In';
+    document.getElementById('btn').style =
+      'background-color: #c6c6c650; color: #ffffff90';
+    window.setTimeout('this.disabled=true', 0);
+  }
+
   render() {
     return (
       <div className="Accountlogin">
         <button className="openLogin" onClick={this.openModal}>
-          <p>Login</p>
+          Login
         </button>
         <Modal
           isOpen={this.state.modalIsOpen}
@@ -78,9 +88,8 @@ class Accountlogin extends Component {
           <div className="signinmodal">
             <h2 className="signinheader">Sign In</h2>
             <form onSubmit={this.handleSubmit} className="inputform">
-              <h3 className="inputlable">Username:</h3>
               <input
-                placeholder="username"
+                placeholder="Username"
                 className="inputField"
                 id="startFocus"
                 type="username"
@@ -89,10 +98,8 @@ class Accountlogin extends Component {
                 value={this.state.username}
                 onChange={this.handleChange}
               />
-
-              <h3 className="inputlable">Password:</h3>
               <input
-                placeholder="password"
+                placeholder="Password"
                 className="inputField"
                 type="password"
                 required="true"
@@ -100,10 +107,13 @@ class Accountlogin extends Component {
                 value={this.state.password}
                 onChange={this.handleChange}
               />
-              <div id="loginWarning" ></div>
-              
-
-              <input type="submit" value="Submit" className="btn" />
+              <div id="loginWarning" />
+              <input
+                type="submit"
+                value="Submit"
+                id="btn"
+                onClick={this.changeText}
+              />
             </form>
           </div>
         </Modal>

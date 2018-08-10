@@ -7,69 +7,74 @@
 
 /*button on homepage for login*/
 .openLogin {
-  position: fixed;
-  top: 500px;
-  left: 30%;
-  background-color: white;
-  border: 2px solid #ffeedb;
-  border-radius: 15px;
+
+  background-color: #ffeedb;
+  /* border: 2px solid #ffeedb; */
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+
+  border-radius: 5px;
   font-size: 18px;
-  height: 60px;
-  width: 150px;
+  height: 50px;
+  width: 180px;
+  margin: 10px;
 }
 .openLogin:hover {
   cursor: pointer;
-}
-
-.openLogin p {
-  padding-bottom: 30px;
+  background-color: #e7d8c7;
 }
 
 .signinmodal {
-  padding: 5% 10%;
-  margin: 15% auto;
+  padding: 5% 10% 10% 10%;
+  margin: 5% auto;
   display: flex;
   flex-wrap: wrap;
-  background: #7a7d7d;
-
-  border-radius: 15px;
+  border-radius: 5px;
+  background-color: rgba(49, 98, 136, 1);
+  border: 1px solid rgb(0, 0, 0, 0.25);
+  text-shadow: 1px 1px 1px #0b3b4b;
+  max-width: 500px;
 }
 .ReactModal__Content--after-open {
   max-width: 500px;
   border-radius: 15px;
   margin: 5% auto;
 }
-.signinmodal h2,
-h3 {
+
+.signinmodal h2 {
   color: #ffeedb;
 }
 
 .inputform .inputlable {
-  width: 48%;
+  width: 30%;
+  margin-right: 9%;
 }
 
 .inputform {
   display: flex;
   flex-wrap: wrap;
+  margin: 10px 10px;
 }
 
 .signinheader {
   width: 100%;
+  font-size: 35px;
+  text-align: center;
 }
 
-.signinmodal .btn {
-  border: 2px solid #ffeedb;
-  border-radius: 20px;
-  background: #40798c;
-  width: 130px;
-  height: 32px;
+#btn {
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  background-color: white;
+  height: 40px;
+  width: 140px;
+  box-shadow: 3px 3px 5px #063250;
   margin: 40px auto 0;
-  font-size: 17px;
-  color: #ffeedb;
+  font-size: 18px;
 }
 
-.signinmodal .btn:hover {
+#btn:hover {
   cursor: pointer;
+  background-color: #ffeedb;
 }
 
 #loginWarning {

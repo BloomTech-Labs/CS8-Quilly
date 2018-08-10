@@ -5,8 +5,8 @@ import './contribution.css';
 import config from '../../config/config';
 
 class Contribution extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       serverData: [],
@@ -26,7 +26,7 @@ class Contribution extends Component {
       .then(response => {
         this.setState({ serverData: response.data });
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }
@@ -57,7 +57,7 @@ class Contribution extends Component {
         temp.push(serverPort);
         this.setState({ serverData: temp });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
@@ -67,7 +67,7 @@ class Contribution extends Component {
       <div className="ContributionComponents">
         <div className="contributions">
           {/* Displaying over user's contributions -- will display nothing if no input given */}
-          {this.state.serverData.map(function (contribution) {
+          {this.state.serverData.map(function(contribution) {
             return (
               <div className="contributionsData">
                 <div className="date">{contribution.date.slice(0, 10)}</div>
@@ -88,6 +88,7 @@ class Contribution extends Component {
         {/* Form Component */}
         <div className="ContributionForm">
           <form onSubmit={this.handleSubmit} className="FormSubmit">
+            <i className="far fa-calendar-alt" />
             <input
               className="formDate"
               required="true"
@@ -108,7 +109,7 @@ class Contribution extends Component {
             <input
               className="formLink"
               type="text"
-              placeholder="Link"
+              placeholder="Link &#x1f517;"
               required="true"
               name="link"
               value={this.state.link}
@@ -122,7 +123,7 @@ class Contribution extends Component {
               value={this.state.notes}
               onChange={this.handleChange}
             />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" id="contributionSubmit" />
           </form>
         </div>
       </div>

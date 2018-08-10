@@ -4,13 +4,14 @@ import Contribution from '../components/contribution/contribution';
 import Signout from '../components/signout/signout';
 
 const Contributionspage = (props) => {
-    return (
-      <div className="App">
-        <Signout {...props} />
-        <Sidebar />
-        <Contribution />
-      </div>
-    );
-}
+  return (
+    <div className="App">
+      <Signout {...props} />
+      <Sidebar />
+      <h1 className="pageHeader">Contributions</h1>
+      <Contribution />
+    </div>
+  );
+};
 
 export default Contributionspage;

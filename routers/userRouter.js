@@ -51,7 +51,7 @@ router.post("/register", (req, res) => {
       .json({ error: "All required fields must be filled with valid data" });
   }
 
-  User.findOne({ username })
+  User.findOne({ username: username })
     .then(response => {
       if (!response) {
         const user = new User(req.body);
@@ -156,7 +156,7 @@ router.put("/update", authenticate, (req, res) => {
   const { userId } = req.session;
   User.findByIdAndUpdate(userId, newData)
     .then(response => {
-      res.status(200).json({ message: "User informatoin sucessfully updated" });
+      res.status(200).json({ message: "User information sucessfully updated" });
     })
     .catch(error => {
       res.status(500).json({ error: "User information could not be updated" });

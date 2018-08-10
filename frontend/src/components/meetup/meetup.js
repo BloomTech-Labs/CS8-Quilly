@@ -28,7 +28,7 @@ class Meetup extends Component {
       .then(response => {
         this.setState({ serverData: response.data });
       })
-      .catch(function (error) {
+      .catch(function(error) {
         console.log(error);
       });
   }
@@ -54,13 +54,13 @@ class Meetup extends Component {
 
     axios
       .post(`${config.serverUrl}/user/meetups/add`, serverPort)
-      .then((res) => {
+      .then(res => {
         console.log(res);
         let temp = this.state.serverData;
         temp.push(serverPort);
         this.setState({ serverData: temp });
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
   }
@@ -70,7 +70,7 @@ class Meetup extends Component {
       <div className="MeetupComponents">
         <div className="meetups">
           {/* Displaying over user's meetups -- will display nothing if no input given */}
-          {this.state.serverData.map(function (meetup) {
+          {this.state.serverData.map(function(meetup) {
             return (
               <div className="meetupsData">
                 <div className="date">{meetup.date.slice(0, 10)}</div>
@@ -90,6 +90,7 @@ class Meetup extends Component {
         {/* Form Component */}
         <div className="MeetupForm">
           <form onSubmit={this.handleSubmit} className="FormSubmit">
+            <i className="far fa-calendar-alt" />
             <input
               className="formDate"
               required="true"
@@ -123,7 +124,7 @@ class Meetup extends Component {
               value={this.state.notes}
               onChange={this.handleChange}
             />
-            <input type="submit" value="Submit" />
+            <input type="submit" value="Submit" id="meetupSubmit" />
           </form>
         </div>
       </div>

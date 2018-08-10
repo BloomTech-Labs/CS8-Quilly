@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema(
 );
 
 // adds last modified functionality to the user schema
-userSchema.plugin(stripeCustomer, config.stripe.secretkey);
+userSchema.plugin(stripeCustomer, config.stripe);
 
 // password hashing
 userSchema.pre('save', function(next) {

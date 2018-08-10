@@ -8,6 +8,7 @@ const EditButton = (props) => {
   const handleClick = () => {
     props.openEditModal(props.jobInfo);
   }
+
   return (
     <Fragment>
       <FontAwesomeIcon icon={faCog} className="cardButton editButton" onClick={handleClick}/>

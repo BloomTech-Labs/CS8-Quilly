@@ -4,13 +4,14 @@ import Settings from '../components/settings/settings';
 import Signout from '../components/signout/signout';
 
 const Settingspage = (props) => {
-    return (
-      <div className="App">
-        <Signout {...props} />
-        <Sidebar />
-        <Settings />
-      </div>
-    );
-}
+  return (
+    <div className="App">
+      <Signout {...props} />
+      <Sidebar />
+      <h1 className="pageHeader">Settings</h1>
+      <Settings />
+    </div>
+  );
+};
 
 export default Settingspage;

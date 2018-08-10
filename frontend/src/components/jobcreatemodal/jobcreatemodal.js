@@ -4,7 +4,6 @@ import axios from 'axios';
 import config from '../../config/config';
 
 import './jobcreatemodal.css';
-import { runInThisContext } from 'vm';
 
 Modal.setAppElement(document.getElementById('root'));
 
@@ -38,11 +37,14 @@ class Jobcreatemodal extends Component {
   }
 
   openModal() {
-    this.setState({ modalIsOpen: true });
+    if (this.state.modalIsOpen === true) {
+      this.closeModal();
+    } else {
+      this.setState({ modalIsOpen: true });
+    }
   }
 
   closeModal() {
-
     this.setState(defaultState);
   }
 
@@ -202,6 +204,7 @@ class Jobcreatemodal extends Component {
                 </label>
                 <br />
                 <input
+                class="Notes"
                 placeholder="Notes"
                 name="notes"
                 value={this.state.notes}
@@ -252,7 +255,7 @@ class Jobcreatemodal extends Component {
             value={this.state.position}
             onChange={this.handleChange}
             required="true"/>
-            <button onClick={this.handleSubmit}>
+            <button onClick={this.handleSubmit} className="addJob">
               Add Job
             </button>
             <div id="jobCreateWarning"></div>

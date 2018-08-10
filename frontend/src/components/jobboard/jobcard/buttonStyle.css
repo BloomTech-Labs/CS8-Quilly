@@ -8,6 +8,6 @@
 }
 
 .editButton:hover {
-  color: orange;
+  color: #3189cd;
   transform: scale(1.25);
 }

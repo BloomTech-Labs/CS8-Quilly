@@ -3,7 +3,7 @@ import Sidebar from '../components/sidebar/sidebar';
 import Jobboard from '../components/jobboard/jobboard';
 import Jobcreatemodal from '../components/jobcreatemodal/jobcreatemodal';
 import Jobeditmodal from '../components/jobeditmodal/jobeditmodal';
-import Jobdeletemodal from '../components/jobdeletemodal/jobdeletemodal'
+import Jobdeletemodal from '../components/jobdeletemodal/jobdeletemodal';
 import Signout from '../components/signout/signout';
 import config from '../config/config';
 import axios from 'axios';
@@ -37,11 +37,10 @@ class Joblistpage extends Component {
       offer: [],
       rejected: []
     };
-    console.log('Fetching inital data from server');
+
     axios
       .get(`${config.serverUrl}/user`)
       .then(user => {
-        console.log('fetching data from server');
         let applications = user.data.applications;
         applications.forEach(application => {
           let category = application.category;
@@ -50,15 +49,13 @@ class Joblistpage extends Component {
           }
           lists[category].push(application);
         });
+        this.setState({ lists: lists });
       })
-      .then(() => this.setState({ lists: lists }))
-      .catch(err => console.error(err));
+      .catch(error => console.error(error));
   }
 
   handleJobChange(lists) {
-    console.log('handleJobChange');
     this.setState({ lists: lists });
-    this.jobboard.current.forceUpdate();
   }
 
   openEditModal = jobInfo => {
@@ -72,13 +69,30 @@ class Joblistpage extends Component {
   render() {
     return (
       <div className="App">
-
         <Signout {...this.props} />
         <Sidebar />
-        <Jobboard jobs={this.state.lists} handleJobChange={this.handleJobChange} openEditModal={this.openEditModal} openDeleteModal={this.openDeleteModal} ref={this.jobboard}/>
-        <Jobcreatemodal jobs={this.state.lists} handleJobChange={this.handleJobChange} />
-        <Jobeditmodal ref={this.editModal} jobs={this.state.lists} handleJobChange={this.handleJobChange} />
-        <Jobdeletemodal ref={this.deleteModal} handleJobChange={this.handleJobChange} />
+        <h1 className="pageHeader">Jobs</h1>
+        <Jobboard
+          {...this.props}
+          jobs={this.state.lists}
+          handleJobChange={this.handleJobChange}
+          openEditModal={this.openEditModal}
+          openDeleteModal={this.openDeleteModal}
+          ref={this.jobboard}
+        />
+        <Jobcreatemodal
+          jobs={this.state.lists}
+          handleJobChange={this.handleJobChange}
+        />
+        <Jobeditmodal
+          ref={this.editModal}
+          jobs={this.state.lists}
+          handleJobChange={this.handleJobChange}
+        />
+        <Jobdeletemodal
+          ref={this.deleteModal}
+          handleJobChange={this.handleJobChange}
+        />
       </div>
     );
   }
