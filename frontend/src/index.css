@@ -35,7 +35,7 @@ body {
 /*Transparent box on home*/
 .homeDescription {
   min-width: 200px;
-  background-color: rgb(255, 255, 255, 1);
+  background-color: white;
   margin-left: auto;
   margin-right: auto;
   width: 45%;
@@ -43,6 +43,7 @@ body {
   padding-top: 20px;
   padding-bottom: 40px;
   margin-top: 2%;
+  margin-bottom: 2%;
   border-radius: 5px;
   box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
 }
@@ -59,10 +60,8 @@ body {
   margin-left: 10px;
   margin-right: 10px;
   font-size: 20px;
-  font-weight: 200;
+  font-weight: 400;
   /* color: #1a245d; */
-  /* text-shadow: 1px 1px 1px rgba(122, 125, 125); */
-  text-shadow: 1px 1px 1px rgba(190, 207, 224);
 }
 
 /*background for the logged in pages*/
@@ -139,10 +138,6 @@ body {
 
 /* iphone */
 @media only screen and (max-width: 500px) {
-  .homeDescription {
-    background-color: rgb(255, 255, 255, 1);
-  }
-
   #logo {
     margin-top: 10px;
     min-width: 230px;
@@ -175,6 +170,10 @@ body {
   }
   .signupmodal {
     width: 70%;
+  }
+
+  .homeDescription {
+    margin-bottom: 60px;
   }
 
   .background {
