@@ -45,7 +45,7 @@ class CheckoutForm extends Component {
           $4.99/mo!
         </p>
         <CardElement />
-        <button class="checkoutBtn" onClick={this.submit}>Buy Now</button>
+        <button class="checkoutBtn" onClick={this.submit}>Buy Now!</button>
       </div>
     );
   }
