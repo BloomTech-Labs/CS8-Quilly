@@ -7,15 +7,15 @@ class Settings extends Component {
       <div className="Settings">
         <form class="settingsForm">
           <label>E-Mail:</label>
-          <input type="text" name="E-Mail" className="settingsInput" />
+          <input type="email" name="E-Mail" className="settingsInput" />
           <br />
           <label>Old Password:</label>
-          <input type="text" name="oldpassword" className="settingsInput" />
+          <input type="password" name="oldpassword" className="settingsInput" />
           <br />
           <label>New Password:</label>
-          <input type="text" name="newpassword" className="settingsInput" />
+          <input type="password" name="newpassword" className="settingsInput" />
           <br />
-          <input type="submit" value="Submit" className="settingsInput" />
+          <input type="submit" value="Submit" className="settingsBtn" />
         </form>
       </div>
     );

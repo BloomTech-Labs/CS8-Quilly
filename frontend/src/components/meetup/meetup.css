@@ -1,7 +1,7 @@
 .MeetupComponents {
   display: block;
   margin: 65px 0 0 210px;
-  width: 70%;
+  width: 995px;
   height: 50vh;
   max-height: 400px;
   min-height: 390px;
@@ -55,7 +55,6 @@ input {
 .FormSubmit {
   position: fixed;
   top: 165px;
-  margin-left: 15px;
   width: 85%;
 }
 

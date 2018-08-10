@@ -9,8 +9,8 @@ h4 {
 }
 
 .Billing {
-  margin-left: 210px;
   margin-top: 65px;
+  margin-left: 210px;
   display: flex;
 }
 
@@ -22,7 +22,7 @@ h4 {
     padding: 30px;
     color: rgba(0, 0, 0, 0.8);
     background-color: rgba(255, 255, 255, 0.6);
-    margin-left: 10%;
+    
 }
 
 .Paymentinfo:hover {
@@ -54,6 +54,7 @@ h1.Paymentinfo {
   padding: 41px 0 16px 0;
   font-size: 18px;
   text-align: center;
+  font-weight: bold;
 }
 
 .checkoutBtn {
@@ -65,10 +66,14 @@ h1.Paymentinfo {
   height: 40px;
   width: 50%;
   border-radius: 5px;
+  background: white;
+  border: #0006 solid 1px;
+  box-shadow: 3px 3px 5px #063250;
 }
 
 .checkoutBtn:hover {
   background: #ffeedb;
+  cursor: pointer;
 }
 
 #purchaseCompleteMsg {

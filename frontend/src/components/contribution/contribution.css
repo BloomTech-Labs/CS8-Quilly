@@ -1,7 +1,7 @@
 .ContributionComponents {
   display: block;
   margin: 65px 0 0 210px;
-  width: 70%;
+  width: 995px;
   height: 50vh;
   max-height: 400px;
   min-height: 390px;
@@ -12,10 +12,10 @@
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding-top: 95px;
+  padding-left: 10px;
 }
 
 .contributionsData {
-  padding-top: 5px;
   display: inline-flex;
   flex-wrap: wrap;
   margin: 15px;

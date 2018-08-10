@@ -1,11 +1,9 @@
 .Settings {
-  width: 20%;
-  height: auto;
-  /* border: 3px solid #7a7d7d; */
+  width: 25%;
+  height: 270px;
   border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding: 30px;
-  /* background-color: #fff6ed; */
   color: rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0.6);
   margin-left: 210px;
@@ -13,18 +11,42 @@
 }
 
 .Settings label {
-  width: 150px;
-  clear: left;
-  float: left;
-  padding-right: 10px;
-  padding-bottom: 20px;
+  font-weight: bold;
+    width: 150px;
+    clear: left;
+    float: left;
+    padding-right: 10px;
+    padding-left: 3px;
+    padding-bottom: 41px;
 }
 
 .settingsForm {
-  padding-top: 15px;
-  padding-left: 3%;
+  padding-top: 25px;
+  padding-left: 54px;
 }
 
 input.settingsInput {
   margin-bottom: 20px;
+  height: 30px;
+  border-radius: 5px;
+  width: 50%;
+}
+
+.settingsBtn {
+  height: 37px;
+  width: 33%;
+  background: white;
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  -webkit-box-shadow: 3px 3px 5px #063250;
+  box-shadow: 3px 3px 5px #063250;
+  font-size: 17px;
+  font-weight: bold;
+  margin-left: -9%;
+  margin-top: 20px;
+}
+
+.settingsBtn:hover {
+  cursor: pointer;
+  background: #ffeedb
 }
