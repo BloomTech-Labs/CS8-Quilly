@@ -18,16 +18,31 @@
   padding-top: 5px;
   display: inline-flex;
   flex-wrap: wrap;
-  /* justify-content: space-around; */
-  align-items: flex-start;
+  margin: 15px;
   width: 100%;
 }
 
 .contribution {
+  margin-left: 15px;
+  margin-right: 10px;
   text-align: center;
-  width: 30%;
+  word-wrap: break-word;
+  width: 36%;
 }
 
 .contributions {
-  margin-left: 13%;
+  margin-left: 45px;
+}
+
+#contributionSubmit {
+  margin-left: 15px;
+  height: 25px;
+  background: white;
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #063250;
+}
+
+#contributionSubmit:hover {
+  cursor: pointer;
 }
