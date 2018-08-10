@@ -4,8 +4,8 @@ button {
 
 h4 {
   font-size: 32px;
-  margin: 0 0 11% 0;
-  text-align: center;
+    margin: 5px 0 32px 0;
+    text-align: center;
 }
 
 .Billing {
@@ -51,15 +51,31 @@ h1.Paymentinfo {
 }
 
 .checkout p {
-  padding: 10px 0;
+  padding: 41px 0 16px 0;
+  font-size: 18px;
+  text-align: center;
 }
 
 .checkoutBtn {
-  margin-top: 25px;
+  font-family: inherit;
+  font-size: 17px;
+  margin-top: 33px;
+  margin-left: 25%;
+  font-weight: bold;
+  height: 40px;
+  width: 50%;
+  border-radius: 5px;
+}
+
+.checkoutBtn:hover {
+  background: #ffeedb;
 }
 
 #purchaseCompleteMsg {
   font-size: 35px;
+  font-weight: bold;
+  margin-top: 90px;
+  text-align: center;
 }
 
 /* Plan Details Section */
@@ -77,9 +93,11 @@ h1.Paymentinfo {
 
 .billingImg {
   float: right;
-  height: 75px;
+  height: 90px;
   width: auto;
   z-index: 100;
+  margin-top: -18px;
+  margin-right: -10px;
 }
 
 .PlanDetails p {
@@ -103,6 +121,5 @@ h1.Paymentinfo {
 }
 
 #basicTitle {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 79px;
 }
