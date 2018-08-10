@@ -29,11 +29,11 @@ input {
 }
 
 .date {
-  width: 15%;
+  width: 130px;
 }
 
 .activity {
-  width: 36%;
+  width: 340px;
   text-align: center;
   word-wrap: break-word;
   margin-right: 10px;
@@ -43,12 +43,12 @@ input {
 .notes {
   text-align: center;
   word-wrap: break-word;
-  width: 20%;
+  width: 120px;
 }
 
 .link {
   text-align: center;
-  width: 15%;
+  width: 120px;
 }
 
 /* Input Box Styling */
@@ -76,7 +76,7 @@ input {
 
 .formActivity {
   margin-left: 10px;
-  width: 28%;
+  width: 340px;
   height: 30px;
   border-radius: 5px;
 }
