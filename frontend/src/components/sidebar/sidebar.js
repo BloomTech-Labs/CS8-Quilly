@@ -18,8 +18,10 @@ class Sidebar extends Component {
         <Link to="/jobs">Jobs</Link>
         <Link to="/meetups">Meetups</Link>
         <Link to="/contributions">Contributions</Link>
+        <Link to="/resumes">Resumes</Link>
         <Link to="/billing">Billing</Link>
         <Link to="/settings">Settings</Link>
+
       </div>
     );
   }

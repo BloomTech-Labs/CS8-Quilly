@@ -18,5 +18,6 @@ module.exports = {
         price: 4.99
       }
     }
-  }
+  },
+  CLOUDINARY_SECRET: 'c5dhD7ClXkQ0U06m2SQW6sT1mvg',
 };
