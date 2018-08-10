@@ -9,12 +9,22 @@ import imgRobert from '../../img/Self-Robert.jpg';
 class Introductions extends Component {
     render() {
         return (
-            <div>
-                <div class="groupMembers">
-                    <img src={imgKia} />
-                    <img src={imgKenny} />
-                    <img src={imgJosh} />
-                    <img src={imgRobert} />
+            <div className="groupMembers">
+                <div className="Kia">
+                <h3>Kia Choi</h3>
+                <img src={imgKia} />
+                </div>
+                <h3>Kenny Pham</h3>
+                <div className="Kenny">
+                <img src={imgKenny} />
+                </div>
+                <h3>Josh Coyne</h3>
+                <div className="Josh">
+                <img src={imgJosh} />
+                </div>
+                <h3>Robert Rak</h3>
+                <div className="Robert">
+                <img src={imgRobert} />
                 </div>
             </div>
         );

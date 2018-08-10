@@ -1,4 +1,12 @@
+.groupMembers {
+  display: flex;         /* NEW, Spec - Firefox, Chrome, Opera */
+  
+  justify-content: center;
+  align-items: center;
+}
+
 img {
     height: 50px;
     width: auto;
+    margin: 10px 10px;
 }
