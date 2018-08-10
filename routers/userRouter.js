@@ -11,11 +11,12 @@ const fs = require('fs');
 const multer = require('multer');
 const upload = multer({dest:'uploads/'});
 const cloudinary = require('cloudinary');
+const config = require('../config/config');
 
 cloudinary.config({
   cloud_name: 'dcivns0it',
-  api_key: '236291457259165',
-  api_secret: 'RGoAeWBwowzC8H3t-0trykhr48k'
+  api_key: '623223516531755',
+  api_secret: process.env.CLOUDINARY_SECRET || config.CLOUDINARY_SECRET
 })
 
 // authenticate that the user is signed in

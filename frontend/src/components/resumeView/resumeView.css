@@ -19,6 +19,7 @@
 
 .resumeCard {
     display: flex;
+    width: 100%;
 }
 .resumeName {
     width: 400px;
