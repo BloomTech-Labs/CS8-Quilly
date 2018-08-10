@@ -69,7 +69,9 @@ class Accountlogin extends Component {
     document.getElementById('btn').value = 'Logging In';
     document.getElementById('btn').style =
       'background-color: #c6c6c650; color: #ffffff90';
-    window.setTimeout('this.disabled=true', 0);
+    window.setTimeout(function() {
+      'this.disabled=true';
+    }, 0);
   }
 
   render() {

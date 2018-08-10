@@ -13,10 +13,10 @@ const Homepage = (props) => {
         <p>Need help visualizing your job search?</p>
         <p>Our tools will help you on your journey of landing your dream job.</p>
         <div className="frontPageButtonContainer">
-        <Accountsignup {...props} />
-        <Accountlogin {...props} />
+          <Accountsignup {...props} />
+          <Accountlogin {...props} />
+        </div>
       </div>
-      </div>      
     </div>
   );
 };
