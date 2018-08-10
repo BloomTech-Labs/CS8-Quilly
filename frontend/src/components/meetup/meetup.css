@@ -9,14 +9,14 @@
   color: rgba(0, 0, 0, 0.8);
   background-color: rgba(255, 255, 255, 0.6);
   /* border: 3px solid #7a7d7d; */
-  border:1px solid rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   padding-top: 95px;
 }
 
 /* Data Input Styling */
 .meetupsData {
-  margin-top: 5px;
+  margin: 15px;
   display: inline-flex;
   flex-wrap: wrap;
   /* justify-content: space-around; */
@@ -25,56 +25,83 @@
 }
 
 input {
-  margin-right: 15px;
+  margin-right: 0px;
 }
 
 .date {
-  text-align: center;
-  width: 20%;
+  width: 130px;
 }
 
 .activity {
+  width: 340px;
   text-align: center;
-  width: 30%;
+  word-wrap: break-word;
+  margin-right: 10px;
+  margin-left: 15px;
 }
 
 .notes {
   text-align: center;
-  width: 40%;
+  word-wrap: break-word;
+  width: 120px;
 }
 
 .link {
   text-align: center;
-  width: 5%;
+  width: 120px;
 }
 
 /* Input Box Styling */
 .FormSubmit {
   position: fixed;
   top: 165px;
-  left: 23%
+  margin-left: 15px;
+  width: 85%;
 }
 
 .meetups {
-  margin-left: 13%;
+  margin-left: 45px;
 }
 
 .MeetupForm {
   margin-left: 10px;
+  display: inline-block;
 }
 
 .formDate {
   margin-left: 10px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .formActivity {
   margin-left: 10px;
+  width: 340px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .formLink {
   margin-left: 10px;
+  height: 30px;
+  border-radius: 5px;
 }
 
 .formNotes {
   margin-left: 10px;
+  height: 30px;
+  border-radius: 5px;
+}
+
+#meetupSubmit {
+  margin-left: 15px;
+  height: 25px;
+  background: white;
+  border: #0006 solid 1px;
+  border-radius: 5px;
+  box-shadow: 3px 3px 5px #063250;
+}
+
+#meetupSubmit:hover {
+  cursor: pointer;
 }
