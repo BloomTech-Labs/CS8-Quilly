@@ -34,6 +34,11 @@ class Jobcreatemodal extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setFocus = this.setFocus.bind(this);
+  }
+
+  setFocus() {
+    document.getElementById('companyName').focus();
   }
 
   openModal() {
@@ -41,6 +46,7 @@ class Jobcreatemodal extends Component {
       this.closeModal();
     } else {
       this.setState({ modalIsOpen: true });
+      setTimeout(() => this.setFocus(), 100);
     }
   }
 
@@ -204,7 +210,7 @@ class Jobcreatemodal extends Component {
                 </label>
                 <br />
                 <input
-                class="Notes"
+                className="Notes"
                 placeholder="Notes"
                 name="notes"
                 value={this.state.notes}
@@ -216,6 +222,7 @@ class Jobcreatemodal extends Component {
           <div className="Jobinformation">
             <h2>Job Information</h2>
             <input
+            id="companyName"
             placeholder="Company"
             name="company"
             value={this.state.company}

@@ -4,7 +4,6 @@
   right: 10px;
   background-color: #ffffff;
   border: #0006 solid 1px;
-  /* border: 2px solid #ffeedb; */
   border-radius: 5px;
   font-size: 18px;
   height: 60px;
@@ -15,46 +14,45 @@
 .openModal:hover {
   cursor: pointer;
   background-color: #ffeedb;
-  /* background-color: #99d9d6; */
   transform: translate(0, -8px);
+}
+
+.ReactModal__Content {
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .Jobtimeline {
   margin-top: -20px;
-  padding: 5% 10% 14% 10%;
+  padding: 2% 5% 0 5%;
   display: flex;
   flex-wrap: wrap;
   background-color: rgba(49, 98, 136, 1);
-  /* background-color: #316288; */
   border: 1px solid rgba(0, 0, 0, 0.25);
-  /* background: #7a7d7d; */
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
   max-width: 500px;
+  min-height: 250px;
 }
 
 .Jobtimeline label {
   margin: 7px;
-  float: left;
-  width: 46%;
+  width: 200px;
   color: white;
-  /* rgba(0, 0, 0, 0.8); */
-  /* color: #ffeedb; */
   font-weight: 500;
   text-shadow: 1px 1px 2px #0b3b4b;
 }
 
 .Jobinformation {
-  padding: 10% 10% 10% 10%;
+  padding: 2% 10% 5% 10%;
   margin: 5% auto;
-  display: inline-block;
+  display: flex;
   flex-wrap: wrap;
-  /* background: #7a7d7d; */
   background-color: rgba(49, 98, 136, 1);
   border:1px solid rgba(0, 0, 0, 0.25);
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
-  width: 400px;
   max-width: 500px;
 }
 
@@ -70,8 +68,17 @@ h2 {
   color: #ffeedb;
 }
 
+.form {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
 .Checkboxes {
-  display: inline-block;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .Overlay {
@@ -90,17 +97,14 @@ h2 {
 }
 
 .addJob {
-  position: fixed;
-  margin-top: 15px;
+  position: sticky;
   background-color: white;
-  /* border: 2px solid #ffeedb; */
   border: #0006 solid 1px;
   border-radius: 5px;
   font-size: 18px;
   height: 40px;
   width: 140px;
   box-shadow: 3px 3px 5px #063250;
-  /* #174b70; */
 }
 
 .addJob:hover {
@@ -108,7 +112,20 @@ h2 {
   background-color: #ffeedb;
 }
 
-input.Notes {
+.Notes {
+  text-align: left;
   margin-top: 10px;
   margin-left: 10px;
+  margin-bottom: 20px;
+}
+
+@media only screen and (max-width: 500px) {
+  .form {
+    display: block;
+  }
+
+  .ReactModal__Content {
+    margin-top: 30px;
+    max-width: 303px;
+  }
 }

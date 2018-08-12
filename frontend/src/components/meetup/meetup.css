@@ -27,10 +27,6 @@
   width: 100%;
 }
 
-input {
-  margin-right: 0px;
-}
-
 .date {
   width: 130px;
 }
@@ -117,7 +113,7 @@ input {
     padding-top: 30px;
     align-items: center;
   }
-  
+
   input {
     margin-bottom: 10px;
   }
@@ -130,7 +126,7 @@ input {
     margin-left: 0;
     margin-right: 14px;
   }
-  
+
   .formDate {
     width: 176px;
   }
@@ -160,7 +156,7 @@ input {
 
   .link {
   }
-  
+
   .notes {
     width: auto;
   }
