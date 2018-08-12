@@ -37,7 +37,6 @@ class Accountlogin extends Component {
           username: this.state.username,
           password: this.state.password
         },
-        { withCredentials: true }
       )
       .then(response => {
         this.props.handleLogin();
@@ -47,11 +46,14 @@ class Accountlogin extends Component {
         }, 2000);
       })
       .catch(error => {
-        document.getElementById('loginWarning').innerHTML =
+        if (error.response) {
+          document.getElementById('loginWarning').innerHTML =
           error.response.data.error;
+        } else document.getElementById('loginWarning').innerHTML =
+            error.message;
         console.error(error);
       });
-
+      
     event.preventDefault();
   }
 

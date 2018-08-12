@@ -67,9 +67,9 @@ class Contribution extends Component {
       <div className="ContributionComponents">
         <div className="contributions">
           {/* Displaying over user's contributions -- will display nothing if no input given */}
-          {this.state.serverData.map(function(contribution) {
+          {this.state.serverData.map(function(contribution, key) {
             return (
-              <div className="contributionsData">
+              <div className="contributionsData" key={key}>
                 <div className="date">{contribution.date.slice(0, 10)}</div>
                 <div className="contribution">{contribution.contribution}</div>
                 <div className="link">

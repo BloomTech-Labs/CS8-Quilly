@@ -1,7 +1,7 @@
 .Sidebar {
   height: 100%; /* Full-height: remove this if you want "auto" height */
   width: 190px; /* Set the width of the sidebar */
-  position: absolute; /* Fixed Sidebar (stay in place on scroll) */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
   z-index: 100; /* Stay on top */
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 10px;
@@ -9,6 +9,7 @@
   background-color: #000000f8;
   left: -165px;
   transition: transform 0.5s ease;
+  padding-bottom: 20px;
 }
 
 .Sidebar:hover {
@@ -37,11 +38,7 @@
 
 /* When you mouse over the navigation links, change their color */
 .Sidebar a:hover {
-  /* color: #40798c; */
-  /* color: #226aa0; */
   color: #fff0d2;
-  /* color: white; */
-  /* color: #c2e2f8; */
   text-decoration: underline;
   opacity: 1;
 }
@@ -55,6 +52,10 @@
 /*makes logo untransparent*/
 #sidebarLogo:hover {
   opacity: 1;
+}
+
+.activeLink {
+  color: #1a6da1 !important;
 }
 
 @media screen and (max-height: 450px) {

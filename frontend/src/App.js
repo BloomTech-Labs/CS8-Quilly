@@ -15,6 +15,7 @@ import PrivateRoute from './privateRoute.js';
 import config from './config/config';
 
 const stripeKey = config.stripe.publicKey;
+axios.defaults.withCredentials = true;
 
 class App extends Component {
   constructor(props) {
