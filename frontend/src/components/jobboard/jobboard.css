@@ -55,3 +55,9 @@
 .sc-bdVaJa {
   background: none;
 }
+
+@media only screen and (max-width: 500px) {
+  .smooth-dnd-container.horizontal {
+    margin-left: 25px;
+  }
+}

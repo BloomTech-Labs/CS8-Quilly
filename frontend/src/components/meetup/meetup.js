@@ -66,44 +66,44 @@ class Meetup extends Component {
     return (
       <div className="meetupBody">
         <div className="meetupContainer">
-            <form onSubmit={this.handleSubmit} className="meetupForm">
-              <i className="far fa-calendar-alt">
-                <input
-                  className="formDate"
-                  required="true"
-                  type="date"
-                  name="date"
-                  value={this.state.date}
-                  onChange={this.handleChange}
-                />
-              </i>
-              <input
-                className="formActivity"
-                type="text"
-                placeholder="Meetup"
-                required="true"
-                name="activity"
-                value={this.state.activity}
-                onChange={this.handleChange}
-              />
-              <input
-                className="formLink"
-                type="text"
-                placeholder="Link &#x1f517;"
-                name="link"
-                value={this.state.link}
-                onChange={this.handleChange}
-              />
-              <input
-                className="formNotes"
-                type="text"
-                placeholder="Notes"
-                name="notes"
-                value={this.state.notes}
-                onChange={this.handleChange}
-              />
-              <input type="submit" value="Submit" id="meetupSubmit" />
-            </form>
+          <form onSubmit={this.handleSubmit} className="meetupForm">
+            <i className="far fa-calendar-alt">
+            <input
+              className="formDate"
+              required="true"
+              type="date"
+              name="date"
+              value={this.state.date}
+              onChange={this.handleChange}
+            />
+            </i>
+            <input
+              className="formActivity"
+              type="text"
+              placeholder="Meetup"
+              required="true"
+              name="activity"
+              value={this.state.activity}
+              onChange={this.handleChange}
+            />
+            <input
+              className="formLink"
+              type="text"
+              placeholder="Link &#x1f517;"
+              name="link"
+              value={this.state.link}
+              onChange={this.handleChange}
+            />
+            <input
+              className="formNotes"
+              type="text"
+              placeholder="Notes"
+              name="notes"
+              value={this.state.notes}
+              onChange={this.handleChange}
+            />
+            <input type="submit" value="Submit" id="meetupSubmit" />
+          </form>
           <div className="meetups">
             {this.state.serverData.map(function(meetup, key) {
               return (

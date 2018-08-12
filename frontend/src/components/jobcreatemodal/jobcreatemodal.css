@@ -33,7 +33,7 @@
   border-radius: 15px;
   text-shadow: 1px 1px 1px #0b3b4b;
   max-width: 500px;
-  min-height: 250px;
+  min-height: 260px;
 }
 
 .Jobtimeline label {
@@ -75,10 +75,20 @@ h2 {
   width: 100%;
 }
 
-.Checkboxes {
+.checkboxes {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: row;
   width: 100%;
+}
+
+.firstGroupOfBoxes {
+  display: flex;
+  flex-direction: column;
+}
+
+.secondGroupOfBoxes {
+  display: flex;
+  flex-direction: column;
 }
 
 .Overlay {
@@ -121,8 +131,16 @@ h2 {
 }
 
 @media only screen and (max-width: 500px) {
+  .checkboxes: {
+    flex-wrap: initial;
+  }
+
   .form {
     display: block;
+  }
+
+  .firstGroupOfBoxes {
+    max-width: 180px;
   }
 
   .ReactModal__Content {
@@ -131,13 +149,15 @@ h2 {
   }
 
   .Jobtimeline {
+    padding: 2% 7% 0 3%;
     width: 310px;
   }
 
   .Jobinformation {
-    padding: 2% 8% 5% 8%;
+    padding: 2% 5% 5% 5%;
     flex-direction: row;
     max-width: 310px;
+
   }
 
   .inputContainer {

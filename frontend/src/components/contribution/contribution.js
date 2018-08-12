@@ -64,31 +64,10 @@ class Contribution extends Component {
 
   render() {
     return (
-      <div className="ContributionComponents">
-        <div className="contributions">
-          {/* Displaying over user's contributions -- will display nothing if no input given */}
-          {this.state.serverData.map(function(contribution, key) {
-            return (
-              <div className="contributionsData" key={key}>
-                <div className="date">{contribution.date.slice(0, 10)}</div>
-                <div className="contribution">{contribution.contribution}</div>
-                <div className="link">
-                  <a href={contribution.link}>
-                    <span role="img" aria-label="link emoji">
-                      &#x1f517;
-                    </span>
-                  </a>
-                </div>
-                <div className="notes">{contribution.notes}</div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Form Component */}
-        <div className="ContributionForm">
-          <form onSubmit={this.handleSubmit} className="FormSubmit">
-            <i className="far fa-calendar-alt" />
+      <div className="contributionBody">
+        <div className="contributionContainer">
+          <form onSubmit={this.handleSubmit} className="contributionForm">
+            <i className="far fa-calendar-alt">
             <input
               className="formDate"
               required="true"
@@ -97,6 +76,7 @@ class Contribution extends Component {
               value={this.state.date}
               onChange={this.handleChange}
             />
+            </i>
             <input
               className="formActivity"
               type="text"
@@ -125,6 +105,25 @@ class Contribution extends Component {
             />
             <input type="submit" value="Submit" id="contributionSubmit" />
           </form>
+          <div className="contributions">
+            {/* Displaying over user's contributions -- will display nothing if no input given */}
+            {this.state.serverData.map(function(contribution, key) {
+              return (
+                <div className="contributionsData" key={key}>
+                  <div className="date">{contribution.date.slice(0, 10)}</div>
+                  <div className="contribution">{contribution.contribution}</div>
+                  <div className="link">
+                    <a href={contribution.link}>
+                      <span role="img" aria-label="link emoji">
+                        &#x1f517;
+                      </span>
+                    </a>
+                  </div>
+                  <div className="notes">{contribution.notes}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );
