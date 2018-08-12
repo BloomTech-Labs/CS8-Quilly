@@ -221,6 +221,8 @@ class Jobcreatemodal extends Component {
 
           <div className="Jobinformation">
             <h2>Job Information</h2>
+            <div className="inputContainer">
+            <div className="infoContainer">
             <input
             id="companyName"
             placeholder="Company"
@@ -262,10 +264,12 @@ class Jobcreatemodal extends Component {
             value={this.state.position}
             onChange={this.handleChange}
             required="true"/>
+            </div>
             <button onClick={this.handleSubmit} className="addJob">
               Add Job
             </button>
             <div id="jobCreateWarning"></div>
+          </div>
           </div>
           <button className="openModal" onClick={this.openModal}>
             Add Job &#10010;
