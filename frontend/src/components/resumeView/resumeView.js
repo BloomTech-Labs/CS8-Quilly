@@ -64,6 +64,7 @@ class ResumeView extends Component {
 
     render() {
         return (
+            <div className="resumeBody">
             <div className="resumeBox">
                 <form className="resumeForm" id="myForm">
                     <input className="resume_input" id="file" type="file" name="file" className=""/>
@@ -83,6 +84,7 @@ class ResumeView extends Component {
                         )
                     })}
                 </div>
+            </div>
             </div>
         )
     }
