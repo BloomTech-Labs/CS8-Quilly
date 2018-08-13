@@ -1,7 +1,3 @@
-.boardContainer {
-  min-height: 1000px;
-}
-
 .smooth-dnd-container.horizontal {
   min-height: 100vh;
   /* font-family: Ubuntu; */
