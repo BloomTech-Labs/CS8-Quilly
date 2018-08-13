@@ -23,6 +23,9 @@ const defaultState = {
   jobSource: "",
   linkToJobPost: "",
   pointOfContact: "",
+  availableResumes: ["Non available"],
+  resume: "",
+  resumes: []
 };
 
 class Jobcreatemodal extends Component {
@@ -34,6 +37,11 @@ class Jobcreatemodal extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setFocus = this.setFocus.bind(this);
+  }
+
+  setFocus() {
+    document.getElementById('companyName').focus();
   }
 
   openModal() {
@@ -41,7 +49,22 @@ class Jobcreatemodal extends Component {
       this.closeModal();
     } else {
       this.setState({ modalIsOpen: true });
+      setTimeout(() => this.setFocus(), 100);
     }
+
+    axios.get(`${config.serverUrl}/user/getResumes`)
+    .then(resumes => {
+      console.log(resumes);
+      const temp = [];
+      resumes.data.forEach(resume => {
+        temp.push(resume.name);
+      });
+      this.setState({ resumes: temp });
+      console.log(this.state.resumes);
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   closeModal() {
@@ -91,7 +114,8 @@ class Jobcreatemodal extends Component {
       notes,
       jobSource,
       linkToJobPost,
-      pointOfContact
+      pointOfContact,
+      resume
     } = this.state;
     const onsiteInterview = this.state.onSiteInterview;
 
@@ -119,6 +143,7 @@ class Jobcreatemodal extends Component {
       jobSource,
       linkToJobPost,
       pointOfContact,
+      resume
     }
     axios
     .post(`${config.serverUrl}/user/applications/add`, temp)
@@ -149,9 +174,9 @@ class Jobcreatemodal extends Component {
         >
           <div className="Jobtimeline">
             <h2>Job Timeline</h2>
-
-            <div className="Checkboxes">
               <form className="form">
+                <div className="checkboxes">
+                <div className="firstGroupOfBoxes">
                 <label>
                   <input
                   type="checkbox"
@@ -177,6 +202,8 @@ class Jobcreatemodal extends Component {
                   onChange={this.handleChange} />
                   Received Response
                 </label>
+                </div>
+                <div className="secondGroupOfBoxes">
                 <label>
                   <input
                   type="checkbox"
@@ -202,20 +229,22 @@ class Jobcreatemodal extends Component {
                   onChange={this.handleChange} />
                   Code Test
                 </label>
-                <br />
+                </div>
+                </div>
                 <input
-                class="Notes"
+                className="Notes"
                 placeholder="Notes"
                 name="notes"
                 value={this.state.notes}
                 onChange={this.handleChange} />
               </form>
-            </div>
           </div>
-
           <div className="Jobinformation">
             <h2>Job Information</h2>
+            <div className="inputContainer">
+            <div className="infoContainer">
             <input
+            id="companyName"
             placeholder="Company"
             name="company"
             value={this.state.company}
@@ -245,20 +274,26 @@ class Jobcreatemodal extends Component {
             name="pointOfContact"
             value={this.state.pointOfContact}
             onChange={this.handleChange} />
-            <input
-            placeholder="Upload resume/CV"
-             />
-             <br/>
+            <select name="resume" value={this.state.resume} onChange={this.handleChange}>
+              <option value="Resume">Resume</option>
+              {this.state.resumes.map(resume => {
+                return (<option value={resume}>{resume}</option>)
+              })
+              }
+            </select>
+            <br/>
             <input
             placeholder="Position"
             name="position"
             value={this.state.position}
             onChange={this.handleChange}
             required="true"/>
+            </div>
             <button onClick={this.handleSubmit} className="addJob">
               Add Job
             </button>
             <div id="jobCreateWarning"></div>
+            </div>
           </div>
           <button className="openModal" onClick={this.openModal}>
             Add Job &#10010;

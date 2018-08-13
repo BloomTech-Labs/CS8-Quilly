@@ -6,7 +6,7 @@ import Logo from '../img/Quilly Full Logo - Blue Text.svg';
 
 const Homepage = (props) => {
   return (
-    <div className="homeApp">
+    <div className="homePage">
       <img src={Background} className="background" alt="background" />
       <img src={Logo} id="logo" alt="logo" />
       <div className="homeDescription">

@@ -48,6 +48,8 @@ class ResumeView extends Component {
         .then(response => {
             console.log(response);
             this.updateView();
+            document.getElementById("file").value = "";
+            document.getElementById("fileName").value = "";
         })
         .catch(error => {
             console.log(error.response);
@@ -62,23 +64,27 @@ class ResumeView extends Component {
 
     render() {
         return (
+            <div className="resumeBody">
             <div className="resumeBox">
                 <form className="resumeForm" id="myForm">
-                    <input type="file" name="file" />
-                    <input type="text" placeholder="Resume Name" name="resumeName"/>
-                    <button type="submit" onClick={this.handleSubmit}>Add Resume</button>
+                    <input className="resume_input" id="file" type="file" name="file" className=""/>
+                    <input className="resume_input" id="fileName" type="text" placeholder="Resume Name" name="resumeName"/>
+                    <button className="del_btn" type="submit" onClick={this.handleSubmit}>Add Resume</button>
                 </form>
                 <div className="resumes">
                     {this.state.resumes.map(resume => {
                         return(
                             <div key={resume._id} className="resumeCard">
-                                <div className="resumeName">{resume.name}</div>
+                                {/* <a href={resume.file_url} ><div className="resumeName">{resume.name}</div></a> */}
+                                <a href={resume.file_url} className="resumeName" >{resume.name}</a>
+                                
                                 <a href={resume.file_url} dangerouslySetInnerHTML={{__html:resume.thumb_url}}></a>
-                                <button onClick={() => this.deleteResume(resume._id)}>Delete</button>
+                                <button className="del_btn" onClick={() => this.deleteResume(resume._id)}>Delete</button>
                             </div>
                         )
                     })}
                 </div>
+            </div>
             </div>
         )
     }

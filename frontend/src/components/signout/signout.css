@@ -12,6 +12,7 @@
   width: 140px;
   margin-right: 0px;
   transition: transform 0.2s ease;
+  z-index: 2;
 }
 
 .signoutBtn:hover {

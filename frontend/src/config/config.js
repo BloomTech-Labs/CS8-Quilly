@@ -4,5 +4,4 @@ module.exports = {
   stripe: {
     publicKey: process.env.NODE_ENV === "production" ? "pk_test_K1tJV1QhjRPnqQFwDFxe6vZd" : "pk_test_K1tJV1QhjRPnqQFwDFxe6vZd",
   },	
-
 };
