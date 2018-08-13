@@ -4,8 +4,6 @@ import axios from 'axios';
 import config from '../../config/config';
 import './meetup.css';
 
-axios.defaults.withCredentials = true;
-
 class Meetup extends Component {
   constructor(props) {
     super(props);
@@ -55,7 +53,6 @@ class Meetup extends Component {
     axios
       .post(`${config.serverUrl}/user/meetups/add`, serverPort)
       .then(res => {
-        console.log(res);
         let temp = this.state.serverData;
         temp.push(serverPort);
         this.setState({ serverData: temp });
@@ -67,30 +64,10 @@ class Meetup extends Component {
 
   render() {
     return (
-      <div className="MeetupComponents">
-        <div className="meetups">
-          {/* Displaying over user's meetups -- will display nothing if no input given */}
-          {this.state.serverData.map(function(meetup) {
-            return (
-              <div className="meetupsData">
-                <div className="date">{meetup.date.slice(0, 10)}</div>
-                <div className="activity">{meetup.activity}</div>
-                <div className="link">
-                  <a href={meetup.link}>
-                    <span role="img" aria-label="link emoji">
-                      &#x1f517;
-                    </span>
-                  </a>
-                </div>
-                <div className="notes">{meetup.notes}</div>
-              </div>
-            );
-          })}
-        </div>
-        {/* Form Component */}
-        <div className="MeetupForm">
-          <form onSubmit={this.handleSubmit} className="FormSubmit">
-            <i className="far fa-calendar-alt" />
+      <div className="meetupBody">
+        <div className="meetupContainer">
+          <form onSubmit={this.handleSubmit} className="meetupForm">
+            <i className="far fa-calendar-alt">
             <input
               className="formDate"
               required="true"
@@ -99,6 +76,7 @@ class Meetup extends Component {
               value={this.state.date}
               onChange={this.handleChange}
             />
+            </i>
             <input
               className="formActivity"
               type="text"
@@ -126,6 +104,24 @@ class Meetup extends Component {
             />
             <input type="submit" value="Submit" id="meetupSubmit" />
           </form>
+          <div className="meetups">
+            {this.state.serverData.map(function(meetup, key) {
+              return (
+                <div className="meetupsData" key={key}>
+                  <div className="date">{meetup.date.slice(0, 10)}</div>
+                  <div className="activity">{meetup.activity}</div>
+                  <div className="link">
+                    <a href={meetup.link}>
+                      <span role="img" aria-label="link emoji">
+                        &#x1f517;
+                      </span>
+                    </a>
+                  </div>
+                  <div className="notes">{meetup.notes}</div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     );

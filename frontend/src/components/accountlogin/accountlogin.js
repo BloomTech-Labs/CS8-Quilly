@@ -19,6 +19,7 @@ class Accountlogin extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeText = this.changeText.bind(this);
   }
 
   handleChange(event) {
@@ -36,16 +37,20 @@ class Accountlogin extends Component {
           username: this.state.username,
           password: this.state.password
         },
-        { withCredentials: true }
       )
       .then(response => {
         this.props.handleLogin();
-        this.props.history.push('/jobs');
+        this.changeText();
+        setTimeout(() => {
+          this.props.history.push('/jobs');
+        }, 2000);
       })
-
       .catch(error => {
-        document.getElementById('loginWarning').innerHTML =
+        if (error.response) {
+          document.getElementById('loginWarning').innerHTML =
           error.response.data.error;
+        } else document.getElementById('loginWarning').innerHTML =
+            error.message;
         console.error(error);
       });
 
@@ -66,10 +71,9 @@ class Accountlogin extends Component {
   }
 
   changeText() {
-    document.getElementById('btn').value = 'Logging In';
+    document.getElementById('btn').value = 'Logging In...';
     document.getElementById('btn').style =
       'background-color: #c6c6c650; color: #ffffff90';
-    window.setTimeout('this.disabled=true', 0);
   }
 
   render() {

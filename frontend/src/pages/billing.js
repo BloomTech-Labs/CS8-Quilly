@@ -5,11 +5,13 @@ import Signout from '../components/signout/signout';
 
 const Billingpage = (props) => {
   return (
-    <div className="App">
-      <Signout {...props} />
+    <div className="pageContainer">
       <Sidebar />
-      <h1 className="pageHeader">Billing</h1>
-      <Billing />
+      <div className="pageBackground">
+        <Signout {...props} />
+        <h1 className="pageHeader">Billing</h1>
+        <Billing />
+      </div>
     </div>
   );
 };

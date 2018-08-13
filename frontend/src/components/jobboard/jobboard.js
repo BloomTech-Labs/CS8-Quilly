@@ -92,17 +92,22 @@ class JobBoard extends Component {
 
   render() {
     return (
-      <Board
-        data={this.generateData(this.props.jobs)}
-        customCardLayout
-        cardDragClass="draggingCard"
-        draggable
-        laneDraggable={false}
-        handleDragEnd={this.handleListUpdates}
-        newCardTemplate={<Jobcreatemodal />}
-        >
-        <CustomCard openEditModal={this.props.openEditModal} openDeleteModal={this.props.openDeleteModal} />
-      </Board>
+      <div className="boardContainer">
+        <Board
+          data={this.generateData(this.props.jobs)}
+          customCardLayout
+          cardDragClass="draggingCard"
+          draggable
+          laneDraggable={false}
+          handleDragEnd={this.handleListUpdates}
+          newCardTemplate={<Jobcreatemodal />}
+          >
+          <CustomCard 
+            openEditModal={this.props.openEditModal} 
+            openDeleteModal={this.props.openDeleteModal} 
+          />
+        </Board>
+      </div>
     );
   }
 }

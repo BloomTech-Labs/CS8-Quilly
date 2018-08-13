@@ -5,11 +5,13 @@ import Signout from '../components/signout/signout';
 
 const Settingspage = (props) => {
   return (
-    <div className="App">
-      <Signout {...props} />
+    <div className="pageContainer">
       <Sidebar />
-      <h1 className="pageHeader">Settings</h1>
-      <Settings />
+      <div className="pageBackground">
+        <Signout {...props} />
+        <h1 className="pageHeader">Settings</h1>
+        <Settings />
+      </div>
     </div>
   );
 };

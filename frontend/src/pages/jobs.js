@@ -68,9 +68,10 @@ class Joblistpage extends Component {
 
   render() {
     return (
-      <div className="App">
-        <Signout {...this.props} />
+      <div className="pageContainer">
         <Sidebar />
+        <div className="pageBackground">
+        <Signout {...this.props} />
         <h1 className="pageHeader">Jobs</h1>
         <Jobboard
           {...this.props}
@@ -93,6 +94,7 @@ class Joblistpage extends Component {
           ref={this.deleteModal}
           handleJobChange={this.handleJobChange}
         />
+      </div>
       </div>
     );
   }
