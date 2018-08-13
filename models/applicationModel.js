@@ -53,6 +53,7 @@ const applicationSchema = new mongoose.Schema({
     jobSource: String,
     linkToJobPost: String,
     pointOfContact: String,
+    resume: String,
     testData: {
       type: Boolean,
       default: false

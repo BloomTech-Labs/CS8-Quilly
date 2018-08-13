@@ -23,6 +23,8 @@ const defaultState = {
   jobSource: "",
   linkToJobPost: "",
   pointOfContact: "",
+  resumes: [],
+  resume: ""
 };
 
 class Jobeditmodal extends Component {
@@ -38,6 +40,19 @@ class Jobeditmodal extends Component {
 
   openModal(jobInfo) {
     this.setState({ modalIsOpen: true, ...jobInfo });
+
+    axios.get(`${config.serverUrl}/user/getResumes`)
+    .then(resumes => {
+      console.log(resumes);
+      const temp = [];
+      resumes.data.forEach(resume => {
+        temp.push(resume.name);
+      });
+      this.setState({ resumes: temp });
+    })
+    .catch(error => {
+      console.log(error);
+    });
   }
 
   closeModal() {
@@ -112,7 +127,8 @@ class Jobeditmodal extends Component {
       notes,
       jobSource,
       linkToJobPost,
-      pointOfContact
+      pointOfContact,
+      resume
     } = this.state;
     //const onsiteInterview = this.state.onSiteInterview;
 
@@ -148,6 +164,7 @@ class Jobeditmodal extends Component {
       jobSource,
       linkToJobPost,
       pointOfContact,
+      resume
     }
     axios
     .put(`${config.serverUrl}/user/applications/update/${this.state._id}`, temp)
@@ -267,9 +284,16 @@ class Jobeditmodal extends Component {
             name="pointOfContact"
             value={this.state.pointOfContact}
             onChange={this.handleChange} />
-            <input
+            {/* <input
             placeholder="Upload resume/CV"
-             />
+             /> */}
+            <select name="resume" value={this.state.resume} onChange={this.handleChange}>
+              <option value="Resume">Resume</option>
+              {this.state.resumes.map(resume => {
+                return (<option value={resume}>{resume}</option>)
+              })
+              }
+            </select>
              <br/>
             <input
             placeholder="Position"
