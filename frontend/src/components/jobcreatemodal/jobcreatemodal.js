@@ -34,6 +34,11 @@ class Jobcreatemodal extends Component {
     this.closeModal = this.closeModal.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.setFocus = this.setFocus.bind(this);
+  }
+
+  setFocus() {
+    document.getElementById('companyName').focus();
   }
 
   openModal() {
@@ -41,6 +46,7 @@ class Jobcreatemodal extends Component {
       this.closeModal();
     } else {
       this.setState({ modalIsOpen: true });
+      setTimeout(() => this.setFocus(), 100);
     }
   }
 
@@ -149,9 +155,9 @@ class Jobcreatemodal extends Component {
         >
           <div className="Jobtimeline">
             <h2>Job Timeline</h2>
-
-            <div className="Checkboxes">
               <form className="form">
+                <div className="checkboxes">
+                <div className="firstGroupOfBoxes">
                 <label>
                   <input
                   type="checkbox"
@@ -177,6 +183,8 @@ class Jobcreatemodal extends Component {
                   onChange={this.handleChange} />
                   Received Response
                 </label>
+                </div>
+                <div className="secondGroupOfBoxes">
                 <label>
                   <input
                   type="checkbox"
@@ -202,20 +210,22 @@ class Jobcreatemodal extends Component {
                   onChange={this.handleChange} />
                   Code Test
                 </label>
-                <br />
+                </div>
+                </div>
                 <input
-                class="Notes"
+                className="Notes"
                 placeholder="Notes"
                 name="notes"
                 value={this.state.notes}
                 onChange={this.handleChange} />
               </form>
-            </div>
           </div>
-
           <div className="Jobinformation">
             <h2>Job Information</h2>
+            <div className="inputContainer">
+            <div className="infoContainer">
             <input
+            id="companyName"
             placeholder="Company"
             name="company"
             value={this.state.company}
@@ -255,10 +265,12 @@ class Jobcreatemodal extends Component {
             value={this.state.position}
             onChange={this.handleChange}
             required="true"/>
+            </div>
             <button onClick={this.handleSubmit} className="addJob">
               Add Job
             </button>
             <div id="jobCreateWarning"></div>
+            </div>
           </div>
           <button className="openModal" onClick={this.openModal}>
             Add Job &#10010;

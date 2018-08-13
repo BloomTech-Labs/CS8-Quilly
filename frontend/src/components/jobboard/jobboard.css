@@ -1,16 +1,22 @@
 .smooth-dnd-container.horizontal {
+  min-height: 100vh;
   /* font-family: Ubuntu; */
   white-space: nowrap;
   margin-top: 65px;
   margin-left: 70px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .bPacrc {
-  z-index: 1 !important;
+  z-index: 0 !important;
 }
 
 .cBXKgf {
   background: none !important;
+  overflow-y: visible !important;
+  min-height: 100vh;
+  height: 100%;
 }
 
 /* big boards */
@@ -18,6 +24,7 @@
   background-color: #efefefad !important;
   border-radius: 1px;
   margin: 1px;
+  max-height: 100% !important;
 }
 
 .sc-htpNat:hover {
@@ -43,4 +50,10 @@
 
 .sc-bdVaJa {
   background: none;
+}
+
+@media only screen and (max-width: 500px) {
+  .smooth-dnd-container.horizontal {
+    margin-left: 25px;
+  }
 }

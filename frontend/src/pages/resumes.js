@@ -1,16 +1,18 @@
-import React, { Component } from 'react';
+import React from 'react';
 import Sidebar from '../components/sidebar/sidebar';
 import Signout from '../components/signout/signout';
 import ResumeView from '../components/resumeView/resumeView'
 
 const Resumespage = (props) => {
-    return (
-      <div className="App">
+  return (
+    <div className="pageContainer">
+      <Sidebar />
+      <div className="pageBackground">
         <Signout {...props} />
-        <Sidebar />
-        < ResumeView />
+        <ResumeView />
       </div>
-    );
+    </div>
+  );
 }
 
 export default Resumespage;

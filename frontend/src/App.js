@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { Router, Route } from 'react-router-dom';
 import axios from 'axios';
 
@@ -15,6 +15,7 @@ import PrivateRoute from './privateRoute.js';
 import config from './config/config';
 
 const stripeKey = config.stripe.publicKey;
+axios.defaults.withCredentials = true;
 
 class App extends Component {
   constructor(props) {
@@ -49,7 +50,7 @@ class App extends Component {
   render() {
     return (
       <Router {...this.props}>
-        <div>
+        <Fragment>
           <Route exact path="/" render={(props) => <Homepage handleLogin={this.handleLogin} {...this.props} /> } />
           <PrivateRoute path="/introductions" component={Introductionspage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
           <PrivateRoute path="/jobs" component={Joblistpage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
@@ -60,7 +61,7 @@ class App extends Component {
           </StripeProvider>
           <PrivateRoute path="/settings" component={Settingspage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
           <PrivateRoute path="/resumes" component={Resumespage} isAuthenticated={this.state.isAuthenticated} {...this.props} />
-        </div>
+        </Fragment>
       </Router>
     );
   }
