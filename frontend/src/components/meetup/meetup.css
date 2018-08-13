@@ -58,6 +58,7 @@
 /* Input Box Styling */
 .meetupForm {
   margin-left: 10px;
+  padding-bottom: 20px;
   flex-direction: row;
   justify-content: center;
 }

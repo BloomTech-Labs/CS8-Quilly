@@ -137,6 +137,10 @@ h1.paymentInfo {
 }
 
 @media only screen and (max-width: 860px) {
+  .billingBody {
+    padding-left: 100px;
+  }
+
   .billingContainer {
     flex-direction: column;
   }
@@ -152,8 +156,7 @@ h1.paymentInfo {
 
 @media only screen and (max-width: 500px) {
   .billingBody {
-    padding-left: 35px;
+    padding-left: 15px;
     padding-bottom: 20px;
   }
-
 }

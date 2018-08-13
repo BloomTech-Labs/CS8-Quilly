@@ -65,7 +65,7 @@ input.settingsInput {
 
 @media only screen and (max-width: 500px) {
   .settingsBody {
-    padding-left: 43px;
+    padding-left: 15px;
     padding-bottom: 20px;
   }
 
